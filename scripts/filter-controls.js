@@ -2,7 +2,7 @@
   "use strict";
   const escapeHtml = root.CodingPlanUI.escapeHtml;
 
-  const mainlandLabel = "支持中国大陆";
+  const mainlandLabel = "中国大陆可用";
 
   // Shared markup identity and directory summaries for the five existing pickers.
   const pickers = {
@@ -57,7 +57,7 @@
         <div class="range-picker-value"><label class="filter-inline"><span>${budget ? "不超过" : "至少"}</span><span class="range-picker-number">${budget ? '<span class="range-picker-unit" aria-hidden="true">¥</span>' : ""}<input type="number" inputmode="decimal" min="0" step="any" ${budget ? 'data-budget-part="max"' : 'data-token-part="min"'} aria-label="${budget ? "最高月预算（人民币）" : `最低月 Token 数（${unit}）`}" placeholder="不限">${budget ? "" : `<span class="range-picker-unit" data-token-unit-label aria-hidden="true">${unit}</span>`}</span></label></div>
         <div class="range-picker-slider"><input type="range" min="${sliderMin}" max="${budget ? budgetSliderMax : tokenSliderMax}" step="1" data-range-picker="${key}" aria-label="${title}滑块" aria-describedby="${id}Help">
           <div class="range-picker-ticks">${budget ? subscriptionOnly ? "" : '<button type="button" class="range-picker-mode" data-budget-mode="api" style="--tick-position:0%" aria-label="仅按量 API"><span>仅按量</span></button>' : '<button type="button" class="range-picker-mode" data-range-clear="token" style="--tick-position:0%"><span>不限</span></button>'}${rangeKnots[key].map((n, i) => n === 0 && !(budget && subscriptionOnly) ? "" : `<button type="button" data-range-knot="${key}" data-knot-value="${n}" style="--tick-position:${(i * 100 + 1 - sliderMin) / ((budget ? budgetSliderMax : tokenSliderMax) - sliderMin) * 100}%" aria-label="${budget ? "预算上限" : "最低月用量"} ${n / factor} ${unit}"><span>${n / factor}</span></button>`).join("")}${budget ? '<button type="button" class="range-picker-mode" data-budget-mode="any" data-range-clear="budget" style="--tick-position:100%"><span>不限</span></button>' : ""}</div></div>
-        <p class="filter-help" id="${id}Help">${budget ? subscriptionOnly ? "按套餐月费折合人民币筛选。" : "两端为仅按量 API / 不限，中间按金额筛选。按量 API 按月用量估算支出，未填用量时不判断预算。" : subscriptionOnly ? "按所选模型的月额度筛选，额度不相加；额度未明确的套餐不参与匹配。" : "按所选模型的月额度筛选，额度不相加；额度未明确的订阅不参与匹配。按量 API 按填写用量估算费用。"}</p>
+        <p class="filter-help" id="${id}Help">${budget ? subscriptionOnly ? "按套餐首月费用折合人民币筛选。" : "订阅按首月费用折合人民币筛选。按量 API 按月用量估算支出，未填用量时不判断预算。" : subscriptionOnly ? "按所选模型的月额度筛选，额度不相加；额度未明确的套餐不参与匹配。" : "按所选模型的月额度筛选，额度不相加；额度未明确的订阅不参与匹配。按量 API 按填写用量估算费用。"}</p>
       </div></details>`;
   }
 
@@ -65,8 +65,11 @@
   function multimodalControls(id, label = "全部多模态模型", notice = "") {
     return `<div class="model-multimodal-tools"><button type="button" class="model-multimodal-select" data-select-multimodal>${escapeHtml(label)}</button><span class="model-multimodal-help"><button type="button" class="model-multimodal-info" data-multimodal-help aria-label="什么是多模态模型" aria-expanded="false" aria-controls="${id}Help" aria-describedby="${id}Help"><span aria-hidden="true">?</span></button><span class="model-multimodal-tooltip" id="${id}Help" role="tooltip" hidden>${multimodalExplanation}</span></span></div><p class="model-multimodal-notice" data-multimodal-notice role="status" ${notice ? "" : "hidden"}>${escapeHtml(notice)}</p>`;
   }
+  function mainlandModelControls(id) {
+    return `<div class="model-multimodal-tools"><button type="button" class="model-multimodal-select" data-select-mainland-models>全部${mainlandLabel}模型</button><span class="model-multimodal-help"><button type="button" class="model-multimodal-info" data-model-mainland-help aria-label="中国大陆可用模型说明" aria-expanded="false" aria-controls="${id}MainlandHelp" aria-describedby="${id}MainlandHelp"><span aria-hidden="true">?</span></button><span class="model-multimodal-tooltip" id="${id}MainlandHelp" role="tooltip" hidden>按本站中国大陆可用口径选择模型，实际使用还取决于平台的网络、支付及接入条件。</span></span></div>`;
+  }
   function platformShortcutControls(id, labels = {}, notice = "") {
-    return `<div class="platform-shortcut-tools model-multimodal-tools"><button type="button" class="model-multimodal-select" data-platform-shortcut="mainland">${escapeHtml(labels.mainland || mainlandLabel)}</button><span class="platform-shortcut-help"><button type="button" class="model-multimodal-info" data-platform-help aria-label="支持中国大陆说明" aria-expanded="false" aria-controls="${id}Help" aria-describedby="${id}Help"><span aria-hidden="true">?</span></button><span class="model-multimodal-tooltip" id="${id}Help" role="tooltip" hidden>选择已确认无需境外网络、且有境内支付途径的平台；未确认的不计入。工具账号与安装可能另有要求，购买状态请另行查看。<br>已选中不符合的平台时，仅保留其中符合的；否则选择全部符合的平台。之后仍可手动增减。</span></span></div><p class="model-multimodal-notice" data-platform-shortcut-notice role="status" ${notice ? "" : "hidden"}>${escapeHtml(notice)}</p>`;
+    return `<div class="platform-shortcut-tools model-multimodal-tools"><button type="button" class="model-multimodal-select" data-platform-shortcut="mainland">${escapeHtml(labels.mainland || `全部${mainlandLabel}平台`)}</button><span class="platform-shortcut-help"><button type="button" class="model-multimodal-info" data-platform-help aria-label="中国大陆可用说明" aria-expanded="false" aria-controls="${id}Help" aria-describedby="${id}Help"><span aria-hidden="true">?</span></button><span class="model-multimodal-tooltip" id="${id}Help" role="tooltip" hidden>选择已确认无需境外网络、且有境内支付途径的平台；未确认的不计入。工具账号与安装可能另有要求，购买状态请另行查看。<br>已选中不符合的平台时，仅保留其中符合的；否则选择全部符合的平台。之后仍可手动增减。</span></span></div><p class="model-multimodal-notice" data-platform-shortcut-notice role="status" ${notice ? "" : "hidden"}>${escapeHtml(notice)}</p>`;
   }
   function buildPicker({ id, label, key, summary, items, state, groups }) {
     const model = key === "modelSlugs";
@@ -90,7 +93,7 @@
         <input type="search" data-picker-search placeholder="搜索${escapeHtml(label)}" aria-label="搜索${escapeHtml(label)}">
         <div class="filter-picker-tools"><button type="button" data-picker-action="clear">清空</button><button type="button" data-picker-action="all">全选</button>${model ? "" : '<button type="button" data-picker-action="default" disabled>精选平台</button>'}<span class="picker-selection-count" role="status" aria-live="polite" aria-atomic="true">已选 <strong ${model ? "data-model-selected-count" : "data-platform-selected-count"}>${selected.length}</strong><span class="picker-count-divider"> / </span>共 ${items.length}</span></div>
         ${model ? `<div class="model-preset-options" role="group" aria-label="精选模型"><div class="model-preset-segments"><button type="button" data-model-preset="featured" data-picker-action="default" aria-label="全部精选模型" aria-pressed="false" disabled>全部精选模型</button><span class="model-preset-divider" aria-hidden="true"></span><button type="button" data-model-preset="sota-models" aria-label="${escapeHtml(root.CodingPlanUI.modelGroupLabel(groups,'sota-models'))}" aria-pressed="false" disabled>${escapeHtml(root.CodingPlanUI.modelGroupLabel(groups,'sota-models'))}</button><button type="button" data-model-preset="high-volume-models" aria-label="${escapeHtml(root.CodingPlanUI.modelGroupLabel(groups,'high-volume-models'))}" aria-pressed="false" disabled>${escapeHtml(root.CodingPlanUI.modelGroupLabel(groups,'high-volume-models'))}</button></div></div><p class="model-preset-error" data-model-preset-error hidden>精选名单暂时无法加载。<button type="button" data-retry-model-presets>重试</button></p>` : ""}
-        ${model ? multimodalControls(id) : `${platformShortcutControls(id)}<p class="model-preset-error" data-platform-preset-error hidden>精选名单暂时无法加载。<button type="button" data-retry-model-presets>重试</button></p>`}
+        ${model ? `<div class="model-shortcut-tools">${multimodalControls(id)}${mainlandModelControls(id)}</div><p class="model-multimodal-notice" data-mainland-model-notice role="status" hidden></p>` : `${platformShortcutControls(id)}<p class="model-preset-error" data-platform-preset-error hidden>精选名单暂时无法加载。<button type="button" data-retry-model-presets>重试</button></p>`}
         <div data-picker-options>${options}</div><p class="filter-search-empty" role="status" hidden>没有匹配结果，试试其他关键词。</p>
         ${model ? `<div class="model-match-setting" data-model-match-setting hidden><label class="model-match-check"><input type="checkbox" data-model-require-all aria-describedby="${id}MatchHelp" aria-controls="${id}MatchConfirm" aria-expanded="false"><span>需同时支持所选模型</span></label><p id="${id}MatchHelp">同一套餐需同时支持全部所选模型，且每个模型都满足用量等条件，可能大幅减少匹配方案。</p><div class="model-match-confirm" id="${id}MatchConfirm" data-model-match-confirm hidden><p data-model-match-impact role="status" aria-live="polite"></p><div><button type="button" data-model-match-action="confirm">确认开启</button><button type="button" data-model-match-action="cancel">取消</button></div></div></div>` : ""}
       </div>
@@ -98,6 +101,10 @@
   }
 
   const statusExclusions = { restricted: "排除购买受限" };
+  function priorityChoice(option, index, guide = false) {
+    const selected = index >= 0;
+    return `<button type="button" class="ui-priority-choice" role="checkbox" aria-checked="${selected}" aria-label="${escapeHtml(option.label)}${selected ? `，第${index + 1}优先级` : ''}" ${guide ? `data-answer="priorities" data-value="${option.value}"` : `data-priority="${option.value}"`} title="${escapeHtml(option.help)}"><span class="ui-priority-number" aria-hidden="true">${selected ? index + 1 : ''}</span><span>${escapeHtml(option.label)}</span></button>`;
+  }
   function buildStatusPicker(includeHistory = false, planStatusOnly = false) {
     const subject = planStatusOnly ? "套餐" : "平台";
     const {id, label, summary} = pickers.status;
@@ -117,11 +124,12 @@
       ${buildPicker({ ...pickers.model, items: models, state, groups: context.modelGroups })}
       ${buildRangePicker("budget", state, plansPage)}${buildRangePicker("token", state, plansPage)}
       ${buildStatusPicker(purchaseTool, planStatusOnly)}
+      ${full ? '' : `<div class="usage-entry-control"><span>使用方式</span><select id="homeUsageEntry" data-custom-select data-filter-field="usageEntry" aria-label="使用方式">${root.PurchaseGuide.entryOptions.map(option=>`<option value="${option.value}">${escapeHtml(option.label)}</option>`).join('')}</select></div>`}
       ${pricing ? `<div class="pricing-mainland-control"><label class="pricing-mainland-filter"><span>${mainlandLabel}</span><span class="toggle-switch"><input type="checkbox" role="switch" data-filter-field="mainlandRequired"><span class="toggle-slider" aria-hidden="true"></span></span></label></div>` : ''}
-      ${platformHub ? `<label class="platform-access-filter"><span class="filter-control-text">${mainlandLabel}</span><span class="toggle-switch"><input type="checkbox" role="switch" data-platform-domestic><span class="toggle-slider" aria-hidden="true"></span></span></label>` : ""}${plansPage ? '<label class="plan-harness-filter"><input type="checkbox" data-filter-field="harnessApiRequired"><span class="filter-control-text">需支持第三方工具</span></label>' : ""}</div>
+      ${platformHub ? `<label class="platform-access-filter"><span class="filter-control-text">${mainlandLabel}</span><span class="toggle-switch"><input type="checkbox" role="switch" data-platform-domestic><span class="toggle-slider" aria-hidden="true"></span></span></label>` : ""}${plansPage ? '<label class="plan-harness-filter"><span class="filter-control-text">可用于其他智能体框架</span><span class="toggle-switch"><input type="checkbox" role="switch" data-filter-field="harnessApiRequired"><span class="toggle-slider" aria-hidden="true"></span></span></label>' : ""}</div>
       ${featuredCatalog ? `<\/fieldset><div class="platform-featured-control"><button type="button" class="platform-featured-button" data-catalog-featured ${platformHub ? 'data-platform-featured' : plansPage ? 'data-plan-featured' : 'data-pricing-featured'} aria-pressed="false">${platformHub ? '显示精选平台' : '显示精选'}</button><button type="button" data-hub-retry-featured hidden>重试精选名单</button></div></div>` : ""}
       <div class="filter-state-footer">
-      ${full ? "" : `<div class="filter-state-controls"><div class="offer-sort"><span aria-hidden="true">排序</span><span data-select-fallback><select id="homeOfferSort" data-filter-field="preference" data-offer-sort aria-label="方案排序" aria-describedby="offerSortHelp">${root.PurchaseGuide.sortOptions.map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("")}</select></span></div><span class="offer-sort-help" id="offerSortHelp"></span>`}
+      ${full ? "" : `<div class="filter-state-controls"><details class="filter-picker priority-picker"><summary>优先级<span data-priority-summary></span></summary><div class="filter-picker-menu"><div data-priority-options></div></div></details>`}
       <div class="filter-state-actions">${pricing ? "" : `<button type="button" data-filter-action="reset"${purchaseTool && !platformHub && !plansPage ? ' title="显示全部平台与模型，已下架内容需单独勾选"' : ""}>${platformHub || plansPage ? "重置筛选" : full ? "显示全部" : "显示精选"}</button>`}${full && !platformHub && !plansPage ? `<button type="button" data-filter-action="restore-defaults" title="选择精选平台与精选模型，${purchaseTool ? "已下架内容需单独勾选" : "其他条件恢复不限"}">${pricing ? "重置筛选" : "显示精选"}</button>` : ""}</div>${full ? "</div>" : "</div></div>"}
       </section>`;
   }
@@ -148,7 +156,7 @@
     }
     if (view === 'pricing') segments('.price-billing-filter', '计费方式');
     checkbox('.pricing-mainland-control, .platform-access-filter', mainlandLabel, {paused:view !== 'pricing'});
-    checkbox('.plan-harness-filter', '需支持第三方工具');
+    checkbox('.plan-harness-filter', '可用于其他智能体框架');
     add('.platform-featured-control','显示精选',el=>{const checked=el.querySelector('[data-catalog-featured]').getAttribute('aria-pressed')==='true';return [checked,checked?'开启':'关闭'];},{paused:false});
     segments('.usage-color-control', '颜色', true);
     segments('.usage-benchmark-control', '评分', true);
@@ -156,7 +164,7 @@
     return controls;
   }
   root.CodingPlanFilterControls = {
-    render, directoryControls, multimodalControls, platformShortcutControls, statusExclusions, mainlandLabel,
+    render, directoryControls, multimodalControls, platformShortcutControls, priorityChoice, statusExclusions, mainlandLabel,
     range: {knots:rangeKnots, value:rangeValue, position:rangePosition, budgetNumericMax, budgetSliderMax, tokenSliderMax},
   };
 })(globalThis);

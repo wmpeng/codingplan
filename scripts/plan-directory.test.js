@@ -10,7 +10,7 @@ const plans = [
   {slug:'unknown',platformSlug:'a',platformName:'A平台',name:'未知',monthlyPrice:null,currency:'¥',planStatus:'open'},
   {slug:'retired',platformSlug:'a',platformName:'A平台',name:'旧版',monthlyPrice:5,currency:'¥',planStatus:'delisted'},
   {slug:'cny',platformSlug:'a',platformName:'A平台',name:'标准',monthlyPrice:50,currency:'¥',planStatus:'open'}
-];
+].map(plan=>({firstMonthPrice:plan.monthlyPrice,...plan}));
 // No entity relations are needed for this catalog fixture; shared eligibility is tested separately.
 const options = {context:{platforms},config:{usdToCnyRate:7}};
 const ids = selection => selection.visible.map(plan => plan.slug);
@@ -52,7 +52,7 @@ test('套餐精选模型范围先头部级再甜品级，过滤无效模型且�
   assert.deepEqual(ids(selection),['usd']);
 });
 
-test('默认按平台目录与月价排序，未知排后；价格统一换算且零价有效', () => {
+test('默认按平台目录与首月价排序，未知排后；价格统一换算且零价有效', () => {
   assert.deepEqual(ids(Directory.select(plans,state,options)),['free','usd','cny','unknown']);
   const sorted = direction => ids(Directory.select(plans,state,{...options,sort:{key:'monthlyPrice',direction}}));
   assert.deepEqual(sorted('asc'),['free','cny','usd','unknown']);

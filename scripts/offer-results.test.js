@@ -3,7 +3,7 @@ const assert=require('node:assert/strict');
 const Offers=require('./offer-results.js');
 const Cards=require('./platform-catalog.js');
 function offer(overrides={}){
-  return {id:'test-offer',platform:{slug:'test-platform',name:'平台',action:'https://example.com/platform',platformStatus:'open',supportsHarnessApi:true},plan:{slug:'test-plan',name:'套餐',action:'https://example.com/plan',billingMode:'subscription',monthlyPrice:20,currency:'$'},models:[{slug:'one',name:'模型一'},{slug:'two',name:'模型二'}],rows:[{slug:'one-tier',modelSlug:'one',usage:{monthlyTokenInM:0,unitPriceCnyPerM:0}},{slug:'two-tier',modelSlug:'two',usage:{monthlyTokenInM:'unknown',unitPriceCnyPerM:null}}],cost:136,reasons:[],cautions:[],...overrides};
+  return {id:'test-offer',platform:{slug:'test-platform',name:'平台',action:'https://example.com/platform',platformStatus:'open',supportsHarnessApi:true},plan:{slug:'test-plan',name:'套餐',action:'https://example.com/plan',billingMode:'subscription',firstMonthPrice:20,monthlyPrice:20,currency:'$'},models:[{slug:'one',name:'模型一'},{slug:'two',name:'模型二'}],rows:[{slug:'one-tier',modelSlug:'one',usage:{monthlyTokenInM:0,unitPriceCnyPerM:0}},{slug:'two-tier',modelSlug:'two',usage:{monthlyTokenInM:'unknown',unitPriceCnyPerM:null}}],cost:136,reasons:[],cautions:[],...overrides};
 }
 test('匹配模型标签和明细统一头部在前，档位保序且不改变候选输入',()=>{
   const item=offer();
@@ -29,8 +29,8 @@ test('套餐导航遵守购买状态和安全地址，复用平台外链图标',
 });
 test('订阅价格与额度摘要收敛，套餐链接不限定第一个模型',()=>{
   const html=Offers.card(offer(),{tokenUnit:'yi'});
-  assert.match(html,/offer-price-line.*¥136.*\/ 月/);
-  assert.match(html,/offer-original-price[^>]*>\$20 \/ 月/);
+  assert.match(html,/offer-price-line.*¥136.*\/ 首月/);
+  assert.match(html,/offer-original-price[^>]*>\$20 \/ 首月/);
   assert.doesNotMatch(html,/原价 |约等于|≈|查看开通|查看 2 个模型/);
   assert.match(html,/offer-summary-label">月额度 <\/span><span class="offer-summary-value">0 亿/);
   assert.doesNotMatch(html,/月额度参考|部分模型未知/);

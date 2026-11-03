@@ -7,6 +7,18 @@ const Filters = require('./filter-state');
 const context = {platforms:[{slug:'codex'},{slug:'zhipu'}], models:[{slug:'gpt-6-astra'},{slug:'glm-5-3'}]};
 const schema = Url.sharedSchema(context, Filters.createViewPolicy({mode:'full',view:'pricing'}));
 
+test('首页使用方式与有序优先级可分享，去重、空选择与旧排序迁移保持含义',()=>{
+  const home=Url.sharedSchema(context,Filters.createViewPolicy({}));
+  for(const priorities of [[],['cost','volume','quality'],['balanced']]){
+    const url=Url.update('https://codingplan.fyi/',home,{snapshot:true,usageEntry:'codex',priorities});
+    const restored=Filters.normalizeState(Url.read(home,url.search));
+    assert.deepEqual(restored.priorities,priorities);assert.equal(restored.usageEntry,'codex');
+  }
+  assert.deepEqual(Url.read(home,'?priorities=volume,cost,volume,bogus').priorities,['volume','cost']);
+  assert.deepEqual(Filters.normalizeState(Url.read(home,'?order=cost')).priorities,['cost']);
+  assert.deepEqual(Url.read(home,'?entry=not-a-tool&priorities=bogus'),{});
+});
+
 test('价格页大陆条件默认开启，关闭写入URL，旧链接保留默认，其他页面不接收', () => {
   const closed=Url.update('https://codingplan.fyi/pricing/',schema,{snapshot:true,mainlandRequired:false});
   assert.equal(closed.searchParams.get('mainland'),'0');

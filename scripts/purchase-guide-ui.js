@@ -1,383 +1,142 @@
-(function (root) {
-  "use strict";
-  const host = document.getElementById("purchaseGuide");
-  if (!host) return;
-  const G = root.PurchaseGuide,
-    F = root.CodingPlanFilters;
-  const esc = root.CodingPlanUI.escapeHtml;
-  let controller,
-    active = false,
-    step = 0,
-    answers = {},
-    collapsed = false,
-    applied = false,
-    pendingStart = false;
-  const questions = [
-    [
-      "用途",
-      "主要想用 AI 做什么？",
-      "",
-    ],
-    [
-      "用量",
-      "大概会用多少？",
-      "参考月用量可以随时修改，实际消耗取决于任务和上下文。",
-    ],
-    [
-      "预算",
-      "每月愿意花多少钱？",
-      "按正常月费比较；按量服务填写用量后估算月支出。",
-    ],
-    [
-      "模型",
-      "对模型有什么要求？",
-      "先选一组精选模型，再到下方模型面板自由增减；快捷选择会替换当前名单。",
-    ],
-    [
-      "偏好",
-      "有什么使用条件和偏好？",
-      "回答立即更新方案；不确定的条件可以保持不限。",
-    ],
-  ];
-  function buttons(key, items, current) {
-    return `<div class="guide-options">${items.map(([v, t]) => `<button type="button" data-answer="${key}" data-value="${v}" aria-pressed="${String(current === v)}">${t}</button>`).join("")}</div>`;
+(function(root){
+  'use strict';
+  const host=document.getElementById('purchaseGuide');if(!host)return;
+  const G=root.PurchaseGuide, Flow=root.PurchaseGuideFlow, UI=root.CodingPlanUI, N=root.NumberDisplay, esc=UI.escapeHtml;
+  let controller=root.CodingPlanHomeFilters, active=false, step='start', pending=false, applied=false, estimateActive=false, notice='';
+  let answers=fresh(), singleSelects;
+  function fresh(){return {start:'new',task:'coding',entry:'any',modelKind:'any',exact:[],match:'any',image:'any',domestic:'any',budgetMode:'any',usageMode:'unsure',frequency:'daily',size:'normal',priorities:['balanced'],pains:[]};}
+  const titles={start:'对现有或之前的订阅不满意吗？',baseline:'你用过什么套餐，哪里不满意？',task:'主要用 AI 做什么？',entry:'你准备从哪里使用？',models:'倾向于什么模型？',access:'境内使用要求',budget:'每个月最多打算花多少？',usage:'你每个月大概用多少？',priority:'你更看重什么？'};
+  const labels={start:'开始',baseline:'原套餐',task:'用途',entry:'使用方式',models:'模型',access:'使用条件',budget:'预算',usage:'用量',priority:'优先级'};
+  const unit=()=>controller?.getState().tokenUnit || 'yi';
+  const amount=value=>`${N.tokenAmount(value,unit())} ${N.tokenUnit(unit())} Token`;
+  const number=(key,label,value,suffix)=>`<label class="guide-number"><span>${label}</span><input type="number" min="0" step="any" inputmode="decimal" data-number="${key}" aria-label="${label}" value="${value??''}"><span>${suffix}</span></label>`;
+  const buttons=(key,options)=>`<div class="guide-options">${options.map(([value,label])=>`<button type="button" data-answer="${key}" data-value="${esc(value)}" aria-pressed="${Array.isArray(answers[key])?answers[key].includes(value):answers[key]===value}">${esc(label)}</button>`).join('')}</div>`;
+  function select(key,label,options,placeholder='请选择'){
+    return `<div class="guide-select"><span>${label}</span><select id="guide-${key}" data-custom-select data-answer-select="${key}" aria-label="${label}"><option value="">${placeholder}</option>${options.map(([value,label])=>`<option value="${esc(value)}" ${answers[key]===value?'selected':''}>${esc(label)}</option>`).join('')}</select></div>`;
   }
-  function input(key, label, value, unit) {
-    return `<label class="guide-number">${label}<input type="number" min="0" step="any" data-guide-number="${key}" value="${esc(value)}" aria-label="${label}"><span>${unit}</span></label>`;
-  }
-  function content(s) {
-    if (step === 0)
-      return (
-        buttons(
-          "scenario",
-          [
-            ["everyday", "问答 / 尝鲜 / 日常办公"],
-            ["image", "生成或编辑图片"],
-            ["coding", "项目编程 / Agent"],
-            ["writing", "小说 / 文章写作"],
-            ["professional", "专业工具协作"],
-            ["api", "自己的系统 / 服务 / 自动化"],
-          ],
-          answers.scenario,
-        ) +
-        (answers.scenario === "writing"
-          ? buttons(
-              "writingMode",
-              [
-                ["web", "直接用网页 / App"],
-                ["tools", "个人在工具中交互写作"],
-                ["automation", "程序批量生成 / 自动化"],
-              ],
-              answers.writingMode,
-            )
-          : "")
-      );
-    if (step === 1)
-      return (
-        buttons(
-          "intensity",
-          [
-            ["trial", "先体验一下"],
-            ["occasional", "有时使用"],
-            ["daily", "每天间歇使用"],
-            ["heavy", "每天高强度使用"],
-          ],
-          answers.intensity,
-        ) +
-        input(
-          "tokens",
-          "每月至少",
-          s.monthlyTokenRange?.min == null ? "" : s.monthlyTokenRange.min / (s.tokenUnit === "B" ? 1000 : s.tokenUnit === "M" ? 1 : 100),
-          s.tokenUnit === "B" ? "B Token" : s.tokenUnit === "M" ? "M Token" : "亿 Token",
-        ) +
-        '<p class="guide-note">估算基准：偶尔 1 亿、每天间歇 10 亿、高强度 40 亿；写作按一半估算。自填数量优先。不是官方用量保证。</p>'
-      );
-    if (step === 2)
-      return (
-        buttons(
-          "budget",
-          [
-            ["free", "不想花钱"],
-            ["cheap", "没概念，尽量便宜"],
-            ["50", "50 元以内"],
-            ["100", "100 元以内"],
-            ["200", "200 元以内"],
-            ["500", "500 元以内"],
-            ["api", "仅按量 API"],
-            ["any", s.apiOnly ? "金额不限（仅按量）" : "不限"],
-          ],
-          answers.free
-            ? "free"
-            : s.budgetCny?.max != null
-              ? String(s.budgetCny.max)
-              : s.apiOnly ? "api" : s.preference === "cost"
-                ? "cheap"
-                : "any",
-        ) + input("budget", "每月不超过", s.budgetCny?.max ?? "", "元") +
-        (s.apiOnly ? '<p class="guide-note">当前仅推荐按量 API。此处填写预算保留 API 限制；手动预算滑块的中间金额会同时包含订阅和 API。</p>' : "")
-      );
-    if (step === 3)
-      return (
-        buttons(
-          "modelPreset",
-          [
-            ["all", "不限，查看全部模型"],
-            ["featured", "全部精选模型"],
-            ["sota-models", `${esc(root.CodingPlanUI.modelGroupLabel(controller.context.modelGroups, "sota-models"))}：优先模型能力`],
-            ["high-volume-models", `${esc(root.CodingPlanUI.modelGroupLabel(controller.context.modelGroups, "high-volume-models"))}：轻快实惠`],
-          ],
-          controller.getModelPreset(),
-        ) +
-        root.CodingPlanFilterControls.multimodalControls("guideMultimodal", controller.getMultimodalActionLabel(), controller.getMultimodalNotice())
-      );
-    return (
-      root.CodingPlanFilterControls.platformShortcutControls("guidePlatform", controller.getPlatformShortcutLabels(), controller.getPlatformShortcutNotice()) +
-      buttons(
-        "preference",
-        G.sortOptions.map(option => [option.value, option.label]),
-        s.preference,
-      )
-    );
-  }
-  function summary(s) {
-    const parts = [];
-    if (s.apiOnly) parts.push("仅按量 API");
-    if (s.budgetCny?.max != null) parts.push(`≤ ¥${s.budgetCny.max}/月`);
-    if (s.monthlyTokenRange)
-      parts.push(`≥ ${F.targetTokens(s) / (s.tokenUnit === "B" ? 1000 : s.tokenUnit === "M" ? 1 : 100)} ${s.tokenUnit === "B" ? "B" : s.tokenUnit === "M" ? "M" : "亿"} Token/月`);
-
-    if (s.platformSlugs?.length)
-      parts.push(`指定 ${s.platformSlugs.length} 家平台`);
-    if (s.modelSlugs?.length) parts.push(`指定 ${s.modelSlugs.length} 个模型`);
-    return parts.join(" · ") || "尚未限定需求，可先看看全部方案再调整";
-  }
-  function render() {
-    const ready = !!controller,
-      s = ready ? controller.getState() : {};
-    host.dataset.active = String(active);
-    host.hidden = !active || collapsed;
-    const advice = G.directAdvice(answers);
-    root.dispatchEvent(new CustomEvent('codingplan:guide-advice', {detail: advice}));
-    if (host.hidden) { host.innerHTML = ''; return; }
-    host.innerHTML = `<section class="purchase-guide-panel"><header class="guide-header"><div><h2>不确定怎么填？一步步来</h2><p>选择后即时更新方案。</p></div><div class="guide-header-actions"><button type="button" data-guide-action="collapse">完成 / 收起</button></div></header>
-      ${advice ? '<button type="button" data-guide-action="restart">改为工具接入或 API</button>' : `<nav class="guide-progress" aria-label="选购步骤">${questions.map(([label], i) => `<button type="button" data-step="${i}" aria-current="${i === step ? 'step' : 'false'}">${i + 1} ${label}</button>`).join('')}</nav><div class="guide-question"><h3 tabindex="-1" id="guideQuestionTitle">${questions[step][1]}</h3>${questions[step][2] ? `<p>${questions[step][2]}</p>` : ''}${content(s)}</div><footer class="guide-step-actions"><button type="button" data-guide-action="prev" ${step === 0 ? 'disabled' : ''}>上一步</button><button type="button" data-guide-action="skip">不确定 / 跳过</button><button type="button" class="guide-primary" data-guide-action="next">${step === questions.length - 1 ? '完成，查看方案 ↓' : '下一步'}</button></footer>`}
-      <div class="guide-summary" data-guide-summary>${advice ? '下方已给出直接使用建议；购买需求保持不变。' : esc(summary(s))}${!advice && s.modelMatch === 'all' ? '<span class="model-match-warning">需同时支持所选模型</span>' : ''}</div></section>`;
-  }
-
-  function set(patch) {
-    if (!applied) {
-      applied = true;
-      if (!controller.userChanged)
-        patch = {
-          platformSlugs: null,
-          modelSlugs: null,
-          platformStatusMax: "restricted",
-          includeDiscontinued: false,
-          ...patch,
-        };
+  function content(){
+    const c=controller.context;
+    if(step==='start')return buttons('start',[['existing','是的，想改善现在或之前的使用体验'],['new','不是，直接帮我选']]);
+    if(step==='baseline'){
+      const plans=c.plans.filter(plan=>plan.billingMode==='subscription');
+      const slugs=[...new Set((c.relationsByPlanSlug.get(answers.plan)||[]).map(row=>row.modelSlug))];
+      return select('plan','当前或曾经使用的套餐',plans.map(plan=>[plan.slug,`${c.platformBySlug.get(plan.platformSlug)?.name} · ${plan.name}`]),'不记得具体套餐')+
+        (answers.plan?select('baselineModel','主要使用的模型',slugs.map(slug=>[slug,c.modelBySlug.get(slug)?.name || slug]),'没有固定型号'):'')+
+        '<p>哪些地方不满意？可以多选。</p>'+buttons('pains',Flow.pains);
     }
-    controller.setState(patch, "guide");
+    if(step==='task')return buttons('task',Flow.tasks);
+    if(step==='entry')return buttons('entry',G.entryOptions.map(option=>[option.value,option.value==='any'?'没有特别指定的工具':option.label]))+
+      (answers.entry==='third-party'?'<p class="guide-note">例如 DeepSeek Harness、ZCode、MiniMax Code、Kimi Code、OpenCode。此项筛选通用 API 接入，具体智能体框架的兼容性还需确认。</p>':'');
+    if(step==='models'){
+      let html=buttons('modelKind',[['exact','具体型号'],['family','某个模型系列'],['balanced','兼顾能力和费用'],['top','能力更强的头部模型'],['any','没有指定模型']]);
+      if(answers.modelKind==='exact')html+=`<label class="guide-search">搜索型号<input type="search" data-model-search aria-label="搜索型号" placeholder="输入模型名称"></label><div class="guide-model-list">${Flow.textModels(c).map(model=>`<label data-model-name="${esc(model.name.toLowerCase())}"><input type="checkbox" data-exact="${esc(model.slug)}" ${answers.exact.includes(model.slug)?'checked':''}>${esc(model.name)}${root.EntityData.supportsImageInput(model)?' · 可理解图片':''}</label>`).join('')}</div>`+(answers.exact.length>1?buttons('match',[['any','支持其中任意一个即可'],['all','同一套餐需要支持全部型号']]):'');
+      else {
+        if(answers.modelKind==='family')html+=select('family','模型系列',Flow.availableFamilies(c).map(([key,label])=>[key,label]));
+        html+='<p>需要模型理解图片或截图吗？</p>'+buttons('image',[['yes','需要'],['any','没有这方面的要求']]);
+      }
+      return html;
+    }
+    if(step==='access')return buttons('domestic',[['required','仅考虑境内网络和支付均可用的平台'],['any','不限，可以使用境外条件']]);
+    if(step==='budget'){
+      const plan=c.planBySlug.get(answers.plan),cost=root.CodingPlanFilters.firstMonthCost(plan,root.appConfig?.usdToCnyRate);
+      return buttons('budgetMode',[['free','先看免费方案'],['limit','每月预算上限'],['any','不确定']])+
+        (answers.budgetMode==='limit'?number('budget','每月不超过',answers.budget,'元')+`<div class="guide-options">${[50,100,200,500].map(value=>`<button type="button" data-budget="${value}">${value} 元</button>`).join('')}${cost!==null?`<button type="button" data-budget="${cost}">按原套餐首月：${N.monthlyFee(cost,'¥')}</button>`:''}</div><p class="guide-note">订阅按首月费用判断；按量 API 按月用量估算。</p>`:'');
+    }
+    if(step==='usage'){
+      let html=buttons('usageMode',[['known','知道大概用量，直接填写'],['estimate','不清楚，按使用习惯估算'],['unsure','暂时不确定，先看方案']]);
+      if(answers.usageMode==='known')html+=number('tokens','每月大约',answers.tokens==null?null:answers.tokens/N.tokenFactor(unit()),`${N.tokenUnit(unit())} Token`);
+      if(answers.usageMode==='estimate'){
+        const e=Flow.estimate(answers);
+        html+='<p>平时用得多吗？</p>'+buttons('frequency',[['occasional','偶尔用'],['daily','每天用一段时间'],['heavy','每天大部分时间都在用']])+'<p>通常会做到什么程度？</p>'+buttons('size',Flow.sizes[answers.task])+number('estimatedTokens','本次按每月',((answers.estimatedTokens??e.amount)/N.tokenFactor(unit())),`${N.tokenUnit(unit())} Token`)+`<p class="guide-note">粗略参考范围：${amount(e.min)}～${amount(e.max)}／月。可直接修改上面的数值；实际消耗会随模型、上下文和缓存变化。</p>`;
+      }
+      if(answers.usageMode!=='unsure')html+='<p class="guide-note">右上角的显示设置可以更改 Token 单位。</p>';
+      else html+='<p class="guide-note">先不设置用量门槛。按量方案的月支出需要有用量后才能估算。</p>';
+      if(answers.pains.includes('fiveHours') && answers.start==='existing')html+='<p class="guide-note">月额度更大不代表不会触及 5 小时限制，结果会另列与原套餐的对比。</p>';
+      return html;
+    }
+    return '<div class="guide-options guide-priorities">'+G.sortOptions.map(option=>root.CodingPlanFilterControls.priorityChoice(option,answers.priorities.indexOf(option.value),true)).join('')+'</div>';
   }
-  function begin() {
+  function render(){
+    singleSelects?.destroy();
+    host.hidden=!active || !controller;host.dataset.active=String(active);
+    if(host.hidden)return;
+    const steps=Flow.steps(answers),index=steps.indexOf(step);
+    host.innerHTML=`<section class="purchase-guide-panel"><header class="guide-header"><h2>帮你选方案</h2><button type="button" data-action="close">收起</button></header><div class="guide-progress" aria-label="选购进度">${index+1} / ${steps.length} · ${labels[step]}</div><div class="guide-question"><h3 id="guideQuestionTitle" tabindex="-1">${titles[step]}</h3>${content()}</div><p class="guide-error" role="alert" ${notice?'':'hidden'}>${esc(notice)}</p><footer class="guide-step-actions"><button type="button" data-action="prev" ${index===0?'disabled':''}>上一步</button><button type="button" class="guide-primary" data-action="next">${index===steps.length-1?'查看方案':'下一步'}</button></footer></section>`;
+    singleSelects=root.CodingPlanSingleSelect.mountAll(host);
+  }
+  function begin(){
+    if(!controller){pending=true;return;}
     root.CodingPlanUpdates?.check('purchase_guide');
-    if (!controller) {
-      pendingStart = true;
-      return;
-    }
-    root.CodingPlanEvents?.track('guide_start');
-    pendingStart = false;
-    const current = controller.getState();
-    if (!G.directAdvice(answers) && G.scenarioPatch(answers).apiOnly !== current.apiOnly) {
-      answers.scenario = current.apiOnly ? 'api' : null;
-      answers.writingMode = null;
-    }
-    active = true;
-    collapsed = false;
-    // Drop editorial default picks, while retaining constraints explicitly changed by the user.
-    // Opening the assistant alone never changes filters.
-    render();
+    if(!active && !applied && !pending)root.CodingPlanEvents?.track('guide_start');
+    pending=false;active=true;render();host.scrollIntoView({behavior:'smooth',block:'start'});
   }
-  function applyAnswer(key, value) {
-    if (key === "scenario") {
-      answers.scenario = value;
-      answers.writingMode = null;
-      if (value !== "writing" && !G.directAdvice(answers)) {
-        set({
-          ...G.scenarioPatch(answers),
-          ...(answers.intensity ? G.usagePatch(answers) : {}),
-        });
-      }
-    } else if (key === "writingMode") {
-      answers.writingMode = value;
-      if (!G.directAdvice(answers)) set(G.scenarioPatch(answers));
-    } else if (key === "intensity") {
-      answers.intensity = value;
-      if (!G.directAdvice(answers))
-        set({
-          ...G.usagePatch(answers),
-          ...(value === "trial" ? { preference: "cost" } : {}),
-        });
-    } else if (key === "budget") {
-      answers.free = value === "free";
-      if (!answers.free)
-        set(
-          value === "api" ? { apiOnly: true, budgetCny: null }
-          : value === "cheap"
-            ? { budgetCny: null, preference: "cost" }
-            : {
-                budgetCny:
-                  value === "any" ? null : { min: null, max: Number(value) },
-              },
-        );
-    } else if (key === "modelPreset" && !G.directAdvice(answers)) {
-      if (controller.selectModelPreset(value, "guide")) applied = true;
-    } else if (!G.directAdvice(answers)) set({ [key]: value });
-    render();
+  function validate(){
+    if([...host.querySelectorAll('input[type="number"]')].some(input=>!input.checkValidity()))return '请输入不小于 0 的有效数值。';
+    if(step==='models' && answers.modelKind==='exact' && !answers.exact.length)return '请选择至少一个具体型号。';
+    if(step==='models' && answers.modelKind==='family' && !answers.family)return '请选择模型系列。';
+    if(step==='budget' && answers.budgetMode==='limit' && answers.budget==null)return '请填写每月预算上限。';
+    if(step==='usage' && answers.usageMode==='known' && answers.tokens==null)return '请填写月用量，或选择暂时不确定。';
+    return '';
   }
-  root.CodingPlanFilterPopovers.bindSelectionHelp(host);
-  host.addEventListener("click", (event) => {
-    const el = event.target.closest("button");
-    if (!el) return;
-    if (el.dataset.platformShortcut) {
-      if (controller.selectPlatformShortcut(el.dataset.platformShortcut, "guide")) applied = true;
-      render();
-      host.querySelector(`[data-platform-shortcut="${el.dataset.platformShortcut}"]`)?.focus({preventScroll:true});
-      return;
+  function showAppliedSummary(){
+    let el=document.getElementById('purchaseGuideApplied');
+    if(!el){el=document.createElement('div');el.id='purchaseGuideApplied';el.className='guide-applied';host.after(el);}
+    const state=controller.getState(),draft=Flow.compile(controller.context,answers,state);
+    const sameUsage=applied && estimateActive && draft.amount===root.CodingPlanFilters.targetTokens(state);
+    el.innerHTML=applied?`${sameUsage && answers.usageMode==='estimate'?`月用量按 ${esc(amount(draft.amount))} 估算。 `:''}<button type="button" data-edit-guide>修改引导答案</button>`:'';
+    el.hidden=!applied;
+    el.querySelector('button')?.addEventListener('click',()=>{step=sameUsage && answers.usageMode==='estimate'?'usage':'start';begin();});
+  }
+  host.addEventListener('click',event=>{
+    const b=event.target.closest('button');if(!b || b.matches('[role="option"]'))return;
+    notice='';
+    if(b.dataset.answer){
+      const key=b.dataset.answer,value=b.dataset.value;
+      if(Array.isArray(answers[key])){const index=answers[key].indexOf(value);if(index>=0)answers[key].splice(index,1);else answers[key].push(value);}
+      else answers[key]=value;
+      if(key==='priorities')answers.prioritiesTouched=true;
+      if(['task','frequency','size'].includes(key))delete answers.estimatedTokens;
+      render();host.querySelector(`[data-answer="${key}"][data-value="${value}"]`)?.focus({preventScroll:true});return;
     }
-    if (el.hasAttribute("data-select-multimodal")) {
-      if (controller.selectMultimodalModels("guide")) applied = true;
-      render();
-      host.querySelector("[data-select-multimodal]")?.focus({preventScroll:true});
-      return;
-    }
-    if (el.dataset.answer) {
-      applyAnswer(el.dataset.answer, el.dataset.value);
-      return;
-    }
-    if (el.dataset.step != null) {
-      step = Number(el.dataset.step);
-      render();
-      host.querySelector("#guideQuestionTitle")?.focus({ preventScroll: true });
-      return;
-    }
-    if (el.dataset.relax) {
-      const k = el.dataset.relax;
-      set({ [k]: F.createDefaultState({}, { mode: "full" })[k] });
-      return;
-    }
-    const action = el.dataset.guideAction;
-    if (action === "collapse" || action === "expand") {
-      collapsed = action === "collapse";
-      render();
-    }
-    if (action === "start") begin();
-    if (action === "restart") {
-      answers = {};
-      step = 0;
-      collapsed = false;
-      active = true;
-      render();
-    }
-    if (action === "prev" || action === "next" || action === "skip") {
-      root.CodingPlanEvents?.track('guide_step', {step:step + 1, action});
-      if (action === "skip") {
-        if (step === 0) {
-          answers.scenario = null;
-          set({ apiOnly: false });
-        } else if (step === 1) {
-          answers.intensity = null;
-          set({ monthlyTokenRange: null });
-        } else if (step === 2) {
-          answers.free = false;
-          set({ budgetCny: null });
-        } else if (step === 3) set({ modelGroup: "any", modelSlugs: null, modelMatch: "any", imageRequired: false });
-        else
-          set({ preference: "balanced" });
+    if(b.dataset.budget){answers.budget=Number(b.dataset.budget);render();return;}
+    const action=b.dataset.action;
+    if(action==='close'){active=false;render();return;}
+    const steps=Flow.steps(answers),index=steps.indexOf(step);
+    if(action==='prev')step=steps[Math.max(0,index-1)];
+    if(action==='next'){
+      notice=validate();if(notice){render();return;}
+      if(step==='baseline' && !answers.prioritiesTouched)answers.priorities=Flow.suggestedPriorities(answers);
+      if(index===steps.length-1){
+        const result=Flow.compile(controller.context,answers,controller.getState());
+        if(result.errors.length){notice=result.errors.join(' ');render();return;}
+        root.CodingPlanGuideContext=JSON.parse(JSON.stringify(answers));
+        applied=true;estimateActive=answers.usageMode==='estimate';active=false;controller.setState(result.state,'guide');render();showAppliedSummary();
+        root.CodingPlanEvents?.track('guide_complete');document.getElementById('purchaseGuideResults').scrollIntoView({behavior:'smooth'});return;
       }
-      if (step === questions.length - 1 && action !== "prev") {
-        root.CodingPlanEvents?.track('guide_complete');
-        collapsed = true;
-        render();
-        document
-          .getElementById("purchaseGuideResults")
-          .scrollIntoView({ behavior: "smooth" });
-        return;
-      }
-      step = Math.max(0, Math.min(questions.length - 1, step + (action === "prev" ? -1 : 1)));
-      render();
-      host.querySelector("#guideQuestionTitle")?.focus({ preventScroll: true });
+      step=steps[index+1];
     }
-    if (action === "filters")
-      document
-        .getElementById("homepageUnifiedFiltersMount")
-        .scrollIntoView({ behavior: "smooth" });
+    render();host.querySelector('#guideQuestionTitle')?.focus({preventScroll:true});
   });
-  host.addEventListener("input", (event) => {
-    const el = event.target,
-      key = el.dataset.guideNumber;
-    if (!key) return;
-    if (key === "budget") {
-      answers.free = false;
-      set({
-        budgetCny:
-          el.value === ""
-            ? null
-            : { min: null, max: Math.max(0, Number(el.value)) },
-      });
-    } else if (!G.directAdvice(answers)) {
-      answers.intensity = null;
-      set({
-        monthlyTokenRange:
-          el.value === ""
-            ? null
-            : { min: Math.max(0, Number(el.value)) * (controller.getState().tokenUnit === "B" ? 1000 : controller.getState().tokenUnit === "M" ? 1 : 100), max: null },
-      });
-    }
+  host.addEventListener('input',event=>{
+    const el=event.target;
+    if(el.hasAttribute('data-model-search')){const q=el.value.trim().toLowerCase();host.querySelectorAll('[data-model-name]').forEach(row=>row.hidden=!row.dataset.modelName.includes(q));return;}
+    if(!el.dataset.number)return;
+    const value=el.value===''?null:Number(el.value);
+    if(value!==null && (!Number.isFinite(value) || value<0))return;
+    answers[el.dataset.number]=value===null?null:value*(el.dataset.number==='budget'?1:N.tokenFactor(unit()));
   });
-  root.addEventListener("codingplan:filters-changed", (event) => {
-    if (event.detail.full) return;
-    controller = root.CodingPlanHomeFilters;
-    if (event.detail.source === "manual") {
-      controller.userChanged = true;
-      answers.intensity = null;
-      answers.free = false;
-      if (active && G.scenarioPatch(answers).apiOnly !== event.detail.state.apiOnly) {
-        answers.scenario = event.detail.state.apiOnly ? "api" : null;
-        answers.writingMode = null;
-      }
-    }
-    if (event.detail.source === "display") {
-      const field = host.contains(document.activeElement) ? document.activeElement.dataset.guideNumber : null;
-      render();
-      if (field) host.querySelector(`[data-guide-number="${field}"]`)?.focus({preventScroll: true});
-      return;
-    }
-    // Updating numbers must not replace the focused input on each keystroke.
-    if (
-      host.contains(document.activeElement) &&
-      document.activeElement.matches("[data-guide-number]")
-    ) {
-      const summaryEl = host.querySelector("[data-guide-summary]");
-      if (summaryEl) summaryEl.textContent = summary(controller.getState());
-    } else render();
+  host.addEventListener('change',event=>{
+    const el=event.target;
+    if(el.dataset.answerSelect){answers[el.dataset.answerSelect]=el.value;if(el.dataset.answerSelect==='plan')answers.baselineModel='';render();root.CodingPlanSingleSelect.mount(document.getElementById(el.id),el.getAttribute('aria-label'),{showLabel:false}).focus();}
+    if(el.dataset.exact){answers.exact=el.checked?[...answers.exact,el.dataset.exact]:answers.exact.filter(slug=>slug!==el.dataset.exact);const search=host.querySelector('[data-model-search]').value;render();const field=host.querySelector('[data-model-search]');field.value=search;field.dispatchEvent(new Event('input',{bubbles:true}));}
   });
-  root.addEventListener("codingplan:filters-ready", () => {
-    controller = root.CodingPlanHomeFilters;
-    if (pendingStart) begin();
-    else render();
+  root.addEventListener('codingplan:filters-ready',()=>{controller=root.CodingPlanHomeFilters;if(pending)begin();});
+  root.addEventListener('codingplan:filters-changed',event=>{
+    if(event.detail.full)return;controller=root.CodingPlanHomeFilters;
+    if(applied && estimateActive && event.detail.source!=='guide' && root.CodingPlanFilters.targetTokens(event.detail.state)!==Flow.compile(controller.context,answers,event.detail.state).amount)estimateActive=false;
+    if(event.detail.source==='display')render();
+    if(applied)showAppliedSummary();
   });
-  document.querySelectorAll("[data-open-guide]").forEach((link) => {
-    link.addEventListener("click", (event) => {
-      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-      event.preventDefault();
-      begin();
-      host.scrollIntoView({behavior: "smooth", block: "start"});
-      host.querySelector("#guideQuestionTitle")?.focus({ preventScroll: true });
-    });
-  });
-  root.addEventListener('codingplan:guide-restart', () => {
-    answers = {}; step = 0; begin(); host.scrollIntoView({behavior: 'smooth'});
-  });
-  controller = root.CodingPlanHomeFilters;
-  render();
+  document.querySelectorAll('[data-open-guide]').forEach(link=>link.addEventListener('click',event=>{if(event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;event.preventDefault();begin();}));
+  root.addEventListener('codingplan:guide-restart',()=>{answers=fresh();step='start';applied=false;begin();});
 })(globalThis);

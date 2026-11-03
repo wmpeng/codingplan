@@ -78,6 +78,12 @@
       budgetCny: range('budget'), monthlyTokenRange: range('tokens'),
       apiOnly: flag('api'), harnessApiRequired: flag('harness'),
       preference: choice('order', ['balanced','cost','quality','variety'], 'balanced'),
+      usageEntry: choice('entry', ['any','codex','claude-code','third-party','program'], 'any'),
+      priorities: field('priorities', value => {
+        if (value === 'none') return [];
+        const keys = [...new Set(value.split(',').filter(key => ['balanced','volume','cost','quality'].includes(key)))];
+        return keys.length ? keys : INVALID;
+      }, value => value.length ? value.join(',') : 'none', ['balanced']),
       restricted: flag('restricted'), history: flag('history'),
       domestic: flag('domestic'), featuredOnly: flag('featured')
     };

@@ -234,3 +234,25 @@
 }
 
 .header-actions [data-open-guide] { display:inline-flex; align-items:center; padding:10px 14px; border-radius:10px; background:#1769c2; color:white; text-decoration:none; font-weight:700; white-space:nowrap; }
+
+/* Guided selection shares the site's controls and keeps long names within the viewport. */
+.guide-select { display: grid; gap: 8px; margin: 16px 0; }
+.guide-select select, .guide-search input { max-width: 100%; min-width: 0; width: 100%; padding: 10px; font: inherit; border: 1px solid var(--border-color, #cbd5e1); border-radius: 8px; background: var(--card-bg, #fff); color: inherit; }
+.guide-model-list { max-height: 280px; overflow: auto; margin: 12px 0; }
+.guide-model-list label { display: flex; align-items: center; gap: 8px; padding: 8px 0; overflow-wrap: anywhere; }
+.guide-model-list label[hidden] { display: none; }
+.guide-priorities { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+.guide-error { color: #a42828; }
+.guide-applied { margin: 12px 0; font-size: 13px; color: var(--text-secondary, #53657c); }
+.guide-applied button { border: 0; background: none; color: var(--primary-color, #1769c2); font: inherit; cursor: pointer; padding: 8px; }
+.offer-results-grid > [hidden] { display: none; }
+.offer-expand { margin: 16px auto; display: block; }
+.offer-sacrifice { margin: 0 0 10px; color: #8a4b14; font-size: 14px; }
+.offer-alternative { min-width: 0; }
+.offer-pending { margin-top: 24px; }
+.offer-pending > summary { cursor: pointer; padding: 12px 0; }
+@media (max-width: 600px) {
+  .purchase-guide-panel { padding: 16px; }
+  .guide-number { flex-wrap: wrap; }
+  .guide-step-actions button, .guide-options button, .guide-model-list label { min-height: 44px; }
+}

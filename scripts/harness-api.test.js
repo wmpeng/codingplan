@@ -76,18 +76,18 @@ test('旧工具条件不再限制或排序，默认/清空不要求 API 接入',
 test('未知能力隐藏，混合套餐平台显示可接入，具体套餐保留覆盖值', () => {
   const c=context(), platform=c.platforms[0];
   for (const unknown of [null,undefined]) assert.equal(E.harnessApiBadge(unknown),'');
-  assert.match(E.harnessApiBadge(true),/>可接入第三方工具<\/span>/);
-  assert.match(E.harnessApiBadge(false),/>不可接入第三方工具<\/span>/);
-  assert.match(Cards.buildPlatformCardHtml(platform,c.plans),/data-harness-api="true"[^>]*>可接入第三方工具/);
+  assert.match(E.harnessApiBadge(true),/>可用于其他智能体框架<\/span>/);
+  assert.match(E.harnessApiBadge(false),/>不可用于其他智能体框架<\/span>/);
+  assert.match(Cards.buildPlatformCardHtml(platform,c.plans),/data-harness-api="true"[^>]*>可用于其他智能体框架/);
   const html=Detail.buildDetailBodyHtml(platform,{plans:c.plans});
-  assert.match(html,/可接入第三方工具/);
-  assert.match(html,/不可接入第三方工具/);
+  assert.match(html,/可用于其他智能体框架/);
+  assert.match(html,/不可用于其他智能体框架/);
   assert.doesNotMatch(html,/Harness API|部分套餐|data-harness-api="(?:partial|unknown)"/);
   assert.doesNotMatch(Cards.buildPlatformCardHtml(c.platforms[2],c.plans),/data-harness-api/);
   assert.doesNotMatch(Detail.buildDetailBodyHtml(c.platforms[2],{plans:c.plans}),/data-harness-api/);
   assert.match(E.platformHarnessApiBadge(c.platforms[1],c.plans),/data-harness-api="true"/);
   assert.match(E.platformHarnessApiBadge({slug:'pending',supportsHarnessApi:null},[{platformSlug:'pending',supportsHarnessApi:true}]),/data-harness-api="true"/);
-  assert.match(E.platformHarnessApiBadge({slug:'closed',supportsHarnessApi:false},[{platformSlug:'closed',supportsHarnessApi:true,planStatus: 'delisted'}]),/>不可接入第三方工具/);
+  assert.match(E.platformHarnessApiBadge({slug:'closed',supportsHarnessApi:false},[{platformSlug:'closed',supportsHarnessApi:true,planStatus: 'delisted'}]),/>不可用于其他智能体框架/);
   const offer=G.recommend(c,all({platformSlugs:['yes']}),{}, {allMatching:true}).candidates.find(x=>x.plan.slug==='go');
   assert.match(Offers.card(offer,all({})),/data-harness-api="false"/);
   assert.doesNotMatch(Offers.card(offer,all({})),/data-harness-api="true"/);

@@ -558,15 +558,18 @@
                 container.querySelector('[data-empty="intelligence"]').hidden = intelligencePoints.length > 0;
             }
 
+            let chartSelects;
             function renderChartDetail() {
                 const host = container.querySelector('[data-chart-detail]');
-                const disclosure = host.querySelector('details');
+                const disclosure = host.querySelector('.price-chart-offer-note');
                 const wasOpen = disclosure?.open;
+                chartSelects?.destroy();
                 host.innerHTML = PriceChart.detailHtml(latestPriceGroups, state.selectedChartSlug, {
                     benchmark: state.benchmark, tokenUnit: state.tokenUnit,
                     tooltipHtml: point => tooltipHtml(point, state.benchmark, state.colorMode, state.tokenUnit)
                 });
-                if (wasOpen && host.querySelector('details')) host.querySelector('details').open = true;
+                if (wasOpen && host.querySelector('.price-chart-offer-note')) host.querySelector('.price-chart-offer-note').open = true;
+                chartSelects = root.CodingPlanSingleSelect.mountAll(host);
             }
             intelligenceChart.on('click', params => {
                 if (!params.data?.meta) return;
@@ -584,7 +587,8 @@
                 if (target.matches('[data-chart-member]')) {
                     state.selectedChartSlug = target.value;
                     render();
-                    container.querySelector('[data-chart-member]')?.focus({preventScroll:true});
+                    const select = container.querySelector('[data-chart-member]');
+                    if (select) root.CodingPlanSingleSelect.mount(select,select.getAttribute('aria-label'),{showLabel:false}).focus();
                     return;
                 }
             });
@@ -603,6 +607,7 @@
             const onPriceBasisChange = () => { priceBasis=root.EntityData.displayPriceBasis(); points=root.EntityData.withComparisonPriceBasis(originalPoints,context,priceBasis); render(); };
             root.addEventListener('codingplan:price-basis-changed',onPriceBasisChange);
             container.__usageCleanup = () => {
+                chartSelects?.destroy();
                 colorControl.removeEventListener('click', onColorModeClick);
                 benchmarkControl.removeEventListener('click', onBenchmarkClick);
                 billingControl.removeEventListener('click', onBillingClick);

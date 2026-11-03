@@ -8,7 +8,7 @@ const NumberDisplay = require('./number-display');
 
 function loadControls(document = {querySelector:() => null}) {
   const sandbox = vm.createContext({CodingPlanUI:UI, NumberDisplay, document,
-    PurchaseGuide:{sortOptions:[{value:'value', label:'用量优先'}]}});
+    PurchaseGuide:require('./purchase-guide.js')});
   vm.runInContext(fs.readFileSync(require.resolve('./filter-controls'), 'utf8'), sandbox);
   return sandbox.CodingPlanFilterControls;
 }
@@ -67,8 +67,8 @@ test('目录精选暂停规则保留价格大陆例外，展示分段保留独�
   const host = {querySelector:selector => selectors.has(selector) ? element : null};
   const pricing = controls.directoryControls(host,'pricing',() => ({}));
   const platforms = controls.directoryControls(host,'platforms',() => ({}));
-  assert.equal(pricing.find(spec => spec.label === '支持中国大陆').paused, false);
-  assert.equal(platforms.find(spec => spec.label === '支持中国大陆').paused, true);
+  assert.equal(pricing.find(spec => spec.label === '中国大陆可用').paused, false);
+  assert.equal(platforms.find(spec => spec.label === '中国大陆可用').paused, true);
   assert.equal(pricing.find(spec => spec.label === '显示精选').paused, false);
   assert.equal(pricing.find(spec => spec.label === '计费方式').paused, true);
   assert.equal(platforms.some(spec => spec.label === '计费方式'), false);

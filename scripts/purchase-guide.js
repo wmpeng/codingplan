@@ -8,45 +8,18 @@
   root.PurchaseGuide = api;
 })(typeof globalThis !== "undefined" ? globalThis : this, function (F, Numbers) {
   "use strict";
-  const levels = { trial: null, occasional: 100, daily: 1000, heavy: 4000 };
-  const coefficients = { writing: 0.5, coding: 1, professional: 1, api: 1 };
-  const directScenarios = ["everyday", "image"];
   const sortOptions = [
-    { value: "balanced", label: "平台评分优先", help: "按平台评分从高到低排列。" },
-    { value: "quality", label: "模型评分优先", help: "按方案内匹配模型的最高 Artificial Analysis 分从高到低排列。" },
-    { value: "cost", label: "月支出从低到高", help: "按订阅月费或按量 API 的最低已知估算月支出排列，未估算的支出放在最后。" },
-    { value: "variety", label: "匹配模型最多", help: "按方案内符合条件的模型数量从多到少排列，同一模型的计费档位不重复计数。" },
+    { value: "balanced", label: "平台综合体验", help: "按平台综合评分比较。" },
+    { value: "volume", label: "用量更大", help: "比较单个匹配模型最大的月参考额度，不相加共享额度；按量 API 不视为无限额度。" },
+    { value: "cost", label: "价格更实惠", help: "比较订阅首月费用或按量 API 的最低已知估算月支出，未知费用排后。" },
+    { value: "quality", label: "模型更强、更全面", help: "先比较匹配模型的最高 AA 分，同分再比较模型数量。" },
   ];
-  function directAdvice(answers) {
-    if (answers.free)
-      return "暂时不想花钱，可以先使用豆包网页版或桌面版，无需在这里选购套餐。";
-    if (
-      directScenarios.includes(answers.scenario) ||
-      (answers.scenario === "writing" && answers.writingMode === "web")
-    )
-      return "这类需求可以先使用豆包、千问、Kimi 或 DeepSeek 的网页 / App，无需在这里选购套餐。具体功能以产品内提供的入口为准。";
-    return null;
-  }
-  function scenarioPatch(answers) {
-    const apiOnly = answers.scenario === "api" ||
-      (answers.scenario === "writing" && answers.writingMode === "automation");
-    return {
-      apiOnly,
-      ...(apiOnly ? { budgetCny: null } : {}),
-    };
-  }
-  function usagePatch(answers) {
-    const quantity = levels[answers.intensity];
-    return {
-      monthlyTokenRange:
-        quantity == null
-          ? null
-          : {
-              min: quantity * (coefficients[answers.scenario] || 1),
-              max: null,
-            },
-    };
-  }
+  const entryOptions = [
+    {value:'any', label:'不限'}, {value:'codex', label:'Codex'},
+    {value:'claude-code', label:'Claude Code'},
+    {value:'third-party', label:'其他智能体框架（如Zcode，Kimi Code等）'},
+    {value:'program', label:'自己的程序（API 调用）'},
+  ];
   const finite = (value) =>
     typeof value === "number" && Number.isFinite(value) ? value : null;
   function recommend(context, state, config, options = {}) {
@@ -54,6 +27,8 @@
       opts = {
         usdToCnyRate: config.usdToCnyRate,
         platformCatalog: config.platformCatalog,
+        allowUnconfirmedTool: options.allowUnconfirmedTool === true,
+        allowUnknown: options.allowUnconfirmedTool === true,
       };
     // Restricted or delisted products may be browsed, but aren't purchase recommendations.
     const offers = F.matchingOffers(
@@ -65,7 +40,7 @@
       },
       opts,
     ).filter(offer => options.allMatching || (offer.plan.planStatus || 'open') === 'open');
-    const candidates = offers.map((offer) => {
+    const evaluated = offers.map((offer) => {
       const rows = offer.rows;
       const api = offer.plan.billingMode === "payg";
       // Each estimate applies the entire target workload to one relation;
@@ -92,14 +67,14 @@
       const cost =
         api
           ? costRange?.min ?? null
-          : offer.monthlyCost;
+          : offer.firstMonthCost;
       const reasons = [];
-      if (s.preference === "balanced" && finite(offer.platform.rating) !== null) reasons.push(`平台评分 ${offer.platform.rating}，按平台评分优先排序`);
+      if (s.priorities[0] === "balanced" && finite(offer.platform.rating) !== null) reasons.push(`平台评分 ${offer.platform.rating}，按平台评分优先排序`);
       if (s.budgetCny?.max != null && cost !== null)
         reasons.push(
           api
             ? `各匹配档位的月支出估算在 ${s.budgetCny.max} 元预算内`
-            : `月支出 ${Numbers.monthlyFee(cost, "")} 元，在 ${s.budgetCny.max} 元预算内`,
+            : `首月费用 ${Numbers.monthlyFee(cost, "")} 元，在 ${s.budgetCny.max} 元预算内`,
         );
       if (s.monthlyTokenRange)
         reasons.push(
@@ -112,10 +87,16 @@
           `最高 AA 分 ${scored[0].score.toFixed(1)}：${scored[0].model.name}`,
         );
       reasons.push(`${models.length} 个符合条件的模型`);
-      if (s.domesticNetworkOnly) reasons.push("无需境外网络");
-      if (s.domesticPaymentOnly) reasons.push("无需境外支付方式");
+      if (s.domesticNetworkOnly || s.domesticPaymentOnly) reasons.push("支持境内使用");
       if (s.imageRequired) reasons.push("符合条件的模型支持多模态");
       const cautions = [];
+      const unconfirmed=[];
+      if(offer.toolSupport===null)unconfirmed.push('工具兼容性');
+      if(s.budgetCny && cost===null)unconfirmed.push(api?'月支出':'首月费用');
+      if(!api && s.monthlyTokenRange && rows.some(row=>(row.usage?.monthlyTokenInM==null || row.usage.monthlyTokenInM==='unknown')))unconfirmed.push('月额度');
+      if(api && s.budgetCny && apiEstimates.some(item=>item.cost===null) && !unconfirmed.includes('月支出'))unconfirmed.push('部分档位月支出');
+      if (offer.toolSupport === null) cautions.push('尚未确认能否在所选工具中使用');
+      if (s.usageEntry === 'third-party') cautions.push('支持通用 API 接入，具体智能体框架的协议和用途限制仍需确认');
       if (offer.platform.platformStatus === 'restricted' || offer.plan.planStatus === 'restricted')
         cautions.push('购买受限，请在平台页面核实当前开放情况');
       if (offer.plan.billingMode === "payg" && context.workload) {
@@ -124,14 +105,10 @@
           cautions.push(`费用假设：输出占比 ${w.outputRatio * 100}%，输入缓存命中 ${w.cacheHitRate * 100}%；沿用价格页折算汇率`);
       }
       if (!scored.length) cautions.push("暂无 AA 评分");
-      if (offer.platform.requiresOverseasNetwork === true)
-        cautions.push("需要境外网络条件");
-      else if (offer.platform.requiresOverseasNetwork == null)
-        cautions.push("网络要求待确认");
-      if (offer.platform.requiresOverseasPayment === true)
-        cautions.push("需要境外支付方式");
-      else if (offer.platform.requiresOverseasPayment == null)
-        cautions.push("支付要求待确认");
+      if (offer.platform.supportsDomestic === false)
+        cautions.push("网络或支付需要境外条件");
+      else if (offer.platform.supportsDomestic == null)
+        cautions.push("境内使用支持情况待确认");
       if (offer.plan.billingMode === "payg")
         cautions.push(
           F.targetTokens(s) == null
@@ -143,7 +120,7 @@
           "额度按单个模型参考量展示，不代表多模型额度可相加或连续任务一定够用",
         );
       if (offer.supportsHarnessApi === true)
-        cautions.push("具体工具配置及用途限制请查看平台说明");
+        cautions.push("具体智能体框架的配置及用途限制请查看平台说明");
       if (api && F.targetTokens(s) !== null) {
         cautions.push("每个模型/档位按全部月用量独立估算，费用不相加；省钱排序按最低已知估算月支出");
         if (costRange?.hasUnknown) cautions.push("部分档位费用未知，估算范围仅包含已知费用");
@@ -156,14 +133,18 @@
         costRange,
         apiEstimates,
         score: scored[0]?.score ?? null,
+        volume: api ? null : rows.some(row => row.usage?.monthlyTokenInM === 'unlimited') ? Infinity :
+          rows.some(row => finite(row.usage?.monthlyTokenInM) !== null) ? Math.max(...rows.map(row => finite(row.usage?.monthlyTokenInM) ?? -Infinity)) : null,
         reasons,
         cautions,
+        unconfirmed,
         id: offer.plan.slug,
         tier: [rows[0].serviceTier, rows[0].contextTier, rows[0].timeTier]
           .filter(Boolean)
           .join(" / "),
       };
     });
+    const candidates=options.allowUnconfirmedTool?evaluated:evaluated.filter(item=>!item.unconfirmed.length);
     function compare(key, descending) {
       return (a, b) => {
         const x =
@@ -183,14 +164,15 @@
         return descending ? y - x : x - y;
       };
     }
-    const order =
-      s.preference === "cost"
-        ? compare("cost", false)
-        : s.preference === "quality"
-          ? compare("score", true)
-          : s.preference === "variety"
-            ? compare("count", true)
-            : compare("rating", true);
+    const priorities = s.priorities;
+    const comparators = {balanced:compare('rating',true), volume:compare('volume',true), cost:compare('cost',false),
+      quality:(a,b)=>compare('score',true)(a,b) || compare('count',true)(a,b)};
+    const featuredModels = new Set((context.modelGroups || []).filter(group=>group.enabled!==false).flatMap(group=>group.modelSlugs));
+    const featured = item => Number((context.featuredPlatformSlugs || []).includes(item.platform.slug)) + Number(item.models.some(model=>featuredModels.has(model.slug)));
+    const order = (a,b) => {
+      for (const key of priorities) { const diff = comparators[key](a,b); if(diff) return diff; }
+      return featured(b)-featured(a);
+    };
     candidates.sort(order);
     const seen = new Set();
     function take(list, count) {
@@ -228,7 +210,7 @@
       ["其他路线", alternative],
     ].filter(([, items]) => items.length);
     const conflicts = [];
-    if (!candidates.length) {
+    if (!candidates.length && !options.internal) {
       const changes = [
         ["platformSlugs", null, "平台范围"],
         ["modelSlugs", null, "指定模型"],
@@ -258,22 +240,58 @@
       }
     }
     let modelConflict = "";
-    if (!candidates.length && s.modelMatch === "all" && s.modelSlugs?.length > 1) {
+    if (!candidates.length && !options.internal && s.modelMatch === "all" && s.modelSlugs?.length > 1) {
       const missing = s.modelSlugs.filter(slug => !F.matchingOffers(context,
         {...s, modelSlugs:[slug], modelMatch:"any"}, opts).length);
       modelConflict = missing.length
         ? `在当前其他条件下，${missing.map(slug => context.modelBySlug.get(slug)?.name || slug).join("、")}没有匹配方案，因此无法包含全部所选模型。`
         : "所选模型各自有匹配方案，但没有同一个套餐同时满足全部模型的要求。";
     }
-    return { candidates, groups, conflicts, modelConflict };
+    let alternatives = [], pending = [];
+    if (!options.internal && !options.allowUnconfirmedTool) {
+      pending = recommend(context,s,config,{...options,internal:true,allowUnconfirmedTool:true}).candidates.filter(item=>item.unconfirmed.length && !candidates.some(known=>known.id===item.id));
+      if (!candidates.length) {
+        // Preserve actual access constraints and selected platform scope. Relax only
+        // budget, quantity and model range; each changed condition remains explicit.
+        const changes = [
+          {key:'budgetCny',value:null,label:'月预算',dimension:'cost'},
+          {key:'monthlyTokenRange',value:null,label:'月用量',dimension:'volume'},
+          {key:'modelSlugs',value:null,label:'模型范围',dimension:'quality'},
+          {key:'modelMatch',value:'any',label:'同时支持全部所选模型',dimension:'quality'},
+        ].filter(change=>JSON.stringify(s[change.key])!==JSON.stringify(change.value));
+        const choices = new Map();
+        for(let mask=1;mask<(1<<changes.length);mask++) {
+          const relaxed=changes.filter((_,index)=>mask&(1<<index));
+          const patch=Object.fromEntries(relaxed.map(change=>[change.key,change.value]));
+          // A relaxed model selection still stays within text-output models.
+          if(Object.hasOwn(patch,'modelSlugs')) patch.modelSlugs=context.models.filter(model=>model.modalities?.output?.includes('text')).map(model=>model.slug);
+          const next=recommend(context,{...s,...patch},config,{...options,internal:true});
+          const loss=priorities.map(key=>relaxed.some(change=>change.dimension===key)?1:0);
+          for(const item of next.candidates) {
+            // Missing facts are not a measurable compromise; keep them in the
+            // separate pending section instead of suggesting a smaller quota.
+            if(relaxed.some(change=>change.key==='monthlyTokenRange') && item.plan.billingMode!=='payg' && item.volume===null)continue;
+            if(relaxed.some(change=>change.key==='budgetCny') && item.cost===null)continue;
+            const candidate={...item,relaxedState:{...s,...patch},sacrifices:relaxed.map(change=>change.label),loss};
+            const previous=choices.get(item.id);
+            if(!previous || compareLoss(candidate,previous)<0) choices.set(item.id,candidate);
+          }
+        }
+        function compareLoss(a,b) {
+          for(let i=0;i<a.loss.length;i++){
+            if(a.loss[i]!==b.loss[i])return a.loss[i]-b.loss[i];
+            const diff=comparators[priorities[i]](a,b);if(diff)return diff;
+          }
+          return a.sacrifices.length-b.sacrifices.length || order(a,b);
+        }
+        alternatives=[...choices.values()].sort(compareLoss).slice(0,3);
+      }
+    }
+    return { candidates, groups, conflicts, modelConflict, alternatives, pending };
   }
   return {
-    levels,
-    coefficients,
     sortOptions,
-    directAdvice,
-    scenarioPatch,
-    usagePatch,
+    entryOptions,
     recommend,
   };
 });

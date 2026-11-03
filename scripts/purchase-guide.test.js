@@ -18,16 +18,14 @@ function fixture() {
       rating: 5,
       platformStatus: "open",
       supportsHarnessApi: true,
-      requiresOverseasNetwork: false,
-      requiresOverseasPayment: false,
+      supportsDomestic: true,
     },
     {
       slug: "codex",
       rating: 4,
       platformStatus: "open",
       supportsHarnessApi: false,
-      requiresOverseasNetwork: null,
-      requiresOverseasPayment: true,
+      supportsDomestic: false,
     },
   ];
   const plans = [
@@ -147,13 +145,10 @@ test('购买推荐要求平台和套餐均可购买，全量浏览保留受限�
 
 test("引导只按使用方式分流；API 限制与金额独立，未知 API 费用不当作零", () => {
   const c = fixture();
-  const api = state(G.scenarioPatch({ scenario: "api" }));
+  const api = state({apiOnly:true});
   assert.equal(api.apiOnly, true);
   assert.equal(api.budgetCny, null);
   assert.equal(Object.hasOwn(api, "tool"), false);
-  assert.deepEqual(G.scenarioPatch({ scenario: "writing", writingMode: "automation" }), G.scenarioPatch({ scenario: "api" }));
-  for (const scenario of ["coding", "professional", "writing"])
-    assert.equal(G.scenarioPatch({ scenario, writingMode: "tools" }).apiOnly, false);
   const offers = F.matchingOffers(c, api, options);
   assert.deepEqual(offers.map(x => x.plan.slug), ["api"]);
   const subscriptions = c.plans.filter(plan => plan.billingMode === 'subscription');
@@ -164,8 +159,6 @@ test("引导只按使用方式分流；API 限制与金额独立，未知 API �
   const knownCost = F.matchingOffers(c, state({ ...budget, monthlyTokenRange: { min: 100 } }), options);
   assert.deepEqual(knownCost[0].rows.map(x => x.modelSlug), ["small"]);
   assert.ok(F.matchingOffers(c, state({ apiOnly: false }), options).some(x => x.plan.billingMode === "subscription"));
-  assert.ok(G.directAdvice({ scenario: "writing", writingMode: "web" }));
-  assert.equal(G.directAdvice({ scenario: "writing", writingMode: "automation" }), null);
 });
 const options = { usdToCnyRate: 7 };
 test("预算、模型与额度不能跨套餐拼接，三个视图使用同一批关系", () => {
@@ -310,16 +303,14 @@ test("无结果报告可恢复候选的具体限制，且不修改输入", () =>
   assert.ok(r.conflicts.some((x) => x.key === "budgetCny"));
   assert.equal(JSON.stringify(s), before);
 });
-test("简化引导路线及用量系数", () => {
-  assert.ok(G.directAdvice({ free: true }));
-  assert.ok(G.directAdvice({ scenario: "everyday" }));
-  assert.equal(G.directAdvice({ scenario: "coding" }), null);
-  assert.deepEqual(
-    G.usagePatch({ scenario: "writing", intensity: "daily" }).monthlyTokenRange,
-    { min: 500, max: null },
-  );
-  assert.equal(G.usagePatch({ intensity: "trial" }).monthlyTokenRange, null);
+test("免费与日常使用仍进入选购流程，估算只在用户选择时应用",()=>{
+  const Flow=require('./purchase-guide-flow');
+  const c=fixture();c.models.forEach(model=>model.modalities.output=['text']);
+  const free=Flow.compile(c,{task:'everyday',budgetMode:'free',usageMode:'unsure'});
+  assert.deepEqual(free.errors,[]);assert.equal(free.state.budgetCny.max,0);assert.equal(free.state.monthlyTokenRange,null);
+  assert.equal(Flow.compile(c,{entry:'program'}).state.apiOnly,false,'使用方式自身限制按量，不在预算控件重复留下类型条件');
 });
+
 test("真实目录的推荐引用完整，AA无分数不冒充零，分组模型存在", () => {
   const c = E.buildContext(
     require("../platforms.json"),
@@ -378,6 +369,16 @@ test('API 同产品合成一个候选，保留峰谷档位、去重模型和独�
   assert.deepEqual(budget.costRange,{min:0,max:200,hasUnknown:false});
   const strict=G.recommend(c,{...s,budgetCny:{max:100},modelSlugs:['small','strong'],modelMatch:'all'},options,{allMatching:true});
   assert.equal(strict.candidates.length,0);
+});
+
+test('推荐限制只说明综合境内条件，保留未知且不推断具体网络或支付要求',()=>{
+  for (const [value, caution] of [[false,'网络或支付需要境外条件'],[null,'境内使用支持情况待确认']]) {
+    const c=fixture();
+    c.platformBySlug.get('p').supportsDomestic=value;
+    const items=G.recommend(c,state({}),options,{allMatching:true}).candidates.filter(item=>item.platform.slug==='p');
+    assert.ok(items.length);
+    assert.ok(items.every(item=>item.cautions.includes(caution)));
+  }
 });
 
 test('API 合并不把未知费用变成零，也不跨产品拼接严格模型要求',()=>{

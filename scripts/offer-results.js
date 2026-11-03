@@ -43,7 +43,7 @@
     const unlimited=item.rows.some(r=>r.usage?.monthlyTokenInM==='unlimited');
     const range=rangeText!==null ? `${rangeText} ${unitLabel(unit)}`+(unlimited?'～不限量':'') : unlimited?'不限量':'额度未知';
     const priceRange=Numbers.range(item.rows.map(unitPrice),v=>Numbers.tokenPrice(v,unit),v=>Numbers.unitPrice(v*Numbers.tokenFactor(unit),''));
-    const originalPrice=!api && !['¥','CNY','RMB','￥'].includes(item.plan.currency || '¥') && typeof item.plan.monthlyPrice==='number' ? `<div class="offer-original-price" title="人民币金额按站内汇率折算，仅供参考。">${esc(Numbers.monthlyFee(item.plan.monthlyPrice,item.plan.currency))} / 月</div>` : '';
+    const originalPrice=!api && !['¥','CNY','RMB','￥'].includes(item.plan.currency || '¥') && typeof item.plan.firstMonthPrice==='number' ? `<div class="offer-original-price" title="人民币金额按站内汇率折算，仅供参考。">${esc(Numbers.monthlyFee(item.plan.firstMonthPrice,item.plan.currency))} / 首月</div>` : '';
     const quotaSummary=`<summary class="offer-quota-summary is-compact${range==='额度未知'?' is-unknown':''}"><span class="offer-summary-metrics"><span class="offer-summary-quota"><span class="offer-summary-label">月额度 </span><span class="offer-summary-value">${esc(range === '额度未知' ? '未知' : range)}</span></span>${priceRange!==null?`<span class="offer-summary-price" aria-hidden="true"><span class="offer-summary-label">单价 </span><span class="offer-summary-value">${esc(priceRange)} /${unitLabel(unit)}</span></span>`:''}</span></summary>`;
     const unknownPrices=item.rows.some(row=>Numbers.finite(row.usage?.unitPriceCnyPerM)===null);
     const apiSummary=`<summary class="offer-quota-summary offer-api-summary${priceRange===null?' is-unknown':''}"><span class="offer-summary-metrics"><span class="offer-summary-quota"><span class="offer-summary-label">${priceRange!==null && unknownPrices?'已知单价':'单价'} </span><span class="offer-summary-value">${priceRange!==null?`${esc(priceRange)} /${unitLabel(unit)}`:'待确认'}</span></span></span></summary>`;
@@ -57,10 +57,10 @@
     const details=`<details class="offer-models">${api?apiSummary:quotaSummary}<div class="offer-model-details">${table}<p class="comparison-method${api?' offer-api-estimate-note':''}">${detailNote}</p>${fullPrice}</div></details>`;
     const priceText=api ? estimatedRange ?? '按量计费' : money(item.cost);
     const estimateLabel=item.costRange?.hasUnknown?'已知费用估算':item.costRange && item.costRange.min!==item.costRange.max?'估算范围':'估算';
-    return `<article class="offer-result offer-card-refined${api?' offer-api':''}" data-offer-id="${esc(item.id)}" data-plan-slug="${esc(item.plan.slug)}" data-collect-platform="${esc(item.platform.slug)}"><div class="offer-result-heading"><div><h3 class="offer-title">${title}</h3>${capabilities}</div><div class="offer-price${item.cost==null?' is-unknown':''}"><div class="offer-price-line"><span>${esc(priceText).replace('～','<wbr>～')}</span>${item.cost!=null?'<small>/ 月</small>':''}</div>${api&&item.cost!=null?`<div class="offer-price-note">${estimateLabel}</div>`:''}${originalPrice}</div></div>${modelTags}${details}<div class="offer-result-actions"><details class="offer-reasons"><summary>匹配说明与限制</summary><ul>${[...item.reasons,...item.cautions].map(x=>`<li>${esc(x)}</li>`).join('')}</ul></details></div></article>`;
+    return `<article class="offer-result offer-card-refined${api?' offer-api':''}" data-offer-id="${esc(item.id)}" data-plan-slug="${esc(item.plan.slug)}" data-collect-platform="${esc(item.platform.slug)}"><div class="offer-result-heading"><div><h3 class="offer-title">${title}</h3>${capabilities}</div><div class="offer-price${item.cost==null?' is-unknown':''}"><div class="offer-price-line"><span>${esc(priceText).replace('～','<wbr>～')}</span>${item.cost!=null?`<small>/ ${api?'月':'首月'}</small>`:''}</div>${api&&item.cost!=null?`<div class="offer-price-note">${estimateLabel}</div>`:''}${originalPrice}</div></div>${modelTags}${details}<div class="offer-result-actions"><details class="offer-reasons"><summary>匹配说明与限制</summary><ul>${[...item.reasons,...item.cautions].map(x=>`<li>${esc(x)}</li>`).join('')}</ul></details></div></article>`;
   }
   function mount(host,context,config) {
-    let advice=null, renderedAdvice, lastResult, lastFilterKey, lastPreference;
+    let lastResult, lastFilterKey, lastPreference, showAll=false;
     const fitSummary = summary => {
       const price=summary.querySelector('.offer-summary-price');if(!price)return;
       // Always measure from the original size so a previous shrink never traps
@@ -84,29 +84,28 @@
     };
     const modelRows=UI.observeModelTagRows(host);
     const summaryObserver=new ResizeObserver(entries=>entries.forEach(entry=>fitSummary(entry.target)));
-    host.innerHTML = `<aside class="guide-advice" data-offer-advice hidden></aside><div class="section-heading offer-results-heading"><div><div class="offer-results-title"><h2>符合需求的方案</h2><span id="offerCount" role="status"></span></div></div></div><div data-offer-content></div>`;
+    host.innerHTML = `<div class="section-heading offer-results-heading"><div><div class="offer-results-title"><h2>符合需求的方案</h2><span id="offerCount" role="status"></span></div></div></div><div data-offer-content></div>`;
     const render=()=>{
       const controller=globalThis.CodingPlanHomeFilters;if(!controller)return;
       const state=controller.getState();
-      const filterKey=JSON.stringify({...state,preference:null});
-      const sortOnly=filterKey===lastFilterKey && state.preference!==lastPreference;
+      const filterKey=JSON.stringify({...state,preference:null,priorities:null});
+      const priorityKey=JSON.stringify(state.priorities);
+      const sortOnly=filterKey===lastFilterKey && priorityKey!==lastPreference;
+      if(filterKey!==lastFilterKey)showAll=false;
       const scroll={left:globalThis.scrollX,top:globalThis.scrollY};
       const focused=document.activeElement;
       const open=[...host.querySelectorAll('[data-offer-id]')].flatMap(el=>[...el.querySelectorAll('details[open]')].map(d=>[el.dataset.offerId,d.className]));
       const expandedModels=[...host.querySelectorAll('[data-toggle-models][aria-expanded="true"]')].map(button=>button.closest('[data-offer-id]').dataset.offerId);
       const result=globalThis.PurchaseGuide.recommend(context,state,config,{allMatching:true});lastResult=result;
+      for(const item of [...result.candidates,...result.alternatives,...result.pending]) {
+        item.cautions.push(...(globalThis.PurchaseGuideFlow?.baselineSummary(context,globalThis.CodingPlanGuideContext || {},item,config.usdToCnyRate) || []));
+      }
       const count=host.querySelector('#offerCount');
       const countText=`${result.candidates.length} 个方案`;
       if(count.textContent!==countText)count.textContent=countText;
-      const adviceHost=host.querySelector('[data-offer-advice]');
-      adviceHost.hidden=!advice;
-      if(advice!==renderedAdvice) {
-        adviceHost.innerHTML=advice?`<h3>可以先直接使用网页或 App</h3><p>${esc(advice)}</p><button type="button" class="tool-button" data-restart-guide>继续选择工具接入或 API</button><p>下方保留当前筛选结果。</p>`:'';
-        renderedAdvice=advice;
-      }
       const content=host.querySelector('[data-offer-content]');
       const grid=content.querySelector('.offer-results-grid');
-      if(sortOnly && grid) {
+      if(sortOnly && grid && result.candidates.length) {
         // Move existing cards so expanded details and local interaction state survive.
         const cards=new Map([...grid.children].map(el=>[el.dataset.offerId,el]));
         for(const item of result.candidates) {
@@ -114,7 +113,11 @@
           el.querySelector('.offer-reasons ul').innerHTML=[...item.reasons,...item.cautions].map(text=>`<li>${esc(text)}</li>`).join('');
           grid.append(el);
         }
-      } else content.innerHTML=result.candidates.length?`<div class="offer-results-grid">${result.candidates.map(x=>card(x,state,context.modelGroups)).join('')}</div>`:`<div class="tool-empty"><h3>暂无同时符合条件的方案</h3><p>${result.modelConflict?esc(result.modelConflict):"试着放宽一项条件；筛选不会自动改变。"}</p><div class="guide-options">${result.conflicts.map(x=>`<button type="button" data-relax="${esc(x.key)}">取消${esc(x.label)}（${x.count} 个套餐）</button>`).join('')}</div><button type="button" class="tool-button" data-reset-results>显示精选</button></div>`;
+      } else content.innerHTML=result.candidates.length?`<div class="offer-results-grid" data-matching-grid>${result.candidates.map(x=>card(x,state,context.modelGroups)).join('')}</div>${result.candidates.length>3?'<button type="button" class="tool-button offer-expand" data-expand-offers></button>':''}`:`<div class="tool-empty"><h3>暂无同时符合条件的方案</h3><p>${result.modelConflict?esc(result.modelConflict):'下面是按优先级取舍后的备选，原筛选条件保持不变。'}</p><button type="button" class="tool-button" data-reset-results>显示精选</button></div>${result.alternatives.length?`<div class="offer-results-grid" data-alternative-grid>${result.alternatives.map(item=>`<section class="offer-alternative"><p class="offer-sacrifice">需要放宽：${esc(item.sacrifices.join('、'))}${item.sacrifices.includes('月预算')?`（原上限 ${money(state.budgetCny?.max)}，此方案 ${money(item.cost)}／${item.plan.billingMode==='payg'?'月':'首月'}）`:''}${item.sacrifices.includes('月用量')?`（原目标 ${quota(globalThis.CodingPlanFilters.targetTokens(state),state.tokenUnit)}／月）`:''}</p>${card(item,item.relaxedState,context.modelGroups)}</section>`).join('')}</div>`:'<p>保留平台范围和使用方式后，暂时也没有可推荐的备选。可以回到筛选区调整这两项。</p>'}`;
+      const pendingOld=content.querySelector('[data-pending-offers]');if(pendingOld)pendingOld.remove();
+      if(result.pending.length)content.insertAdjacentHTML('beforeend',`<details class="offer-pending" data-pending-offers><summary>信息待确认 · ${result.pending.length} 个方案</summary><p>这些方案的工具兼容性、额度或费用还不能确认，因此未计入匹配结果。</p><div class="offer-results-grid">${result.pending.map(item=>`<section><p>待确认：${esc(item.unconfirmed.join('、'))}</p>${card(item,state,context.modelGroups)}</section>`).join('')}</div></details>`);
+      content.querySelectorAll('[data-matching-grid] > [data-offer-id]').forEach((el,index)=>el.hidden=!showAll && index>=3);
+      const expand=content.querySelector('[data-expand-offers]');if(expand){expand.textContent=showAll?'收起其他方案':`展开其他 ${result.candidates.length-3} 个方案`;expand.setAttribute('aria-expanded',String(showAll));}
       summaryObserver.disconnect();
       host.querySelectorAll('.offer-quota-summary').forEach(summary=>{fitSummary(summary);summaryObserver.observe(summary);});
       for(const [id,cls] of open){const el=[...host.querySelectorAll('[data-offer-id]')].find(x=>x.dataset.offerId===id);const d=el?.querySelector('details.'+cls);if(d)d.open=true;}
@@ -126,17 +129,17 @@
       }
       globalThis.dispatchEvent(new CustomEvent('codingplan:results-rendered', {detail:{result_count:result.candidates.length,result_key:JSON.stringify(state)}}));
       lastFilterKey=filterKey;
-      lastPreference=state.preference;
+      lastPreference=priorityKey;
     };
     host.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.hasAttribute('data-restart-guide'))globalThis.dispatchEvent(new Event('codingplan:guide-restart'));if(b.hasAttribute('data-reset-results'))globalThis.CodingPlanHomeFilters.reset();if(b.dataset.relax){const change=lastResult.conflicts.find(x=>x.key===b.dataset.relax);if(change)globalThis.CodingPlanHomeFilters.setState({[change.key]:change.value},'manual');}});
     host.addEventListener('click',e=>{
+      const expand=e.target.closest('[data-expand-offers]');if(expand){showAll=!showAll;render();host.querySelector('[data-expand-offers]')?.focus({preventScroll:true});return;}
       const button=e.target.closest('[data-toggle-models]');if(!button)return;
       const expanded=button.getAttribute('aria-expanded')!=='true';
       setModelsExpanded(button,expanded);
     });
     globalThis.addEventListener('codingplan:filters-changed',e=>{if(!e.detail.full)render();});
     globalThis.addEventListener('codingplan:price-basis-changed',render);
-    globalThis.addEventListener('codingplan:guide-advice',e=>{if(advice!==e.detail){advice=e.detail;render();}});
     render();
   }
   return {card,quota,mount};

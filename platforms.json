@@ -22,10 +22,9 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://api.dreamfree.space/c/s/cpyqfangzhou"
+      "action": "https://api.dreamfree.space/c/s/cpyqfangzhou",
+      "supportsDomestic": true
     },
     {
       "slug": "zhipu",
@@ -47,10 +46,9 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://api.dreamfree.space/c/s/cpyqzhipu"
+      "action": "https://api.dreamfree.space/c/s/cpyqzhipu",
+      "supportsDomestic": true
     },
     {
       "slug": "minimax",
@@ -73,10 +71,9 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://api.dreamfree.space/c/s/cpyqminimax"
+      "action": "https://api.dreamfree.space/c/s/cpyqminimax",
+      "supportsDomestic": true
     },
     {
       "slug": "kimi",
@@ -98,11 +95,10 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
       "detail": "Coding 支持 Kimi K3.1 Pro、K3 与 K2.8 Preview；Plus 起可用 K3.1 Pro，Pro 起支持其高速版与 1M 上下文，Go 不含 Coding API。",
-      "action": "https://api.dreamfree.space/c/s/cpyqkimi"
+      "action": "https://api.dreamfree.space/c/s/cpyqkimi",
+      "supportsDomestic": true
     },
     {
       "slug": "deepseek-official",
@@ -126,9 +122,8 @@
       },
       "platformStatus": "open",
       "action": "https://api.dreamfree.space/c/s/cpyqdeepseek",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
-      "supportsHarnessApi": true
+      "supportsHarnessApi": true,
+      "supportsDomestic": true
     },
     {
       "slug": "opencode",
@@ -151,10 +146,9 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://api.dreamfree.space/c/s/cpyqopencode"
+      "action": "https://api.dreamfree.space/c/s/cpyqopencode",
+      "supportsDomestic": true
     },
     {
       "slug": "codex",
@@ -177,10 +171,9 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": true,
-      "requiresOverseasPayment": true,
       "supportsHarnessApi": false,
-      "action": "https://api.dreamfree.space/c/s/cpyqchatgpt"
+      "action": "https://api.dreamfree.space/c/s/cpyqchatgpt",
+      "supportsDomestic": false
     },
     {
       "slug": "claude",
@@ -203,10 +196,9 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": true,
-      "requiresOverseasPayment": true,
       "supportsHarnessApi": false,
-      "action": "https://api.dreamfree.space/c/s/cpyqclaudeup"
+      "action": "https://api.dreamfree.space/c/s/cpyqclaudeup",
+      "supportsDomestic": false
     },
     {
       "slug": "zhipu-coding-legacy",
@@ -215,10 +207,9 @@
       "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
       "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
       "platformStatus": "delisted",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
       "supportsHarnessApi": null,
-      "action": "https://api.dreamfree.space/c/s/cpyqzhipu"
+      "action": "https://api.dreamfree.space/c/s/cpyqzhipu",
+      "supportsDomestic": null
     },
     {
       "slug": "bytedance-ark-agent",
@@ -241,10 +232,9 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://api.dreamfree.space/c/s/cpyqfangzhout"
+      "action": "https://api.dreamfree.space/c/s/cpyqfangzhout",
+      "supportsDomestic": true
     },
     {
       "slug": "minimax-coding-legacy",
@@ -253,10 +243,9 @@
       "summary": "旧 Token Plan 仅存量用户可自动续费；新型号的精确 Token 额度未知。",
       "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
       "platformStatus": "delisted",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
       "supportsHarnessApi": null,
-      "action": "https://api.dreamfree.space/c/s/cpyqminimax"
+      "action": "https://api.dreamfree.space/c/s/cpyqminimax",
+      "supportsDomestic": null
     },
     {
       "slug": "zhipu-intl",
@@ -280,10 +269,9 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": true,
       "supportsHarnessApi": true,
-      "action": "https://api.dreamfree.space/c/s/cpyqzai"
+      "action": "https://api.dreamfree.space/c/s/cpyqzai",
+      "supportsDomestic": false
     },
     {
       "slug": "zhipu-intl-coding-legacy",
@@ -292,10 +280,9 @@
       "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
       "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
       "platformStatus": "delisted",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
       "supportsHarnessApi": null,
-      "action": "https://api.dreamfree.space/c/s/cpyqzai"
+      "action": "https://api.dreamfree.space/c/s/cpyqzai",
+      "supportsDomestic": null
     },
     {
       "slug": "gongji",
@@ -319,9 +306,8 @@
       },
       "platformStatus": "open",
       "action": "https://api.dreamfree.space/c/s/cpyqgongji",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
-      "supportsHarnessApi": true
+      "supportsHarnessApi": true,
+      "supportsDomestic": true
     },
     {
       "slug": "youyun",
@@ -344,10 +330,9 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://api.dreamfree.space/c/s/cpyqyyzs"
+      "action": "https://api.dreamfree.space/c/s/cpyqyyzs",
+      "supportsDomestic": true
     },
     {
       "slug": "ollama",
@@ -369,11 +354,10 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
       "detail": "Pro/Max 云端月额度与本地免费模型相互独立。",
-      "action": "https://api.dreamfree.space/c/s/cpyqollama"
+      "action": "https://api.dreamfree.space/c/s/cpyqollama",
+      "supportsDomestic": true
     },
     {
       "slug": "aliyun-bailian",
@@ -396,10 +380,9 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://api.dreamfree.space/c/s/cpyqbailiant"
+      "action": "https://api.dreamfree.space/c/s/cpyqbailiant",
+      "supportsDomestic": true
     },
     {
       "slug": "aliyun-bailian-coding",
@@ -422,10 +405,9 @@
         }
       },
       "platformStatus": "restricted",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://api.dreamfree.space/c/s/cpyqbailianc"
+      "action": "https://api.dreamfree.space/c/s/cpyqbailianc",
+      "supportsDomestic": true
     },
     {
       "slug": "xiaomi-mimo",
@@ -448,10 +430,9 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://api.dreamfree.space/c/s/cpyqmimo"
+      "action": "https://api.dreamfree.space/c/s/cpyqmimo",
+      "supportsDomestic": true
     },
     {
       "slug": "command-code",
@@ -474,10 +455,9 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://api.dreamfree.space/c/s/cpcommandcode"
+      "action": "https://api.dreamfree.space/c/s/cpcommandcode",
+      "supportsDomestic": true
     },
     {
       "slug": "baidu-qianfan",
@@ -499,11 +479,10 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
       "detail": "Token总量按官方口径；积分制逐模型动态抵扣不能用固定Token量替代。",
-      "action": "https://api.dreamfree.space/c/s/cpyqqianfan"
+      "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
+      "supportsDomestic": true
     },
     {
       "slug": "baidu-qianfan-coding-legacy",
@@ -512,10 +491,9 @@
       "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
       "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
       "platformStatus": "delisted",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
       "supportsHarnessApi": null,
-      "action": "https://api.dreamfree.space/c/s/cpyqqianfan"
+      "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
+      "supportsDomestic": null
     },
     {
       "slug": "huawei-cloud",
@@ -536,12 +514,11 @@
         }
       },
       "platformStatus": "restricted",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
       "summary": "华为云个人Token Plan，当前五个LLM，按官方月Token总量。",
       "detail": "仅西南贵阳一，每日限量发售；官方Token总量与请求次数、TPM分开。",
-      "action": "https://api.dreamfree.space/c/s/cpyqhuawei"
+      "action": "https://api.dreamfree.space/c/s/cpyqhuawei",
+      "supportsDomestic": true
     },
     {
       "slug": "tencent-cloud",
@@ -563,10 +540,9 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://api.dreamfree.space/c/s/cpyqtengxunt"
+      "action": "https://api.dreamfree.space/c/s/cpyqtengxunt",
+      "supportsDomestic": true
     },
     {
       "slug": "tencent-cloud-coding-legacy",
@@ -575,10 +551,9 @@
       "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
       "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
       "platformStatus": "delisted",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
       "supportsHarnessApi": null,
-      "action": "https://api.dreamfree.space/c/s/cpyqtengxunc"
+      "action": "https://api.dreamfree.space/c/s/cpyqtengxunc",
+      "supportsDomestic": null
     },
     {
       "slug": "qoder-cn",
@@ -601,10 +576,9 @@
           "reason": "阿里旗下官方产品；稳定性待确认。"
         }
       },
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": false,
-      "action": "https://api.dreamfree.space/c/s/cpyqqodercn"
+      "action": "https://api.dreamfree.space/c/s/cpyqqodercn",
+      "supportsDomestic": true
     },
     {
       "slug": "qoder-intl",
@@ -627,10 +601,9 @@
           "reason": "官方客户端服务；稳定性待确认。"
         }
       },
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": false,
-      "action": "https://api.dreamfree.space/c/s/cpyqqoderintl"
+      "action": "https://api.dreamfree.space/c/s/cpyqqoderintl",
+      "supportsDomestic": true
     },
     {
       "slug": "workbuddy",
@@ -653,10 +626,9 @@
           "reason": "腾讯官方产品；稳定性待确认。"
         }
       },
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": false,
-      "action": "https://api.dreamfree.space/c/s/cpyqworkbuddy"
+      "action": "https://api.dreamfree.space/c/s/cpyqworkbuddy",
+      "supportsDomestic": true
     },
     {
       "slug": "trae-cn",
@@ -679,10 +651,9 @@
           "reason": "字节官方产品；高峰优先为套餐权益，不代表稳定性实测结果。"
         }
       },
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": false,
-      "action": "https://api.dreamfree.space/c/s/cpyqtraecn"
+      "action": "https://api.dreamfree.space/c/s/cpyqtraecn",
+      "supportsDomestic": true
     },
     {
       "slug": "trae-intl",
@@ -705,10 +676,9 @@
           "reason": "字节官方产品；存在地区限制，稳定性待确认。"
         }
       },
-      "requiresOverseasNetwork": true,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": false,
-      "action": "https://api.dreamfree.space/c/s/cpyqtraeintl"
+      "action": "https://api.dreamfree.space/c/s/cpyqtraeintl",
+      "supportsDomestic": false
     },
     {
       "slug": "github",
@@ -730,11 +700,10 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": true,
-      "requiresOverseasPayment": true,
       "supportsHarnessApi": false,
       "detail": "用量按模型Token价格与当前基础/Flex积分计算，部分老年付仍有过渡口径。",
-      "action": "https://api.dreamfree.space/c/s/cpyqghcopilot"
+      "action": "https://api.dreamfree.space/c/s/cpyqghcopilot",
+      "supportsDomestic": false
     },
     {
       "slug": "cursor",
@@ -757,10 +726,9 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": true,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": null,
-      "action": "https://api.dreamfree.space/c/s/cpyqcursor"
+      "action": "https://api.dreamfree.space/c/s/cpyqcursor",
+      "supportsDomestic": false
     },
     {
       "slug": "jd-cloud",
@@ -782,11 +750,10 @@
         }
       },
       "platformStatus": "delisted",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
       "detail": "2026-07-29起停止新购、续费和升级；存量套餐仅可使用至原有效期结束。",
-      "action": "https://api.dreamfree.space/c/s/cpyqjingdong"
+      "action": "https://api.dreamfree.space/c/s/cpyqjingdong",
+      "supportsDomestic": true
     },
     {
       "slug": "iflytek",
@@ -808,10 +775,9 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://api.dreamfree.space/c/s/cpyqxunfei"
+      "action": "https://api.dreamfree.space/c/s/cpyqxunfei",
+      "supportsDomestic": true
     },
     {
       "slug": "unicom-cloud",
@@ -833,11 +799,10 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
       "detail": "个人版标称月额度600万、1200万、1800万Tokens；团队版25000、100000、250000Credits。完整抵扣系数与Token计数细则未公开，实际Token参考用量待确认。",
-      "action": "https://api.dreamfree.space/c/s/cpyqunicomtp"
+      "action": "https://api.dreamfree.space/c/s/cpyqunicomtp",
+      "supportsDomestic": true
     },
     {
       "slug": "unicom-cloud-coding-legacy",
@@ -846,10 +811,9 @@
       "summary": "旧 Coding Plan 已下架，仅保留历史套餐信息。",
       "detail": "该产品线已下架，仅保留历史套餐信息供查询。",
       "platformStatus": "delisted",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
       "supportsHarnessApi": null,
-      "action": "https://api.dreamfree.space/c/s/cpyqunicomcp"
+      "action": "https://api.dreamfree.space/c/s/cpyqunicomcp",
+      "supportsDomestic": null
     },
     {
       "slug": "cmcc-cloud",
@@ -870,12 +834,11 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
       "summary": "移动云请求制订阅，当前M2.5；首月与续费券按活动资格区分。",
       "detail": "首次优惠每账号一次，两档互斥；续费券不是永久自动折扣。",
-      "action": "https://api.dreamfree.space/c/s/cpyqmobilecp"
+      "action": "https://api.dreamfree.space/c/s/cpyqmobilecp",
+      "supportsDomestic": true
     },
     {
       "slug": "stepfun",
@@ -896,12 +859,11 @@
         }
       },
       "platformStatus": "restricted",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
       "summary": "Step Plan按月Credits计费，支持Step5 Preview和Flash系列；每日限量，当前售罄。",
       "detail": "Step-5-Preview高峰时段消耗双倍Credits；具体Token抵扣未公开，后续放量时间未公布。",
-      "action": "https://api.dreamfree.space/c/s/cpyqstepfun"
+      "action": "https://api.dreamfree.space/c/s/cpyqstepfun",
+      "supportsDomestic": true
     },
     {
       "slug": "taotoken",
@@ -923,10 +885,9 @@
         }
       },
       "platformStatus": "restricted",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://api.dreamfree.space/c/s/cpyqtaotoken"
+      "action": "https://api.dreamfree.space/c/s/cpyqtaotoken",
+      "supportsDomestic": true
     },
     {
       "slug": "chaosuan",
@@ -948,11 +909,10 @@
         }
       },
       "platformStatus": "restricted",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
       "detail": "Coding Plan当前购买状态待确认；仅限本人在AI开发工具内交互使用，额度耗尽不会自动转按量。",
-      "action": "https://api.dreamfree.space/c/s/cpyqscnetcp"
+      "action": "https://api.dreamfree.space/c/s/cpyqscnetcp",
+      "supportsDomestic": true
     },
     {
       "slug": "sensetime",
@@ -973,12 +933,11 @@
         }
       },
       "platformStatus": "restricted",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
       "summary": "免费公测，SenseNova6.8 Flash Lite与U1 Fast，五小时60000积分。",
       "detail": "付费Lite/Pro尚未开放，特殊模型与精确Token换算待确认。",
-      "action": "https://api.dreamfree.space/c/s/cpyqsensenova"
+      "action": "https://api.dreamfree.space/c/s/cpyqsensenova",
+      "supportsDomestic": true
     },
     {
       "slug": "moorethreads",
@@ -999,11 +958,10 @@
         }
       },
       "platformStatus": "restricted",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
       "summary": "KUAE Coding Plan当前GLM4.7；免费试用30天，付费套餐经官方京东入口销售。",
-      "action": "https://api.dreamfree.space/c/s/cpyqmoorefree"
+      "action": "https://api.dreamfree.space/c/s/cpyqmoorefree",
+      "supportsDomestic": true
     },
     {
       "slug": "infrafun",
@@ -1024,12 +982,11 @@
         }
       },
       "platformStatus": "delisted",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
       "supportsHarnessApi": true,
       "summary": "已停止向个人用户提供服务，企业体验按官方联系方式办理。",
       "detail": "个人套餐已停售，不再提供个人服务。",
-      "action": "https://api.dreamfree.space/c/s/cpyqinfini"
+      "action": "https://api.dreamfree.space/c/s/cpyqinfini",
+      "supportsDomestic": null
     },
     {
       "slug": "ctyun-glm",
@@ -1050,12 +1007,11 @@
         }
       },
       "platformStatus": "delisted",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
       "supportsHarnessApi": true,
       "summary": "历史 GLM 请求制套餐已下架，仅保留旧套餐信息。",
       "detail": "GLM Lite、Pro、Max 为历史请求制套餐，官方以 prompt 计数。",
-      "action": "https://api.dreamfree.space/c/s/cpyqctyun"
+      "action": "https://api.dreamfree.space/c/s/cpyqctyun",
+      "supportsDomestic": null
     },
     {
       "slug": "ctyun",
@@ -1076,12 +1032,11 @@
         }
       },
       "platformStatus": "delisted",
-      "requiresOverseasNetwork": null,
-      "requiresOverseasPayment": null,
       "supportsHarnessApi": true,
       "summary": "旧 Token 制仅允许存量用户在订购周期内续订，新购 Credits 产品另列。",
       "detail": "保留五档存量 Token 续订套餐及官方月 Token 额度；GLM 请求制旧套餐另列。",
-      "action": "https://api.dreamfree.space/c/s/cpyqctyun"
+      "action": "https://api.dreamfree.space/c/s/cpyqctyun",
+      "supportsDomestic": null
     },
     {
       "slug": "tencent-cloud-hy",
@@ -1103,10 +1058,9 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://api.dreamfree.space/c/s/cpyqtengxunt"
+      "action": "https://api.dreamfree.space/c/s/cpyqtengxunt",
+      "supportsDomestic": true
     },
     {
       "slug": "baidu-qianfan-credits",
@@ -1128,10 +1082,9 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://api.dreamfree.space/c/s/cpyqqianfan"
+      "action": "https://api.dreamfree.space/c/s/cpyqqianfan",
+      "supportsDomestic": true
     },
     {
       "slug": "ctyun-token",
@@ -1152,11 +1105,10 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
       "summary": "2026-09-23启用积分制；旧Token制仅周期内用户可续订。",
-      "action": "https://api.dreamfree.space/c/s/cpyqctyun"
+      "action": "https://api.dreamfree.space/c/s/cpyqctyun",
+      "supportsDomestic": true
     },
     {
       "slug": "jd-cloud-token",
@@ -1178,10 +1130,9 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://api.dreamfree.space/c/s/cpyqjingdongtp"
+      "action": "https://api.dreamfree.space/c/s/cpyqjingdongtp",
+      "supportsDomestic": true
     },
     {
       "slug": "taotoken-token",
@@ -1203,10 +1154,9 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://api.dreamfree.space/c/s/cpyqtaotoken"
+      "action": "https://api.dreamfree.space/c/s/cpyqtaotoken",
+      "supportsDomestic": true
     },
     {
       "slug": "chaosuan-token",
@@ -1228,10 +1178,9 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://api.dreamfree.space/c/s/cpyqchaosuantp"
+      "action": "https://api.dreamfree.space/c/s/cpyqchaosuantp",
+      "supportsDomestic": true
     },
     {
       "slug": "iflytek-token",
@@ -1253,11 +1202,10 @@
         }
       },
       "platformStatus": "open",
-      "requiresOverseasNetwork": false,
-      "requiresOverseasPayment": false,
       "supportsHarnessApi": true,
-      "action": "https://api.dreamfree.space/c/s/cpyqxunfei"
+      "action": "https://api.dreamfree.space/c/s/cpyqxunfei",
+      "supportsDomestic": true
     }
   ],
-  "contentVersion": "2026-11-01T08:49:36.566Z"
+  "contentVersion": "2026-11-03T03:53:08.656Z"
 }

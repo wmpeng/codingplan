@@ -29,13 +29,11 @@
   });
 
   const STATUS_RANK = { open: 0, restricted: 1, delisted: 2 };
-  // 选购筛选口径：中国模型系列及 Grok；新系列在此集中维护，不给型号添加地域标签。
-  const MAINLAND_MODEL_SERIES = /^(?:deepseek-|doubao-|ernie-|glm-|hy(?:\d|[-])|kimi-|ling-|longcat-|mimo-|minimax-|qwen(?:\d|[-])|sensenova-|spark-|step-|grok-)/;
-  function isMainlandModel(slug) {
-    return typeof slug === 'string' && MAINLAND_MODEL_SERIES.test(slug);
+  function isMainlandModel(model) {
+    return model?.supportsDomestic === true;
   }
   function isMainlandPlatform(platform) {
-    return platform?.requiresOverseasNetwork === false && platform?.requiresOverseasPayment === false;
+    return platform?.supportsDomestic === true;
   }
   // Keep existing in-session filters usable after the two middle states merge.
   const normalizeStatus = status => status === 'limited' || status === 'paused' ? 'restricted' : status;
@@ -94,6 +92,8 @@
       modelMatch: input.modelMatch === 'all' ? 'all' : 'any',
       apiOnly: input.apiOnly === true,
       harnessApiRequired: input.harnessApiRequired === true,
+      usageEntry: ['codex', 'claude-code', 'third-party', 'program'].includes(input.usageEntry) ? input.usageEntry : 'any',
+      priorities: Array.isArray(input.priorities) ? [...new Set(input.priorities.filter(key => ['balanced', 'volume', 'cost', 'quality'].includes(key)))] : [input.preference === 'variety' ? 'quality' : ['cost', 'quality'].includes(input.preference) ? input.preference : 'balanced'],
       mainlandRequired: input.mainlandRequired === true,
       modelGroup: ['sota-models', 'high-volume-models'].includes(input.modelGroup) ? input.modelGroup : 'any',
       imageRequired: input.imageRequired === true,
@@ -164,6 +164,7 @@
       if (!pricing) state.mainlandRequired = false;
       if (plansPage) state.apiOnly = false;
       else state.harnessApiRequired = false;
+      if (full) state.usageEntry = 'any';
       if (platformHub) {
         state.platformSlugs = null;
         state.includeDiscontinued = false;
@@ -213,6 +214,12 @@
       return Number.isFinite(factor) && factor > 0 ? number * factor : null;
     }
     return null;
+  }
+
+  // Public firstMonthPrice is already resolved by the generator. Never infer a
+  // subscription fee from another billing period or treat API prices as fees.
+  function firstMonthCost(plan, rate) {
+    return plan?.billingMode === 'payg' ? null : toCny(plan?.firstMonthPrice, plan?.currency, rate);
   }
 
   function inRange(value, range) {
@@ -314,8 +321,7 @@
       if (!current.planStatusOnly && platform && !platformStatusMatches(platform, current)) return false;
       if (current.harnessApiRequired && EntityData.resolveHarnessApi(platform, plan) !== true) return false;
       if (!monthlyPlanMatches(plan, current, opts.context)) return false;
-      const monthly = toCny(plan.monthlyPrice, plan.currency, rate);
-      if (!inRange(monthly, current.budgetCny)) return false;
+      if (plan.billingMode !== 'payg' && !inRange(firstMonthCost(plan, rate), current.budgetCny)) return false;
       for (const [key, range] of Object.entries(current.priceRanges)) {
         if (!inRange(toCny(plan[key], plan.currency, rate), range)) return false;
       }
@@ -342,8 +348,7 @@
     return (platforms || []).filter(platform => {
       if (!selectedMatch(platform.slug, current.platformSlugs)) return false;
       if (!platformStatusMatches(platform, current)) return false;
-      if (current.domesticNetworkOnly && platform.requiresOverseasNetwork !== false) return false;
-      if (current.domesticPaymentOnly && platform.requiresOverseasPayment !== false) return false;
+      if ((current.domesticNetworkOnly || current.domesticPaymentOnly) && !isMainlandPlatform(platform)) return false;
       if (opts.context && opts.entityData && current.modelSlugs !== null) {
         const models = typeof opts.entityData.platformModels === 'function'
           ? opts.entityData.platformModels(opts.context, platform.slug)
@@ -366,7 +371,8 @@
     const opts = options || {};
     const rate = opts.usdToCnyRate;
     const mainlandMatches = point => !current.mainlandRequired || (
-      isMainlandPlatform(opts.context?.platformBySlug?.get(point.platformSlug) || point) && isMainlandModel(point.modelSlug)
+      isMainlandPlatform(opts.context?.platformBySlug?.get(point.platformSlug) || point) &&
+      isMainlandModel(opts.context?.modelBySlug?.get(point.modelSlug))
     );
     if (opts.context && Array.isArray(opts.context.plans)) {
       const ids = new Set(matchingOffers(opts.context, current, opts).flatMap(offer => offer.rows.map(row => row.slug)));
@@ -399,7 +405,8 @@
         const available = modelGroups.get(key) || new Set();
         if (!current.modelSlugs.length || !current.modelSlugs.every(slug => available.has(slug))) return false;
       }
-      if ((current.imageRequired || current.multimodal === 'multimodal') && !EntityData.isMultimodal(point)) return false;
+      if (current.imageRequired && !EntityData.supportsImageInput(point)) return false;
+      if (current.multimodal === 'multimodal' && !EntityData.isMultimodal(point)) return false;
       if (current.multimodal === 'text' && point.multimodal !== false) return false;
       if (!scoreAtLeast(point, 'artificialAnalysis', current.aaScoreMin)) return false;
       if (!scoreAtLeast(point, 'deepSWE', current.deepSWEScoreMin)) return false;
@@ -429,6 +436,21 @@
   }
 
   // All eligibility conditions are evaluated on the same plan and model relation.
+  // Confirmed routes only. Generic Harness support does not prove named-tool compatibility.
+  // Evidence and expansion rules: purchase-guide.md, 使用方式.
+  function toolCompatibility(platform, plan, entry) {
+    if (!entry || entry === 'any') return true;
+    if (entry === 'program') return plan.billingMode === 'payg';
+    const harness = EntityData.resolveHarnessApi(platform, plan);
+    if (entry === 'third-party') return harness;
+    if ((entry === 'codex' && platform.slug === 'codex') ||
+        (entry === 'claude-code' && platform.slug === 'claude')) return true;
+    if (harness === false) return false;
+    if (harness === true && ((platform.slug === 'minimax' && plan.billingMode === 'subscription') ||
+        (platform.slug === 'deepseek-official' && plan.billingMode === 'payg'))) return true;
+    return null;
+  }
+
   function matchingOffers(context, state, options) {
     const s = normalizeState(state), opts = options || {};
     const selectedGroup = (context.modelGroups || []).find(group => group.id === s.modelGroup);
@@ -440,28 +462,30 @@
       if (!selectedMatch(platform.slug, s.platformSlugs)) continue;
       if (!s.planStatusOnly && !platformStatusMatches(platform, s)) continue;
       if (s.mainlandRequired && !isMainlandPlatform(platform)) continue;
-      if (s.domesticNetworkOnly && platform.requiresOverseasNetwork !== false) continue;
-      if (s.domesticPaymentOnly && platform.requiresOverseasPayment !== false) continue;
+      if ((s.domesticNetworkOnly || s.domesticPaymentOnly) && !isMainlandPlatform(platform)) continue;
       const supportsHarnessApi = EntityData.resolveHarnessApi(platform, plan);
+      const toolSupport = toolCompatibility(platform, plan, s.usageEntry);
+      if (toolSupport !== true && !(opts.allowUnconfirmedTool && toolSupport === null)) continue;
       if (s.harnessApiRequired && supportsHarnessApi !== true) continue;
       if (s.apiOnly && plan.billingMode !== 'payg') continue;
-      const monthlyCost = toCny(plan.monthlyPrice, plan.currency, opts.usdToCnyRate);
-      if (plan.billingMode !== 'payg' && !inRange(monthlyCost, s.budgetCny)) continue;
+      const subscriptionCost = firstMonthCost(plan, opts.usdToCnyRate);
+      if (plan.billingMode !== 'payg' && !inRange(subscriptionCost, s.budgetCny) && !(opts.allowUnknown && subscriptionCost===null)) continue;
       if (plan.billingMode !== 'payg' && Object.entries(s.priceRanges).some(([key, range]) => !inRange(toCny(plan[key], plan.currency, opts.usdToCnyRate), range))) continue;
       if (Object.entries(s.requestRanges).some(([key, range]) => !tokenInRange(plan.requestQuota?.[key], range))) continue;
       const rows = (context.relationsByPlanSlug.get(plan.slug) || []).filter(row => {
         const model = context.modelBySlug.get(row.modelSlug);
         if (!model || !selectedMatch(model.slug, s.modelSlugs)) return false;
-        if (s.mainlandRequired && !isMainlandModel(model.slug)) return false;
+        if (s.mainlandRequired && !isMainlandModel(model)) return false;
         if (s.modelGroup !== 'any' && (!selectedGroup || !selectedGroup.modelSlugs.includes(model.slug))) return false;
-        if ((s.imageRequired || s.multimodal === 'multimodal') && !EntityData.isMultimodal(model)) return false;
+        if (s.imageRequired && !EntityData.supportsImageInput(model)) return false;
+        if (s.multimodal === 'multimodal' && !EntityData.isMultimodal(model)) return false;
         if (s.multimodal === 'text' && model.multimodal !== false) return false;
         if (!scoreAtLeast(model, 'artificialAnalysis', s.aaScoreMin) || !scoreAtLeast(model, 'deepSWE', s.deepSWEScoreMin)) return false;
-        if (plan.billingMode === 'payg') return !(s.monthlyTokenRange && s.budgetCny) || inRange(apiCost(row, s), s.budgetCny);
-        return !s.monthlyTokenRange || tokenInRange(row.usage && row.usage.monthlyTokenInM, s.monthlyTokenRange);
+        if (plan.billingMode === 'payg') return !(s.monthlyTokenRange && s.budgetCny) || inRange(apiCost(row, s), s.budgetCny) || (opts.allowUnknown && apiCost(row,s)===null);
+        return !s.monthlyTokenRange || tokenInRange(row.usage && row.usage.monthlyTokenInM, s.monthlyTokenRange) || (opts.allowUnknown && (row.usage?.monthlyTokenInM==null || row.usage.monthlyTokenInM==='unknown'));
       });
       if (!rows.length || (s.modelMatch === 'all' && s.modelSlugs?.length && !s.modelSlugs.every(slug => rows.some(row => row.modelSlug === slug)))) continue;
-      offers.push({ plan, platform, rows, monthlyCost, supportsHarnessApi });
+      offers.push({ plan, platform, rows, firstMonthCost:subscriptionCost, supportsHarnessApi, toolSupport });
     }
     return offers;
   }
@@ -502,6 +526,7 @@
     createViewPolicy, createFeaturedState,
     catalogModelSelection,
     toCny,
+    firstMonthCost,
     inRange,
     modelMatch,
     formatMonthlyTokens,
@@ -510,6 +535,7 @@
     filterPlatforms,
     filterPoints,
     matchingOffers,
+    toolCompatibility,
     targetTokens,
     apiCost,
     validateDefaults,

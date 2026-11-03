@@ -65,7 +65,7 @@ test('包含下架平台且无套餐条件时可浏览完整目录，全选模�
 test('平台本身的状态、境内条件、搜索和模型匹配仍独立生效', () => {
   const history = {...state, platformStatusMax:'delisted'};
   const domestic = Hub.select(platforms,{...history,domesticNetworkOnly:true,domesticPaymentOnly:true},options);
-  assert.deepEqual(new Set(domestic.visible.map(p=>p.slug)),new Set(platforms.filter(p=>p.requiresOverseasNetwork===false && p.requiresOverseasPayment===false).map(p=>p.slug)));
+  assert.deepEqual(new Set(domestic.visible.map(p=>p.slug)),new Set(platforms.filter(p=>p.supportsDomestic===true).map(p=>p.slug)));
   const available = Hub.select(platforms,{...history,excludedPlatformStatuses:['restricted']},options);
   assert.ok(available.visible.every(p=>p.platformStatus!=='restricted'));
   const target = platforms.find(p=>p.platformStatus==='delisted');
@@ -80,9 +80,9 @@ test('无套餐平台可浏览，预算、用量及组合条件只接受同一�
     {slug:'active',platformStatus:'open'}, {slug:'history',platformStatus:'restricted'},
     {slug:'retired',platformStatus:'delisted'}, {slug:'empty',platformStatus:'open'}
   ]},{schemaVersion:3,plans:[
-    {slug:'cheap',platformSlug:'active',planStatus:'open',billingMode:'subscription',monthlyPrice:20,currency:'CNY',planModels:[{slug:'cheap-model',modelSlug:'m',usage:{monthlyTokenInM:10}}]},
-    {slug:'large',platformSlug:'active',planStatus:'open',billingMode:'subscription',monthlyPrice:100,currency:'CNY',planModels:[{slug:'large-model',modelSlug:'n',usage:{monthlyTokenInM:1000}}]},
-    ...['history','retired'].map(slug=>({slug,platformSlug:slug,planStatus:'delisted',billingMode:'subscription',monthlyPrice:0,currency:'CNY',planModels:[{slug:slug+'-model',modelSlug:'m',usage:{monthlyTokenInM:1000}}]}))
+    {slug:'cheap',platformSlug:'active',planStatus:'open',billingMode:'subscription',firstMonthPrice:20, monthlyPrice:20,currency:'CNY',planModels:[{slug:'cheap-model',modelSlug:'m',usage:{monthlyTokenInM:10}}]},
+    {slug:'large',platformSlug:'active',planStatus:'open',billingMode:'subscription',firstMonthPrice:100, monthlyPrice:100,currency:'CNY',planModels:[{slug:'large-model',modelSlug:'n',usage:{monthlyTokenInM:1000}}]},
+    ...['history','retired'].map(slug=>({slug,platformSlug:slug,planStatus:'delisted',billingMode:'subscription',firstMonthPrice:0, monthlyPrice:0,currency:'CNY',planModels:[{slug:slug+'-model',modelSlug:'m',usage:{monthlyTokenInM:1000}}]}))
   ]},{schemaVersion:1,models:[{slug:'m'},{slug:'n'}]});
   const opts={filterOptions:{context:fixture,entityData:Entity}},input={...state,platformStatusMax:'delisted',includeDiscontinued:true};
   assert.equal(Hub.select(fixture.platforms,input,opts).matchedCount,4);

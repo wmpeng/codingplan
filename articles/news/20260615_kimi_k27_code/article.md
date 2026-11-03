@@ -131,7 +131,7 @@ K2.7 Code 继续支持 **图像 + 视频**输入（**Kimi 官方 API** 完整支
 **推荐搭配**：
 
 - 官方 **Kimi Code CLI**（`https://www.kimi.com/code`）；
-- 第三方：**Claude Code、Roo Code、OpenCode、OpenClaw** 等，通过 Kimi Code 会员 API Key 接入。
+- 其他智能体框架：**Claude Code、Roo Code、OpenCode、OpenClaw** 等，通过 Kimi Code 会员 API Key 接入。
 
 开放平台 Base URL：`https://api.moonshot.cn/v1`；Kimi Code 订阅端点为 `https://api.kimi.com/coding/v1`（OpenAI 兼容）。
 

@@ -1,12 +1,15 @@
 (function (root) {
   "use strict";
   function bindSelectionHelp(host) {
-    const helpSelector = '[data-multimodal-help], [data-platform-help]';
+    const helpSelector = '[data-multimodal-help], [data-model-mainland-help], [data-platform-help]';
     const wrapSelector = '.model-multimodal-help, .platform-shortcut-help';
     const triggers = () => [...host.querySelectorAll(helpSelector)];
     let closeTimer = null;
     const cancelClose = () => { root.clearTimeout(closeTimer); closeTimer = null; };
     const show = (button, visible) => {
+      if (visible) triggers().filter(other => other !== button && other.getAttribute('aria-expanded') === 'true').forEach(other => {
+        delete other.dataset.pinned; show(other, false);
+      });
       button.setAttribute('aria-expanded', String(visible));
       const tooltip = document.getElementById(button.getAttribute('aria-controls'));
       if (!tooltip) return;

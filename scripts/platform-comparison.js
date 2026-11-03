@@ -486,7 +486,7 @@
             <span class="platform-comparison-select-card-label">候选 ${index + 1}</span>
             <span class="platform-comparison-select-card-rating">${platform && platform.rating ? `${platform.rating}/5` : '待评定'}</span>
           </div>
-          <select data-comparison-slot="${index}" aria-label="替换候选 ${index + 1}">${options}</select>
+          <select data-custom-select data-comparison-slot="${index}" aria-label="替换候选 ${index + 1}">${options}</select>
         </div>`;
     }).join('');
   }
@@ -565,6 +565,7 @@
           </section>`).join('');
       }
 
+      let selectionControls;
       function render() {
         const views = selectedIds
           .map((id) => platforms.find((platform) => platform.slug === id))
@@ -572,7 +573,9 @@
           .map((platform) => buildPlatformView(platform, context));
         const columnCount = Math.max(2, selectedIds.length);
         document.documentElement.style.setProperty('--comparison-columns', String(columnCount));
+        selectionControls?.destroy();
         selectionEl.innerHTML = renderSelectionCards(platforms, selectedIds);
+        selectionControls = globalThis.CodingPlanSingleSelect.mountAll(selectionEl);
         summaryEl.innerHTML = renderSummary(views);
         renderMatrix();
       }
@@ -610,6 +613,8 @@
         const next = selectedIds.slice();
         next[index] = select.value;
         setSelection(next);
+        const replacement = selectionEl.querySelector(`[data-comparison-slot="${index}"]`);
+        globalThis.CodingPlanSingleSelect.mount(replacement,replacement.getAttribute('aria-label'),{showLabel:false}).focus();
       });
       matrixEl.addEventListener('click', (event) => {
         const button = event.target.closest('[data-metric-pin]');

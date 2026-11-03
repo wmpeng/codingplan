@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-01T08:52:45Z",
+  "generatedAt": "2026-11-03T04:04:47Z",
   "benchmarks": {
     "artificialAnalysis": {
       "name": "Artificial Analysis Intelligence Index",
@@ -88,7 +88,8 @@
           "confidenceUpperExact": 9.131732148626682
         }
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "claude-fable-5-1",
@@ -131,7 +132,8 @@
           "confidenceUpperExact": 15.2451561328594
         }
       },
-      "tokenConsumptionRate": 1.1284201882108453
+      "tokenConsumptionRate": 1.1284201882108453,
+      "supportsDomestic": false
     },
     {
       "slug": "claude-haiku-4-5",
@@ -158,7 +160,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "claude-opus-4-5",
@@ -185,7 +188,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "claude-opus-4-6",
@@ -212,7 +216,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "claude-opus-4-7",
@@ -239,7 +244,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "claude-opus-4-8",
@@ -274,7 +280,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "claude-opus-5",
@@ -318,7 +325,8 @@
           "confidenceUpperExact": 8.784212092177787
         }
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "claude-sonnet-4-5",
@@ -345,7 +353,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "claude-sonnet-4-6",
@@ -380,7 +389,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "claude-sonnet-5",
@@ -424,7 +434,8 @@
           "confidenceUpperExact": 4.112943218473521
         }
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "deepseek-v3-2",
@@ -450,7 +461,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "deepseek-v4-1-flash",
@@ -477,7 +489,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "deepseek-v4-flash-0731",
@@ -511,7 +524,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "deepseek-v4-flash-fast",
@@ -524,7 +538,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "deepseek-v4-flash-vision-exp",
@@ -551,7 +566,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "deepseek-v4-preview",
@@ -564,7 +580,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "deepseek-v4-pro-0813",
@@ -607,7 +624,8 @@
           "confidenceUpperExact": 1.4004687115941903
         }
       },
-      "tokenConsumptionRate": 0.9446419833271132
+      "tokenConsumptionRate": 0.9446419833271132,
+      "supportsDomestic": true
     },
     {
       "slug": "deepseek-v4-pro-preview",
@@ -633,7 +651,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "doubao-seed-2-0-lite",
@@ -655,7 +674,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "doubao-seed-2-0-mini",
@@ -677,7 +697,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "doubao-seed-2-0",
@@ -690,7 +711,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "doubao-seed-2-1-turbo",
@@ -712,7 +734,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "doubao-seed-2-1-pro",
@@ -734,7 +757,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "doubao-seed-code",
@@ -761,7 +785,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "doubao-seed-evolving",
@@ -783,7 +808,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "doubao-seedance-2-0",
@@ -807,7 +833,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "doubao-seedream-5-0-lite",
@@ -828,7 +855,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "ernie-5-1",
@@ -841,7 +869,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "fugu-ultra",
@@ -862,7 +891,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "gemini-3-1-pro",
@@ -908,7 +938,8 @@
           "confidenceUpperExact": -3.1207862772190342
         }
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "gemini-3-flash-preview",
@@ -937,7 +968,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "gemini-3-1-flash-lite",
@@ -966,7 +998,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "gemini-3-5-flash",
@@ -1003,7 +1036,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "gemini-3-5-flash-lite",
@@ -1032,7 +1066,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": 0.2899070600160308
+      "tokenConsumptionRate": 0.2899070600160308,
+      "supportsDomestic": false
     },
     {
       "slug": "gemini-3-6-flash",
@@ -1069,7 +1104,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "gemini-3-7-flash",
@@ -1115,7 +1151,8 @@
           "confidenceUpperExact": -0.48597609259029945
         }
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "gemini-3-8-flash",
@@ -1168,7 +1205,8 @@
           "confidenceUpperExact": 3.4667991862634904
         }
       },
-      "tokenConsumptionRate": 0.9466208001753362
+      "tokenConsumptionRate": 0.9466208001753362,
+      "supportsDomestic": false
     },
     {
       "slug": "glm-4-7",
@@ -1194,7 +1232,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "glm-5",
@@ -1220,7 +1259,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "glm-5-turbo",
@@ -1246,7 +1286,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "glm-5-1",
@@ -1272,7 +1313,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "glm-5-2",
@@ -1315,7 +1357,8 @@
           "confidenceUpperExact": 2.0207177827115848
         }
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "glm-5-2-fast",
@@ -1328,7 +1371,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "glm-5-3",
@@ -1371,7 +1415,8 @@
           "confidenceUpperExact": 1.6846258195270067
         }
       },
-      "tokenConsumptionRate": 1.1384238289361353
+      "tokenConsumptionRate": 1.1384238289361353,
+      "supportsDomestic": true
     },
     {
       "slug": "glm-5-3-flash",
@@ -1422,7 +1467,8 @@
           "confidenceUpperExact": -1.655625972704194
         }
       },
-      "tokenConsumptionRate": 1.284028682186962
+      "tokenConsumptionRate": 1.284028682186962,
+      "supportsDomestic": true
     },
     {
       "slug": "glm-5v-turbo",
@@ -1450,7 +1496,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "gpt-4-1",
@@ -1477,7 +1524,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "gpt-4o",
@@ -1504,7 +1552,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "gpt-6-astra",
@@ -1555,7 +1604,8 @@
           "confidenceUpperExact": 14.977720830238942
         }
       },
-      "tokenConsumptionRate": 0.497262511046097
+      "tokenConsumptionRate": 0.497262511046097,
+      "supportsDomestic": false
     },
     {
       "slug": "gpt-6-sol",
@@ -1591,7 +1641,8 @@
           "confidenceUpperExact": 9.58680337513712
         }
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "gpt-6-luna",
@@ -1634,7 +1685,8 @@
           "confidenceUpperExact": 2.636386434918358
         }
       },
-      "tokenConsumptionRate": 0.720407918091987
+      "tokenConsumptionRate": 0.720407918091987,
+      "supportsDomestic": false
     },
     {
       "slug": "gpt-5-mini",
@@ -1661,7 +1713,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "gpt-5-2",
@@ -1688,7 +1741,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "gpt-5-2-codex",
@@ -1715,7 +1769,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "gpt-5-3-codex",
@@ -1742,7 +1797,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "gpt-5-4",
@@ -1777,7 +1833,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "gpt-5-4-mini",
@@ -1804,7 +1861,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "gpt-5-5",
@@ -1839,7 +1897,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "gpt-5-6",
@@ -1852,7 +1911,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "gpt-5-6-luna",
@@ -1887,7 +1947,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "gpt-5-6-sol",
@@ -1931,7 +1992,8 @@
           "confidenceUpperExact": 5.821762317549571
         }
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "gpt-5-6-terra",
@@ -1982,7 +2044,8 @@
           "confidenceUpperExact": -0.6087017166444297
         }
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "gpt-image-2-0",
@@ -2003,7 +2066,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "grok-code-fast-1",
@@ -2029,7 +2093,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "grok-4-5",
@@ -2064,7 +2129,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "grok-4-6",
@@ -2115,7 +2181,8 @@
           "confidenceUpperExact": 1.620951114423716
         }
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "hy-2-0",
@@ -2128,7 +2195,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "hy3",
@@ -2163,7 +2231,8 @@
           "confidenceUpperExact": -5.870742166441339
         }
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "hy4-preview",
@@ -2192,7 +2261,8 @@
           "confidenceUpperExact": 1.8983637662844732
         }
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "inkling",
@@ -2236,7 +2306,8 @@
           "confidenceUpperExact": -14.335722957816316
         }
       },
-      "tokenConsumptionRate": 0.490397441878416
+      "tokenConsumptionRate": 0.490397441878416,
+      "supportsDomestic": false
     },
     {
       "slug": "inkling-small",
@@ -2273,7 +2344,8 @@
           "confidenceUpperExact": -15.17540212172173
         }
       },
-      "tokenConsumptionRate": 0.35130234947686795
+      "tokenConsumptionRate": 0.35130234947686795,
+      "supportsDomestic": false
     },
     {
       "slug": "kimi-k2",
@@ -2299,7 +2371,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "kimi-k2-5",
@@ -2327,7 +2400,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "kimi-k2-6",
@@ -2355,7 +2429,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "kimi-k2-6-code",
@@ -2368,7 +2443,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "kimi-k2-7-code",
@@ -2404,7 +2480,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "kimi-k2-7-code-highspeed",
@@ -2426,7 +2503,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "kimi-k3",
@@ -2477,7 +2555,8 @@
           "confidenceUpperExact": 1.6470929948953474
         }
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "kimi-k3-1-pro",
@@ -2521,7 +2600,8 @@
           "confidenceUpperExact": 7.54395779512299
         }
       },
-      "tokenConsumptionRate": 0.691158759517435
+      "tokenConsumptionRate": 0.691158759517435,
+      "supportsDomestic": true
     },
     {
       "slug": "laguna-s-2-1",
@@ -2541,7 +2621,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "ling-3-0-flash",
@@ -2567,7 +2648,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "ling-3-0-flash-sante",
@@ -2587,7 +2669,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "longcat-2-0",
@@ -2613,7 +2696,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "mimo-v2-omni",
@@ -2640,7 +2724,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "mimo-v2-pro",
@@ -2666,7 +2751,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "mimo-v2-6-flash",
@@ -2702,7 +2788,8 @@
           "confidenceUpperExact": 2.146996125819688
         }
       },
-      "tokenConsumptionRate": 1.2610787091171611
+      "tokenConsumptionRate": 1.2610787091171611,
+      "supportsDomestic": true
     },
     {
       "slug": "mimo-v2-6-pro",
@@ -2747,7 +2834,8 @@
           "confidenceUpperExact": 3.640214178042114
         }
       },
-      "tokenConsumptionRate": 1.1583879719885328
+      "tokenConsumptionRate": 1.1583879719885328,
+      "supportsDomestic": true
     },
     {
       "slug": "mimo-v2-5",
@@ -2774,7 +2862,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "mimo-v2-5-pro",
@@ -2809,7 +2898,8 @@
           "confidenceUpperExact": -7.925136744145381
         }
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "mimo-v2-5-tts",
@@ -2829,7 +2919,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "minimax-m2-5",
@@ -2855,7 +2946,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "minimax-m2-7",
@@ -2881,7 +2973,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "minimax-m3",
@@ -2918,7 +3011,8 @@
           "confidenceUpperExact": -8.976331288705662
         }
       },
-      "tokenConsumptionRate": 0.8749787556841074
+      "tokenConsumptionRate": 0.8749787556841074,
+      "supportsDomestic": true
     },
     {
       "slug": "muse-spark-1-1",
@@ -2964,7 +3058,8 @@
           "confidenceUpperExact": -7.014942946768818
         }
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "muse-spark-1-2",
@@ -3010,7 +3105,8 @@
           "confidenceUpperExact": -6.695311378217086
         }
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "muse-spark-1-3",
@@ -3054,7 +3150,8 @@
           "confidenceUpperExact": 3.409046439930553
         }
       },
-      "tokenConsumptionRate": 0.8717472532447783
+      "tokenConsumptionRate": 0.8717472532447783,
+      "supportsDomestic": false
     },
     {
       "slug": "nemotron-3-ultra",
@@ -3089,7 +3186,8 @@
           "confidenceUpperExact": -12.47566201063261
         }
       },
-      "tokenConsumptionRate": 0.4924252457012755
+      "tokenConsumptionRate": 0.4924252457012755,
+      "supportsDomestic": false
     },
     {
       "slug": "qwen-3-235b-a22b",
@@ -3115,7 +3213,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "qwen-3-coder",
@@ -3128,7 +3227,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "qwen-3-coder-next",
@@ -3154,7 +3254,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "qwen-3-coder-plus",
@@ -3167,7 +3268,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "qwen-3-max-2026-01-23",
@@ -3180,7 +3282,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "qwen-3-5",
@@ -3193,7 +3296,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "qwen-3-5-plus",
@@ -3215,7 +3319,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "qwen-3-6-flash",
@@ -3237,7 +3342,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "qwen-3-6-max-preview",
@@ -3263,7 +3369,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "qwen-3-6-plus",
@@ -3291,7 +3398,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "qwen-3-7-flash",
@@ -3313,7 +3421,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "qwen-3-7-max",
@@ -3348,7 +3457,8 @@
           "confidenceUpperExact": -5.401364446856214
         }
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "qwen-3-7-plus",
@@ -3385,7 +3495,8 @@
           "confidenceUpperExact": -5.66002290694287
         }
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "qwen-3-8-27b",
@@ -3429,7 +3540,8 @@
           "confidenceUpperExact": -3.642853170173936
         }
       },
-      "tokenConsumptionRate": 1.0505507494325141
+      "tokenConsumptionRate": 1.0505507494325141,
+      "supportsDomestic": true
     },
     {
       "slug": "qwen-3-8-flash-next",
@@ -3466,7 +3578,8 @@
           "confidenceUpperExact": -3.3040921630766973
         }
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "qwen-3-8-max",
@@ -3518,7 +3631,8 @@
           "confidenceUpperExact": 1.0898229351017983
         }
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "qwen-3-8-max-0902",
@@ -3545,7 +3659,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": 1.634100571960911
+      "tokenConsumptionRate": 1.634100571960911,
+      "supportsDomestic": true
     },
     {
       "slug": "qwen3-6-35b-a3b",
@@ -3573,7 +3688,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "sensenova-6-7-flash-lite",
@@ -3586,7 +3702,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "sensenova-u1-fast",
@@ -3606,7 +3723,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "step-3-5-flash",
@@ -3619,7 +3737,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "step-3-5-flash-2603",
@@ -3645,7 +3764,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "step-3-7-flash",
@@ -3672,7 +3792,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "step-router-v1",
@@ -3685,7 +3806,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "hy-t1",
@@ -3698,7 +3820,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "gpt-6-1-sol",
@@ -3741,7 +3864,8 @@
           "confidenceUpperExact": 13.542917222205169
         }
       },
-      "tokenConsumptionRate": 0.6489148239121104
+      "tokenConsumptionRate": 0.6489148239121104,
+      "supportsDomestic": false
     },
     {
       "slug": "gpt-6-1-terra",
@@ -3784,7 +3908,8 @@
           "confidenceUpperExact": 12.534907819621036
         }
       },
-      "tokenConsumptionRate": 0.5729424673380608
+      "tokenConsumptionRate": 0.5729424673380608,
+      "supportsDomestic": false
     },
     {
       "slug": "claude-opus-5-5",
@@ -3827,7 +3952,8 @@
           "confidenceUpperExact": 23.091155231906036
         }
       },
-      "tokenConsumptionRate": 1.6581984501839475
+      "tokenConsumptionRate": 1.6581984501839475,
+      "supportsDomestic": false
     },
     {
       "slug": "claude-sonnet-5-5",
@@ -3870,7 +3996,8 @@
           "confidenceUpperExact": 16.487945965247526
         }
       },
-      "tokenConsumptionRate": 2.730490241118286
+      "tokenConsumptionRate": 2.730490241118286,
+      "supportsDomestic": false
     },
     {
       "slug": "claude-haiku-5-5",
@@ -3913,7 +4040,8 @@
           "confidenceUpperExact": 2.482688708113514
         }
       },
-      "tokenConsumptionRate": 2.161968144201505
+      "tokenConsumptionRate": 2.161968144201505,
+      "supportsDomestic": false
     },
     {
       "slug": "kimi-k2-8-preview",
@@ -3935,7 +4063,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": 0.829390511420922
+      "tokenConsumptionRate": 0.829390511420922,
+      "supportsDomestic": true
     },
     {
       "slug": "step-5-preview",
@@ -3978,7 +4107,8 @@
           "confidenceUpperExact": -1.3344975847442877
         }
       },
-      "tokenConsumptionRate": 1.0856712540849993
+      "tokenConsumptionRate": 1.0856712540849993,
+      "supportsDomestic": true
     },
     {
       "slug": "longcat-2-5-preview",
@@ -3999,7 +4129,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "grok-4-7",
@@ -4042,7 +4173,8 @@
           "confidenceUpperExact": 3.8504904600239502
         }
       },
-      "tokenConsumptionRate": 0.8895017264866413
+      "tokenConsumptionRate": 0.8895017264866413,
+      "supportsDomestic": true
     },
     {
       "slug": "mistral-large-4",
@@ -4085,7 +4217,8 @@
           "confidenceUpperExact": -3.902316595389421
         }
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "space-bunny",
@@ -4107,7 +4240,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "gemma-4-31b",
@@ -4142,7 +4276,8 @@
         },
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "gpt-oss-120b",
@@ -4168,7 +4303,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "gpt-oss-20b",
@@ -4194,7 +4330,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "mistral-large-3",
@@ -4221,7 +4358,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "nemotron-3-nano",
@@ -4247,7 +4385,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "nemotron-3-super",
@@ -4273,7 +4412,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "gemini-4-argon",
@@ -4316,7 +4456,8 @@
           "confidenceUpperExact": 11.539861430060288
         }
       },
-      "tokenConsumptionRate": 1.1133711120223715
+      "tokenConsumptionRate": 1.1133711120223715,
+      "supportsDomestic": false
     },
     {
       "slug": "doubao-seed-2-1-pro-0915",
@@ -4338,7 +4479,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "glm-5-3-flashx",
@@ -4360,7 +4502,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "doubao-seed-2-1-lite",
@@ -4383,7 +4526,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "ling-3-1-flash",
@@ -4409,7 +4553,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "glyph-cluster",
@@ -4422,7 +4567,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "qwen-3-8-omni-flash",
@@ -4445,7 +4591,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "gpt-5-4-nano",
@@ -4472,7 +4619,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "mai-code-1-1-flash",
@@ -4493,7 +4641,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "sensenova-6-8-flash-lite",
@@ -4514,7 +4663,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "minimax-m3-1-flash-preview",
@@ -4536,7 +4686,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "spark-x2-5",
@@ -4549,7 +4700,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "spark-x2-flash",
@@ -4562,7 +4714,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "qwen-3-5-397b-a17b",
@@ -4589,7 +4742,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "qwen-3-5-35b-a3b",
@@ -4616,7 +4770,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "glm-4-7-flash",
@@ -4642,7 +4797,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "composer-2-5",
@@ -4655,7 +4811,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "deepseek-v4-1-flash-1017",
@@ -4689,7 +4846,8 @@
         },
         "arena": null
       },
-      "tokenConsumptionRate": 1.329539996944943
+      "tokenConsumptionRate": 1.329539996944943,
+      "supportsDomestic": true
     },
     {
       "slug": "beam-1-0",
@@ -4724,7 +4882,8 @@
           "confidenceUpperExact": -2.6076750974933427
         }
       },
-      "tokenConsumptionRate": 0.32761794464849847
+      "tokenConsumptionRate": 0.32761794464849847,
+      "supportsDomestic": false
     },
     {
       "slug": "cat-jam",
@@ -4737,7 +4896,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "muse-spark-open",
@@ -4773,7 +4933,8 @@
         },
         "arena": null
       },
-      "tokenConsumptionRate": 0.6356769478098553
+      "tokenConsumptionRate": 0.6356769478098553,
+      "supportsDomestic": false
     },
     {
       "slug": "nemotron-3-5-super-vl",
@@ -4807,7 +4968,8 @@
         },
         "arena": null
       },
-      "tokenConsumptionRate": 0.7791398565468471
+      "tokenConsumptionRate": 0.7791398565468471,
+      "supportsDomestic": false
     },
     {
       "slug": "qwen-3-8-max-prime",
@@ -4820,7 +4982,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     },
     {
       "slug": "muse-wonder",
@@ -4858,7 +5021,8 @@
           "confidenceUpperExact": 4.585891449461575
         }
       },
-      "tokenConsumptionRate": 0.9191002057599587
+      "tokenConsumptionRate": 0.9191002057599587,
+      "supportsDomestic": false
     },
     {
       "slug": "minimax-m3-1-flash",
@@ -4902,7 +5066,8 @@
           "confidenceUpperExact": -2.372315080300893
         }
       },
-      "tokenConsumptionRate": 1.322026048949468
+      "tokenConsumptionRate": 1.322026048949468,
+      "supportsDomestic": true
     },
     {
       "slug": "ornith-1-5-122b",
@@ -4923,7 +5088,8 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": false
     },
     {
       "slug": "ling-3-1-flash-1019",
@@ -4943,8 +5109,9 @@
         "liveBench": null,
         "arena": null
       },
-      "tokenConsumptionRate": null
+      "tokenConsumptionRate": null,
+      "supportsDomestic": true
     }
   ],
-  "contentVersion": "2026-11-01T08:49:38.478Z"
+  "contentVersion": "2026-11-03T04:02:24.200Z"
 }

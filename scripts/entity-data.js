@@ -31,9 +31,9 @@
     const partial = !!options?.partial;
     if (!partial && typeof value !== 'boolean') return '';
     const supported = partial || value === true;
-    const label = supported ? '可接入第三方工具' : '不可接入第三方工具';
+    const label = supported ? '可用于其他智能体框架' : '不可用于其他智能体框架';
     const status = supported ? 'true' : 'false';
-    return `<span class="harness-api-badge" data-harness-api="${status}" title="指通过 API Key 将模型接入第三方 AI 工具；具体工具及用途限制以平台说明为准">${label}</span>`;
+    return `<span class="harness-api-badge" data-harness-api="${status}" title="指通过 API Key 在套餐所属平台自家产品以外的智能体框架中使用模型；具体框架、协议及用途限制以平台说明为准">${label}</span>`;
   }
 
   function platformHarnessApiBadge(platform, plans) {
@@ -279,6 +279,7 @@
 
   return {
     isMultimodal,
+    supportsImageInput: model => model?.modalities?.input?.includes('image') === true,
     resolveHarnessApi,
     harnessApiBadge,
     platformHarnessApiBadge,

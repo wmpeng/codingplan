@@ -15,10 +15,10 @@
     input.value = value ?? "";
   }
   const platformShortcutKinds = {
-    mainland: { fields: ["requiresOverseasNetwork", "requiresOverseasPayment"], label: Controls.mainlandLabel },
+    mainland: { label: Controls.mainlandLabel },
     // Keep old controller calls translatable; only mainland is rendered.
-    network: { field: "requiresOverseasNetwork", label: "境内可用平台", legacy: "domesticNetworkOnly" },
-    payment: { field: "requiresOverseasPayment", label: "境内可购买平台", legacy: "domesticPaymentOnly" },
+    network: { label: Controls.mainlandLabel, legacy: "domesticNetworkOnly" },
+    payment: { label: Controls.mainlandLabel, legacy: "domesticPaymentOnly" },
   };
   let presetPromise;
   function loadGroups(context) {
@@ -54,13 +54,13 @@
       context.modelGroups = opts.featuredPreset.groups || [];
       context.featuredPlatformSlugs = opts.featuredPreset.platformSlugs || [];
     }
-    let groupsReady = Array.isArray(context.modelGroups), initialPresetPending = !full || pricing, pendingAll = false, multimodalNotice = "", platformShortcutNotice = "";
-    const platformCandidates = kind => platforms.filter(platform => kind === 'mainland' ? Filters.isMainlandPlatform(platform) : platform[platformShortcutKinds[kind].field] === false).map(platform => platform.slug);
+    let groupsReady = Array.isArray(context.modelGroups), initialPresetPending = !full || pricing, pendingAll = false, multimodalNotice = "", mainlandModelNotice = "", platformShortcutNotice = "";
+    const platformCandidates = () => platforms.filter(Filters.isMainlandPlatform).map(platform => platform.slug);
     function platformShortcutAction(kind) {
       const eligible = platformCandidates(kind);
       const selected = state.platformSlugs === null ? platforms.map(platform => platform.slug) : state.platformSlugs;
       const retain = selected.some(slug => !eligible.includes(slug));
-      return { label: kind === "mainland" ? platformShortcutKinds.mainland.label : `${retain ? "仅保留" : "全部"}${platformShortcutKinds[kind].label}`, slugs: retain ? selected.filter(slug => eligible.includes(slug)) : eligible };
+      return { label: `${retain ? "仅保留" : "全部"}${platformShortcutKinds[kind].label}平台`, slugs: retain ? selected.filter(slug => eligible.includes(slug)) : eligible };
     }
     function selectPlatformShortcut(kind, source = "manual") {
       if (!Object.hasOwn(platformShortcutKinds, kind)) return false;
@@ -73,16 +73,28 @@
       publish(source); return true;
     }
     const multimodalSlugs = models.filter(root.EntityData.isMultimodal).map(model => model.slug);
-    const multimodalSet = new Set(multimodalSlugs);
-    function multimodalAction() {
+    const mainlandModelSlugs = models.filter(Filters.isMainlandModel).map(model => model.slug);
+    function modelShortcutAction(eligibleSlugs, label) {
+      const eligible = new Set(eligibleSlugs);
       const selected = state.modelSlugs === null ? models.map(model => model.slug) : state.modelSlugs;
-      const retain = selected.some(slug => !multimodalSet.has(slug));
-      return { label: retain ? "仅保留多模态模型" : "全部多模态模型", slugs: retain ? selected.filter(slug => multimodalSet.has(slug)) : [...multimodalSlugs] };
+      const retain = selected.some(slug => !eligible.has(slug));
+      return { label: `${retain ? "仅保留" : "全部"}${label}`, slugs: retain ? selected.filter(slug => eligible.has(slug)) : [...eligibleSlugs] };
     }
+    const multimodalAction = () => modelShortcutAction(multimodalSlugs, "多模态模型");
+    const mainlandModelAction = () => modelShortcutAction(mainlandModelSlugs, `${Controls.mainlandLabel}模型`);
     function selectMultimodalModels(source = "manual") {
       const {slugs} = multimodalAction();
       if (!slugs.length) {
         multimodalNotice = multimodalSlugs.length ? "当前所选模型中没有多模态模型，请先选择支持多模态的模型。" : "目前没有确认支持多模态的模型。";
+        pendingAll = false; render(); return false;
+      }
+      state.modelSlugs = slugs; state.modelGroup = "any"; state.modelMatch = "any";
+      publish(source); return true;
+    }
+    function selectMainlandModels(source = "manual") {
+      const {slugs} = mainlandModelAction();
+      if (!slugs.length) {
+        mainlandModelNotice = mainlandModelSlugs.length ? "当前所选模型中没有中国大陆可用模型，已保留原选择。" : "目前没有确认符合中国大陆可用条件的模型，已保留原选择。";
         pendingAll = false; render(); return false;
       }
       state.modelSlugs = slugs; state.modelGroup = "any"; state.modelMatch = "any";
@@ -164,6 +176,7 @@
       initialPresetPending = false;
       const {snapshot, restricted, history, domestic, featuredOnly: featured, ...conditions} = saved;
       Object.assign(state, conditions);
+      if (!conditions.priorities) state.priorities = Filters.normalizeState({preference:conditions.preference}).priorities;
       state[planStatusOnly ? 'excludedPlanStatuses' : 'excludedPlatformStatuses'] = restricted ? ['restricted'] : [];
       if (planStatusOnly) state.includeDiscontinued = history === true;
       else state.platformStatusMax = history ? 'delisted' : 'restricted';
@@ -178,9 +191,8 @@
       if (params.get("billing") === "payg" && !plansPage) state.apiOnly = true;
     }
     host.innerHTML = Controls.render({policy, state, context});
+    const singleSelects = root.CodingPlanSingleSelect.mountAll(host);
     Popovers.bindSelectionHelp(host);
-    const offerSortSelect = host.querySelector('[data-offer-sort]');
-    const offerSortPicker = offerSortSelect && root.CodingPlanSingleSelect?.mount(offerSortSelect, '方案排序', {showLabel:false});
     const controller = {
       getState: () => Filters.cloneState(state),
       context,
@@ -191,10 +203,12 @@
       selectMultimodalModels,
       getMultimodalActionLabel: () => multimodalAction().label,
       getMultimodalNotice: () => multimodalNotice,
+      selectMainlandModels,
       selectPlatformShortcut,
       getPlatformShortcutLabels: () => Object.fromEntries(Object.keys(platformShortcutKinds).map(kind => [kind, platformShortcutAction(kind).label])),
       getPlatformShortcutNotice: () => platformShortcutNotice,
       setState: (patch, source = "guide") => {
+        if (Object.hasOwn(patch,'preference') && !Object.hasOwn(patch,'priorities')) patch = {...patch,priorities:Filters.normalizeState({preference:patch.preference}).priorities};
         // Old guide calls map groups to actual picks; no hidden intersection remains.
         if (patch.modelGroup && patch.modelGroup !== "any") {
           if (!groupsReady) return;
@@ -220,9 +234,9 @@
         let imageNotice = "";
         if (patch.imageRequired === true) {
           const selected = state.modelSlugs?.length ? state.modelSlugs : models.map(model => model.slug);
-          const slugs = selected.filter(slug => multimodalSet.has(slug));
+          const slugs = selected.filter(slug => root.EntityData.supportsImageInput(context.modelBySlug.get(slug)));
           if (slugs.length) { state.modelSlugs = slugs; state.modelMatch = "any"; }
-          else imageNotice = "当前所选模型中没有多模态模型，请先选择支持多模态的模型。";
+          else imageNotice = "所选模型暂未确认具备图片输入能力，已保留原选择。";
         }
         if (!state.modelSlugs || state.modelSlugs.length < 2) state.modelMatch = "any";
         if (Object.hasOwn(patch, "modelSlugs") || patch.imageRequired === true) resetModelList();
@@ -286,6 +300,9 @@
       modelPicker.querySelector('[data-select-multimodal]').textContent = multimodalAction().label;
       const notice = modelPicker.querySelector('[data-multimodal-notice]');
       notice.hidden = !multimodalNotice; notice.textContent = multimodalNotice;
+      modelPicker.querySelector('[data-select-mainland-models]').textContent = mainlandModelAction().label;
+      const mainlandNotice = modelPicker.querySelector('[data-mainland-model-notice]');
+      mainlandNotice.hidden = !mainlandModelNotice; mainlandNotice.textContent = mainlandModelNotice;
       const modelCount = state.modelSlugs === null ? models.length : state.modelSlugs.length;
       const strict = state.modelMatch === "all" && modelCount > 1;
       modelPicker.querySelector('[data-model-match-setting]').hidden = modelCount < 2;
@@ -309,14 +326,22 @@
         if (el.type === "checkbox") el.checked = !!v;
         else el.value = v;
       });
+      singleSelects.sync();
       const includeDelisted = host.querySelector('[data-include-delisted]');
       if (includeDelisted) includeDelisted.checked = state.platformStatusMax === "delisted";
-      const sort = host.querySelector('[data-offer-sort]');
-      if (sort) {
-        const option = root.PurchaseGuide.sortOptions.find(option => option.value === state.preference);
-        sort.title = option.help;
-        host.querySelector('#offerSortHelp').textContent = option.help;
-        offerSortPicker?.sync();
+      const priorityOptions = host.querySelector('[data-priority-options]');
+      if (priorityOptions) {
+        const priorities=state.priorities || ['balanced'];
+        host.querySelector('[data-priority-summary]').innerHTML=priorities.length?priorities.map((key,index)=>`<span class="priority-summary-item"><span class="ui-priority-number" aria-hidden="true">${index+1}</span><span>${root.CodingPlanUI.escapeHtml(root.PurchaseGuide.sortOptions.find(option=>option.value===key).label)}</span></span>`).join(''):'精选优先';
+        if(!priorityOptions.children.length)priorityOptions.innerHTML=root.PurchaseGuide.sortOptions.map(option=>{
+          return `<div class="priority-option">${root.CodingPlanFilterControls.priorityChoice(option,priorities.indexOf(option.value))}</div>`;
+        }).join('');
+        root.PurchaseGuide.sortOptions.forEach(option=>{
+          const index=priorities.indexOf(option.value),button=priorityOptions.querySelector(`[data-priority="${option.value}"]`);
+          button.setAttribute('aria-checked',String(index>=0));
+          button.setAttribute('aria-label',`${option.label}${index>=0?`，第${index+1}优先级`:''}`);
+          button.querySelector('.ui-priority-number').textContent=index>=0?index+1:'';
+        });
       }
       const statusPicker = host.querySelector('#homeStatusPicker');
       if (statusPicker) {
@@ -379,6 +404,7 @@
       policy.constrain(state);
       if (!["init", "catalog", "display"].includes(source)) initialPresetPending = false;
       multimodalNotice = "";
+      mainlandModelNotice = "";
       platformShortcutNotice = "";
       pendingAll = false;
       state.tokenUnit = root.CodingPlanDisplaySettings?.getTokenUnit() || state.tokenUnit;
@@ -407,6 +433,13 @@
         }),
       );
     }
+    host.addEventListener('click',event=>{
+      const button=event.target.closest('[data-priority]');if(!button)return;
+      const list=[...(state.priorities || ['balanced'])],key=button.dataset.priority,index=list.indexOf(key);
+      if(index>=0)list.splice(index,1);else list.push(key);
+      state.priorities=list;state.preference=list[0] || 'balanced';publish('sort');
+      host.querySelector(`[data-priority="${key}"]`)?.focus({preventScroll:true});
+    });
     host.addEventListener("input", (event) => {
       const el = event.target;
       if (el.matches("[data-range-picker]")) {
@@ -509,6 +542,7 @@
         return;
       }
       if (el.hasAttribute('data-select-multimodal')) { selectMultimodalModels(); return; }
+      if (el.hasAttribute('data-select-mainland-models')) { selectMainlandModels(); return; }
       if (el.dataset.platformShortcut) { selectPlatformShortcut(el.dataset.platformShortcut); return; }
       if (el.hasAttribute('data-retry-model-presets') || el.hasAttribute('data-hub-retry-featured')) { refreshGroups(); return; }
       if (el.dataset.modelPreset) { selectModelPreset(el.dataset.modelPreset); return; }

@@ -51,7 +51,7 @@
           .map(row => row.value === 'unlimited' ? Infinity : row.value).filter(value => typeof value === 'number' && !Number.isNaN(value));
         return values.length ? Math.max(...values) : null;
       }
-      const key = sort.key === 'platformOrder' ? 'monthlyPrice' : sort.key;
+      const key = sort.key === 'platformOrder' ? 'firstMonthPrice' : sort.key;
       if (key.startsWith('requestQuota.')) {
         const requests = plan.requestQuota?.[key.slice('requestQuota.'.length)];
         return requests === 'unlimited' ? Infinity : typeof requests === 'number' ? requests : null;
