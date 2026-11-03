@@ -7,7 +7,7 @@ function context(){
     {schemaVersion:1,models:[{slug:'gpt-small',name:'Small',modalities:{input:['text'],output:['text']},scores:{artificialAnalysis:{score:30}}},{slug:'gpt-big',name:'Big',modalities:{input:['text','image'],output:['text']},scores:{artificialAnalysis:{score:60}}},{slug:'picture',name:'Picture',multimodal:true,modalities:{input:['text'],output:['image']}}]},
     {planModels:[{slug:'a',planSlug:'cheap',modelSlug:'gpt-small',usage:{monthlyTokenInM:100,fiveHourTokenInM:10}},{slug:'b',planSlug:'large',modelSlug:'gpt-big',usage:{monthlyTokenInM:1000}},{slug:'c',planSlug:'official',modelSlug:'gpt-big',usage:{monthlyTokenInM:500}}]});
 }
-test('每条路径都有用量题且在优先级前；用途影响估算，手填不重复乘系数',()=>{
+test('每条路径都有用量题且在排序前；用途影响估算，手填不重复乘系数',()=>{
   for(const start of ['new','existing']){const steps=Flow.steps({start});assert.equal(steps.indexOf('priority'),steps.indexOf('usage')+1);assert.equal(steps.includes('baseline'),start==='existing');}
   assert.ok(Flow.estimate({task:'coding',frequency:'daily',size:'normal'}).amount>Flow.estimate({task:'writing',frequency:'daily',size:'normal'}).amount);
   assert.equal(Flow.compile(context(),{usageMode:'known',tokens:125,task:'writing'}).state.monthlyTokenRange.min,125);
@@ -28,21 +28,29 @@ test('境内要求排除未知和缺失，旧网络付款草稿采用相同综�
   c.platforms[0].supportsDomestic=null;
   assert.ok(Flow.compile(c,{domestic:'required'}).errors.some(text=>text.includes('境内使用')));
 });
-test('指定工具不等于通用 API；官方订阅可用，未知在待确认，套餐覆盖优先',()=>{
+test('指定框架使用通用接入能力并补充自身官方订阅，套餐覆盖优先',()=>{
   const c=context(),s={usageEntry:'codex'};
-  assert.deepEqual(F.matchingOffers(c,s).map(item=>item.plan.slug),['official']);
-  const r=G.recommend(c,s,{}, {allMatching:true});assert.deepEqual(r.candidates.map(item=>item.id),['official']);assert.equal(r.pending.length,2);
+  assert.deepEqual(F.matchingOffers(c,s).map(item=>item.plan.slug),['cheap','large','official']);
+  const r=G.recommend(c,s,{}, {allMatching:true});assert.deepEqual(r.candidates.map(item=>item.id),['cheap','large','official']);assert.equal(Object.hasOwn(r,'pending'),false);assert.deepEqual(r.alternatives,[]);
   assert.equal(F.toolCompatibility({slug:'minimax',supportsHarnessApi:true},{billingMode:'subscription',supportsHarnessApi:false},'codex'),false);
   assert.equal(F.toolCompatibility({slug:'minimax',supportsHarnessApi:true},{billingMode:'subscription'},'codex'),true);
 });
-test('优先级按顺序比较，精选只破同分；全部模型的额度不相加',()=>{
+test('单选排序忽略旧的后续优先级，精选只破同分；全部模型的额度不相加',()=>{
   const c=context();
   assert.equal(G.recommend(c,{priorities:['cost','volume']},{},{allMatching:true}).candidates[0].id,'cheap');
   assert.equal(G.recommend(c,{priorities:['volume','cost']},{},{allMatching:true}).candidates[0].id,'large');
+  assert.deepEqual(F.normalizeState({priorities:['cost','volume']}).priorities,['cost']);
+  assert.deepEqual(Flow.suggestedPriorities({pains:['cost','quality','monthly']}),['cost']);
+  assert.deepEqual(Flow.suggestedPriorities({pains:['fiveHours','cost']}),['volume']);
+  assert.deepEqual(Flow.suggestedPriorities({pains:['tool']}),['balanced']);
+  for(const key of ['balanced','volume','cost','quality']){
+    const ids=priorities=>G.recommend(c,{priorities},{},{allMatching:true}).candidates.map(item=>item.id);
+    assert.deepEqual(ids([key,'cost','volume','quality']),ids([key]));
+  }
   c.featuredPlatformSlugs=['codex'];assert.equal(G.recommend(c,{priorities:['cost']},{},{allMatching:true}).candidates[0].id,'cheap');
   assert.equal(F.matchingOffers(c,{modelSlugs:['gpt-small','gpt-big'],modelMatch:'all'}).length,0);
 });
-test('无结果按优先级保护条件，展示牺牲项，保留工具和平台范围且不修改原条件',()=>{
+test('无结果按所选排序保护条件，展示牺牲项，保留工具和平台范围且不修改原条件',()=>{
   const c=context(),s={platformSlugs:['p'],modelSlugs:['gpt-big'],budgetCny:{max:20},monthlyTokenRange:{min:500},priorities:['cost','quality','volume']},before=JSON.stringify(s);
   const r=G.recommend(c,s,{}, {allMatching:true});assert.equal(r.candidates.length,0);assert.equal(r.alternatives[0].id,'cheap');assert.ok(r.alternatives[0].sacrifices.includes('模型范围'));assert.ok(!r.alternatives[0].sacrifices.includes('月预算'));assert.equal(JSON.stringify(s),before);
   const quality=G.recommend(c,{...s,priorities:['quality','volume','cost']},{},{allMatching:true});assert.equal(quality.alternatives[0].id,'large');assert.deepEqual(quality.alternatives[0].sacrifices,['月预算']);
@@ -51,10 +59,10 @@ test('无结果按优先级保护条件，展示牺牲项，保留工具和平�
   const platformFirst=G.recommend(c,{...s,platformSlugs:null,priorities:['balanced','cost']},{},{allMatching:true});
   assert.equal(platformFirst.alternatives[0].id,'official','平台体验第一时，先比较平台评分，再考虑价格取舍');
 });
-test('预算或额度未知进入待确认；五小时额度不足不能靠月额度冒充已解决',()=>{
+test('预算或额度未知不显示且不进入备选；五小时额度不足不能靠月额度冒充已解决',()=>{
   const c=context();c.relationsByPlanSlug.get('large')[0].usage.monthlyTokenInM=null;
-  const r=G.recommend(c,{monthlyTokenRange:{min:500}},{},{allMatching:true});assert.ok(r.pending.some(item=>item.id==='large' && item.unconfirmed.includes('月额度')));assert.ok(!r.candidates.some(item=>item.id==='large'));
-  const item={...r.pending.find(item=>item.id==='large')};
+  const r=G.recommend(c,{monthlyTokenRange:{min:500}},{},{allMatching:true});assert.ok(!r.alternatives.some(item=>item.id==='large'));assert.ok(!r.candidates.some(item=>item.id==='large'));
+  const item=G.recommend(c,{},{},{allMatching:true}).candidates.find(item=>item.id==='large');
   assert.match(Flow.baselineSummary(c,{start:'existing',plan:'cheap',pains:['fiveHours']},item,7).join(' '),/无法直接比较/);
 });
 test('真实目录模态字段和所有分支使用同一资格判断',()=>{

@@ -50,7 +50,7 @@ test('首页价格优先级、卡片原币和原套餐比较使用首月费用',
  assert.deepEqual(Flow.baselineSummary(c,{start:'existing',plan:'discount',pains:['cost']},regular,7),['首月费用比原套餐首月多 11 元']);
  assert.deepEqual(Flow.baselineSummary(c,{start:'existing',plan:'discount',pains:['cost']},{...regular,cost:9.05},7),['首月费用比原套餐首月多 0.05 元']);
  const budget=G.recommend(c,{budgetCny:{max:15}},config,{allMatching:true});
- assert.ok(budget.pending.find(o=>o.plan.slug==='unknown').unconfirmed.includes('首月费用'));
+ assert.ok(!budget.candidates.some(o=>o.plan.slug==='unknown'));assert.ok(!budget.alternatives.some(o=>o.plan.slug==='unknown'));
  assert.ok(budget.candidates.find(o=>o.plan.slug==='discount').reasons.some(r=>r.includes('首月费用 9 元')));
 });
 

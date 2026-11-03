@@ -8,7 +8,7 @@ function fixture() {
   const platforms = statuses.map(status => ({slug:status,platformStatus:status}));
   const plans = statuses.flatMap(platform => statuses.map(status => ({
     slug:platform+'-'+status,platformSlug:platform,planStatus:status,
-    billingMode:'subscription',monthlyPrice:10,currency:'CNY',
+    billingMode:'subscription',monthlyPrice:10,firstMonthPrice:10,currency:'CNY',
     planModels:[{slug:platform+'-'+status+'-m',modelSlug:'m',usage:{monthlyTokenInM:100}}]
   })));
   return Entity.buildContext({schemaVersion:1,platforms},{schemaVersion:3,plans},{schemaVersion:1,models:[{slug:'m'}]});
@@ -90,7 +90,7 @@ test('无模型明细的套餐仍可按套餐价格筛选，模型或用量条�
   const context=fixture();
   context.models.push({slug:'n'});
   context.modelBySlug.set('n',context.models[1]);
-  context.plans=[{slug:'empty',platformSlug:'open',planStatus:'open',billingMode:'subscription',monthlyPrice:20,currency:'CNY'}];
+  context.plans=[{slug:'empty',platformSlug:'open',planStatus:'open',billingMode:'subscription',monthlyPrice:20,firstMonthPrice:20,currency:'CNY'}];
   const plans=Entity.buildPlanCatalog(context),state={planStatusOnly:true,includeDiscontinued:true};
   assert.equal(Filters.filterPlans(plans,{...state,budgetCny:{max:20}},{context}).length,1);
   assert.equal(Filters.filterPlans(plans,{...state,budgetCny:{max:19}},{context}).length,0);

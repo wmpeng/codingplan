@@ -5,14 +5,15 @@
   let controller=root.CodingPlanHomeFilters, active=false, step='start', pending=false, applied=false, estimateActive=false, notice='';
   let answers=fresh(), singleSelects;
   function fresh(){return {start:'new',task:'coding',entry:'any',modelKind:'any',exact:[],match:'any',image:'any',domestic:'any',budgetMode:'any',usageMode:'unsure',frequency:'daily',size:'normal',priorities:['balanced'],pains:[]};}
-  const titles={start:'对现有或之前的订阅不满意吗？',baseline:'你用过什么套餐，哪里不满意？',task:'主要用 AI 做什么？',entry:'你准备从哪里使用？',models:'倾向于什么模型？',access:'境内使用要求',budget:'每个月最多打算花多少？',usage:'你每个月大概用多少？',priority:'你更看重什么？'};
-  const labels={start:'开始',baseline:'原套餐',task:'用途',entry:'使用方式',models:'模型',access:'使用条件',budget:'预算',usage:'用量',priority:'优先级'};
+  const titles={start:'对现有或之前的订阅不满意吗？',baseline:'你用过什么套餐，哪里不满意？',task:'主要用 AI 做什么？',entry:'你准备从哪里使用？',models:'倾向于什么模型？',access:'境内使用要求',budget:'每个月最多打算花多少？',usage:'你每个月大概用多少？',priority:'你希望怎么排序？'};
+  const labels={start:'开始',baseline:'原套餐',task:'用途',entry:'使用方式',models:'模型',access:'使用条件',budget:'预算',usage:'用量',priority:'排序'};
   const unit=()=>controller?.getState().tokenUnit || 'yi';
   const amount=value=>`${N.tokenAmount(value,unit())} ${N.tokenUnit(unit())} Token`;
   const number=(key,label,value,suffix)=>`<label class="guide-number"><span>${label}</span><input type="number" min="0" step="any" inputmode="decimal" data-number="${key}" aria-label="${label}" value="${value??''}"><span>${suffix}</span></label>`;
   const buttons=(key,options)=>`<div class="guide-options">${options.map(([value,label])=>`<button type="button" data-answer="${key}" data-value="${esc(value)}" aria-pressed="${Array.isArray(answers[key])?answers[key].includes(value):answers[key]===value}">${esc(label)}</button>`).join('')}</div>`;
   function select(key,label,options,placeholder='请选择'){
-    return `<div class="guide-select"><span>${label}</span><select id="guide-${key}" data-custom-select data-answer-select="${key}" aria-label="${label}"><option value="">${placeholder}</option>${options.map(([value,label])=>`<option value="${esc(value)}" ${answers[key]===value?'selected':''}>${esc(label)}</option>`).join('')}</select></div>`;
+    const selected=Array.isArray(answers[key])?answers[key][0]:answers[key];
+    return `<div class="guide-select"><span>${label}</span><select id="guide-${key}" data-custom-select data-answer-select="${key}" aria-label="${label}">${placeholder===null?'':`<option value="">${placeholder}</option>`}${options.map(([value,label])=>`<option value="${esc(value)}" ${selected===value?'selected':''}>${esc(label)}</option>`).join('')}</select></div>`;
   }
   function content(){
     const c=controller.context;
@@ -26,7 +27,7 @@
     }
     if(step==='task')return buttons('task',Flow.tasks);
     if(step==='entry')return buttons('entry',G.entryOptions.map(option=>[option.value,option.value==='any'?'没有特别指定的工具':option.label]))+
-      (answers.entry==='third-party'?'<p class="guide-note">例如 DeepSeek Harness、ZCode、MiniMax Code、Kimi Code、OpenCode。此项筛选通用 API 接入，具体智能体框架的兼容性还需确认。</p>':'');
+      (answers.entry==='third-party'?'<p class="guide-note">例如 DeepSeek Harness、ZCode、MiniMax Code、Kimi Code、OpenCode。填写平台的 API Key，并按平台说明配置所用框架。</p>':'');
     if(step==='models'){
       let html=buttons('modelKind',[['exact','具体型号'],['family','某个模型系列'],['balanced','兼顾能力和费用'],['top','能力更强的头部模型'],['any','没有指定模型']]);
       if(answers.modelKind==='exact')html+=`<label class="guide-search">搜索型号<input type="search" data-model-search aria-label="搜索型号" placeholder="输入模型名称"></label><div class="guide-model-list">${Flow.textModels(c).map(model=>`<label data-model-name="${esc(model.name.toLowerCase())}"><input type="checkbox" data-exact="${esc(model.slug)}" ${answers.exact.includes(model.slug)?'checked':''}>${esc(model.name)}${root.EntityData.supportsImageInput(model)?' · 可理解图片':''}</label>`).join('')}</div>`+(answers.exact.length>1?buttons('match',[['any','支持其中任意一个即可'],['all','同一套餐需要支持全部型号']]):'');
@@ -54,7 +55,7 @@
       if(answers.pains.includes('fiveHours') && answers.start==='existing')html+='<p class="guide-note">月额度更大不代表不会触及 5 小时限制，结果会另列与原套餐的对比。</p>';
       return html;
     }
-    return '<div class="guide-options guide-priorities">'+G.sortOptions.map(option=>root.CodingPlanFilterControls.priorityChoice(option,answers.priorities.indexOf(option.value),true)).join('')+'</div>';
+    return select('priorities','排序',G.sortOptions.map(option=>[option.value,option.label]),null);
   }
   function render(){
     singleSelects?.destroy();
@@ -94,7 +95,6 @@
       const key=b.dataset.answer,value=b.dataset.value;
       if(Array.isArray(answers[key])){const index=answers[key].indexOf(value);if(index>=0)answers[key].splice(index,1);else answers[key].push(value);}
       else answers[key]=value;
-      if(key==='priorities')answers.prioritiesTouched=true;
       if(['task','frequency','size'].includes(key))delete answers.estimatedTokens;
       render();host.querySelector(`[data-answer="${key}"][data-value="${value}"]`)?.focus({preventScroll:true});return;
     }
@@ -127,7 +127,7 @@
   });
   host.addEventListener('change',event=>{
     const el=event.target;
-    if(el.dataset.answerSelect){answers[el.dataset.answerSelect]=el.value;if(el.dataset.answerSelect==='plan')answers.baselineModel='';render();root.CodingPlanSingleSelect.mount(document.getElementById(el.id),el.getAttribute('aria-label'),{showLabel:false}).focus();}
+    if(el.dataset.answerSelect){const key=el.dataset.answerSelect;answers[key]=key==='priorities'?[el.value]:el.value;if(key==='priorities')answers.prioritiesTouched=true;if(key==='plan')answers.baselineModel='';render();root.CodingPlanSingleSelect.mount(document.getElementById(el.id),el.getAttribute('aria-label'),{showLabel:false}).focus();}
     if(el.dataset.exact){answers.exact=el.checked?[...answers.exact,el.dataset.exact]:answers.exact.filter(slug=>slug!==el.dataset.exact);const search=host.querySelector('[data-model-search]').value;render();const field=host.querySelector('[data-model-search]');field.value=search;field.dispatchEvent(new Event('input',{bubbles:true}));}
   });
   root.addEventListener('codingplan:filters-ready',()=>{controller=root.CodingPlanHomeFilters;if(pending)begin();});

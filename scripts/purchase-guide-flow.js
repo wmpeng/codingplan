@@ -20,7 +20,7 @@
   function suggestedPriorities(a){
     const map={cost:'cost',quality:'quality',models:'quality',fiveHours:'volume',monthly:'volume',experience:'balanced'};
     const values=[...new Set((a.pains || []).map(pain=>map[pain]).filter(Boolean))];
-    return values.length?values:['balanced'];
+    return values.length?values.slice(0,1):['balanced'];
   }
   function estimate(a){
     const base={occasional:100,daily:1000,heavy:4000}[a.frequency] || 1000;

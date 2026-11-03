@@ -9,6 +9,16 @@
   const money = n => Numbers.monthlyFee(n, '¥', '待确认');
   const unitLabel = Numbers.tokenUnit;
   const tokenAmount = Numbers.tokenAmount;
+  function initialOffers(candidates) {
+    const platforms = new Set(), selected = new Set();
+    for(let index=0;index<candidates.length && selected.size<3;index++){
+      const slug=candidates[index].platform.slug;
+      if(platforms.has(slug))continue;
+      platforms.add(slug);selected.add(index);
+    }
+    for(let index=0;index<candidates.length && selected.size<3;index++)selected.add(index);
+    return candidates.filter((item,index)=>selected.has(index));
+  }
   function quota(value,unit,withToken=true) {
     if(value==='unlimited')return '不限量';
     return typeof value==='number' ? `${tokenAmount(value,unit)} ${unitLabel(unit)}${withToken?' Token':''}` : '额度未知';
@@ -84,7 +94,7 @@
     };
     const modelRows=UI.observeModelTagRows(host);
     const summaryObserver=new ResizeObserver(entries=>entries.forEach(entry=>fitSummary(entry.target)));
-    host.innerHTML = `<div class="section-heading offer-results-heading"><div><div class="offer-results-title"><h2>符合需求的方案</h2><span id="offerCount" role="status"></span></div></div></div><div data-offer-content></div>`;
+    host.innerHTML = `<div class="section-heading offer-results-heading"><div><div class="offer-results-title"><h2>推荐的方案</h2></div></div></div><div data-offer-content></div>`;
     const render=()=>{
       const controller=globalThis.CodingPlanHomeFilters;if(!controller)return;
       const state=controller.getState();
@@ -97,12 +107,11 @@
       const open=[...host.querySelectorAll('[data-offer-id]')].flatMap(el=>[...el.querySelectorAll('details[open]')].map(d=>[el.dataset.offerId,d.className]));
       const expandedModels=[...host.querySelectorAll('[data-toggle-models][aria-expanded="true"]')].map(button=>button.closest('[data-offer-id]').dataset.offerId);
       const result=globalThis.PurchaseGuide.recommend(context,state,config,{allMatching:true});lastResult=result;
-      for(const item of [...result.candidates,...result.alternatives,...result.pending]) {
+      const initialIds=new Set(initialOffers(result.candidates).map(item=>item.id));
+      const foldedCount=result.candidates.length-initialIds.size;
+      for(const item of [...result.candidates,...result.alternatives]) {
         item.cautions.push(...(globalThis.PurchaseGuideFlow?.baselineSummary(context,globalThis.CodingPlanGuideContext || {},item,config.usdToCnyRate) || []));
       }
-      const count=host.querySelector('#offerCount');
-      const countText=`${result.candidates.length} 个方案`;
-      if(count.textContent!==countText)count.textContent=countText;
       const content=host.querySelector('[data-offer-content]');
       const grid=content.querySelector('.offer-results-grid');
       if(sortOnly && grid && result.candidates.length) {
@@ -113,11 +122,9 @@
           el.querySelector('.offer-reasons ul').innerHTML=[...item.reasons,...item.cautions].map(text=>`<li>${esc(text)}</li>`).join('');
           grid.append(el);
         }
-      } else content.innerHTML=result.candidates.length?`<div class="offer-results-grid" data-matching-grid>${result.candidates.map(x=>card(x,state,context.modelGroups)).join('')}</div>${result.candidates.length>3?'<button type="button" class="tool-button offer-expand" data-expand-offers></button>':''}`:`<div class="tool-empty"><h3>暂无同时符合条件的方案</h3><p>${result.modelConflict?esc(result.modelConflict):'下面是按优先级取舍后的备选，原筛选条件保持不变。'}</p><button type="button" class="tool-button" data-reset-results>显示精选</button></div>${result.alternatives.length?`<div class="offer-results-grid" data-alternative-grid>${result.alternatives.map(item=>`<section class="offer-alternative"><p class="offer-sacrifice">需要放宽：${esc(item.sacrifices.join('、'))}${item.sacrifices.includes('月预算')?`（原上限 ${money(state.budgetCny?.max)}，此方案 ${money(item.cost)}／${item.plan.billingMode==='payg'?'月':'首月'}）`:''}${item.sacrifices.includes('月用量')?`（原目标 ${quota(globalThis.CodingPlanFilters.targetTokens(state),state.tokenUnit)}／月）`:''}</p>${card(item,item.relaxedState,context.modelGroups)}</section>`).join('')}</div>`:'<p>保留平台范围和使用方式后，暂时也没有可推荐的备选。可以回到筛选区调整这两项。</p>'}`;
-      const pendingOld=content.querySelector('[data-pending-offers]');if(pendingOld)pendingOld.remove();
-      if(result.pending.length)content.insertAdjacentHTML('beforeend',`<details class="offer-pending" data-pending-offers><summary>信息待确认 · ${result.pending.length} 个方案</summary><p>这些方案的工具兼容性、额度或费用还不能确认，因此未计入匹配结果。</p><div class="offer-results-grid">${result.pending.map(item=>`<section><p>待确认：${esc(item.unconfirmed.join('、'))}</p>${card(item,state,context.modelGroups)}</section>`).join('')}</div></details>`);
-      content.querySelectorAll('[data-matching-grid] > [data-offer-id]').forEach((el,index)=>el.hidden=!showAll && index>=3);
-      const expand=content.querySelector('[data-expand-offers]');if(expand){expand.textContent=showAll?'收起其他方案':`展开其他 ${result.candidates.length-3} 个方案`;expand.setAttribute('aria-expanded',String(showAll));}
+      } else content.innerHTML=result.candidates.length?`<div class="offer-results-grid" data-matching-grid>${result.candidates.map(x=>card(x,state,context.modelGroups)).join('')}</div>${foldedCount>0?'<button type="button" class="tool-button offer-expand" data-expand-offers></button>':''}`:`<div class="tool-empty"><h3>暂无同时符合条件的方案</h3><p>${result.modelConflict?esc(result.modelConflict):'下面是按所选排序取舍后的备选，原筛选条件保持不变。'}</p><button type="button" class="tool-button" data-reset-results>显示精选</button></div>${result.alternatives.length?`<div class="offer-results-grid" data-alternative-grid>${result.alternatives.map(item=>`<section class="offer-alternative"><p class="offer-sacrifice">需要放宽：${esc(item.sacrifices.join('、'))}${item.sacrifices.includes('月预算')?`（原上限 ${money(state.budgetCny?.max)}，此方案 ${money(item.cost)}／${item.plan.billingMode==='payg'?'月':'首月'}）`:''}${item.sacrifices.includes('月用量')?`（原目标 ${quota(globalThis.CodingPlanFilters.targetTokens(state),state.tokenUnit)}／月）`:''}</p>${card(item,item.relaxedState,context.modelGroups)}</section>`).join('')}</div>`:'<p>保留平台范围和使用方式后，暂时也没有可推荐的备选。可以回到筛选区调整这两项。</p>'}`;
+      content.querySelectorAll('[data-matching-grid] > [data-offer-id]').forEach(el=>el.hidden=!showAll && !initialIds.has(el.dataset.offerId));
+      const expand=content.querySelector('[data-expand-offers]');if(expand){expand.textContent=showAll?'收起其他方案':`展开其他 ${foldedCount} 个方案`;expand.setAttribute('aria-expanded',String(showAll));}
       summaryObserver.disconnect();
       host.querySelectorAll('.offer-quota-summary').forEach(summary=>{fitSummary(summary);summaryObserver.observe(summary);});
       for(const [id,cls] of open){const el=[...host.querySelectorAll('[data-offer-id]')].find(x=>x.dataset.offerId===id);const d=el?.querySelector('details.'+cls);if(d)d.open=true;}
@@ -142,5 +149,5 @@
     globalThis.addEventListener('codingplan:price-basis-changed',render);
     render();
   }
-  return {card,quota,mount};
+  return {card,quota,mount,initialOffers};
 });

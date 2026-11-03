@@ -598,7 +598,6 @@ body .home-filter-panel .filter-state-hint { margin: 12px 0 0; }
 body .offer-results-heading { align-items: flex-start; flex-wrap: wrap; gap: 12px 24px; }
 body .offer-results-heading > div:first-child { flex: 1 1 300px; min-width: 0; }
 body .offer-results-title { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 12px; }
-body .offer-results-title #offerCount { color: var(--text-secondary); font-size: 13px; font-weight: 400; white-space: nowrap; }
 body .offer-sort { display: flex; align-items: center; gap: 8px; max-width: 100%; color: var(--text-secondary); font-size: 13px; }
 body .offer-sort > span { flex-shrink: 0; }
 body .offer-sort select { width: 15em; max-width: 100%; min-width: 0; min-height: 40px; color: var(--text-primary); font-size: 13px; }
@@ -675,12 +674,6 @@ body.plans-page .filter-state-footer .filter-state-actions { margin-left: 0; }
 .usage-entry-control { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; min-width: 0; }
 .usage-entry-control > span { white-space: nowrap; }
 .usage-entry-control .single-select-picker { min-width: 0; max-width: 100%; }
-.priority-picker { max-width: 100%; }
-.priority-picker > summary { flex-wrap: wrap; }
-.priority-picker [data-priority-summary] { display: inline-flex; flex-wrap: wrap; gap: 6px 12px; color: var(--text-secondary, #53657c); font-size: 12px; white-space: normal; }
-.priority-summary-item { display: inline-flex; align-items: center; gap: 5px; }
-.priority-summary-item .ui-priority-number { width: 18px; height: 18px; font-size: 11px; color: var(--accent-primary); background: var(--accent-soft); border-color: var(--accent-primary); }
-.priority-picker .filter-picker-menu { min-width: 260px; }
-.priority-option { display: flex; gap: 8px; align-items: center; margin: 6px 0; }
-.priority-option > button { flex: 1; }
+.home-sort-control > span { white-space: nowrap; }
+.home-sort-control .single-select-picker { min-width: 0; max-width: 100%; }
 @media (max-width: 800px) { .usage-entry-control select { min-height: 44px; } }

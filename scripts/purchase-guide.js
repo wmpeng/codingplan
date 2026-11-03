@@ -9,7 +9,7 @@
 })(typeof globalThis !== "undefined" ? globalThis : this, function (F, Numbers) {
   "use strict";
   const sortOptions = [
-    { value: "balanced", label: "平台综合体验", help: "按平台综合评分比较。" },
+    { value: "balanced", label: "综合排序", help: "平台评分优先，同分按平台目录顺序；同平台按套餐评分、费用和套餐目录顺序。" },
     { value: "volume", label: "用量更大", help: "比较单个匹配模型最大的月参考额度，不相加共享额度；按量 API 不视为无限额度。" },
     { value: "cost", label: "价格更实惠", help: "比较订阅首月费用或按量 API 的最低已知估算月支出，未知费用排后。" },
     { value: "quality", label: "模型更强、更全面", help: "先比较匹配模型的最高 AA 分，同分再比较模型数量。" },
@@ -22,35 +22,45 @@
   ];
   const finite = (value) =>
     typeof value === "number" && Number.isFinite(value) ? value : null;
+  function offerCosts(offer, state) {
+    const apiEstimates = offer.plan.billingMode === 'payg'
+      ? offer.rows.map(row=>({relationSlug:row.slug,cost:F.apiCost(row,state)})) : null;
+    const knownCosts = (apiEstimates || []).map(item=>item.cost).filter(cost=>cost!==null);
+    const costRange = knownCosts.length ? {min:Math.min(...knownCosts),max:Math.max(...knownCosts),
+      hasUnknown:apiEstimates.some(item=>item.cost===null)} : null;
+    return {apiEstimates,costRange,cost:apiEstimates ? costRange?.min ?? null : offer.firstMonthCost};
+  }
+  function unconfirmedFacts(item, state) {
+    const api = item.plan.billingMode === 'payg', unknown = [];
+    if (item.toolSupport === null) unknown.push('工具兼容性');
+    if (state.budgetCny && item.cost === null) unknown.push(api ? '月支出' : '首月费用');
+    if (!api && state.monthlyTokenRange && item.rows.some(row=>row.usage?.monthlyTokenInM==null || row.usage.monthlyTokenInM==='unknown')) unknown.push('月额度');
+    if (api && state.budgetCny && item.apiEstimates.some(item=>item.cost===null) && !unknown.includes('月支出')) unknown.push('部分档位月支出');
+    return unknown;
+  }
   function recommend(context, state, config, options = {}) {
     const s = F.normalizeState(state),
       opts = {
         usdToCnyRate: config.usdToCnyRate,
         platformCatalog: config.platformCatalog,
-        allowUnconfirmedTool: options.allowUnconfirmedTool === true,
-        allowUnknown: options.allowUnconfirmedTool === true,
       };
     // Restricted or delisted products may be browsed, but aren't purchase recommendations.
-    const offers = F.matchingOffers(
+    const offersFor = (extra = {}) => F.matchingOffers(
       context,
       {
         ...s,
         includeDiscontinued: options.allMatching ? s.includeDiscontinued : false,
         platformStatusMax: options.allMatching ? s.platformStatusMax : "open",
       },
-      opts,
+      {...opts,...extra},
     ).filter(offer => options.allMatching || (offer.plan.planStatus || 'open') === 'open');
+    const offers = offersFor();
     const evaluated = offers.map((offer) => {
       const rows = offer.rows;
       const api = offer.plan.billingMode === "payg";
       // Each estimate applies the entire target workload to one relation;
       // alternative models and billing tiers must never be added together.
-      const apiEstimates = api ? rows.map(row => ({ relationSlug: row.slug, cost: F.apiCost(row, s) })) : null;
-      const knownCosts = (apiEstimates || []).map(item => item.cost).filter(value => value !== null);
-      const costRange = knownCosts.length ? {
-        min: Math.min(...knownCosts), max: Math.max(...knownCosts),
-        hasUnknown: apiEstimates.some(item => item.cost === null),
-      } : null;
+      const {apiEstimates,costRange,cost} = offerCosts(offer,s);
       const models = [...new Set(rows.map((row) => row.modelSlug))].map(
         (slug) => context.modelBySlug.get(slug),
       );
@@ -64,12 +74,8 @@
         }))
         .filter((x) => x.score !== null)
         .sort((a, b) => b.score - a.score);
-      const cost =
-        api
-          ? costRange?.min ?? null
-          : offer.firstMonthCost;
       const reasons = [];
-      if (s.priorities[0] === "balanced" && finite(offer.platform.rating) !== null) reasons.push(`平台评分 ${offer.platform.rating}，按平台评分优先排序`);
+      if (s.priorities[0] === "balanced" && finite(offer.platform.rating) > 0) reasons.push(`平台评分 ${offer.platform.rating}；同平台内按套餐评分、费用排序`);
       if (s.budgetCny?.max != null && cost !== null)
         reasons.push(
           api
@@ -90,13 +96,9 @@
       if (s.domesticNetworkOnly || s.domesticPaymentOnly) reasons.push("支持境内使用");
       if (s.imageRequired) reasons.push("符合条件的模型支持多模态");
       const cautions = [];
-      const unconfirmed=[];
-      if(offer.toolSupport===null)unconfirmed.push('工具兼容性');
-      if(s.budgetCny && cost===null)unconfirmed.push(api?'月支出':'首月费用');
-      if(!api && s.monthlyTokenRange && rows.some(row=>(row.usage?.monthlyTokenInM==null || row.usage.monthlyTokenInM==='unknown')))unconfirmed.push('月额度');
-      if(api && s.budgetCny && apiEstimates.some(item=>item.cost===null) && !unconfirmed.includes('月支出'))unconfirmed.push('部分档位月支出');
+      const unconfirmed=unconfirmedFacts({...offer,cost,apiEstimates},s);
       if (offer.toolSupport === null) cautions.push('尚未确认能否在所选工具中使用');
-      if (s.usageEntry === 'third-party') cautions.push('支持通用 API 接入，具体智能体框架的协议和用途限制仍需确认');
+      if (s.usageEntry === 'third-party') cautions.push('支持通过 API Key 接入智能体框架，配置方法及用途限制见平台说明');
       if (offer.platform.platformStatus === 'restricted' || offer.plan.planStatus === 'restricted')
         cautions.push('购买受限，请在平台页面核实当前开放情况');
       if (offer.plan.billingMode === "payg" && context.workload) {
@@ -144,18 +146,22 @@
           .join(" / "),
       };
     });
-    const candidates=options.allowUnconfirmedTool?evaluated:evaluated.filter(item=>!item.unconfirmed.length);
+    const candidates=evaluated.filter(item=>!item.unconfirmed.length);
     function compare(key, descending) {
       return (a, b) => {
         const x =
             key === "rating"
-              ? finite(a.platform.rating)
+              ? (finite(a.platform.rating) > 0 ? a.platform.rating : null)
+              : key === "planRating"
+                ? (finite(a.plan.rating) > 0 ? a.plan.rating : null)
               : key === "count"
                 ? a.models.length
                 : a[key],
           y =
             key === "rating"
-              ? finite(b.platform.rating)
+              ? (finite(b.platform.rating) > 0 ? b.platform.rating : null)
+              : key === "planRating"
+                ? (finite(b.plan.rating) > 0 ? b.plan.rating : null)
               : key === "count"
                 ? b.models.length
                 : b[key];
@@ -165,13 +171,20 @@
       };
     }
     const priorities = s.priorities;
-    const comparators = {balanced:compare('rating',true), volume:compare('volume',true), cost:compare('cost',false),
+    const platformOrder = new Map(context.platforms.map((platform,index)=>[platform.slug,index]));
+    const planOrder = new Map(context.plans.map((plan,index)=>[plan.slug,index]));
+    const platformRating = compare('rating',true), planRating = compare('planRating',true), costOrder = compare('cost',false);
+    const balanced = (a,b) => platformRating(a,b)
+      || platformOrder.get(a.platform.slug)-platformOrder.get(b.platform.slug)
+      || planRating(a,b) || costOrder(a,b)
+      || planOrder.get(a.plan.slug)-planOrder.get(b.plan.slug);
+    const comparators = {balanced, volume:compare('volume',true), cost:costOrder,
       quality:(a,b)=>compare('score',true)(a,b) || compare('count',true)(a,b)};
     const featuredModels = new Set((context.modelGroups || []).filter(group=>group.enabled!==false).flatMap(group=>group.modelSlugs));
     const featured = item => Number((context.featuredPlatformSlugs || []).includes(item.platform.slug)) + Number(item.models.some(model=>featuredModels.has(model.slug)));
     const order = (a,b) => {
       for (const key of priorities) { const diff = comparators[key](a,b); if(diff) return diff; }
-      return featured(b)-featured(a);
+      return priorities[0]==='balanced' ? 0 : featured(b)-featured(a);
     };
     candidates.sort(order);
     const seen = new Set();
@@ -247,10 +260,14 @@
         ? `在当前其他条件下，${missing.map(slug => context.modelBySlug.get(slug)?.name || slug).join("、")}没有匹配方案，因此无法包含全部所选模型。`
         : "所选模型各自有匹配方案，但没有同一个套餐同时满足全部模型的要求。";
     }
-    let alternatives = [], pending = [];
-    if (!options.internal && !options.allowUnconfirmedTool) {
-      pending = recommend(context,s,config,{...options,internal:true,allowUnconfirmedTool:true}).candidates.filter(item=>item.unconfirmed.length && !candidates.some(known=>known.id===item.id));
+    let alternatives = [];
+    if (!options.internal) {
       if (!candidates.length) {
+        // Identify uncertain offers under the original requirements solely to
+        // exclude them; relaxing a different requirement must not reintroduce them.
+        const uncertainPlans = new Set(offersFor({allowUnknown:true,allowUnconfirmedTool:true})
+          .filter(offer=>unconfirmedFacts({...offer,...offerCosts(offer,s)},s).length)
+          .map(offer=>offer.plan.slug));
         // Preserve actual access constraints and selected platform scope. Relax only
         // budget, quantity and model range; each changed condition remains explicit.
         const changes = [
@@ -268,10 +285,9 @@
           const next=recommend(context,{...s,...patch},config,{...options,internal:true});
           const loss=priorities.map(key=>relaxed.some(change=>change.dimension===key)?1:0);
           for(const item of next.candidates) {
-            // Missing facts are not a measurable compromise; keep them in the
-            // separate pending section instead of suggesting a smaller quota.
-            if(relaxed.some(change=>change.key==='monthlyTokenRange') && item.plan.billingMode!=='payg' && item.volume===null)continue;
-            if(relaxed.some(change=>change.key==='budgetCny') && item.cost===null)continue;
+            // Relaxing a threshold must not turn unknown required facts into
+            // a measurable compromise. Apply the original information needs.
+            if(uncertainPlans.has(item.id) || unconfirmedFacts(item,s).length)continue;
             const candidate={...item,relaxedState:{...s,...patch},sacrifices:relaxed.map(change=>change.label),loss};
             const previous=choices.get(item.id);
             if(!previous || compareLoss(candidate,previous)<0) choices.set(item.id,candidate);
@@ -287,7 +303,7 @@
         alternatives=[...choices.values()].sort(compareLoss).slice(0,3);
       }
     }
-    return { candidates, groups, conflicts, modelConflict, alternatives, pending };
+    return { candidates, groups, conflicts, modelConflict, alternatives };
   }
   return {
     sortOptions,

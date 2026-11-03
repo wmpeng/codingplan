@@ -93,7 +93,10 @@
       apiOnly: input.apiOnly === true,
       harnessApiRequired: input.harnessApiRequired === true,
       usageEntry: ['codex', 'claude-code', 'third-party', 'program'].includes(input.usageEntry) ? input.usageEntry : 'any',
-      priorities: Array.isArray(input.priorities) ? [...new Set(input.priorities.filter(key => ['balanced', 'volume', 'cost', 'quality'].includes(key)))] : [input.preference === 'variety' ? 'quality' : ['cost', 'quality'].includes(input.preference) ? input.preference : 'balanced'],
+      // Keep the existing URL/state field, but accept only one sort criterion.
+      priorities: [Array.isArray(input.priorities)
+        ? input.priorities.find(key => ['balanced', 'volume', 'cost', 'quality'].includes(key)) || 'balanced'
+        : input.preference === 'variety' ? 'quality' : ['cost', 'quality'].includes(input.preference) ? input.preference : 'balanced'],
       mainlandRequired: input.mainlandRequired === true,
       modelGroup: ['sota-models', 'high-volume-models'].includes(input.modelGroup) ? input.modelGroup : 'any',
       imageRequired: input.imageRequired === true,
@@ -436,8 +439,8 @@
   }
 
   // All eligibility conditions are evaluated on the same plan and model relation.
-  // Confirmed routes only. Generic Harness support does not prove named-tool compatibility.
-  // Evidence and expansion rules: purchase-guide.md, 使用方式.
+  // Product matching uses the shared Harness capability for all Agent frameworks;
+  // official Codex/Claude subscriptions additionally work in their own tools.
   function toolCompatibility(platform, plan, entry) {
     if (!entry || entry === 'any') return true;
     if (entry === 'program') return plan.billingMode === 'payg';
@@ -445,10 +448,7 @@
     if (entry === 'third-party') return harness;
     if ((entry === 'codex' && platform.slug === 'codex') ||
         (entry === 'claude-code' && platform.slug === 'claude')) return true;
-    if (harness === false) return false;
-    if (harness === true && ((platform.slug === 'minimax' && plan.billingMode === 'subscription') ||
-        (platform.slug === 'deepseek-official' && plan.billingMode === 'payg'))) return true;
-    return null;
+    return harness;
   }
 
   function matchingOffers(context, state, options) {

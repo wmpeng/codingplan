@@ -2,6 +2,38 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const Filters = require('./filter-state.js');
 
+test('各 Agent 框架统一使用最终 Harness 能力，Codex 和 Claude Code 额外纳入自身套餐', () => {
+  const cases=[
+    [{slug:'arbitrary',supportsHarnessApi:true},{},true],
+    [{slug:'bytedance-ark',supportsHarnessApi:true},{billingMode:'subscription'},true],
+    [{slug:'arbitrary',supportsHarnessApi:false},{supportsHarnessApi:true},true],
+    [{slug:'arbitrary',supportsHarnessApi:true},{supportsHarnessApi:false},false],
+    [{slug:'arbitrary',supportsHarnessApi:true},{supportsHarnessApi:null},true],
+    [{slug:'arbitrary',supportsHarnessApi:false},{},false],
+    [{slug:'arbitrary',supportsHarnessApi:null},{},null],
+    [{slug:'arbitrary'},{},null],
+  ];
+  for(const entry of ['codex','claude-code','third-party'])
+    for(const [platform,plan,expected] of cases)
+      assert.equal(Filters.toolCompatibility(platform,plan,entry),expected,`${entry}: ${JSON.stringify([platform,plan])}`);
+  const codex={slug:'codex',supportsHarnessApi:false},claude={slug:'claude',supportsHarnessApi:false};
+  assert.equal(Filters.toolCompatibility(codex,{supportsHarnessApi:false},'codex'),true);
+  assert.equal(Filters.toolCompatibility(claude,{supportsHarnessApi:false},'claude-code'),true);
+  assert.equal(Filters.toolCompatibility(codex,{},'claude-code'),false);
+  assert.equal(Filters.toolCompatibility(claude,{},'codex'),false);
+  for(const platform of [codex,claude])assert.equal(Filters.toolCompatibility(platform,{},'third-party'),false);
+});
+
+test('排序始终仅保留一个有效选项，空值恢复综合排序且不修改输入', () => {
+  const raw={priorities:['bogus','volume','cost'],preference:'quality'};
+  const before=JSON.stringify(raw);
+  assert.deepEqual(Filters.normalizeState(raw).priorities,['volume']);
+  assert.equal(JSON.stringify(raw),before);
+  for(const priorities of [[],['bogus'],['balanced','cost']])
+    assert.deepEqual(Filters.normalizeState({priorities}).priorities,['balanced']);
+  assert.deepEqual(Filters.normalizeState({preference:'variety'}).priorities,['quality']);
+});
+
 test('平台只读取境内支持字段，未知、缺失和非布尔值不算支持', () => {
   for (const value of [false, null, undefined, 'true', 1])
     assert.equal(Filters.isMainlandPlatform({supportsDomestic:value}), false);

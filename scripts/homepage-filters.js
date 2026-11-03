@@ -326,23 +326,11 @@
         if (el.type === "checkbox") el.checked = !!v;
         else el.value = v;
       });
+      const sortSelect = host.querySelector('[data-home-sort]');
+      if (sortSelect) sortSelect.value = state.priorities[0];
       singleSelects.sync();
       const includeDelisted = host.querySelector('[data-include-delisted]');
       if (includeDelisted) includeDelisted.checked = state.platformStatusMax === "delisted";
-      const priorityOptions = host.querySelector('[data-priority-options]');
-      if (priorityOptions) {
-        const priorities=state.priorities || ['balanced'];
-        host.querySelector('[data-priority-summary]').innerHTML=priorities.length?priorities.map((key,index)=>`<span class="priority-summary-item"><span class="ui-priority-number" aria-hidden="true">${index+1}</span><span>${root.CodingPlanUI.escapeHtml(root.PurchaseGuide.sortOptions.find(option=>option.value===key).label)}</span></span>`).join(''):'精选优先';
-        if(!priorityOptions.children.length)priorityOptions.innerHTML=root.PurchaseGuide.sortOptions.map(option=>{
-          return `<div class="priority-option">${root.CodingPlanFilterControls.priorityChoice(option,priorities.indexOf(option.value))}</div>`;
-        }).join('');
-        root.PurchaseGuide.sortOptions.forEach(option=>{
-          const index=priorities.indexOf(option.value),button=priorityOptions.querySelector(`[data-priority="${option.value}"]`);
-          button.setAttribute('aria-checked',String(index>=0));
-          button.setAttribute('aria-label',`${option.label}${index>=0?`，第${index+1}优先级`:''}`);
-          button.querySelector('.ui-priority-number').textContent=index>=0?index+1:'';
-        });
-      }
       const statusPicker = host.querySelector('#homeStatusPicker');
       if (statusPicker) {
         const excluded = planStatusOnly ? state.excludedPlanStatuses : state.excludedPlatformStatuses;
@@ -433,13 +421,6 @@
         }),
       );
     }
-    host.addEventListener('click',event=>{
-      const button=event.target.closest('[data-priority]');if(!button)return;
-      const list=[...(state.priorities || ['balanced'])],key=button.dataset.priority,index=list.indexOf(key);
-      if(index>=0)list.splice(index,1);else list.push(key);
-      state.priorities=list;state.preference=list[0] || 'balanced';publish('sort');
-      host.querySelector(`[data-priority="${key}"]`)?.focus({preventScroll:true});
-    });
     host.addEventListener("input", (event) => {
       const el = event.target;
       if (el.matches("[data-range-picker]")) {
@@ -516,6 +497,9 @@
         host.querySelector('[data-model-match-impact]').textContent = `开启后，${full ? "符合条件的套餐" : "匹配方案"}从 ${before} 个变为 ${after} 个。${after === 0 ? "当前没有同时满足条件的套餐。" : ""}确认后生效。`;
         render();
         host.querySelector('[data-model-match-action="confirm"]').focus({preventScroll:true});
+      } else if (el.matches('[data-home-sort]')) {
+        state.priorities = [el.value]; state.preference = el.value;
+        publish('sort');
       } else if (el.matches("[data-filter-field]")) {
         state[el.dataset.filterField] =
           el.type === "checkbox" ? el.checked : el.value;

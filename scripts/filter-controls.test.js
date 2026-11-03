@@ -30,6 +30,12 @@ test('共享筛选模板保留各页控件范围、状态对象和不可信目�
     assert.equal(html.includes('data-platform-domestic'), view === 'platforms');
     assert.equal(html.includes('data-filter-field="mainlandRequired"'), view === 'pricing');
     assert.equal(html.includes('data-filter-field="harnessApiRequired"'), view === 'plans');
+    assert.equal(html.includes('data-home-sort'), view === 'home');
+    if(view==='home'){
+      assert.match(html, /id="homeSort" data-custom-select/);
+      assert.match(html, /value="balanced" selected>综合排序/);
+      assert.doesNotMatch(html, /ui-priority-number|data-priority-options|>优先级/);
+    }
     assert.equal(html.includes('包含已下架'), view !== 'home');
     assert.match(html, /模型 &amp; 测试/);
     assert.doesNotMatch(html, /平台 <测试>/);

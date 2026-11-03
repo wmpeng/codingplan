@@ -80,10 +80,10 @@
       preference: choice('order', ['balanced','cost','quality','variety'], 'balanced'),
       usageEntry: choice('entry', ['any','codex','claude-code','third-party','program'], 'any'),
       priorities: field('priorities', value => {
-        if (value === 'none') return [];
-        const keys = [...new Set(value.split(',').filter(key => ['balanced','volume','cost','quality'].includes(key)))];
-        return keys.length ? keys : INVALID;
-      }, value => value.length ? value.join(',') : 'none', ['balanced']),
+        if (value === 'none') return ['balanced'];
+        const key = value.split(',').find(key => ['balanced','volume','cost','quality'].includes(key));
+        return key ? [key] : INVALID;
+      }, value => value.find(key => ['balanced','volume','cost','quality'].includes(key)) || 'balanced', ['balanced']),
       restricted: flag('restricted'), history: flag('history'),
       domestic: flag('domestic'), featuredOnly: flag('featured')
     };

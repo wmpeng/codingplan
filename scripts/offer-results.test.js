@@ -2,6 +2,19 @@ const test=require('node:test');
 const assert=require('node:assert/strict');
 const Offers=require('./offer-results.js');
 const Cards=require('./platform-catalog.js');
+test('默认优先三个不同平台，不足时同平台补满三个，保留原排序且不修改输入',()=>{
+  for(const [platforms,expected] of [
+    [[],[]], [['a'],[0]], [['a','a'],[0,1]], [['a','b'],[0,1]],
+    [['a','a','a','a'],[0,1,2]], [['a','a','a','b'],[0,1,3]],
+    [['a','a','b','b'],[0,1,2]], [['a','a','b','c'],[0,2,3]],
+    [['a','b','a','c'],[0,1,3]], [['a','b','c','a'],[0,1,2]],
+  ]){
+    const candidates=platforms.map((slug,index)=>({id:String(index),platform:{slug}}));
+    const before=JSON.stringify(candidates);
+    assert.deepEqual(Offers.initialOffers(candidates).map(item=>Number(item.id)),expected);
+    assert.equal(JSON.stringify(candidates),before);
+  }
+});
 function offer(overrides={}){
   return {id:'test-offer',platform:{slug:'test-platform',name:'平台',action:'https://example.com/platform',platformStatus:'open',supportsHarnessApi:true},plan:{slug:'test-plan',name:'套餐',action:'https://example.com/plan',billingMode:'subscription',firstMonthPrice:20,monthlyPrice:20,currency:'$'},models:[{slug:'one',name:'模型一'},{slug:'two',name:'模型二'}],rows:[{slug:'one-tier',modelSlug:'one',usage:{monthlyTokenInM:0,unitPriceCnyPerM:0}},{slug:'two-tier',modelSlug:'two',usage:{monthlyTokenInM:'unknown',unitPriceCnyPerM:null}}],cost:136,reasons:[],cautions:[],...overrides};
 }

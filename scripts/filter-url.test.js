@@ -7,14 +7,17 @@ const Filters = require('./filter-state');
 const context = {platforms:[{slug:'codex'},{slug:'zhipu'}], models:[{slug:'gpt-6-astra'},{slug:'glm-5-3'}]};
 const schema = Url.sharedSchema(context, Filters.createViewPolicy({mode:'full',view:'pricing'}));
 
-test('首页使用方式与有序优先级可分享，去重、空选择与旧排序迁移保持含义',()=>{
+test('首页单选排序可分享，旧多选取首项，空选择恢复综合排序',()=>{
   const home=Url.sharedSchema(context,Filters.createViewPolicy({}));
   for(const priorities of [[],['cost','volume','quality'],['balanced']]){
     const url=Url.update('https://codingplan.fyi/',home,{snapshot:true,usageEntry:'codex',priorities});
     const restored=Filters.normalizeState(Url.read(home,url.search));
-    assert.deepEqual(restored.priorities,priorities);assert.equal(restored.usageEntry,'codex');
+    assert.deepEqual(restored.priorities,[priorities[0] || 'balanced']);assert.equal(restored.usageEntry,'codex');
+    if(priorities[0]==='cost')assert.equal(url.searchParams.get('priorities'),'cost');
   }
-  assert.deepEqual(Url.read(home,'?priorities=volume,cost,volume,bogus').priorities,['volume','cost']);
+  assert.deepEqual(Url.read(home,'?priorities=volume,cost,volume,bogus').priorities,['volume']);
+  assert.deepEqual(Url.read(home,'?priorities=bogus,quality,cost').priorities,['quality']);
+  assert.deepEqual(Url.read(home,'?priorities=none').priorities,['balanced']);
   assert.deepEqual(Filters.normalizeState(Url.read(home,'?order=cost')).priorities,['cost']);
   assert.deepEqual(Url.read(home,'?entry=not-a-tool&priorities=bogus'),{});
 });

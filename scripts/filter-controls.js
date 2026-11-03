@@ -101,10 +101,6 @@
   }
 
   const statusExclusions = { restricted: "排除购买受限" };
-  function priorityChoice(option, index, guide = false) {
-    const selected = index >= 0;
-    return `<button type="button" class="ui-priority-choice" role="checkbox" aria-checked="${selected}" aria-label="${escapeHtml(option.label)}${selected ? `，第${index + 1}优先级` : ''}" ${guide ? `data-answer="priorities" data-value="${option.value}"` : `data-priority="${option.value}"`} title="${escapeHtml(option.help)}"><span class="ui-priority-number" aria-hidden="true">${selected ? index + 1 : ''}</span><span>${escapeHtml(option.label)}</span></button>`;
-  }
   function buildStatusPicker(includeHistory = false, planStatusOnly = false) {
     const subject = planStatusOnly ? "套餐" : "平台";
     const {id, label, summary} = pickers.status;
@@ -129,7 +125,7 @@
       ${platformHub ? `<label class="platform-access-filter"><span class="filter-control-text">${mainlandLabel}</span><span class="toggle-switch"><input type="checkbox" role="switch" data-platform-domestic><span class="toggle-slider" aria-hidden="true"></span></span></label>` : ""}${plansPage ? '<label class="plan-harness-filter"><span class="filter-control-text">可用于其他智能体框架</span><span class="toggle-switch"><input type="checkbox" role="switch" data-filter-field="harnessApiRequired"><span class="toggle-slider" aria-hidden="true"></span></span></label>' : ""}</div>
       ${featuredCatalog ? `<\/fieldset><div class="platform-featured-control"><button type="button" class="platform-featured-button" data-catalog-featured ${platformHub ? 'data-platform-featured' : plansPage ? 'data-plan-featured' : 'data-pricing-featured'} aria-pressed="false">${platformHub ? '显示精选平台' : '显示精选'}</button><button type="button" data-hub-retry-featured hidden>重试精选名单</button></div></div>` : ""}
       <div class="filter-state-footer">
-      ${full ? "" : `<div class="filter-state-controls"><details class="filter-picker priority-picker"><summary>优先级<span data-priority-summary></span></summary><div class="filter-picker-menu"><div data-priority-options></div></div></details>`}
+      ${full ? "" : `<div class="filter-state-controls home-sort-control"><span>排序</span><select id="homeSort" data-custom-select data-home-sort aria-label="排序">${root.PurchaseGuide.sortOptions.map(option=>`<option value="${option.value}" ${state.priorities[0]===option.value?'selected':''}>${escapeHtml(option.label)}</option>`).join('')}</select></div>`}
       <div class="filter-state-actions">${pricing ? "" : `<button type="button" data-filter-action="reset"${purchaseTool && !platformHub && !plansPage ? ' title="显示全部平台与模型，已下架内容需单独勾选"' : ""}>${platformHub || plansPage ? "重置筛选" : full ? "显示全部" : "显示精选"}</button>`}${full && !platformHub && !plansPage ? `<button type="button" data-filter-action="restore-defaults" title="选择精选平台与精选模型，${purchaseTool ? "已下架内容需单独勾选" : "其他条件恢复不限"}">${pricing ? "重置筛选" : "显示精选"}</button>` : ""}</div>${full ? "</div>" : "</div></div>"}
       </section>`;
   }
@@ -164,7 +160,7 @@
     return controls;
   }
   root.CodingPlanFilterControls = {
-    render, directoryControls, multimodalControls, platformShortcutControls, priorityChoice, statusExclusions, mainlandLabel,
+    render, directoryControls, multimodalControls, platformShortcutControls, statusExclusions, mainlandLabel,
     range: {knots:rangeKnots, value:rangeValue, position:rangePosition, budgetNumericMax, budgetSliderMax, tokenSliderMax},
   };
 })(globalThis);
