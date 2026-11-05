@@ -1,7 +1,7 @@
 {
   "header": {
     "title": "AI Coding Plan 平台评测与对比",
-    "updateDate": "更新日期 2026.11.01 | 多平台套餐、模型与活动更新",
+    "updateDate": "更新日期 2026.11.04 | 共绩算力模型与合作价格更新",
     "subtitle": "智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Command Code、Codex、Claude Code、Cursor、Qoder、WorkBuddy、TRAE等平台，订阅套餐与按量API对比。<br>涵盖GPT-6.1-Sol / Terra、Claude 5.5系列、MiniMax-M3.1-Flash、Kimi-K3.1-Pro、Kimi-K2.8-Preview、Step-5-Preview、LongCat-2.5-Preview、DeepSeek-V4.1-Flash、GLM-5.3与Qwen-3.8等模型",
     "models": "快速选出当下最适合的平台和使用方式。[加群](https://api.dreamfree.space/c/s/cpfeishulink)参与讨论和获取最新消息",
     "watermarkUrl": "www.codingplan.fyi",
@@ -124,6 +124,12 @@
     "apply": "确定"
   },
   "updates": [
+    {
+      "date": "2026.11.04",
+      "items": [
+        "共绩算力新增Kimi K3.1 Pro、Hy4 Preview与Qwen 3.7 Plus，补充分渠道报价并更新Hy3价格；33条报价均已包含本站合作渠道8折优惠，按实际Token用量计费。国产算力专区免费活动到期情况待确认。"
+      ]
+    },
     {
       "date": "2026.11.01",
       "items": [
@@ -579,5 +585,5 @@
       ]
     }
   ],
-  "contentVersion": "2026-11-01T08:59:43.731Z"
+  "contentVersion": "2026-11-04T15:57:12.873Z"
 }

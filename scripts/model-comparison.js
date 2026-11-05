@@ -98,6 +98,33 @@
         };
     }
 
+    function mountStickyLegend(container) {
+        const legend = container.querySelector('.pricing-chart-group > .tool-legend');
+        const header = document.querySelector('.site-header');
+        const filters = document.getElementById('toolFilters');
+        let frame = 0;
+        function update() {
+            frame = 0;
+            const top = Math.max(0, header?.getBoundingClientRect().bottom || 0,
+                filters?.classList.contains('directory-filters-stuck') ? filters.getBoundingClientRect().bottom : 0) + 8;
+            legend.style.setProperty('--chart-legend-top', `${top}px`);
+            // A fully expanded model list must remain readable on short screens.
+            const available = (root.visualViewport?.height || root.innerHeight) - top - legend.getBoundingClientRect().height;
+            legend.classList.toggle('is-sticky', available >= 160);
+            legend.classList.toggle('is-docked', available >= 160 && legend.getBoundingClientRect().top <= top + 1);
+        }
+        function schedule() {
+            if (!frame) frame = root.requestAnimationFrame(update);
+        }
+        root.addEventListener('scroll', schedule, {passive:true});
+        root.addEventListener('resize', schedule);
+        root.visualViewport?.addEventListener('resize', schedule);
+        const observer = new root.ResizeObserver(schedule);
+        [legend, header, filters].filter(Boolean).forEach(element => observer.observe(element));
+        if (filters) new root.MutationObserver(schedule).observe(filters, {attributes:true, attributeFilter:['class']});
+        update();
+    }
+
     function seriesByColor(points, colorMode, colors, mapPoint, seriesPrefix, pointLabelField) {
         const grouped = new Map();
         points.forEach((point) => {
@@ -765,6 +792,7 @@
             }
             document.fonts?.ready.then(layoutColorLegend);
             render();
+            if (Directory) mountStickyLegend(container);
             container.__usageMounted = true;
         })().catch((error) => {
             if (snapshotHtml !== null) {

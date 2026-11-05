@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-11-01T08:54:03Z",
+  "generatedAt": "2026-11-04T16:01:28Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -6442,281 +6442,29 @@
       "yearlyPrice": "不适用",
       "currency": "¥",
       "benefits": [],
-      "note": "按实际Token用量计费。邀请8折仅适用于资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。",
+      "note": "本站合作渠道享8折，所示价格已含优惠。按实际Token用量计费，不同渠道分别报价，调用时需使用对应模型名称。",
       "planStatus": "open",
       "planModels": [
         {
-          "slug": "gongji-api--glm-5-3-flash",
-          "modelSlug": "glm-5-3-flash",
+          "slug": "gongji-api--kimi-k3-1-pro",
+          "modelSlug": "kimi-k3-1-pro",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "unitPriceCnyPerM": 0.2712
+            "unitPriceCnyPerM": 1.7725
           },
           "pricing": {
             "currency": "¥",
-            "inputPerM": 0.8,
-            "cachePerM": 0.23,
-            "outputPerM": 2.8,
-            "inputCnyPerM": 0.8,
-            "cacheCnyPerM": 0.23,
-            "outputCnyPerM": 2.8
+            "inputPerM": 10.4,
+            "cachePerM": 1.04,
+            "outputPerM": 54.4,
+            "inputCnyPerM": 10.4,
+            "cacheCnyPerM": 1.04,
+            "outputCnyPerM": 54.4
           },
-          "note": "邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
-        },
-        {
-          "slug": "gongji-api--deepseek-v4-preview",
-          "modelSlug": "deepseek-v4-preview",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "unitPriceCnyPerM": 0.0887
-          },
-          "pricing": {
-            "currency": "¥",
-            "inputPerM": 1.0,
-            "cachePerM": 0.02,
-            "outputPerM": 4.0,
-            "inputCnyPerM": 1.0,
-            "cacheCnyPerM": 0.02,
-            "outputCnyPerM": 4.0
-          },
-          "note": "官方公告2026-10-20中午12:00下架预览资源，此后原预览ID转向正式服务；未公布时区及目标正式版本。邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
-        },
-        {
-          "slug": "gongji-api--deepseek-v4-pro-preview",
-          "modelSlug": "deepseek-v4-pro-preview",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "unitPriceCnyPerM": 0.4332
-          },
-          "pricing": {
-            "currency": "¥",
-            "inputPerM": 4.5,
-            "cachePerM": 0.15,
-            "outputPerM": 13.5,
-            "inputCnyPerM": 4.5,
-            "cacheCnyPerM": 0.15,
-            "outputCnyPerM": 13.5
-          },
-          "note": "官方公告2026-10-20中午12:00下架预览资源，此后原预览ID转向正式服务；未公布时区及目标正式版本。邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
-        },
-        {
-          "slug": "gongji-api--glm-5-3",
-          "modelSlug": "glm-5-3",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "unitPriceCnyPerM": 2.4285
-          },
-          "pricing": {
-            "currency": "¥",
-            "inputPerM": 8.0,
-            "cachePerM": 2.0,
-            "outputPerM": 28.0,
-            "inputCnyPerM": 8.0,
-            "cacheCnyPerM": 2.0,
-            "outputCnyPerM": 28.0
-          },
-          "note": "邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
-        },
-        {
-          "slug": "gongji-api--kimi-k3",
-          "modelSlug": "kimi-k3",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "unitPriceCnyPerM": 3.3855
-          },
-          "pricing": {
-            "currency": "¥",
-            "inputPerM": 20.0,
-            "cachePerM": 2.0,
-            "outputPerM": 100.0,
-            "inputCnyPerM": 20.0,
-            "cacheCnyPerM": 2.0,
-            "outputCnyPerM": 100.0
-          },
-          "note": "邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
-        },
-        {
-          "slug": "gongji-api--glm-5-1",
-          "modelSlug": "glm-5-1",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "unitPriceCnyPerM": 2.4285
-          },
-          "pricing": {
-            "currency": "¥",
-            "inputPerM": 8.0,
-            "cachePerM": 2.0,
-            "outputPerM": 28.0,
-            "inputCnyPerM": 8.0,
-            "cacheCnyPerM": 2.0,
-            "outputCnyPerM": 28.0
-          },
-          "note": "邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
-        },
-        {
-          "slug": "gongji-api--glm-5-2",
-          "modelSlug": "glm-5-2",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "unitPriceCnyPerM": 2.4285
-          },
-          "pricing": {
-            "currency": "¥",
-            "inputPerM": 8.0,
-            "cachePerM": 2.0,
-            "outputPerM": 28.0,
-            "inputCnyPerM": 8.0,
-            "cacheCnyPerM": 2.0,
-            "outputCnyPerM": 28.0
-          },
-          "note": "邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
-        },
-        {
-          "slug": "gongji-api--kimi-k2-6",
-          "modelSlug": "kimi-k2-6",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "unitPriceCnyPerM": 1.4982
-          },
-          "pricing": {
-            "currency": "¥",
-            "inputPerM": 6.5,
-            "cachePerM": 1.1,
-            "outputPerM": 27.0,
-            "inputCnyPerM": 6.5,
-            "cacheCnyPerM": 1.1,
-            "outputCnyPerM": 27.0
-          },
-          "note": "邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
-        },
-        {
-          "slug": "gongji-api--qwen-3-7-max",
-          "modelSlug": "qwen-3-7-max",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "unitPriceCnyPerM": 1.9113
-          },
-          "pricing": {
-            "currency": "¥",
-            "inputPerM": 12.0,
-            "cachePerM": 1.2,
-            "outputPerM": 36.0,
-            "inputCnyPerM": 12.0,
-            "cacheCnyPerM": 1.2,
-            "outputCnyPerM": 36.0
-          },
-          "note": "邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
-        },
-        {
-          "slug": "gongji-api--glm-5",
-          "modelSlug": "glm-5",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "unitPriceCnyPerM": 1.8264
-          },
-          "pricing": {
-            "currency": "¥",
-            "inputPerM": 6.0,
-            "cachePerM": 1.5,
-            "outputPerM": 22.0,
-            "inputCnyPerM": 6.0,
-            "cacheCnyPerM": 1.5,
-            "outputCnyPerM": 22.0
-          },
-          "note": "邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
-        },
-        {
-          "slug": "gongji-api--deepseek-v4-flash-0731",
-          "modelSlug": "deepseek-v4-flash-0731",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "unitPriceCnyPerM": 0.1444
-          },
-          "pricing": {
-            "currency": "¥",
-            "inputPerM": 1.5,
-            "cachePerM": 0.05,
-            "outputPerM": 4.5,
-            "inputCnyPerM": 1.5,
-            "cacheCnyPerM": 0.05,
-            "outputCnyPerM": 4.5
-          },
-          "note": "邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
-        },
-        {
-          "slug": "gongji-api--deepseek-v4-pro-0813",
-          "modelSlug": "deepseek-v4-pro-0813",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "unitPriceCnyPerM": 0.4332
-          },
-          "pricing": {
-            "currency": "¥",
-            "inputPerM": 4.5,
-            "cachePerM": 0.15,
-            "outputPerM": 13.5,
-            "inputCnyPerM": 4.5,
-            "cacheCnyPerM": 0.15,
-            "outputCnyPerM": 13.5
-          },
-          "note": "邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
-        },
-        {
-          "slug": "gongji-api--deepseek-v4-1-flash",
-          "modelSlug": "deepseek-v4-1-flash",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "unitPriceCnyPerM": 0.0887
-          },
-          "pricing": {
-            "currency": "¥",
-            "inputPerM": 1.0,
-            "cachePerM": 0.02,
-            "outputPerM": 4.0,
-            "inputCnyPerM": 1.0,
-            "cacheCnyPerM": 0.02,
-            "outputCnyPerM": 4.0
-          },
-          "note": "平台另有独立 1017 入口；本入口未注明是否随新版升级。邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
+          "note": "调用名称为 moonshotai/kimi-k3.1-pro。；已含8折优惠"
         },
         {
           "slug": "gongji-api--deepseek-v4-1-flash-1017",
@@ -6726,18 +6474,648 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "unitPriceCnyPerM": 0.0887
+            "unitPriceCnyPerM": 0.0709
           },
           "pricing": {
             "currency": "¥",
-            "inputPerM": 1.0,
-            "cachePerM": 0.02,
-            "outputPerM": 4.0,
-            "inputCnyPerM": 1.0,
-            "cacheCnyPerM": 0.02,
-            "outputCnyPerM": 4.0
+            "inputPerM": 0.8,
+            "cachePerM": 0.016,
+            "outputPerM": 3.2,
+            "inputCnyPerM": 0.8,
+            "cacheCnyPerM": 0.016,
+            "outputCnyPerM": 3.2
           },
-          "note": "调用名称为 deepseek/deepseek-v4.1-flash-1017。邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
+          "note": "调用名称为 deepseek/deepseek-v4.1-flash-1017。；已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--glm-5-3-flash",
+          "modelSlug": "glm-5-3-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 0.217
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 0.64,
+            "cachePerM": 0.184,
+            "outputPerM": 2.24,
+            "inputCnyPerM": 0.64,
+            "cacheCnyPerM": 0.184,
+            "outputCnyPerM": 2.24
+          },
+          "note": "已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--deepseek-v4-preview",
+          "modelSlug": "deepseek-v4-preview",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 0.0709
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 0.8,
+            "cachePerM": 0.016,
+            "outputPerM": 3.2,
+            "inputCnyPerM": 0.8,
+            "cacheCnyPerM": 0.016,
+            "outputCnyPerM": 3.2
+          },
+          "note": "官方公告2026-10-20中午12:00下架预览资源，此后原预览ID转向正式服务；未公布时区及目标正式版本。；已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--deepseek-v4-pro-preview",
+          "modelSlug": "deepseek-v4-pro-preview",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 0.3465
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 3.6,
+            "cachePerM": 0.12,
+            "outputPerM": 10.8,
+            "inputCnyPerM": 3.6,
+            "cacheCnyPerM": 0.12,
+            "outputCnyPerM": 10.8
+          },
+          "note": "官方公告2026-10-20中午12:00下架预览资源，此后原预览ID转向正式服务；未公布时区及目标正式版本。；已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--glm-5-3",
+          "modelSlug": "glm-5-3",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 1.9428
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 6.4,
+            "cachePerM": 1.6,
+            "outputPerM": 22.4,
+            "inputCnyPerM": 6.4,
+            "cacheCnyPerM": 1.6,
+            "outputCnyPerM": 22.4
+          },
+          "note": "已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--kimi-k3",
+          "modelSlug": "kimi-k3",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 2.7084
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 16.0,
+            "cachePerM": 1.6,
+            "outputPerM": 80.0,
+            "inputCnyPerM": 16.0,
+            "cacheCnyPerM": 1.6,
+            "outputCnyPerM": 80.0
+          },
+          "note": "已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--glm-5-1",
+          "modelSlug": "glm-5-1",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 1.9428
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 6.4,
+            "cachePerM": 1.6,
+            "outputPerM": 22.4,
+            "inputCnyPerM": 6.4,
+            "cacheCnyPerM": 1.6,
+            "outputCnyPerM": 22.4
+          },
+          "note": "已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--glm-5-2",
+          "modelSlug": "glm-5-2",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 1.9428
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 6.4,
+            "cachePerM": 1.6,
+            "outputPerM": 22.4,
+            "inputCnyPerM": 6.4,
+            "cacheCnyPerM": 1.6,
+            "outputCnyPerM": 22.4
+          },
+          "note": "已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--kimi-k2-6",
+          "modelSlug": "kimi-k2-6",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 1.1985
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 5.2,
+            "cachePerM": 0.88,
+            "outputPerM": 21.6,
+            "inputCnyPerM": 5.2,
+            "cacheCnyPerM": 0.88,
+            "outputCnyPerM": 21.6
+          },
+          "note": "已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--qwen-3-7-max",
+          "modelSlug": "qwen-3-7-max",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 1.529
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 9.6,
+            "cachePerM": 0.96,
+            "outputPerM": 28.8,
+            "inputCnyPerM": 9.6,
+            "cacheCnyPerM": 0.96,
+            "outputCnyPerM": 28.8
+          },
+          "note": "已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--glm-5",
+          "modelSlug": "glm-5",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 1.4611
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 4.8,
+            "cachePerM": 1.2,
+            "outputPerM": 17.6,
+            "inputCnyPerM": 4.8,
+            "cacheCnyPerM": 1.2,
+            "outputCnyPerM": 17.6
+          },
+          "note": "已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--deepseek-v4-flash-0731",
+          "modelSlug": "deepseek-v4-flash-0731",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 0.1155
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 1.2,
+            "cachePerM": 0.04,
+            "outputPerM": 3.6,
+            "inputCnyPerM": 1.2,
+            "cacheCnyPerM": 0.04,
+            "outputCnyPerM": 3.6
+          },
+          "note": "已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--deepseek-v4-pro-0813",
+          "modelSlug": "deepseek-v4-pro-0813",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 0.3465
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 3.6,
+            "cachePerM": 0.12,
+            "outputPerM": 10.8,
+            "inputCnyPerM": 3.6,
+            "cacheCnyPerM": 0.12,
+            "outputCnyPerM": 10.8
+          },
+          "note": "已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--deepseek-v4-1-flash",
+          "modelSlug": "deepseek-v4-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 0.0709
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 0.8,
+            "cachePerM": 0.016,
+            "outputPerM": 3.2,
+            "inputCnyPerM": 0.8,
+            "cacheCnyPerM": 0.016,
+            "outputCnyPerM": 3.2
+          },
+          "note": "平台另有独立 1017 入口；本入口未注明是否随新版升级。；已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--glm-5-3-flash--tenxun",
+          "modelSlug": "glm-5-3-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "tenxun",
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 0.217
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 0.64,
+            "cachePerM": 0.184,
+            "outputPerM": 2.24,
+            "inputCnyPerM": 0.64,
+            "cacheCnyPerM": 0.184,
+            "outputCnyPerM": 2.24
+          },
+          "note": "调用名称为 tenxun/glm-5.3-flash；本价格仅适用于该渠道。；已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--glm-5-3--gaoxinwang",
+          "modelSlug": "glm-5-3",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "gaoxinwang",
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 1.9428
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 6.4,
+            "cachePerM": 1.6,
+            "outputPerM": 22.4,
+            "inputCnyPerM": 6.4,
+            "cacheCnyPerM": 1.6,
+            "outputCnyPerM": 22.4
+          },
+          "note": "调用名称为 gaoxinwang/glm-5.3；本价格仅适用于该渠道。；已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--glm-5-3--suihonghuachuang",
+          "modelSlug": "glm-5-3",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "suihonghuachuang",
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 1.1657
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 3.84,
+            "cachePerM": 0.96,
+            "outputPerM": 13.44,
+            "inputCnyPerM": 3.84,
+            "cacheCnyPerM": 0.96,
+            "outputCnyPerM": 13.44
+          },
+          "note": "调用名称为 suihonghuachuang/glm-5.3；本价格仅适用于该渠道。；已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--glm-5-3--tenxun",
+          "modelSlug": "glm-5-3",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "tenxun",
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 1.9428
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 6.4,
+            "cachePerM": 1.6,
+            "outputPerM": 22.4,
+            "inputCnyPerM": 6.4,
+            "cacheCnyPerM": 1.6,
+            "outputCnyPerM": 22.4
+          },
+          "note": "调用名称为 tenxun/glm-5.3；本价格仅适用于该渠道。；已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--deepseek-v4-flash-0731--yidong",
+          "modelSlug": "deepseek-v4-flash-0731",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "yidong",
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 0.0946
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 1.06672,
+            "cachePerM": 0.0213344,
+            "outputPerM": 4.26688,
+            "inputCnyPerM": 1.06672,
+            "cacheCnyPerM": 0.0213344,
+            "outputCnyPerM": 4.26688
+          },
+          "note": "调用名称为 yidong/deepseek-v4-flash-0731；本价格仅适用于该渠道。；已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--glm-5-3--dianxin",
+          "modelSlug": "glm-5-3",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "dianxin",
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 1.3794
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 4.544,
+            "cachePerM": 1.136,
+            "outputPerM": 15.904,
+            "inputCnyPerM": 4.544,
+            "cacheCnyPerM": 1.136,
+            "outputCnyPerM": 15.904
+          },
+          "note": "调用名称为 dianxin/glm-5.3；本价格仅适用于该渠道。；已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--glm-5-3-flash--dianxin",
+          "modelSlug": "glm-5-3-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "dianxin",
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 0.154
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 0.4544,
+            "cachePerM": 0.13064,
+            "outputPerM": 1.5904,
+            "inputCnyPerM": 0.4544,
+            "cacheCnyPerM": 0.13064,
+            "outputCnyPerM": 1.5904
+          },
+          "note": "调用名称为 dianxin/glm-5.3-flash；本价格仅适用于该渠道。；已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--deepseek-v4-1-flash--suihonghuachuang",
+          "modelSlug": "deepseek-v4-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "suihonghuachuang",
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 0.0426
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 0.48,
+            "cachePerM": 0.0096,
+            "outputPerM": 1.92,
+            "inputCnyPerM": 0.48,
+            "cacheCnyPerM": 0.0096,
+            "outputCnyPerM": 1.92
+          },
+          "note": "调用名称为 suihonghuachuang/deepseek-v4.1-flash；本价格仅适用于该渠道。平台另有独立1017入口；本渠道的具体日期版本未明确。；已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--kimi-k3--gaoxinwang",
+          "modelSlug": "kimi-k3",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "gaoxinwang",
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 2.7084
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 16.0,
+            "cachePerM": 1.6,
+            "outputPerM": 80.0,
+            "inputCnyPerM": 16.0,
+            "cacheCnyPerM": 1.6,
+            "outputCnyPerM": 80.0
+          },
+          "note": "调用名称为 gaoxinwang/kimi-k3；本价格仅适用于该渠道。；已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--glm-5-3--yidong",
+          "modelSlug": "glm-5-3",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "yidong",
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 1.0363
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 3.41376,
+            "cachePerM": 0.85344,
+            "outputPerM": 11.94816,
+            "inputCnyPerM": 3.41376,
+            "cacheCnyPerM": 0.85344,
+            "outputCnyPerM": 11.94816
+          },
+          "note": "调用名称为 yidong/glm-5.3；本价格仅适用于该渠道。；已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--hy4-preview--tenxun",
+          "modelSlug": "hy4-preview",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "tenxun",
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 0.5377
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 4.8,
+            "cachePerM": 0.24,
+            "outputPerM": 14.4,
+            "inputCnyPerM": 4.8,
+            "cacheCnyPerM": 0.24,
+            "outputCnyPerM": 14.4
+          },
+          "note": "调用名称为 tenxun/hy4-preview；本价格仅适用于该渠道。；已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--qwen-3-7-plus--baidu",
+          "modelSlug": "qwen-3-7-plus",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "baidu",
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 0.2692
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 1.04,
+            "cachePerM": 0.208,
+            "outputPerM": 4.16,
+            "inputCnyPerM": 1.04,
+            "cacheCnyPerM": 0.208,
+            "outputCnyPerM": 4.16
+          },
+          "note": "调用名称为 baidu/qwen3.7-plus；本价格仅适用于该渠道。；已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--deepseek-v4-1-flash--gaoxinwang",
+          "modelSlug": "deepseek-v4-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "gaoxinwang",
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 0.1418
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 1.6,
+            "cachePerM": 0.032,
+            "outputPerM": 6.4,
+            "inputCnyPerM": 1.6,
+            "cacheCnyPerM": 0.032,
+            "outputCnyPerM": 6.4
+          },
+          "note": "调用名称为 gaoxinwang/deepseek-v4.1-flash；本价格仅适用于该渠道。平台另有独立1017入口；本渠道的具体日期版本未明确。；已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--deepseek-v4-1-flash--baidu",
+          "modelSlug": "deepseek-v4-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "baidu",
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 0.0922
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 1.04,
+            "cachePerM": 0.0208,
+            "outputPerM": 4.16,
+            "inputCnyPerM": 1.04,
+            "cacheCnyPerM": 0.0208,
+            "outputCnyPerM": 4.16
+          },
+          "note": "调用名称为 baidu/deepseek-v4.1-flash；本价格仅适用于该渠道。平台另有独立1017入口；本渠道的具体日期版本未明确。；已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--glm-5-3-flash--yidong",
+          "modelSlug": "glm-5-3-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "yidong",
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 0.1205
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 0.355584,
+            "cachePerM": 0.1022304,
+            "outputPerM": 1.244544,
+            "inputCnyPerM": 0.355584,
+            "cacheCnyPerM": 0.1022304,
+            "outputCnyPerM": 1.244544
+          },
+          "note": "调用名称为 yidong/glm-5.3-flash；本价格仅适用于该渠道。；已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--glm-5-2--suihonghuachuang",
+          "modelSlug": "glm-5-2",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "suihonghuachuang",
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 0.68
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 2.24,
+            "cachePerM": 0.56,
+            "outputPerM": 7.84,
+            "inputCnyPerM": 2.24,
+            "cacheCnyPerM": 0.56,
+            "outputCnyPerM": 7.84
+          },
+          "note": "调用名称为 suihonghuachuang/glm-5.2；本价格仅适用于该渠道。；已含8折优惠"
+        },
+        {
+          "slug": "gongji-api--kimi-k3--guangzhui",
+          "modelSlug": "kimi-k3",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "guangzhui",
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 2.0313
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 12.0,
+            "cachePerM": 1.2,
+            "outputPerM": 60.0,
+            "inputCnyPerM": 12.0,
+            "cacheCnyPerM": 1.2,
+            "outputCnyPerM": 60.0
+          },
+          "note": "调用名称为 guangzhui/kimi-k3；本价格仅适用于该渠道。；已含8折优惠"
         },
         {
           "slug": "gongji-api--hy3",
@@ -6747,18 +7125,18 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "unitPriceCnyPerM": 0.4578
+            "unitPriceCnyPerM": 0.2449
           },
           "pricing": {
             "currency": "¥",
-            "inputPerM": 1.2,
-            "cachePerM": 0.4,
-            "outputPerM": 4.0,
-            "inputCnyPerM": 1.2,
-            "cacheCnyPerM": 0.4,
-            "outputCnyPerM": 4.0
+            "inputPerM": 0.8,
+            "cachePerM": 0.2,
+            "outputPerM": 3.2,
+            "inputCnyPerM": 0.8,
+            "cacheCnyPerM": 0.2,
+            "outputCnyPerM": 3.2
           },
-          "note": "邀请8折仅限资格仍有效的用户，实际折扣以账户结算为准；活动起止日期未公布。"
+          "note": "调用名称为 tenxun/hy3。；已含8折优惠"
         }
       ]
     },
@@ -54240,5 +54618,5 @@
       ]
     }
   ],
-  "contentVersion": "2026-11-01T08:54:05.604Z"
+  "contentVersion": "2026-11-04T15:55:29.101Z"
 }

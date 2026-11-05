@@ -702,6 +702,9 @@
         },
         {
           "url": "https://maas.suanli.cn/models/deepseek%252Fdeepseek-v4-flash"
+        },
+        {
+          "url": "https://maas.suanli.cn/"
         }
       ],
       "relatedChanges": []
@@ -2624,7 +2627,40 @@
         }
       ],
       "relatedChanges": []
+    },
+    {
+      "slug": "gongji-domestic-free-period-followup",
+      "title": "共绩国产算力专区免费活动期限待确认",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "unknown",
+        "description": "横幅仅标注10月1日至10月31日，未注明年份；当前仍显示免费，是否延期及后续计费未明确。"
+      },
+      "changes": [
+        {
+          "type": "price",
+          "label": "免费体验期限",
+          "before": "专区展示输入和输出免费，缓存不支持；横幅标注10月1日至10月31日，免费模型不保证SLA，资源满负荷时动态调整。",
+          "after": "是否延期、结束及恢复后的计费规则待确认。"
+        }
+      ],
+      "audience": "使用共绩国产算力专区免费渠道的用户。",
+      "summary": "国产算力专区仍展示免费体验，但横幅活动期限为10月1日至10月31日，是否延期及后续计费待确认；免费模型不保证SLA，资源满负荷时动态调整。",
+      "archiveOn": "2027-02-04",
+      "targets": [
+        {
+          "type": "platform",
+          "platformSlug": "gongji",
+          "label": "共绩算力"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://maas.suanli.cn/"
+        }
+      ],
+      "relatedChanges": []
     }
   ],
-  "contentVersion": "2026-11-01T16:43:15.752Z"
+  "contentVersion": "2026-11-04T15:19:08.612Z"
 }

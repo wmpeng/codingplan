@@ -27,52 +27,28 @@
       "supportsDomestic": true
     },
     {
-      "slug": "zhipu",
-      "name": "智谱AI",
+      "slug": "deepseek-official",
+      "name": "DeepSeek",
       "rating": 5,
-      "summary": "涨价后新套餐无需抢购。",
-      "dimensions": {
-        "value": {
-          "score": 4,
-          "reason": "新套餐价格翻倍，性价比有所下降，[查看套餐用量](/plans/?platform=zhipu)。"
-        },
-        "models": {
-          "score": 4,
-          "reason": "GLM-5.3 代码能力 **T0 级别**，尤其适合编程场景，是 Opus 平替优选。"
-        },
-        "stability": {
-          "score": 4,
-          "reason": "官方服务，稳定性强。高峰时段可能会有繁忙，整体可用性尚可。"
-        }
-      },
-      "platformStatus": "open",
-      "supportsHarnessApi": true,
-      "action": "https://api.dreamfree.space/c/s/cpyqzhipu",
-      "supportsDomestic": true
-    },
-    {
-      "slug": "minimax",
-      "name": "MiniMax",
-      "rating": 5,
-      "summary": "新M Plan包含MiniMax Code与订阅API Key；旧Token Plan保留自动续费权益。",
-      "detail": "M3.1 Flash官方固定Token配额未公开；提供社区样本和加权扣减假设推算的五小时、周及四周用量参考。",
+      "summary": "官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。",
+      "detail": "官方DeepSeek按量通道，当前Flash实际版本为DeepSeek-V4.1-Flash-1017，原生图片理解、1M上下文；V4 Pro继续提供服务，按峰谷价格计费。",
       "dimensions": {
         "value": {
           "score": 5,
-          "reason": "基础月费较低，原Token Plan历史额度较充足；新M3.1精确用量未公开。"
+          "reason": "第一梯队模型中，最便宜的之一；空闲时段价格再降一半；按量标价透明，高峰翻倍后成本优势会收窄。"
         },
         "models": {
-          "score": 4,
-          "reason": "M3.1 Flash精确Token额度未公开，按五小时与七天窗口选择档位。"
+          "score": 5,
+          "reason": "当前V4.1 Flash 1017与V4 Pro按峰谷价格分别展示；V4 Pro继续提供服务。"
         },
         "stability": {
           "score": 5,
-          "reason": "官方服务，稳定性强。"
+          "reason": "官方通道，稳定性强。"
         }
       },
       "platformStatus": "open",
+      "action": "https://api.dreamfree.space/c/s/cpyqdeepseek",
       "supportsHarnessApi": true,
-      "action": "https://api.dreamfree.space/c/s/cpyqminimax",
       "supportsDomestic": true
     },
     {
@@ -101,28 +77,28 @@
       "supportsDomestic": true
     },
     {
-      "slug": "deepseek-official",
-      "name": "DeepSeek",
+      "slug": "minimax",
+      "name": "MiniMax",
       "rating": 5,
-      "summary": "官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。",
-      "detail": "官方DeepSeek按量通道，当前Flash实际版本为DeepSeek-V4.1-Flash-1017，原生图片理解、1M上下文；V4 Pro继续提供服务，按峰谷价格计费。",
+      "summary": "新M Plan包含MiniMax Code与订阅API Key；旧Token Plan保留自动续费权益。",
+      "detail": "M3.1 Flash官方固定Token配额未公开；提供社区样本和加权扣减假设推算的五小时、周及四周用量参考。",
       "dimensions": {
         "value": {
           "score": 5,
-          "reason": "第一梯队模型中，最便宜的之一；空闲时段价格再降一半；按量标价透明，高峰翻倍后成本优势会收窄。"
+          "reason": "基础月费较低，原Token Plan历史额度较充足；新M3.1精确用量未公开。"
         },
         "models": {
-          "score": 5,
-          "reason": "当前V4.1 Flash 1017与V4 Pro按峰谷价格分别展示；V4 Pro继续提供服务。"
+          "score": 4,
+          "reason": "M3.1 Flash精确Token额度未公开，按五小时与七天窗口选择档位。"
         },
         "stability": {
           "score": 5,
-          "reason": "官方通道，稳定性强。"
+          "reason": "官方服务，稳定性强。"
         }
       },
       "platformStatus": "open",
-      "action": "https://api.dreamfree.space/c/s/cpyqdeepseek",
       "supportsHarnessApi": true,
+      "action": "https://api.dreamfree.space/c/s/cpyqminimax",
       "supportsDomestic": true
     },
     {
@@ -148,6 +124,30 @@
       "platformStatus": "open",
       "supportsHarnessApi": true,
       "action": "https://api.dreamfree.space/c/s/cpyqopencode",
+      "supportsDomestic": true
+    },
+    {
+      "slug": "zhipu",
+      "name": "智谱AI",
+      "rating": 5,
+      "summary": "涨价后新套餐无需抢购。",
+      "dimensions": {
+        "value": {
+          "score": 4,
+          "reason": "新套餐价格翻倍，性价比有所下降，[查看套餐用量](/plans/?platform=zhipu)。"
+        },
+        "models": {
+          "score": 4,
+          "reason": "GLM-5.3 代码能力 **T0 级别**，尤其适合编程场景，是 Opus 平替优选。"
+        },
+        "stability": {
+          "score": 4,
+          "reason": "官方服务，稳定性强。高峰时段可能会有繁忙，整体可用性尚可。"
+        }
+      },
+      "platformStatus": "open",
+      "supportsHarnessApi": true,
+      "action": "https://api.dreamfree.space/c/s/cpyqzhipu",
       "supportsDomestic": true
     },
     {
@@ -288,16 +288,16 @@
       "slug": "gongji",
       "name": "共绩算力",
       "rating": 5,
-      "summary": "GLM、Kimi、Qwen、DeepSeek等模型的按量API，邀请优惠需有效资格。",
-      "detail": "提供15个大语言模型入口，DeepSeek V4.1 Flash 与 1017 版分别提供。DeepSeek V4预览ID的正式路由目标版本未公布；邀请折扣以账户结算为准。",
+      "summary": "GLM、Kimi、Qwen、DeepSeek等模型的按量API，本站合作渠道享8折。",
+      "detail": "提供Kimi K3.1 Pro、Hy4 Preview、GLM、Qwen等18个模型的按量API，不同渠道分别报价，所示合作价已含8折优惠。DeepSeek V4.1 Flash与1017入口并存；预览ID的正式路由目标版本未公布。",
       "dimensions": {
         "value": {
           "score": 5,
-          "reason": "按实际Token用量付费；合资格受邀用户可享标价8折，实际折扣以账户结算为准。"
+          "reason": "按实际Token用量付费，本站合作渠道享标价8折。"
         },
         "models": {
           "score": 5,
-          "reason": "支持 Kimi-K3、GLM-5.3、Qwen-3.7-Max 与 DeepSeek-V4 预览版等模型。"
+          "reason": "支持Kimi K3.1 Pro、Hy4 Preview、GLM-5.3、Qwen-3.7-Plus和DeepSeek等模型，同型号可选不同渠道。"
         },
         "stability": {
           "score": 5,
@@ -1207,5 +1207,5 @@
       "supportsDomestic": true
     }
   ],
-  "contentVersion": "2026-11-03T03:53:08.656Z"
+  "contentVersion": "2026-11-04T15:55:23.293Z"
 }

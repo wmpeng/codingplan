@@ -2,9 +2,9 @@
 
 # AI Coding Plan 平台评测与对比
 
-> 更新日期 2026.11.01 | 多平台套餐、模型与活动更新
+> 更新日期 2026.11.04 | 共绩算力模型与合作价格更新
 
-当前展示 **42 个平台、143 个在售订阅套餐、2 个按量 API、167 个模型和 2497 条套餐模型关系**。
+当前展示 **42 个平台、143 个在售订阅套餐、2 个按量 API、167 个模型和 2515 条套餐模型关系**。
 
 [在线平台中心](https://codingplan.fyi/platforms/) · [模型目录](https://codingplan.fyi/models/) · [价格与额度](https://codingplan.fyi/pricing/) · [套餐对比](https://codingplan.fyi/plans/) · [预告与更新](https://codingplan.fyi/updates/)
 
@@ -27,11 +27,11 @@
 | 平台 | 状态 | 评分 | 简介 |
 |---|---|---:|---|
 | [字节·方舟 Coding Plan](https://api.dreamfree.space/c/s/cpyqfangzhou) | 可以购买 | 5 | 支持多模型与 Auto 接入；部分模型额度为估算值。 |
-| [智谱AI](https://api.dreamfree.space/c/s/cpyqzhipu) | 可以购买 | 5 | 涨价后新套餐无需抢购。 |
-| [MiniMax](https://api.dreamfree.space/c/s/cpyqminimax) | 可以购买 | 5 | 新M Plan包含MiniMax Code与订阅API Key；旧Token Plan保留自动续费权益。 |
-| [Kimi](https://api.dreamfree.space/c/s/cpyqkimi) | 可以购买 | 4 | 当前Go/Plus/Pro/Max/Ultra订阅；Plus起支持Coding，旧四档仅老用户续费。 |
 | [DeepSeek](https://api.dreamfree.space/c/s/cpyqdeepseek) | 可以购买 | 5 | 官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。 |
+| [Kimi](https://api.dreamfree.space/c/s/cpyqkimi) | 可以购买 | 4 | 当前Go/Plus/Pro/Max/Ultra订阅；Plus起支持Coding，旧四档仅老用户续费。 |
+| [MiniMax](https://api.dreamfree.space/c/s/cpyqminimax) | 可以购买 | 5 | 新M Plan包含MiniMax Code与订阅API Key；旧Token Plan保留自动续费权益。 |
 | [OpenCode](https://api.dreamfree.space/c/s/cpyqopencode) | 可以购买 | 5 | Go 与 Go Plus 多模型订阅，各型号额度不同；免费与 Contributor 型号有额外条件。 |
+| [智谱AI](https://api.dreamfree.space/c/s/cpyqzhipu) | 可以购买 | 5 | 涨价后新套餐无需抢购。 |
 | [Codex](https://api.dreamfree.space/c/s/cpyqchatgpt) | 可以购买 | 5 | Codex 官方订阅，Plus / Pro 支持 GPT-6.1 Sol / Terra；Pro $500 另支持 Ultrafast。 |
 | [Claude](https://api.dreamfree.space/c/s/cpyqclaudeup) | 可以购买 | 4 | Claude Code 官方 Pro / Max / Ultra 订阅；已验证 Ultra 无五小时限制，Token 容量为估算。 |
 
@@ -108,10 +108,10 @@
 | [智谱AI · 新Pro](https://api.dreamfree.space/c/s/cpyqzhipu) | [谷] | ¥538/首月 | 115.93M | 579.65M | 2,318.6M | ¥0.232/M |
 | [智谱国际版 · 新Pro](https://api.dreamfree.space/c/s/cpyqzai) | [谷] | $80/首月 | 115.93M | 579.65M | 2,318.6M | ¥0.2346/M |
 | [智谱AI · 新Lite](https://api.dreamfree.space/c/s/cpyqzhipu) | [谷] | ¥118/首月 | 19.32M | 96.61M | 386.4M | ¥0.3054/M |
-| [智谱国际版 · 新Lite](https://api.dreamfree.space/c/s/cpyqzai) | [谷] | $18/首月 | 19.32M | 96.61M | 386.4M | ¥0.3169/M |
-| [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | - | 入¥8 / 缓存¥2 / 出¥28 | - | - | - | ¥2.4285/M |
+| [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | [yidong] | 入¥3.41 / 缓存¥0.85 / 出¥11.95 | - | - | - | ¥1.0363/M |
+| [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | [suihonghuachuang] | 入¥3.84 / 缓存¥0.96 / 出¥13.44 | - | - | - | ¥1.1657/M |
 
-还有 40 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
+还有 45 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
 ### Kimi-K3.1-Pro
 
@@ -124,9 +124,9 @@
 | [字节·方舟 Agent Plan · Medium](https://api.dreamfree.space/c/s/cpyqfangzhout) | - | ¥49.9/首月 | 28.57M | 100M | 285.7M | ¥0.7/M |
 | [字节·方舟 Agent Plan · Large](https://api.dreamfree.space/c/s/cpyqfangzhout) | - | ¥500/首月 | 71.43M | 250M | 714.3M | ¥0.7/M |
 | [字节·方舟 Agent Plan · Max](https://api.dreamfree.space/c/s/cpyqfangzhout) | - | ¥1,000/首月 | 142.86M | 500M | 1,428.6M | ¥0.7/M |
-| [Kimi · Pro](https://api.dreamfree.space/c/s/cpyqkimi) | - | ¥199/首月 | 7.64M | 191M | 191M | ¥1.0421/M |
+| [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | - | 入¥10.4 / 缓存¥1.04 / 出¥54.4 | - | - | - | ¥1.7725/M |
 
-还有 12 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
+还有 13 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
 ### DeepSeek-V4.1-Flash-1017
 
@@ -138,7 +138,7 @@
 | [Command Code · Pro](https://api.dreamfree.space/c/s/cpcommandcode) | [谷] | $20/首月 | 1,654.35M | 4,135.88M | 8,271.8M | ¥0.0163/M |
 | [Command Code · Go](https://api.dreamfree.space/c/s/cpcommandcode) | [峰] | $1/首月 | - | - | 376M | ¥0.0184/M |
 | [Command Code · GOAT](https://api.dreamfree.space/c/s/cpcommandcode) | [峰] | $10/首月 | 751.98M | 1,879.95M | 3,759.9M | ¥0.0184/M |
-| [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | - | 入¥1 / 缓存¥0.02 / 出¥4 | - | - | - | ¥0.0887/M |
+| [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | - | 入¥0.8 / 缓存¥0.02 / 出¥3.2 | - | - | - | ¥0.0709/M |
 | [DeepSeek · 按量 API](https://api.dreamfree.space/c/s/cpyqdeepseek) | [谷] | 入¥1 / 缓存¥0.02 / 出¥4 | - | - | - | ¥0.0887/M |
 
 还有 73 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
@@ -153,10 +153,10 @@
 | [Command Code · Pro](https://api.dreamfree.space/c/s/cpcommandcode) | - | $20/首月 | 574.11M | 1,435.28M | 2,870.6M | ¥0.0476/M |
 | [OpenCode · Go Plus](https://api.dreamfree.space/c/s/cpyqopencode) | - | $40/首月 | 939.46M | 2,348.64M | 4,697.3M | ¥0.0578/M |
 | [智谱AI · 新Max](https://api.dreamfree.space/c/s/cpyqzhipu) | [谷] | ¥1,078/首月 | 818.99M | 4,094.97M | 16,379.9M | ¥0.0658/M |
-| [字节·方舟 Coding Plan · Lite](https://api.dreamfree.space/c/s/cpyqfangzhou) | - | ¥9.9/首月 | 40M | 300M | 600M | ¥0.0667/M |
-| [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | - | 入¥0.8 / 缓存¥0.23 / 出¥2.8 | - | - | - | ¥0.2712/M |
+| [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | [yidong] | 入¥0.36 / 缓存¥0.1 / 出¥1.24 | - | - | - | ¥0.1205/M |
+| [共绩算力 · 按量 API](https://api.dreamfree.space/c/s/cpyqgongji) | [dianxin] | 入¥0.45 / 缓存¥0.13 / 出¥1.59 | - | - | - | ¥0.154/M |
 
-还有 38 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
+还有 41 个可比较选项，见[在线价格与额度](https://codingplan.fyi/pricing/)。
 
 ### GPT-6.1-Terra
 
@@ -223,16 +223,16 @@
 | 平台 | 状态 | 综合评分 | 简介 |
 |---|---|---:|---|
 | [字节·方舟 Coding Plan](https://api.dreamfree.space/c/s/cpyqfangzhou) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 支持多模型与 Auto 接入；部分模型额度为估算值。 |
-| [智谱AI](https://api.dreamfree.space/c/s/cpyqzhipu) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 涨价后新套餐无需抢购。 |
-| [MiniMax](https://api.dreamfree.space/c/s/cpyqminimax) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 新M Plan包含MiniMax Code与订阅API Key；旧Token Plan保留自动续费权益。 |
-| [Kimi](https://api.dreamfree.space/c/s/cpyqkimi) | 可以购买 | ⭐️⭐️⭐️⭐️ | 当前Go/Plus/Pro/Max/Ultra订阅；Plus起支持Coding，旧四档仅老用户续费。 |
 | [DeepSeek](https://api.dreamfree.space/c/s/cpyqdeepseek) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 官方 DeepSeek 按量通道，适合不想抢套餐，和想主要使用DeepSeek模型的用户。 |
+| [Kimi](https://api.dreamfree.space/c/s/cpyqkimi) | 可以购买 | ⭐️⭐️⭐️⭐️ | 当前Go/Plus/Pro/Max/Ultra订阅；Plus起支持Coding，旧四档仅老用户续费。 |
+| [MiniMax](https://api.dreamfree.space/c/s/cpyqminimax) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 新M Plan包含MiniMax Code与订阅API Key；旧Token Plan保留自动续费权益。 |
 | [OpenCode](https://api.dreamfree.space/c/s/cpyqopencode) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | Go 与 Go Plus 多模型订阅，各型号额度不同；免费与 Contributor 型号有额外条件。 |
+| [智谱AI](https://api.dreamfree.space/c/s/cpyqzhipu) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 涨价后新套餐无需抢购。 |
 | [Codex](https://api.dreamfree.space/c/s/cpyqchatgpt) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | Codex 官方订阅，Plus / Pro 支持 GPT-6.1 Sol / Terra；Pro $500 另支持 Ultrafast。 |
 | [Claude](https://api.dreamfree.space/c/s/cpyqclaudeup) | 可以购买 | ⭐️⭐️⭐️⭐️ | Claude Code 官方 Pro / Max / Ultra 订阅；已验证 Ultra 无五小时限制，Token 容量为估算。 |
 | [字节·方舟 Agent Plan](https://api.dreamfree.space/c/s/cpyqfangzhout) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 四档AFP订阅，当前文本统一按模型系数扣减；Small不含Kimi K3。 |
 | [智谱国际版](https://api.dreamfree.space/c/s/cpyqzai) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | 国内版的替代，无需抢购。 |
-| [共绩算力](https://api.dreamfree.space/c/s/cpyqgongji) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | GLM、Kimi、Qwen、DeepSeek等模型的按量API，邀请优惠需有效资格。 |
+| [共绩算力](https://api.dreamfree.space/c/s/cpyqgongji) | 可以购买 | ⭐️⭐️⭐️⭐️⭐️ | GLM、Kimi、Qwen、DeepSeek等模型的按量API，本站合作渠道享8折。 |
 | [优云智算](https://api.dreamfree.space/c/s/cpyqyyzs) | 可以购买 | ⭐️⭐️⭐️⭐️ | 六档请求制Coding Plan，当前九个LLM各按明确次数扣减。 |
 | [Ollama](https://api.dreamfree.space/c/s/cpyqollama) | 可以购买 | ⭐️⭐️⭐️⭐️ | 云端 LLM 的美元 Credits 订阅，月池可集中使用；部分缓存价格未知。 |
 | [阿里·百炼 Token Plan](https://api.dreamfree.space/c/s/cpyqbailiant) | 可以购买 | ⭐️⭐️⭐️⭐️ | 百炼Token Plan现为四档Credits订阅，与旧Coding Plan产品分开。 |
@@ -274,16 +274,16 @@
 | 平台 | 在售套餐 | 月费 / 计费 | 代表模型 |
 |---|---:|---|---|
 | 字节·方舟 Coding Plan | 2 | ¥40–¥200/月 | GLM-5.3、Kimi-K3.1-Pro、DeepSeek-V4.1-Flash-1017、GLM-5.3-Flash、等 14 个 |
-| 智谱AI | 3 | ¥118–¥1,078/月 | GLM-5.3、GLM-5.3-Flash |
-| MiniMax | 4 | ¥0–¥469/月 | MiniMax-M3.1-Flash |
-| Kimi | 5 | ¥49–¥1,399/月 | Kimi-K3.1-Pro、Kimi-K2.8-Preview、Kimi-K2.7-Code-HighSpeed、Kimi-K3 |
 | DeepSeek | 1 | 不适用 / 含按量 API | DeepSeek-V4.1-Flash-1017、DeepSeek-V4-Pro-0813 |
+| Kimi | 5 | ¥49–¥1,399/月 | Kimi-K3.1-Pro、Kimi-K2.8-Preview、Kimi-K2.7-Code-HighSpeed、Kimi-K3 |
+| MiniMax | 4 | ¥0–¥469/月 | MiniMax-M3.1-Flash |
 | OpenCode | 2 | $10–$40/月 | GLM-5.3、Kimi-K3.1-Pro、DeepSeek-V4.1-Flash-1017、GLM-5.3-Flash、等 30 个 |
+| 智谱AI | 3 | ¥118–¥1,078/月 | GLM-5.3、GLM-5.3-Flash |
 | Codex | 6 | $0–$500/月 | GPT-6-Astra、GPT-6.1-Sol、GPT-6.1-Terra、GPT-6-Luna、等 8 个 |
 | Claude | 3 | $20–$200/月 | Claude Opus 5.5、Claude Sonnet 5.5、Claude Fable 5、Claude Fable 5.1、等 14 个 |
 | 字节·方舟 Agent Plan | 4 | ¥40–¥1,000/月 | GLM-5.3、Kimi-K3.1-Pro、DeepSeek-V4.1-Flash-1017、GLM-5.3-Flash、等 14 个 |
 | 智谱国际版 | 3 | $18–$168/月 | GLM-5.3、GLM-5.3-Flash |
-| 共绩算力 | 1 | 不适用 / 含按量 API | GLM-5.3、DeepSeek-V4.1-Flash-1017、GLM-5.3-Flash、DeepSeek-V4-Flash-0731、等 15 个 |
+| 共绩算力 | 1 | 不适用 / 含按量 API | GLM-5.3、Kimi-K3.1-Pro、DeepSeek-V4.1-Flash-1017、GLM-5.3-Flash、等 18 个 |
 | 优云智算 | 6 | ¥49–¥999/月 | DeepSeek-V4.1-Flash-1017、GLM-5.3-Flash、DeepSeek-V4-Flash-0731、DeepSeek-V4-Flash-Vision-Exp、等 10 个 |
 | Ollama | 2 | $20–$100/月 | GLM-5.3、DeepSeek-V4.1-Flash-1017、GLM-5.3-Flash、MiniMax-M3.1-Flash、等 21 个 |
 | 阿里·百炼 Token Plan | 4 | ¥39–¥499/月 | GLM-5.3、DeepSeek-V4.1-Flash-1017、DeepSeek-V4-Flash-0731、DeepSeek-V4-Pro-0813、等 11 个 |
@@ -327,6 +327,10 @@
 - 本页面数据仅供参考，价格及权益最终以平台官方公布为准，建议在选择套餐前仔细阅读各平台的官方条款和服务协议
 
 ## 最近更新
+
+### 2026.11.04
+
+- 共绩算力新增Kimi K3.1 Pro、Hy4 Preview与Qwen 3.7 Plus，补充分渠道报价并更新Hy3价格；33条报价均已包含本站合作渠道8折优惠，按实际Token用量计费。国产算力专区免费活动到期情况待确认。
 
 ### 2026.11.01
 
@@ -374,14 +378,6 @@
 - 调整 Codex 的 GPT-5.6-Sol、GPT-6-Luna、GPT-5.6-Luna 与 GPT-5.6-Terra 参考 Token 用量，相关套餐与速度档的综合单价同步重算；这些数值为估算，非官方固定配额或新实测结果。
 - 新增 LiveBench 综合与 Arena Agent Overall 评分，模型卡片以四格展示；图表可直接切换四项指标，明细支持展开全部评分。
 - DeepSeek V4.1 Flash 1017 新增 AA 智能指数 45.1 分（Max 配置）；DeepSWE 暂无对应型号评分。
-
-### 2026.10.23
-
-- 补充阿里百炼四档Token Plan的模型用量估算：按北京API价格×100 Credits计算，区分峰谷与上下文档，实际消耗可能不同。
-- 补充百炼、百度千帆和超算Token Plan的DeepSeek V4.1 Flash 1017支持，更新淘Token双Flash型号；精确抵扣未知的套餐继续标注未知。
-- OpenCode Step 5 Preview恢复常规额度，M3.1 Flash按Token计费；移除当前套餐未列出的Space Bunny。
-- 补充火山Agent Plan的DeepSeek V4.1 Flash Economy档及限时折扣、Qoder国际版M3.1 Flash支持；移除Copilot已退役型号，更新超算综合抵扣倍率。
-- 更新Qoder国内版按档位续费赠送；Command Code的Mistral Large 4恢复常规额度，MiMo旧型号入口已停用。
 
 ## 延伸阅读
 

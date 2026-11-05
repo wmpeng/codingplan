@@ -278,10 +278,14 @@
 .usage-chart-controls [aria-label="评分指标"] { display:flex; flex-wrap:wrap; }
 
 /* Model ability / price explorer. Names and billing tiers remain complete. */
-.pricing-directory .pricing-chart-group { min-width:0; padding:20px 22px 14px; background:#fff; border:1px solid #dfe5ed; border-radius:12px; box-shadow:var(--shadow-sm); }
+.pricing-directory .pricing-chart-group { --chart-inline-padding:22px; min-width:0; padding:20px var(--chart-inline-padding) 14px; background:#fff; border:1px solid #dfe5ed; border-radius:12px; box-shadow:var(--shadow-sm); }
 .pricing-directory .pricing-chart-group > .usage-chart-card { min-width:0; margin:0; padding:20px 0 14px; border:0; border-radius:0; box-shadow:none; background:transparent; }
 .pricing-directory .pricing-chart-group > .usage-chart-card[hidden] { display:none; }
-.pricing-chart-group > .tool-legend { margin:0; padding:0 0 16px; border-bottom:1px solid var(--border-light); }
+.pricing-chart-group > .tool-legend { margin:0; padding:10px 0; border-bottom:1px solid var(--border-light); }
+.pricing-chart-group > .tool-legend.is-sticky { position:sticky; top:var(--chart-legend-top); z-index:18; isolation:isolate; }
+.pricing-chart-group > .tool-legend.is-docked { border-bottom-color:transparent; }
+.pricing-chart-group > .tool-legend.is-docked::before { content:''; position:absolute; z-index:-1; inset:0 calc(-1 * var(--chart-inline-padding) - 1px); border:1px solid var(--border-color); border-radius:10px; background:var(--bg-secondary); box-shadow:0 4px 12px -6px rgba(30,45,65,.22); }
+.pricing-chart-group > .tool-legend.is-docked::after { content:''; position:absolute; z-index:-2; top:-8px; height:8px; left:calc(-1 * var(--chart-inline-padding) - 1px); right:calc(-1 * var(--chart-inline-padding) - 1px); background:var(--bg-primary); }
 .pricing-chart-group > .tool-legend .usage-color-legend { padding:0; }
 .pricing-directory .pricing-chart-group > [data-usage-card] { border-top:1px solid var(--border-light); margin-top:12px; padding-top:24px; }
 .price-intelligence-card .usage-chart { height:430px; }
@@ -319,7 +323,7 @@
 }
 .usage-data-table .price-chart-focus-row > td { background:#edf3fc; box-shadow:inset 0 1px #b9ceeb,inset 0 -1px #b9ceeb; }
 @media (max-width:800px) {
-  .pricing-directory .pricing-chart-group { padding:16px 10px 10px; }
+  .pricing-directory .pricing-chart-group { --chart-inline-padding:10px; padding:16px var(--chart-inline-padding) 10px; }
   .pricing-directory .pricing-chart-group > .usage-chart-card { padding:16px 0 10px; }
   .pricing-directory .pricing-chart-group > .usage-chart-card[data-usage-card] { padding-top:24px; }
   .price-intelligence-card .usage-chart { height:340px; }
