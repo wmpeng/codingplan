@@ -33,18 +33,19 @@
     {
       "slug": "tencent-token-plan-discounts-extended-20261102",
       "title": "腾讯 Token Plan：指定模型优惠延长至 11 月 2 日零点",
-      "body": "腾讯 Token Plan 个人版的两组模型抵扣优惠均延长至 **2026 年 11 月 2 日 00:00（北京时间）**，即 **11 月 1 日结束时**。\n\n- **通用 Token Plan**：Kimi K3 **7.5 折**、Kimi K2.7 Code **8 折**、GLM-5.3 **5.5 折**、GLM-5.3-Flash **7 折**。\n- **Hy Token Plan**：固定调用名 **hy3-202608 五折**；hy3 / hy3-preview 不在这项固定版本折扣内。\n- **通用与 Hy Token Plan**：**Hy4 preview 五折**，每百万 Token 输入 / 缓存命中 / 输出抵扣 **60 / 3 / 180 积分**，活动后恢复 **120 / 6 / 360 积分**。\n\n优惠自动生效，仅调整指定模型的积分消耗，不是订阅售价折扣；不与其他优惠叠加，套餐额度刷新及使用限制不变。跨活动周期的请求按发起时间对应的积分价抵扣。",
+      "body": "腾讯 Token Plan 个人版的两组模型抵扣优惠均延长至 **2026 年 11 月 2 日 00:00（北京时间）**，即 **11 月 1 日结束时**。\n\n- **通用 Token Plan**：Kimi K3 **7.5 折**、Kimi K2.7 Code **8 折**、GLM-5.3 **5.5 折**、GLM-5.3-Flash **7 折**。\n- **Hy Token Plan**：固定调用名 **hy3-202608 五折**；hy3 / hy3-preview 不在这项固定版本折扣内。\n- **通用与 Hy Token Plan**：**Hy4 preview 五折**，每百万 Token 输入 / 缓存命中 / 输出抵扣 **60 / 3 / 180 积分**，活动后恢复 **120 / 6 / 360 积分**。\n\n优惠自动生效，仅调整指定模型的积分消耗，不是订阅售价折扣；不与其他优惠叠加，套餐额度刷新及使用限制不变。跨活动周期的请求按发起时间对应的积分价抵扣。\n\n此为旧期活动说明。当前 GLM / Kimi 优惠已延长，Hy3 与 Hy4 Preview 自 11 月 4 日起改用新活动规则，详见当前公告。",
       "visible": true,
       "endsOn": "2026-11-01",
       "url": "https://cloud.tencent.com/document/product/1823/140042",
+      "ended": true,
       "archiveOn": null
     },
     {
       "slug": "ark-coding-first-two-months-oct-2026",
       "title": "火山 Coding Plan：首两个月 2.5 折，9.9 元起",
-      "body": "截至 **2026 年 11 月 8 日**，Coding Plan Lite / Pro 新老用户最多可享两个月特惠：**Lite 9.9 元/月、Pro 49.9 元/月**，第三个月起恢复 40 / 200 元每月。\n\n- 新购、续费和升级共用优惠资格，每个用户最多享受两个月；已用完资格不能再次领取。\n- 名额有限；若先买一个月，第二个月优惠需在首笔购买成功次日起操作。\n- 不是整个订阅期持续 2.5 折；具体可用资格以订购页为准。",
+      "body": "截至 **2026 年 11 月 8 日**，Coding Plan Lite / Pro 新老用户最多可享两个月特惠：**Lite 9.9 元/月、Pro 49.9 元/月**，第三个月起恢复 40 / 200 元每月。\n\n- 新购、续费和升级共用优惠资格，每个用户最多享受两个月；已用完资格不能再次领取。\n- 名额有限；若先买一个月，第二个月优惠需在首笔购买成功次日起操作。\n- 不是整个订阅期持续 2.5 折；具体可用资格以订购页为准。\n\n本活动已结束。活动结束后的新购、续费或升配不再享受本次优惠；此前已发放权益不受影响。",
       "visible": true,
-      "ended": false,
+      "ended": true,
       "endsOn": "2026-11-08",
       "url": "https://docs.volcengine.com/docs/ark/coding-plan-personal-universal-promotion?lang=zh",
       "startsOn": "2026-06-08",
@@ -63,10 +64,10 @@
     },
     {
       "slug": "minimax-code-m31-flash-unlimited-oct-2026",
-      "title": "MiniMax Code 订阅用户：M3.1 Flash 限时不限量",
-      "body": "截至 **2026 年 10 月 25 日**，所有订阅用户在 **MiniMax Code 内**使用 **M3.1 Flash** 模型，可享不限量权益。\n\n- 需要已订阅；免费用户不在本次公布的适用范围内。\n- 不限量权益限 MiniMax Code 内的 M3.1 Flash；官方未承诺通过 API 接入 Claude Code、OpenCode 等外部工具也不限量。\n- 不代表其他模型或视频、图像等功能不限量。\n\n官方未注明截止的具体时刻或时区，参与情况以活动页面为准。\n\n公告截止日期已过，是否恢复常规规则或另有延长安排仍待确认。",
+      "title": "MiniMax Code：M3.1 Flash 限时不限量活动已结束",
+      "body": "截至 **2026 年 10 月 25 日**，所有订阅用户在 **MiniMax Code 内**使用 **M3.1 Flash** 模型，可享不限量权益。\n\n- 需要已订阅；免费用户不在本次公布的适用范围内。\n- 不限量权益限 MiniMax Code 内的 M3.1 Flash；官方未承诺通过 API 接入 Claude Code、OpenCode 等外部工具也不限量。\n- 不代表其他模型或视频、图像等功能不限量。\n\n官方未注明截止的具体时刻或时区，参与情况以活动页面为准。\n\n本次不限量活动已于 2026 年 10 月 25 日结束，现按套餐规则使用；常规精确 Token 额度未公布。",
       "visible": true,
-      "ended": false,
+      "ended": true,
       "endsOn": "2026-10-25",
       "url": "https://agent.minimax.cn/",
       "archiveOn": null
@@ -74,9 +75,9 @@
     {
       "slug": "minimax-m-plan-first-month-half-price-oct-2026",
       "title": "MiniMax M Plan 新订阅或升级：首月五折",
-      "body": "截至 **2026 年 10 月 31 日**，在 **MiniMax Code** 活动内新订阅或升级 **M Plan**，可享首月五折。\n\n- 适用于新订阅或升级用户。\n- **仅首月五折，次月起按原价续订**，具体金额以订购页面为准。\n- 此项优惠与 M3.1 Flash 不限量活动的截止日期不同；不限量权益截至 10 月 25 日。\n\n官方未注明截止的具体时刻或时区，参与情况以活动页面为准。",
+      "body": "截至 **2026 年 10 月 31 日**，在 **MiniMax Code** 活动内新订阅或升级 **M Plan**，可享首月五折。\n\n- 适用于新订阅或升级用户。\n- **仅首月五折，次月起按原价续订**，具体金额以订购页面为准。\n- 此项优惠与 M3.1 Flash 不限量活动的截止日期不同；不限量权益截至 10 月 25 日。\n\n官方未注明截止的具体时刻或时区，参与情况以活动页面为准。\n\n首月五折活动已结束；当前月付 Go / Explore / Build 为 49 / 119 / 469 元。",
       "visible": true,
-      "ended": false,
+      "ended": true,
       "endsOn": "2026-10-31",
       "url": "https://agent.minimax.cn/",
       "archiveOn": null
@@ -124,8 +125,8 @@
     },
     {
       "slug": "ark-deepseek-v41-half-credits-2026",
-      "title": "火山指定 DeepSeek V4.1 模型：抵扣五折",
-      "body": "截至 **2026 年 12 月 30 日 23:59:59**，方舟 **Agent / Coding Plan 个人版**活动内的 **deepseek-v4.1-flash、deepseek-v4.1-flash-economy** 抵扣系数享 **5 折**。\n\n仅限套餐实际开放的对应模型；Economy 是否可选以所购套餐为准，不代表所有套餐均支持。活动自动生效，额度刷新与其他限制不变，到期恢复原规则。",
+      "title": "火山 DeepSeek V4.1 Flash Economy：抵扣五折至 12 月 30 日",
+      "body": "方舟 **Agent / Coding Plan 个人版**的 **deepseek-v4.1-flash-economy** 抵扣系数五折优惠截至 **2026 年 12 月 30 日 23:59:59（UTC+8）**。\n\nAgent Plan 活动期输入 / 缓存 / 输出均为每万 Token 1 AFP，常规为 2 AFP。仅限套餐实际开放的模型；标准 Flash 使用独立活动规则。套餐额度与其他限制不变。",
       "visible": true,
       "ended": false,
       "endsOn": "2026-12-30",
@@ -145,12 +146,13 @@
     {
       "slug": "qoder-global-qwen38-flash-free",
       "title": "Qoder 国际版：Qwen3.8-Flash 限时免费",
-      "body": "自 **2026 年 9 月 18 日 10:00（UTC+8）** 起，国际站 **qoder.com** 的个人用户每天可限时免费使用 **Qwen3.8-Flash**，Free 用户及零余额账号也可参加。\n\n每天免费次数有限，付费用户的免费次数更多；用完后可按常规 **0.1×** 消耗 Credits 继续使用，或等待次日恢复。其他功能实际调用的其他模型另按其规则收费。\n\n原定 9 月 30 日结束的活动已延期，新的结束日期尚未公布；Teams / Enterprise 不适用。",
+      "body": "Qoder 国际版个人用户的 **Qwen3.8-Flash 每日限量免费活动已于 2026 年 11 月 7 日 00:00（UTC+8）结束**。\n\n当前常规参考系数为 0.1×；符合资格的试用与付费个人用户，每日 **14:00—次日 00:00 UTC**（北京时间 22:00—次日 08:00）享 0.04× 夜间优惠。夜间优惠结束时间尚未公布。",
       "visible": true,
-      "ended": false,
+      "ended": true,
       "url": "https://docs.qoder.com/events/flashoffer",
       "startsOn": "2026-09-18",
-      "archiveOn": "2026-10-18"
+      "endsOn": "2026-11-06",
+      "archiveOn": null
     },
     {
       "slug": "opencode-glm-deepseek-free",
@@ -192,12 +194,158 @@
     {
       "slug": "command-code-ling-31-flash-1019-free-20261103",
       "title": "Command Code：Ling 3.1 Flash 1019 每日限量免费",
-      "body": "Command Code **Ling 3.1 Flash 1019** 限时免费至 **2026 年 11 月 3 日 16:00（UTC）**，每账号每天最多 **100 次请求**，按 UTC 零点重置。\n\nGo、GOAT、Pro 及两档 Max 个人套餐可用；开始会话时账户需有至少 **$1 Credits**。免费调用不消耗额度，结束后可切换付费 Ling 3.1 Flash；具体可用性以平台为准。",
+      "body": "Command Code **Ling 3.1 Flash 1019** 限时免费至 **2026 年 11 月 3 日 16:00（UTC）**，每账号每天最多 **100 次请求**，按 UTC 零点重置。\n\nGo、GOAT、Pro 及两档 Max 个人套餐可用；开始会话时账户需有至少 **$1 Credits**。免费调用不消耗额度，结束后可切换付费 Ling 3.1 Flash；具体可用性以平台为准。\n\n免费活动已结束；当前同名模型按付费规则使用，GOAT / Pro 的模型专项额度另行适用。",
       "visible": true,
       "endsOn": "2026-11-03",
       "url": "https://commandcode.ai/docs/resources/pricing-limits",
+      "ended": true,
       "archiveOn": null
+    },
+    {
+      "slug": "ark-flash-261101-discount-20261107",
+      "title": "火山 V4.1 Flash：原五折再享七折，至 12 月 15 日",
+      "body": "自 **2026 年 11 月 7 日 00:00 至 12 月 15 日 23:59:59（UTC+8）**，方舟 Agent / Coding Plan 的 **deepseek-v4.1-flash** 在原五折基础上再享七折。\n\nAgent Plan 标准模型抵扣系数为 **0.875 AFP / 万 Token**，常规为 2.5。Economy 的活动系数和截止日期独立，不叠加此次七折；这不是订阅售价折扣。",
+      "visible": true,
+      "startsOn": "2026-11-07",
+      "endsOn": "2026-12-15",
+      "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-model-discount?lang=zh",
+      "archiveOn": null
+    },
+    {
+      "slug": "ark-agent-first-two-months-extended-20270331",
+      "title": "火山 Agent Plan：首两月 9.9／49.9 元延至明年 3 月底",
+      "body": "方舟 **Agent Plan Small / Medium** 首两个月 **9.9 / 49.9 元每月**的普惠活动延长至 **2027 年 3 月 31 日**，第三个月起为 40 / 200 元每月。\n\n名额有限；新购、续费和升配共享每用户最多两个月优惠资格。**Coding Plan 的同类活动已结束**，两条产品线规则分别适用。",
+      "visible": true,
+      "startsOn": "2026-06-08",
+      "endsOn": "2027-03-31",
+      "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-universal-promotion?lang=zh",
+      "archiveOn": null
+    },
+    {
+      "slug": "ark-agent-annual-half-price-20261109",
+      "title": "火山 Agent Plan：连续包年五折，11 月 12 日截止",
+      "body": "**2026 年 11 月 9 日 00:00 至 11 月 12 日 24:00**，Agent Plan **Small / Medium 连续包年**限量五折，分别 **240 / 1,200 元一年**，新购、续费和升配均可参加。\n\n- 一次购买满 12 个月，每用户限享一次；Large / Max 不参加。\n- 通过好友邀请首次订阅的合资格新人可额外九五折，分别 228 / 1,140 元；普通五折不要求邀请。\n- 活动结束后恢复标准年价；后续升配按标准价补差，退款后不能再次购买活动套餐。",
+      "visible": true,
+      "startsOn": "2026-11-09",
+      "endsOn": "2026-11-12",
+      "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-annual-discount?lang=zh",
+      "archiveOn": null
+    },
+    {
+      "slug": "tencent-glm-kimi-discounts-extended-20261130",
+      "title": "腾讯 Token Plan：GLM／Kimi 指定优惠延至 11 月底",
+      "body": "腾讯 **通用 Token Plan 个人版**的 Kimi K3 七五折、Kimi K2.7 Code 八折、GLM-5.3 五五折、GLM-5.3-Flash 七折优惠，延长至 **2026 年 11 月 30 日 12:00（北京时间）**。\n\n仅调整这些型号的积分抵扣价，套餐价格、额度与刷新规则不变。活动结束后恢复届时常规价，跨周期请求按发起时间对应价格抵扣。",
+      "visible": true,
+      "startsOn": "2026-10-01",
+      "endsOn": "2026-11-30",
+      "url": "https://cloud.tencent.com/document/product/1823/140042",
+      "archiveOn": null
+    },
+    {
+      "slug": "tencent-hy4-launch-discount-20261104",
+      "title": "腾讯 Hy4 正式版：积分价 2.5 折，至 11 月 17 日中午",
+      "body": "**通用 Token Plan 与 Hy Token Plan 个人版**调用 **Hy4 正式版（hy4）**，自 **2026 年 11 月 4 日至 11 月 17 日 12:00（北京时间）**享积分抵扣二五折。\n\n每百万 Token 输入 / 缓存命中 / 输出为 **30 / 1.5 / 90 积分**。Hy4 正式版与 Hy4 Preview 是不同模型，不互套活动或价格；本活动不改变订阅售价与套餐额度。",
+      "visible": true,
+      "startsOn": "2026-11-04",
+      "endsOn": "2026-11-17",
+      "url": "https://cloud.tencent.com/document/product/1823/140042",
+      "archiveOn": null
+    },
+    {
+      "slug": "tencent-hy-preview-discounts-20261130",
+      "title": "腾讯 Hy4 Preview／Hy3：11 月新积分优惠",
+      "body": "**2026 年 11 月 4 日 00:30 至 11 月 30 日 12:00（北京时间）**，指定模型按新活动积分价抵扣：\n\n- **通用与 Hy Token Plan：Hy4 Preview**，每百万 Token 输入 / 缓存命中 / 输出 **96 / 3.9 / 198 积分**。\n- **Hy Token Plan：固定 hy3-202608**，每百万 Token输入 / 缓存命中 / 输出 **12 / 4 / 72 积分**。\n\n不改变套餐售价、额度或刷新规则；其他调用名不自动适用固定版本活动。",
+      "visible": true,
+      "startsOn": "2026-11-04",
+      "endsOn": "2026-11-30",
+      "url": "https://cloud.tencent.com/document/product/1823/140042",
+      "archiveOn": null
+    },
+    {
+      "slug": "qoder-global-qwen-ultimate-offpeak-20261107",
+      "title": "Qoder 国际版：Qwen 夜间四折，Ultimate 夜间二折重启",
+      "body": "国际站 **qoder.com** 的 Pro Trial 与付费个人用户每日 **14:00—次日 00:00 UTC**（北京时间 22:00—次日 08:00）享参考消耗系数优惠：\n\n- **Qwen3.8-Max：0.5× → 0.2×**；Qwen3.8-Flash：**0.1× → 0.04×**，结束日期未公布。\n- **Ultimate 档：2× → 0.4×**，第二阶段截至 **2026 年 11 月 30 日 00:00 UTC**（北京时间 08:00）。\n\n适用范围以所购套餐的可选型号与档位为准。其他时段按常规系数；这些是 Credits 参考系数，固定 Token 用量未知。Service Account 的优惠时段另为 17:00—23:00 UTC。",
+      "visible": true,
+      "startsOn": "2026-11-07",
+      "endsOn": "2026-11-30",
+      "url": "https://docs.qoder.com/events/offpeakrate",
+      "archiveOn": null
+    },
+    {
+      "slug": "qoder-global-sonus-first-subscription-20261104",
+      "title": "Qoder 国际版首购：赠 8,000 Sonus 专属 SOTA Credits",
+      "body": "自 **2026 年 11 月 4 日 00:00（UTC+8）**起，从未成功付费的国际站账号，首次月付订阅个人 **Pro / Pro+ / Ultra** 可获 **8,000 SOTA Credits**。\n\n仅用于 **Sonus**，从到账起 **7 天（168 小时）**有效；可与合资格的通用 Credits 首购翻倍活动叠加，两类赠额分别过期。Lite、年付、团队和企业不参加。活动结束日期未公布。",
+      "visible": true,
+      "startsOn": "2026-11-04",
+      "url": "https://docs.qoder.com/events/sota-first-subscription",
+      "archiveOn": "2026-12-04"
+    },
+    {
+      "slug": "aliyun-token-first-subscription-half-price-20261130",
+      "title": "阿里 Token Plan 新用户：Lite／Essential 首购五折",
+      "body": "阿里百炼 **Token Plan 个人版**从未购买过的账号，Lite / Essential 新用户限时价分别 **19.5 / 39.5 元每月**，常规价为 39 / 79 元每月，活动截至 **2026 年 11 月 30 日 23:59:59（UTC+8）**。\n\n两档每订阅月分别为 11,500 / 25,500 Credits。Standard / Pro 不适用这两档新用户售价；模型抵扣、使用限制及额度刷新另按对应规则。",
+      "visible": true,
+      "endsOn": "2026-11-30",
+      "url": "https://help.aliyun.com/zh/model-studio/token-plan-personal-overview",
+      "archiveOn": null
+    },
+    {
+      "slug": "baidu-token-double-eleven-20261106",
+      "title": "百度积分制双十一：新增 Standard，首购加赠积分",
+      "body": "**2026 年 11 月 6 日 00:00 至 11 月 23 日 23:59**，百度千帆 **Token Plan 个人版积分制**提供双十一活动：\n\n- Lite / Standard / Pro / Max 首购分别 **19.9 / 49.9 / 99.9 / 299.9 元**。\n- 对应月积分 **11,500 / 22,000 / 45,000 / 165,000**；Standard / Pro / Max 首购分别额外赠 **1,760 / 4,500 / 19,800 积分**。赠额不是永久月配额。\n- 老用户续费四档分别 39 / 69.9 / 139.9 / 459.9 元；可续费套餐失效日期需在 2027 年 12 月 31 日 23:59 前。\n\n仅适用积分制，Token 制不适用；邀请券资格与支付条件另计。文档未明确时区。",
+      "visible": true,
+      "startsOn": "2026-11-06",
+      "endsOn": "2026-11-23",
+      "url": "https://cloud.baidu.com/doc/qianfan/s/Dmrabu8b6",
+      "archiveOn": null
+    },
+    {
+      "slug": "baidu-token-mini-discount-20261231",
+      "title": "百度 Mini：4.9 元体验，额外含 1,000 次搜索",
+      "body": "百度千帆 **Token Plan 个人版积分制 Mini** 限时 **4.9 元**，包含 **1,400 月积分**，另新增 **1,000 次百度 AI 搜索调用**。\n\n须在 **2026 年 12 月 31 日 23:59**前下单，套餐失效日期须在 **2027 年 1 月 31 日之前**；文档未明确时区。搜索调用权益独立于模型 Token 用量。",
+      "visible": true,
+      "endsOn": "2026-12-31",
+      "url": "https://cloud.baidu.com/doc/qianfan/s/Dmrabu8b6",
+      "archiveOn": null
+    },
+    {
+      "slug": "baidu-token-night-discount-20261130",
+      "title": "百度积分制：指定模型夜间两折至 11 月底",
+      "body": "百度千帆 **Token Plan 个人版积分制**每日 **22:00—次日 08:00**调用指定 **DeepSeek-V4.1-Flash、DeepSeek-V4-Pro-0813、GLM-5.3**，积分抵扣享 **2 折**，活动截至 **2026 年 11 月 30 日 23:59**。\n\n其他时段按正常积分消耗；仅限所列型号，不是订阅售价两折，完整常规积分系数仍待确认。官方文档未明确时区。",
+      "visible": true,
+      "endsOn": "2026-11-30",
+      "url": "https://cloud.baidu.com/doc/qianfan/s/Dmrabu8b6",
+      "archiveOn": null
+    },
+    {
+      "slug": "trae-cn-bao-free-20261109",
+      "title": "TRAE 国内版会员：TRAE 宝限免 1,000 次至 11 月 15 日",
+      "body": "**2026 年 11 月 9 日 00:00 至 11 月 15 日 23:59:59**，TRAE 国内版会员使用开发者个人助理 **TRAE 宝**可限免 **1,000 次 Query**。\n\n须使用桌面端 **3.4.13 及以上**版本；达到次数后任务会被拦截，确认继续才开始消耗个人积分。TRAE 宝暂不支持视频生成。其他模式及第三方工具调用不自动适用；官方未明确时区。",
+      "visible": true,
+      "startsOn": "2026-11-09",
+      "endsOn": "2026-11-15",
+      "url": "https://docs.trae.cn/ide_use-trae-bao-for-free-with-no-credits-required",
+      "archiveOn": null
+    },
+    {
+      "slug": "trae-cn-double-eleven-subscription-20261103",
+      "title": "TRAE 国内版双十一：会员年卡七折，连续包月九折",
+      "body": "**2026 年 11 月 3 日至 11 月 16 日**，TRAE 国内版提供会员年卡 **7 折**、连续包月 **9 折**活动。\n\n各档实际结算价、名额及优惠是否可与其他首月活动叠加，以订购页为准；当前公开资料不足以确认叠加后的具体价格，不将折扣重复计入。",
+      "visible": true,
+      "startsOn": "2026-11-03",
+      "endsOn": "2026-11-16",
+      "url": "https://docs.trae.cn/ide_discount-on-trae-paid-subscription",
+      "archiveOn": null
+    },
+    {
+      "slug": "qoder-cn-qwen38-offpeak-20261107",
+      "title": "Qoder 国内版：Qwen3.8-Flash 免费结束，夜间四折",
+      "body": "Qoder 国内版 **Qwen3.8-Flash** 每日限量免费已于 **2026 年 11 月 7 日 00:00（北京时间）结束**。\n\n当前常规参考消耗系数为 **0.1×**；符合资格的试用和付费个人用户在每日 **22:00—次日 08:00**享 **0.04×**。优惠结束日期尚未公布，其他功能实际调用的型号另按各自规则收费。固定 Token 用量仍未知。",
+      "visible": true,
+      "startsOn": "2026-11-07",
+      "url": "https://docs.qoder.cn/events/flashoffer",
+      "archiveOn": "2026-12-07"
     }
   ],
-  "contentVersion": "2026-11-01T16:43:14.726Z"
+  "contentVersion": "2026-11-09T13:01:23.523Z"
 }

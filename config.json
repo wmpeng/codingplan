@@ -125,6 +125,17 @@
   },
   "updates": [
     {
+      "date": "2026.11.09",
+      "items": [
+        "方舟 Coding Plan 首两月优惠结束，Agent Plan Small／Medium 普惠活动延长至2027年3月31日；连续包年11月9日至12日限量五折。Flash标准与Economy沿用1017版本，标准新折扣同步调整参考用量，Coding额度仍为估算。",
+        "腾讯通用及Hy Token Plan补充Hy4正式版；Hy4 Preview和固定Hy3改用11月新积分价，GLM／Kimi指定优惠延长至11月底。不同模型、路由和活动的价格分别适用。",
+        "OpenCode新增Go Teams及Hy4，补充匿名模型入口；Ollama新增Kimi K3.1 Pro并区分MiMo RL权重，Mistral Large 4改用现行价格。Command Code的Ling 1019免费活动结束，改为付费与模型专项额度。",
+        "百度积分制新增Standard，补充双十一首购、续费及赠额条件；百炼Lite／Essential新增限时新用户价。MiniMax M Plan首月五折已结束，当前月费为49／119／469元。MiniMax Code内M3.1 Flash不限量活动已于10月25日结束，现按套餐规则使用。",
+        "Qoder国内与国际版Qwen3.8-Flash每日免费结束，改为夜间优惠；国际版Ultimate第二阶段夜间优惠及Sonus专属首购赠额分别适用。补充TRAE国内会员活动和华为Flash 1017支持。",
+        "更新Arena Agent Overall至11月8日数据和独立Token消耗率，保留模型精确版本、缺失值及各榜单口径；Kimi K3.1 Pro完整权重已可下载，采用其自定义许可证。"
+      ]
+    },
+    {
       "date": "2026.11.04",
       "items": [
         "共绩算力新增Kimi K3.1 Pro、Hy4 Preview与Qwen 3.7 Plus，补充分渠道报价并更新Hy3价格；33条报价均已包含本站合作渠道8折优惠，按实际Token用量计费。国产算力专区免费活动到期情况待确认。"
@@ -585,5 +596,5 @@
       ]
     }
   ],
-  "contentVersion": "2026-11-04T15:57:12.873Z"
+  "contentVersion": "2026-11-09T13:01:23.916Z"
 }

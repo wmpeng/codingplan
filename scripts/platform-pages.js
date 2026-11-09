@@ -34,7 +34,7 @@
     "url": "/platforms/minimax/"
   },
   "opencode": {
-    "title": "OpenCode Go / Go Plus",
+    "title": "OpenCode Go",
     "url": "/platforms/opencode/"
   },
   "zhipu": {
