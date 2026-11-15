@@ -125,6 +125,16 @@
   },
   "updates": [
     {
+      "date": "2026.11.15",
+      "items": [
+        "AA 智能指数切换至 v5.0.1，新版未公布分数的配置显示未评定；不同版本分数不可直接比较。",
+        "百炼 Token Plan 个人版四档月额度提高，Pro 官网价降至 ¥312/月，新增限时 Qwen4-Max-Preview，并将原 Qwen3.8 Flash 调用关联至正式版。",
+        "补充 Claude、Cursor 与 GitHub Copilot 的 Fable 5.2，Cursor 与 Copilot 的 Gemini 4 Carbon、Hydrogen。模型是否计入订阅及活动时限按各平台说明。",
+        "方舟 Agent Plan 连续包年五折及方舟 Kimi K3.1 Pro 抵扣优惠结束；优云智算更新六档支持模型和扣减，OpenCode Go Teams 补充 LongCat 2.5 限时免费入口。 Go 当前名单已移除 Crouton Alpha。",
+        "更新 LiveBench 2.0 与 Arena Agent 榜单，以及 AA v5.0.1 的独立 Token 消耗率。"
+      ]
+    },
+    {
       "date": "2026.11.09",
       "items": [
         "方舟 Coding Plan 首两月优惠结束，Agent Plan Small／Medium 普惠活动延长至2027年3月31日；连续包年11月9日至12日限量五折。Flash标准与Economy沿用1017版本，标准新折扣同步调整参考用量，Coding额度仍为估算。",
@@ -596,5 +606,5 @@
       ]
     }
   ],
-  "contentVersion": "2026-11-09T13:01:23.916Z"
+  "contentVersion": "2026-11-15T15:02:25.101Z"
 }

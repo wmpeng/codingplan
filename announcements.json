@@ -1,6 +1,28 @@
 {
   "announcements": [
     {
+      "slug": "aliyun-qwen4-max-preview-20261111",
+      "title": "百炼 Qwen4-Max-Preview 限时预览，积分低至0.8折",
+      "body": "个人版与团队版 Token Plan 可使用，日间 Credits 消耗低至标准的2折，22:00 至次日08:00低至0.8折。预览截至11月25日24:00（北京时间），到期后下线。",
+      "visible": true,
+      "announcedOn": "2026-11-11",
+      "startsOn": "2026-11-11",
+      "endsOn": "2026-11-25",
+      "url": "https://help.aliyun.com/zh/model-studio/qwen4-max-preview",
+      "archiveOn": null
+    },
+    {
+      "slug": "claude-fable-5-2-launch-offer-20261109",
+      "title": "Claude Pro 首发周可用 Fable，最多占共享周额度的 50%",
+      "body": "Claude Pro 及 Team 标准席位至11月17日15:59（北京时间）可按共享周额度使用 Fable 系列，合计最多50%；用完或活动结束后需另购 Usage Credits。符合11月9日10:00 PT前付费资格的用户可获重置；Max、Ultra 等合资格用户的1至3次重置按订阅时长发放，至2027年3月8日23:59 PT有效。",
+      "visible": true,
+      "announcedOn": "2026-11-09",
+      "startsOn": "2026-11-09",
+      "endsOn": "2026-11-17",
+      "url": "https://support.claude.com/en/articles/17506494-claude-fable-5-2-launch-offers",
+      "archiveOn": null
+    },
+    {
       "slug": "codex-pro-usage-double-20261030",
       "title": "Codex Pro $100/$200/$500：用量上限翻倍",
       "body": "Codex **Pro $100 / $200 / $500** 三档订阅的用量上限翻倍，**Plus 额度保持不变**。\n\n- 公告同时包含 Business Premium；Free、Go 未列入本次翻倍范围。\n- 不同模型、速度档和任务的实际消耗仍有差异，具体剩余量以账号用量面板为准。\n- 此次公布的是用量上限的相对提升，不是固定 Token 配额；本站表中的绝对 Token 数仍为估算。\n\n公告未明确截止日期。",
@@ -56,7 +78,7 @@
       "title": "火山 Kimi K3.1 Pro：抵扣五折至 11 月 9 日",
       "body": "**2026 年 10 月 24 日 00:00:00 至 11 月 9 日 23:59:59（UTC+8）**，方舟 **Coding / Agent Plan 个人版**调用 **Kimi K3.1 Pro**享模型抵扣五折。\n\n- Agent Plan 抵扣系数由常规 7 降至 3.5；Coding Plan 活动可用量与对应五折期间相当。\n- Coding Plan Lite / Pro 与 Agent Plan Small / Medium / Large / Max 均已支持该模型。\n- 这是模型消耗优惠，不是订阅售价五折；共享额度、窗口与其他使用限制仍适用。",
       "visible": true,
-      "ended": false,
+      "ended": true,
       "startsOn": "2026-10-24",
       "endsOn": "2026-11-09",
       "url": "https://docs.volcengine.com/docs/82379/2533566?lang=zh",
@@ -229,6 +251,7 @@
       "startsOn": "2026-11-09",
       "endsOn": "2026-11-12",
       "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-annual-discount?lang=zh",
+      "ended": true,
       "archiveOn": null
     },
     {
@@ -347,5 +370,5 @@
       "archiveOn": "2026-12-07"
     }
   ],
-  "contentVersion": "2026-11-09T13:01:23.523Z"
+  "contentVersion": "2026-11-15T15:02:24.923Z"
 }

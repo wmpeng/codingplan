@@ -683,6 +683,12 @@
         },
         {
           "url": "https://maas.suanli.cn/"
+        },
+        {
+          "url": "https://maas.suanli.cn/models/deepseek%252Fdeepseek-v4-flash"
+        },
+        {
+          "url": "https://maas.suanli.cn/models/deepseek%252Fdeepseek-v4-pro"
         }
       ],
       "relatedChanges": []
@@ -859,53 +865,47 @@
           "type": "model_support",
           "label": "K2.7 Code使用资格",
           "before": "符合套餐条件可用",
-          "after": "仅此前使用过该模型的订户暂可继续使用"
+          "after": "当日起仅此前使用过该型号的订户可用，直至该型号停止服务。"
         }
       ],
-      "summary": "10月13日10:00（UTC+8）起，方舟Coding/Agent Plan未使用过K2.7 Code的订户不再开放该型号；老使用者暂可继续使用。",
+      "summary": "10月13日10:00（UTC+8）起，方舟Coding/Agent Plan未使用过K2.7 Code的订户不再开放该型号。该型号随后已停止服务，见对应下线公告。",
       "archiveOn": null,
       "targets": [
         {
-          "type": "plan_model",
+          "type": "plan",
           "platformSlug": "bytedance-ark",
           "planSlug": "volcengine-coding-lite",
-          "planModelSlug": "volcengine-coding-lite--kimi-k2-7-code",
-          "label": "字节·方舟 Coding Plan · Lite · Kimi-K2.7-Code"
+          "label": "字节·方舟 Coding Plan · Lite"
         },
         {
-          "type": "plan_model",
+          "type": "plan",
           "platformSlug": "bytedance-ark",
           "planSlug": "volcengine-coding-pro",
-          "planModelSlug": "volcengine-coding-pro--kimi-k2-7-code",
-          "label": "字节·方舟 Coding Plan · Pro · Kimi-K2.7-Code"
+          "label": "字节·方舟 Coding Plan · Pro"
         },
         {
-          "type": "plan_model",
+          "type": "plan",
           "platformSlug": "bytedance-ark-agent",
           "planSlug": "volcengine-agent-small",
-          "planModelSlug": "volcengine-agent-small--kimi-k2-7-code",
-          "label": "字节·方舟 Agent Plan · Small · Kimi-K2.7-Code"
+          "label": "字节·方舟 Agent Plan · Small"
         },
         {
-          "type": "plan_model",
+          "type": "plan",
           "platformSlug": "bytedance-ark-agent",
           "planSlug": "volcengine-agent-medium",
-          "planModelSlug": "volcengine-agent-medium--kimi-k2-7-code",
-          "label": "字节·方舟 Agent Plan · Medium · Kimi-K2.7-Code"
+          "label": "字节·方舟 Agent Plan · Medium"
         },
         {
-          "type": "plan_model",
+          "type": "plan",
           "platformSlug": "bytedance-ark-agent",
           "planSlug": "volcengine-agent-large",
-          "planModelSlug": "volcengine-agent-large--kimi-k2-7-code",
-          "label": "字节·方舟 Agent Plan · Large · Kimi-K2.7-Code"
+          "label": "字节·方舟 Agent Plan · Large"
         },
         {
-          "type": "plan_model",
+          "type": "plan",
           "platformSlug": "bytedance-ark-agent",
           "planSlug": "volcengine-agent-max",
-          "planModelSlug": "volcengine-agent-max--kimi-k2-7-code",
-          "label": "字节·方舟 Agent Plan · Max · Kimi-K2.7-Code"
+          "label": "字节·方舟 Agent Plan · Max"
         }
       ],
       "sources": [
@@ -922,65 +922,59 @@
     },
     {
       "slug": "ark-kimi-k2-7-retirement-20261028",
-      "title": "方舟 K2.7 Code 停止服务",
-      "officialStatus": "announced",
+      "title": "方舟 Kimi K2.7 Code 已停止服务",
+      "officialStatus": "effective",
       "effectiveTime": {
         "type": "date",
         "date": "2026-10-28",
-        "description": "原定2026年10月28日14:00（UTC+8）停服；日期已过，但当前概览与计费表仍列即将下线，实际停服情况待确认。"
+        "description": "14:00（北京时间）已停止服务。"
       },
       "changes": [
         {
           "type": "model_support",
           "label": "K2.7 Code使用资格",
           "before": "原公告允许此前已使用该型号的订户在停服前继续调用",
-          "after": "原定10月28日14:00（UTC+8）停服；当前概览仍列即将下线，实际可用状态以账号为准"
+          "after": "已停止服务。"
         }
       ],
-      "summary": "原公告计划于2026年10月28日14:00（UTC+8）停止K2.7 Code服务；日期已过，但Coding/Agent概览及AFP表仍列即将下线，实际停服情况待确认。未使用过该型号的用户已停止开放。",
+      "summary": "Kimi K2.7 Code 已于2026年10月28日14:00（北京时间）停止在 Coding Plan 和 Agent Plan 提供服务。",
       "archiveOn": null,
       "targets": [
         {
-          "type": "plan_model",
+          "type": "plan",
           "platformSlug": "bytedance-ark",
           "planSlug": "volcengine-coding-lite",
-          "planModelSlug": "volcengine-coding-lite--kimi-k2-7-code",
-          "label": "字节·方舟 Coding Plan · Lite · Kimi-K2.7-Code"
+          "label": "字节·方舟 Coding Plan · Lite"
         },
         {
-          "type": "plan_model",
+          "type": "plan",
           "platformSlug": "bytedance-ark",
           "planSlug": "volcengine-coding-pro",
-          "planModelSlug": "volcengine-coding-pro--kimi-k2-7-code",
-          "label": "字节·方舟 Coding Plan · Pro · Kimi-K2.7-Code"
+          "label": "字节·方舟 Coding Plan · Pro"
         },
         {
-          "type": "plan_model",
+          "type": "plan",
           "platformSlug": "bytedance-ark-agent",
           "planSlug": "volcengine-agent-small",
-          "planModelSlug": "volcengine-agent-small--kimi-k2-7-code",
-          "label": "字节·方舟 Agent Plan · Small · Kimi-K2.7-Code"
+          "label": "字节·方舟 Agent Plan · Small"
         },
         {
-          "type": "plan_model",
+          "type": "plan",
           "platformSlug": "bytedance-ark-agent",
           "planSlug": "volcengine-agent-medium",
-          "planModelSlug": "volcengine-agent-medium--kimi-k2-7-code",
-          "label": "字节·方舟 Agent Plan · Medium · Kimi-K2.7-Code"
+          "label": "字节·方舟 Agent Plan · Medium"
         },
         {
-          "type": "plan_model",
+          "type": "plan",
           "platformSlug": "bytedance-ark-agent",
           "planSlug": "volcengine-agent-large",
-          "planModelSlug": "volcengine-agent-large--kimi-k2-7-code",
-          "label": "字节·方舟 Agent Plan · Large · Kimi-K2.7-Code"
+          "label": "字节·方舟 Agent Plan · Large"
         },
         {
-          "type": "plan_model",
+          "type": "plan",
           "platformSlug": "bytedance-ark-agent",
           "planSlug": "volcengine-agent-max",
-          "planModelSlug": "volcengine-agent-max--kimi-k2-7-code",
-          "label": "字节·方舟 Agent Plan · Max · Kimi-K2.7-Code"
+          "label": "字节·方舟 Agent Plan · Max"
         }
       ],
       "sources": [
@@ -995,6 +989,12 @@
         },
         {
           "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-plan-overview?lang=zh"
+        },
+        {
+          "url": "https://docs.volcengine.com/docs/ark/coding-plan-personal-model-deprecation?lang=zh"
+        },
+        {
+          "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-model-deprecation-announcement?lang=zh"
         }
       ],
       "relatedChanges": [
@@ -1003,39 +1003,37 @@
     },
     {
       "slug": "ark-minimax-m3-retirement-announced",
-      "title": "方舟 Coding Plan MiniMax M3 将于11月2日下线",
-      "officialStatus": "announced",
+      "title": "方舟 Coding Plan MiniMax M3 已停止服务",
+      "officialStatus": "effective",
       "effectiveTime": {
         "type": "date",
         "date": "2026-11-02",
-        "description": "14:00（UTC+8）正式下线停止服务；此前已使用过该模型的Coding Plan存量用户应提前迁移。"
+        "description": "14:00（北京时间）已停止服务。"
       },
       "changes": [
         {
           "type": "model_support",
           "label": "MiniMax M3",
           "before": "已使用过该模型的存量用户暂可调用",
-          "after": "11月2日14:00（UTC+8）停止服务，建议迁移至doubao-seed-evolving或kimi-k3；以所购套餐实际权限为准"
+          "after": "已停止服务。"
         }
       ],
       "audience": "已使用过MiniMax M3的Coding Plan存量用户；未使用过该模型的用户已自10月19日10:00（UTC+8）起停止开放。",
       "announcedOn": "2026-10-19",
-      "summary": "Coding Plan已明确MiniMax M3将于2026年11月2日14:00（UTC+8）停服；此前用过该模型的存量用户须迁移，未使用过该模型的用户已停止开放。",
+      "summary": "MiniMax M3 已于2026年11月2日14:00（北京时间）停止在 Coding Plan 提供服务。",
       "archiveOn": null,
       "targets": [
         {
-          "type": "plan_model",
+          "type": "plan",
           "platformSlug": "bytedance-ark",
           "planSlug": "volcengine-coding-lite",
-          "planModelSlug": "volcengine-coding-lite--minimax-m3",
-          "label": "字节·方舟 Coding Plan · Lite · MiniMax-M3"
+          "label": "字节·方舟 Coding Plan · Lite"
         },
         {
-          "type": "plan_model",
+          "type": "plan",
           "platformSlug": "bytedance-ark",
           "planSlug": "volcengine-coding-pro",
-          "planModelSlug": "volcengine-coding-pro--minimax-m3",
-          "label": "字节·方舟 Coding Plan · Pro · MiniMax-M3"
+          "label": "字节·方舟 Coding Plan · Pro"
         }
       ],
       "sources": [
@@ -1044,6 +1042,9 @@
         },
         {
           "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-plan-overview?lang=zh"
+        },
+        {
+          "url": "https://docs.volcengine.com/docs/ark/coding-plan-personal-model-deprecation?lang=zh"
         },
         {
           "url": "https://docs.volcengine.com/docs/ark/coding-plan-personal-model-deprecation?lang=zh"
@@ -1057,21 +1058,21 @@
     {
       "slug": "ark-k3-discount-end-20261025",
       "title": "方舟 Kimi K3 优惠结束",
-      "officialStatus": "announced",
+      "officialStatus": "effective",
       "effectiveTime": {
         "type": "date",
         "date": "2026-10-25",
-        "description": "原公告截至10月25日23:59:59；日期已过，活动状态仍进行中且AFP表仍列限时系数5，是否恢复常规10待确认。"
+        "description": "五折活动截至2026年10月25日23:59:59（北京时间）。"
       },
       "changes": [
         {
           "type": "quota",
           "label": "模型抵扣优惠",
-          "before": "原活动期间Kimi K3抵扣五折；Agent Plan表仍列限时5（常规10）",
-          "after": "原截止日期已过，是否延期或恢复常规抵扣尚未确认；实际消耗以账号用量面板为准"
+          "before": "活动期间使用常规抵扣的一半。",
+          "after": "Agent Plan 恢复常规系数 10；Coding Plan 的 Token 参考量按常规系数估算。"
         }
       ],
-      "summary": "方舟该型号抵扣优惠计划于2026-10-25 23:59:59（UTC+8）结束；Coding与Agent Plan各自系数不互套。 公告截止日期已过，恢复常规规则的情况待确认。",
+      "summary": "Kimi K3 五折活动已结束。Agent Plan 恢复每万输入或输出 Token 10 AFP；Coding Plan 的 Token 参考量按常规系数估算。",
       "archiveOn": null,
       "targets": [
         {
@@ -1116,6 +1117,12 @@
         },
         {
           "url": "https://docs.volcengine.com/docs/ark/coding-plan-personal-model-discount?lang=zh"
+        },
+        {
+          "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-model-discount?lang=zh"
+        },
+        {
+          "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-afp-credits-billing-rules?lang=zh"
         },
         {
           "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-model-discount?lang=zh"
@@ -1893,54 +1900,53 @@
     },
     {
       "slug": "ark-agent-minimax-m3-retirement-20261102",
-      "title": "方舟 Agent Plan MiniMax M3 将于11月2日下线",
-      "officialStatus": "announced",
+      "title": "方舟 Agent Plan MiniMax M3 已停止服务",
+      "officialStatus": "effective",
       "effectiveTime": {
         "type": "date",
         "date": "2026-11-02",
-        "description": "14:00（UTC+8）正式下线停止服务。"
+        "description": "14:00（北京时间）已停止服务。"
       },
       "changes": [
         {
           "type": "model_support",
           "label": "MiniMax M3存量调用",
           "before": "已使用过该模型的存量用户仍可调用",
-          "after": "正式下线并停止服务，建议迁移至doubao-seed-evolving或kimi-k3"
+          "after": "已停止服务。"
         }
       ],
-      "summary": "Agent Plan已使用过M3的存量用户须在2026年11月2日14:00（UTC+8）前迁移；新用户自10月19日10:00起已不可用。Coding Plan已有独立公告明确相同停服时间，两产品权限分别适用。",
+      "summary": "MiniMax M3 已于2026年11月2日14:00（北京时间）停止在 Agent Plan 提供服务。",
       "archiveOn": null,
       "targets": [
         {
-          "type": "plan_model",
+          "type": "plan",
           "platformSlug": "bytedance-ark-agent",
           "planSlug": "volcengine-agent-small",
-          "planModelSlug": "volcengine-agent-small--minimax-m3",
-          "label": "字节·方舟 Agent Plan · Small · MiniMax-M3"
+          "label": "字节·方舟 Agent Plan · Small"
         },
         {
-          "type": "plan_model",
+          "type": "plan",
           "platformSlug": "bytedance-ark-agent",
           "planSlug": "volcengine-agent-medium",
-          "planModelSlug": "volcengine-agent-medium--minimax-m3",
-          "label": "字节·方舟 Agent Plan · Medium · MiniMax-M3"
+          "label": "字节·方舟 Agent Plan · Medium"
         },
         {
-          "type": "plan_model",
+          "type": "plan",
           "platformSlug": "bytedance-ark-agent",
           "planSlug": "volcengine-agent-large",
-          "planModelSlug": "volcengine-agent-large--minimax-m3",
-          "label": "字节·方舟 Agent Plan · Large · MiniMax-M3"
+          "label": "字节·方舟 Agent Plan · Large"
         },
         {
-          "type": "plan_model",
+          "type": "plan",
           "platformSlug": "bytedance-ark-agent",
           "planSlug": "volcengine-agent-max",
-          "planModelSlug": "volcengine-agent-max--minimax-m3",
-          "label": "字节·方舟 Agent Plan · Max · MiniMax-M3"
+          "label": "字节·方舟 Agent Plan · Max"
         }
       ],
       "sources": [
+        {
+          "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-model-deprecation-announcement?lang=zh"
+        },
         {
           "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-model-deprecation-announcement?lang=zh"
         },
@@ -1966,39 +1972,35 @@
           "type": "model_support",
           "label": "MiniMax M3新用户权限",
           "before": "可按套餐使用",
-          "after": "未使用过该模型的新用户不可调用，存量调用暂时保留"
+          "after": "当日起仅此前使用过该型号的订户可用，直至该型号停止服务。"
         }
       ],
-      "summary": "Agent Plan未使用过MiniMax M3的新用户自2026年10月19日10:00（UTC+8）起不可调用；存量服务将于11月2日14:00下线。",
+      "summary": "Agent Plan未使用过MiniMax M3的新用户自2026年10月19日10:00（UTC+8）起不可调用。该型号随后已停止服务，见对应下线公告。",
       "archiveOn": null,
       "targets": [
         {
-          "type": "plan_model",
+          "type": "plan",
           "platformSlug": "bytedance-ark-agent",
           "planSlug": "volcengine-agent-small",
-          "planModelSlug": "volcengine-agent-small--minimax-m3",
-          "label": "字节·方舟 Agent Plan · Small · MiniMax-M3"
+          "label": "字节·方舟 Agent Plan · Small"
         },
         {
-          "type": "plan_model",
+          "type": "plan",
           "platformSlug": "bytedance-ark-agent",
           "planSlug": "volcengine-agent-medium",
-          "planModelSlug": "volcengine-agent-medium--minimax-m3",
-          "label": "字节·方舟 Agent Plan · Medium · MiniMax-M3"
+          "label": "字节·方舟 Agent Plan · Medium"
         },
         {
-          "type": "plan_model",
+          "type": "plan",
           "platformSlug": "bytedance-ark-agent",
           "planSlug": "volcengine-agent-large",
-          "planModelSlug": "volcengine-agent-large--minimax-m3",
-          "label": "字节·方舟 Agent Plan · Large · MiniMax-M3"
+          "label": "字节·方舟 Agent Plan · Large"
         },
         {
-          "type": "plan_model",
+          "type": "plan",
           "platformSlug": "bytedance-ark-agent",
           "planSlug": "volcengine-agent-max",
-          "planModelSlug": "volcengine-agent-max--minimax-m3",
-          "label": "字节·方舟 Agent Plan · Max · MiniMax-M3"
+          "label": "字节·方舟 Agent Plan · Max"
         }
       ],
       "sources": [
@@ -2062,7 +2064,7 @@
     {
       "slug": "ark-k31-pro-discount-end-20261110",
       "title": "方舟 Kimi K3.1 Pro 五折活动结束",
-      "officialStatus": "announced",
+      "officialStatus": "effective",
       "effectiveTime": {
         "type": "date",
         "date": "2026-11-10",
@@ -2073,11 +2075,11 @@
           "type": "quota",
           "label": "Kimi K3.1 Pro 抵扣系数",
           "before": "2026-10-24至11-09，Agent Plan系数3.5；Coding Plan按对应五折活动可用量使用",
-          "after": "活动结束后恢复常规系数7；实际恢复情况需到期核对，不能提前切换"
+          "after": "Kimi K3.1 Pro 五折已结束。Agent Plan 恢复每万 Token 7 AFP；Coding Plan 参考用量按常规系数重新估算。"
         }
       ],
       "audience": "方舟Coding Plan Lite / Pro，以及Agent Plan Small / Medium / Large / Max个人版用户。",
-      "summary": "方舟Coding / Agent Plan个人版的Kimi K3.1 Pro限时五折截至2026-11-09 23:59:59（UTC+8）；只影响本模型消耗，非订阅售价优惠。",
+      "summary": "Kimi K3.1 Pro 五折已结束。Agent Plan 恢复每万 Token 7 AFP；Coding Plan 参考用量按常规系数重新估算。",
       "archiveOn": null,
       "targets": [
         {
@@ -2126,6 +2128,9 @@
       "sources": [
         {
           "url": "https://docs.volcengine.com/docs/82379/2533566?lang=zh"
+        },
+        {
+          "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-model-discount?lang=zh"
         }
       ],
       "relatedChanges": []
@@ -2204,26 +2209,24 @@
           "type": "model_support",
           "label": "MiniMax M3新用户权限",
           "before": "可按套餐使用",
-          "after": "未使用过该模型的新用户不可调用，存量调用暂时保留至11月2日14:00（UTC+8）"
+          "after": "当日起仅此前使用过该型号的订户可用，直至该型号停止服务。"
         }
       ],
       "announcedOn": "2026-10-19",
-      "summary": "Coding Plan未使用过MiniMax M3的用户已自2026年10月19日10:00（UTC+8）起不可调用；存量服务计划于11月2日14:00停止。",
+      "summary": "Coding Plan未使用过MiniMax M3的用户已自2026年10月19日10:00（UTC+8）起不可调用。该型号随后已停止服务，见对应下线公告。",
       "archiveOn": null,
       "targets": [
         {
-          "type": "plan_model",
+          "type": "plan",
           "platformSlug": "bytedance-ark",
           "planSlug": "volcengine-coding-lite",
-          "planModelSlug": "volcengine-coding-lite--minimax-m3",
-          "label": "字节·方舟 Coding Plan · Lite · MiniMax-M3"
+          "label": "字节·方舟 Coding Plan · Lite"
         },
         {
-          "type": "plan_model",
+          "type": "plan",
           "platformSlug": "bytedance-ark",
           "planSlug": "volcengine-coding-pro",
-          "planModelSlug": "volcengine-coding-pro--minimax-m3",
-          "label": "字节·方舟 Coding Plan · Pro · MiniMax-M3"
+          "label": "字节·方舟 Coding Plan · Pro"
         }
       ],
       "sources": [
@@ -2620,7 +2623,7 @@
       "officialStatus": "announced",
       "effectiveTime": {
         "type": "unknown",
-        "description": "横幅仅标注10月1日至10月31日，未注明年份；当前仍显示免费，是否延期及后续计费未明确。"
+        "description": "原横幅仅标注10月1日至10月31日，目前是否延期及后续计费未确认。"
       },
       "changes": [
         {
@@ -2631,7 +2634,7 @@
         }
       ],
       "audience": "使用共绩国产算力专区免费渠道的用户。",
-      "summary": "国产算力专区仍展示免费体验，但横幅活动期限为10月1日至10月31日，是否延期及后续计费待确认；免费模型不保证SLA，资源满负荷时动态调整。",
+      "summary": "国产算力专区原活动期为10月1日至10月31日。目前是否仍可免费使用及后续计费待确认。原活动免费模型不保证 SLA，满负荷时会调整。",
       "archiveOn": "2027-02-04",
       "targets": [
         {
@@ -2641,6 +2644,9 @@
         }
       ],
       "sources": [
+        {
+          "url": "https://maas.suanli.cn/"
+        },
         {
           "url": "https://maas.suanli.cn/"
         }
@@ -2689,7 +2695,7 @@
     {
       "slug": "ark-agent-annual-discount-end-20261112",
       "title": "方舟 Agent Plan 连续包年五折结束",
-      "officialStatus": "announced",
+      "officialStatus": "effective",
       "effectiveTime": {
         "type": "date",
         "date": "2026-11-13",
@@ -2700,10 +2706,10 @@
           "type": "price",
           "label": "方舟 Agent Plan 连续包年五折结束",
           "before": "Small / Medium 连续包年240 / 1200元；活动只适用于连续包年且限量，邀请新人优惠另计。",
-          "after": "2026年11月9日至11月12日活动后，Small / Medium 连续包年恢复标准480 / 2400元；已支付订单权益不受影响。"
+          "after": "连续包年五折已结束，Small / Medium 恢复标准 ¥480 / ¥2,400 每年。活动期间已支付的订单权益仍有效。"
         }
       ],
-      "summary": "2026年11月9日至11月12日活动后，Small / Medium 连续包年恢复标准480 / 2400元；已支付订单权益不受影响。",
+      "summary": "连续包年五折已结束，Small / Medium 恢复标准 ¥480 / ¥2,400 每年。活动期间已支付的订单权益仍有效。",
       "archiveOn": null,
       "targets": [
         {
@@ -2720,6 +2726,9 @@
         }
       ],
       "sources": [
+        {
+          "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-annual-discount?lang=zh"
+        },
         {
           "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-annual-discount?lang=zh"
         }
@@ -3347,7 +3356,507 @@
         }
       ],
       "relatedChanges": []
+    },
+    {
+      "slug": "aliyun-token-personal-quota-pro-price-20261109",
+      "title": "百炼 Token Plan 个人版提额，Pro 降价",
+      "officialStatus": "effective",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-11-09",
+        "description": "11月9日20:00（北京时间）起；存量 Pro 新价下周期生效。"
+      },
+      "changes": [
+        {
+          "type": "quota",
+          "label": "百炼 Token Plan 个人版提额，Pro 降价",
+          "before": "Lite / Essential / Standard / Pro 原每月额度分别为 11,500 / 25,500 / 45,000 / 180,000 Credits，Pro 原官网价 ¥499/月。",
+          "after": "Lite / Essential / Standard / Pro 每月额度分别上调至 20,000 / 45,000 / 80,000 / 200,000 Credits，Pro 官网价降至 ¥312/月；存量本周期补齐新额度，Pro 新价从下一订阅周期生效。"
+        }
+      ],
+      "announcedOn": "2026-11-09",
+      "summary": "Lite / Essential / Standard / Pro 每月额度分别上调至 20,000 / 45,000 / 80,000 / 200,000 Credits，Pro 官网价降至 ¥312/月；存量本周期补齐新额度，Pro 新价从下一订阅周期生效。",
+      "archiveOn": null,
+      "targets": [
+        {
+          "type": "plan",
+          "platformSlug": "aliyun-bailian",
+          "planSlug": "aliyun-token-personal-lite",
+          "label": "阿里·百炼 Token Plan · Lite"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "aliyun-bailian",
+          "planSlug": "aliyun-token-personal-essential",
+          "label": "阿里·百炼 Token Plan · Essential"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "aliyun-bailian",
+          "planSlug": "aliyun-token-personal-standard",
+          "label": "阿里·百炼 Token Plan · Standard"
+        },
+        {
+          "type": "plan",
+          "platformSlug": "aliyun-bailian",
+          "planSlug": "aliyun-token-personal-pro",
+          "label": "阿里·百炼 Token Plan · Pro"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://www.aliyun.com/notice/118815"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "aliyun-qwen4-max-preview-end-20261126",
+      "title": "百炼 Qwen4-Max-Preview 预览结束后下线",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-11-26",
+        "description": "预览截至11月25日24:00（北京时间）。"
+      },
+      "changes": [
+        {
+          "type": "model_support",
+          "label": "百炼 Qwen4-Max-Preview 预览结束后下线",
+          "before": "百炼 Token Plan 预览期可使用 Qwen4-Max-Preview，日间消耗低至2折，夜间低至0.8折。",
+          "after": "11月25日24:00（北京时间）预览结束后，Qwen4-Max-Preview 将下线，预览折扣同时结束。"
+        }
+      ],
+      "announcedOn": "2026-11-11",
+      "summary": "11月25日24:00（北京时间）预览结束后，Qwen4-Max-Preview 将下线，预览折扣同时结束。",
+      "archiveOn": null,
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "aliyun-bailian",
+          "planSlug": "aliyun-token-personal-lite",
+          "planModelSlug": "aliyun-token-personal-lite--qwen-4-max-preview",
+          "label": "阿里·百炼 Token Plan · Lite · Qwen4-Max-Preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "aliyun-bailian",
+          "planSlug": "aliyun-token-personal-essential",
+          "planModelSlug": "aliyun-token-personal-essential--qwen-4-max-preview",
+          "label": "阿里·百炼 Token Plan · Essential · Qwen4-Max-Preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "aliyun-bailian",
+          "planSlug": "aliyun-token-personal-standard",
+          "planModelSlug": "aliyun-token-personal-standard--qwen-4-max-preview",
+          "label": "阿里·百炼 Token Plan · Standard · Qwen4-Max-Preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "aliyun-bailian",
+          "planSlug": "aliyun-token-personal-pro",
+          "planModelSlug": "aliyun-token-personal-pro--qwen-4-max-preview",
+          "label": "阿里·百炼 Token Plan · Pro · Qwen4-Max-Preview"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://help.aliyun.com/zh/model-studio/qwen4-max-preview"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "claude-pro-fable-launch-offer-end-20261117",
+      "title": "Claude Pro 的 Fable 首发周权益到期",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-11-17",
+        "description": "11月16日23:59 PT，即11月17日15:59北京时间。"
+      },
+      "changes": [
+        {
+          "type": "quota",
+          "label": "Claude Pro 的 Fable 首发周权益到期",
+          "before": "Pro 在首发周使用 Fable 系列合计最多可占共享周用量的 50%。",
+          "after": "首发周结束后，Claude Pro 的 Fable 系列恢复使用另购 Usage Credits；符合条件的 Pro 用户首发重置也同时到期。"
+        }
+      ],
+      "announcedOn": "2026-11-09",
+      "summary": "首发周结束后，Claude Pro 的 Fable 系列恢复使用另购 Usage Credits；符合条件的 Pro 用户首发重置也同时到期。",
+      "archiveOn": null,
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "claude",
+          "planSlug": "claude-pro",
+          "planModelSlug": "claude-pro--claude-fable-5-1",
+          "label": "Claude · Pro · Claude Fable 5.1"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "claude",
+          "planSlug": "claude-pro",
+          "planModelSlug": "claude-pro--claude-fable-5",
+          "label": "Claude · Pro · Claude Fable 5"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "claude",
+          "planSlug": "claude-pro",
+          "planModelSlug": "claude-pro--claude-fable-5-2",
+          "label": "Claude · Pro · Claude Fable 5.2"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://support.claude.com/en/articles/17506494-claude-fable-5-2-launch-offers"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "github-copilot-model-retirement-20261214",
+      "title": "GitHub Copilot 六个模型将于 12 月 14 日下线",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-12-14",
+        "description": "官方公布日期，具体时刻未公布；个人年付 Claude Haiku 4.5 不受影响。"
+      },
+      "changes": [
+        {
+          "type": "model_support",
+          "label": "GitHub Copilot 六个模型将于 12 月 14 日下线",
+          "before": "相关模型在当前支持的 Copilot 套餐中仍可使用。",
+          "after": "GitHub Copilot 将下线 Claude Fable 5、Claude Haiku 4.5、Gemini 3.8 Flash、Gemini 4 Argon、Grok 4.6、Kimi K3。个人年付用户仍可使用 Claude Haiku 4.5。"
+        }
+      ],
+      "announcedOn": "2026-11-13",
+      "summary": "GitHub Copilot 将下线 Claude Fable 5、Claude Haiku 4.5、Gemini 3.8 Flash、Gemini 4 Argon、Grok 4.6、Kimi K3。个人年付用户仍可使用 Claude Haiku 4.5。",
+      "archiveOn": null,
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "github",
+          "planSlug": "github-token-plan-pro",
+          "planModelSlug": "github-token-plan-pro--claude-haiku-4-5",
+          "label": "GitHub · Pro · Claude Haiku 4.5"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "github",
+          "planSlug": "github-token-plan-pro",
+          "planModelSlug": "github-token-plan-pro--gemini-3-8-flash",
+          "label": "GitHub · Pro · Gemini-3.8-Flash"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "github",
+          "planSlug": "github-token-plan-pro",
+          "planModelSlug": "github-token-plan-pro--grok-4-6--ctx-200k",
+          "label": "GitHub · Pro · Grok-4.6"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "github",
+          "planSlug": "github-token-plan-pro",
+          "planModelSlug": "github-token-plan-pro--grok-4-6--ctx-200k-long",
+          "label": "GitHub · Pro · Grok-4.6"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "github",
+          "planSlug": "github-token-plan-pro",
+          "planModelSlug": "github-token-plan-pro--kimi-k3",
+          "label": "GitHub · Pro · Kimi-K3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "github",
+          "planSlug": "github-token-plan-pro-2",
+          "planModelSlug": "github-token-plan-pro-2--claude-haiku-4-5",
+          "label": "GitHub · Pro+ · Claude Haiku 4.5"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "github",
+          "planSlug": "github-token-plan-pro-2",
+          "planModelSlug": "github-token-plan-pro-2--claude-fable-5",
+          "label": "GitHub · Pro+ · Claude Fable 5"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "github",
+          "planSlug": "github-token-plan-pro-2",
+          "planModelSlug": "github-token-plan-pro-2--gemini-3-8-flash",
+          "label": "GitHub · Pro+ · Gemini-3.8-Flash"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "github",
+          "planSlug": "github-token-plan-pro-2",
+          "planModelSlug": "github-token-plan-pro-2--grok-4-6--ctx-200k",
+          "label": "GitHub · Pro+ · Grok-4.6"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "github",
+          "planSlug": "github-token-plan-pro-2",
+          "planModelSlug": "github-token-plan-pro-2--grok-4-6--ctx-200k-long",
+          "label": "GitHub · Pro+ · Grok-4.6"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "github",
+          "planSlug": "github-token-plan-pro-2",
+          "planModelSlug": "github-token-plan-pro-2--kimi-k3",
+          "label": "GitHub · Pro+ · Kimi-K3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "github",
+          "planSlug": "github-token-plan-pro-2",
+          "planModelSlug": "github-token-plan-pro-2--gemini-4-argon",
+          "label": "GitHub · Pro+ · Gemini 4 Argon"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "github",
+          "planSlug": "github-token-plan-max",
+          "planModelSlug": "github-token-plan-max--claude-haiku-4-5",
+          "label": "GitHub · Max · Claude Haiku 4.5"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "github",
+          "planSlug": "github-token-plan-max",
+          "planModelSlug": "github-token-plan-max--claude-fable-5",
+          "label": "GitHub · Max · Claude Fable 5"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "github",
+          "planSlug": "github-token-plan-max",
+          "planModelSlug": "github-token-plan-max--gemini-3-8-flash",
+          "label": "GitHub · Max · Gemini-3.8-Flash"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "github",
+          "planSlug": "github-token-plan-max",
+          "planModelSlug": "github-token-plan-max--grok-4-6--ctx-200k",
+          "label": "GitHub · Max · Grok-4.6"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "github",
+          "planSlug": "github-token-plan-max",
+          "planModelSlug": "github-token-plan-max--grok-4-6--ctx-200k-long",
+          "label": "GitHub · Max · Grok-4.6"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "github",
+          "planSlug": "github-token-plan-max",
+          "planModelSlug": "github-token-plan-max--kimi-k3",
+          "label": "GitHub · Max · Kimi-K3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "github",
+          "planSlug": "github-token-plan-max",
+          "planModelSlug": "github-token-plan-max--gemini-4-argon",
+          "label": "GitHub · Max · Gemini 4 Argon"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://github.blog/changelog/2026-11-13-upcoming-deprecation-of-selected-github-copilot-models-in-december/"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "github-gemini-4-carbon-promo-end-20261201",
+      "title": "GitHub Copilot Gemini 4 Carbon 优惠价结束",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-12-01",
+        "description": "官方未公布切换时刻和时区。"
+      },
+      "changes": [
+        {
+          "type": "price",
+          "label": "GitHub Copilot Gemini 4 Carbon 优惠价结束",
+          "before": "当前输入／缓存读取／输出为 $2／$0.10／$10 每百万 Token。",
+          "after": "12月1日起，输入／缓存读取／输出恢复为 $4／$0.20／$20 每百万 Token。"
+        }
+      ],
+      "summary": "12月1日起，输入／缓存读取／输出恢复为 $4／$0.20／$20 每百万 Token。",
+      "archiveOn": null,
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "github",
+          "planSlug": "github-token-plan-pro-2",
+          "planModelSlug": "github-token-plan-pro-2--gemini-4-carbon",
+          "label": "GitHub · Pro+ · Gemini 4 Carbon"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "github",
+          "planSlug": "github-token-plan-max",
+          "planModelSlug": "github-token-plan-max--gemini-4-carbon",
+          "label": "GitHub · Max · Gemini 4 Carbon"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "ark-kimi-k3-new-user-restriction-20261111",
+      "title": "方舟 Kimi K3 已限制新使用者",
+      "officialStatus": "effective",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-11-11",
+        "description": "10:00（北京时间）。"
+      },
+      "changes": [
+        {
+          "type": "model_support",
+          "label": "Kimi K3 使用资格",
+          "before": "符合套餐条件的订户可使用。",
+          "after": "仅此前使用过该模型的订户暂可继续使用。"
+        }
+      ],
+      "summary": "自2026年11月11日10:00起，未使用过该模型的订户不可使用；此前使用过的订户可用至11月25日14:00（北京时间）。",
+      "archiveOn": null,
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark",
+          "planSlug": "volcengine-coding-lite",
+          "planModelSlug": "volcengine-coding-lite--kimi-k3",
+          "label": "字节·方舟 Coding Plan · Lite · Kimi-K3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark",
+          "planSlug": "volcengine-coding-pro",
+          "planModelSlug": "volcengine-coding-pro--kimi-k3",
+          "label": "字节·方舟 Coding Plan · Pro · Kimi-K3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-medium",
+          "planModelSlug": "volcengine-agent-medium--kimi-k3",
+          "label": "字节·方舟 Agent Plan · Medium · Kimi-K3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-large",
+          "planModelSlug": "volcengine-agent-large--kimi-k3",
+          "label": "字节·方舟 Agent Plan · Large · Kimi-K3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-max",
+          "planModelSlug": "volcengine-agent-max--kimi-k3",
+          "label": "字节·方舟 Agent Plan · Max · Kimi-K3"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://docs.volcengine.com/docs/ark/coding-plan-personal-model-deprecation?lang=zh"
+        },
+        {
+          "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-model-deprecation-announcement?lang=zh"
+        }
+      ],
+      "relatedChanges": [
+        "ark-kimi-k3-retirement-20261125"
+      ]
+    },
+    {
+      "slug": "ark-kimi-k3-retirement-20261125",
+      "title": "方舟 Kimi K3 将于11月25日停止服务",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-11-25",
+        "description": "14:00（北京时间）。"
+      },
+      "changes": [
+        {
+          "type": "model_support",
+          "label": "Kimi K3 使用资格",
+          "before": "此前使用过的订户暂可调用。",
+          "after": "停止服务。"
+        }
+      ],
+      "summary": "Kimi K3 将于2026年11月25日14:00（北京时间）停止服务。此前使用过该模型的订户可在停服前迁移至 Kimi K3.1 Pro。",
+      "archiveOn": null,
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark",
+          "planSlug": "volcengine-coding-lite",
+          "planModelSlug": "volcengine-coding-lite--kimi-k3",
+          "label": "字节·方舟 Coding Plan · Lite · Kimi-K3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark",
+          "planSlug": "volcengine-coding-pro",
+          "planModelSlug": "volcengine-coding-pro--kimi-k3",
+          "label": "字节·方舟 Coding Plan · Pro · Kimi-K3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-medium",
+          "planModelSlug": "volcengine-agent-medium--kimi-k3",
+          "label": "字节·方舟 Agent Plan · Medium · Kimi-K3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-large",
+          "planModelSlug": "volcengine-agent-large--kimi-k3",
+          "label": "字节·方舟 Agent Plan · Large · Kimi-K3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "bytedance-ark-agent",
+          "planSlug": "volcengine-agent-max",
+          "planModelSlug": "volcengine-agent-max--kimi-k3",
+          "label": "字节·方舟 Agent Plan · Max · Kimi-K3"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://docs.volcengine.com/docs/ark/coding-plan-personal-model-deprecation?lang=zh"
+        },
+        {
+          "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-model-deprecation-announcement?lang=zh"
+        }
+      ],
+      "relatedChanges": [
+        "ark-kimi-k3-new-user-restriction-20261111"
+      ]
     }
   ],
-  "contentVersion": "2026-11-09T13:01:10.308Z"
+  "contentVersion": "2026-11-15T15:23:22.397Z"
 }

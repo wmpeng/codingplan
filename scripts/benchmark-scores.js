@@ -5,7 +5,7 @@
 })(globalThis, function(UI, Help) {
   'use strict';
   const definitions = {
-    artificialAnalysis:{label:'AA',short:'AA',digits:1,description:'Artificial Analysis Intelligence Index；智能指数，非百分制。'},
+    artificialAnalysis:{label:'AA',short:'AA',digits:1,description:'Artificial Analysis Intelligence Index，智能指数。不同评测版本的分数不可直接比较。'},
     deepSWE:{label:'DeepSWE',short:'DeepSWE',digits:1,description:'DeepSWE 软件工程任务 pass@1 × 100；置信区间为 95%。'},
     liveBench:{label:'LiveBench',short:'LiveBench',digits:1,description:'LiveBench 2.0 Overall；按官方权重汇总各评测套件，缺失项不计入，零分计入。'},
     arena:{label:'Arena',short:'Arena',digits:2,description:'Arena Agent Overall · Net Improvement；相对基线的净改善百分比，可为负，随榜单和比较基线变化。'}

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-11-09T13:01:02Z",
+  "generatedAt": "2026-11-15T15:23:18Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -731,7 +731,7 @@
             "cacheCnyPerM": 0.0,
             "outputCnyPerM": 0.0
           },
-          "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；限时免费，官方未公布活动起止日期；活动结束后价格和额度未知。；限时免费，官方未公布活动起止日期；活动结束后价格和额度未知。"
+          "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；限时免费，官方未公布活动起止日期；活动结束后价格和额度未知。；限时免费，结束日期未知；在工作区隐私设置开启 Global 地区才可用，模型托管在中国。不用于训练，零天留存。"
         },
         {
           "slug": "opencode-go--step-5-preview",
@@ -1497,29 +1497,6 @@
           "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；限时免费，未公布结束日期；仍受平台速率与可用性限制。不使用请求训练，保留30天；中国大陆、香港、澳门等地区不可用。"
         },
         {
-          "slug": "opencode-go--crouton-alpha--free",
-          "modelSlug": "crouton-alpha",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": "Free",
-          "method": "calculated",
-          "usage": {
-            "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": "unlimited"
-          },
-          "pricing": {
-            "currency": "$",
-            "inputPerM": 0.0,
-            "cachePerM": 0.0,
-            "outputPerM": 0.0,
-            "inputCnyPerM": 0.0,
-            "cacheCnyPerM": 0.0,
-            "outputCnyPerM": 0.0
-          },
-          "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；限时免费，结束日期未公布；请求保留30天，不用于训练，部分地区（含中国大陆、香港和澳门）不可用。；限时免费，结束日期未公布；请求保留30天，不用于训练，部分地区（含中国大陆、香港和澳门）不可用。"
-        },
-        {
           "slug": "opencode-go--iceman-contributor--free",
           "modelSlug": "iceman-contributor",
           "timeTier": null,
@@ -1753,7 +1730,7 @@
             "cacheCnyPerM": 0.0,
             "outputCnyPerM": 0.0
           },
-          "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；限时免费，官方未公布活动起止日期；活动结束后价格和额度未知。；限时免费，官方未公布活动起止日期；活动结束后价格和额度未知。"
+          "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；限时免费，官方未公布活动起止日期；活动结束后价格和额度未知。；限时免费，结束日期未知；在工作区隐私设置开启 Global 地区才可用，模型托管在中国。不用于训练，零天留存。"
         },
         {
           "slug": "opencode-go-plus--step-5-preview",
@@ -2517,29 +2494,6 @@
             "outputCnyPerM": 0.0
           },
           "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；限时免费，未公布结束日期；仍受平台速率与可用性限制。不使用请求训练，保留30天；中国大陆、香港、澳门等地区不可用。"
-        },
-        {
-          "slug": "opencode-go-plus--crouton-alpha--free",
-          "modelSlug": "crouton-alpha",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": "Free",
-          "method": "calculated",
-          "usage": {
-            "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": "unlimited"
-          },
-          "pricing": {
-            "currency": "$",
-            "inputPerM": 0.0,
-            "cachePerM": 0.0,
-            "outputPerM": 0.0,
-            "inputCnyPerM": 0.0,
-            "cacheCnyPerM": 0.0,
-            "outputCnyPerM": 0.0
-          },
-          "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；限时免费，结束日期未公布；请求保留30天，不用于训练，部分地区（含中国大陆、香港和澳门）不可用。；限时免费，结束日期未公布；请求保留30天，不用于训练，部分地区（含中国大陆、香港和澳门）不可用。"
         },
         {
           "slug": "opencode-go-plus--iceman-contributor--free",
@@ -3520,29 +3474,6 @@
           "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；限时免费，未公布结束日期；仍受平台速率与可用性限制。不使用请求训练，保留30天；中国大陆、香港、澳门等地区不可用。"
         },
         {
-          "slug": "opencode-go-teams--crouton-alpha--free",
-          "modelSlug": "crouton-alpha",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": "Free",
-          "method": "calculated",
-          "usage": {
-            "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": "unlimited"
-          },
-          "pricing": {
-            "currency": "$",
-            "inputPerM": 0.0,
-            "cachePerM": 0.0,
-            "outputPerM": 0.0,
-            "inputCnyPerM": 0.0,
-            "cacheCnyPerM": 0.0,
-            "outputCnyPerM": 0.0
-          },
-          "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；限时免费，结束日期未公布；请求保留30天，不用于训练，部分地区（含中国大陆、香港和澳门）不可用。；限时免费，结束日期未公布；请求保留30天，不用于训练，部分地区（含中国大陆、香港和澳门）不可用。"
-        },
-        {
           "slug": "opencode-go-teams--iceman-contributor--free",
           "modelSlug": "iceman-contributor",
           "timeTier": null,
@@ -3564,6 +3495,29 @@
             "outputCnyPerM": 0.0
           },
           "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；限时免费，结束日期未公布；须允许输入输出用于改进模型，不支持零数据留存。；限时免费，结束日期未公布；须允许输入输出用于改进模型，不支持零数据留存。"
+        },
+        {
+          "slug": "opencode-go-teams--longcat-2-5-preview",
+          "modelSlug": "longcat-2-5-preview",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": "unlimited"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.0,
+            "cachePerM": 0.0,
+            "outputPerM": 0.0,
+            "inputCnyPerM": 0.0,
+            "cacheCnyPerM": 0.0,
+            "outputCnyPerM": 0.0
+          },
+          "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；限时免费，官方未公布活动起止日期；活动结束后价格和额度未知。；限时免费，结束日期未知；在工作区隐私设置开启 Global 地区才可用，模型托管在中国。不用于训练，零天留存。"
         }
       ]
     },
@@ -3663,38 +3617,6 @@
           "note": "参照 Agent Plan 当前系数 2.5 与 2026-08-29 DeepSeek V4 Flash 实测基准推测；工作负载 120K/请求，部分请求约 1.5 倍入账的触发条件仍未知。"
         },
         {
-          "slug": "volcengine-coding-lite--minimax-m3",
-          "modelSlug": "minimax-m3",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "multiplied",
-          "usage": {
-            "fiveHourTokenInM": 8.0,
-            "weeklyTokenInM": 60.0,
-            "monthlyTokenInM": 120.0,
-            "unitPriceCnyPerM": 0.3333
-          },
-          "pricing": null,
-          "note": "参照 Agent Plan 当前系数 2.5 与 2026-08-29 DeepSeek V4 Flash 实测基准推测；工作负载 120K/请求，部分请求约 1.5 倍入账的触发条件仍未知。 自2026-10-19 10:00（UTC+8）起，未使用过M3的本产品订户不可调用；已使用过的存量用户暂可调用，计划于2026-11-02 14:00（UTC+8）停服。"
-        },
-        {
-          "slug": "volcengine-coding-lite--kimi-k2-7-code",
-          "modelSlug": "kimi-k2-7-code",
-          "timeTier": null,
-          "contextTier": "256K",
-          "serviceTier": null,
-          "method": "multiplied",
-          "usage": {
-            "fiveHourTokenInM": 4.4444444444,
-            "weeklyTokenInM": 33.3333333333,
-            "monthlyTokenInM": 66.7,
-            "unitPriceCnyPerM": 0.6
-          },
-          "pricing": null,
-          "note": "参照 Agent Plan 当前系数 4.5 与 2026-08-29 DeepSeek V4 Flash 实测基准推测；工作负载 120K/请求，部分请求约 1.5 倍入账的触发条件仍未知。 自2026-10-13 10:00（UTC+8）起，未使用过该型号的本产品订户不可调用；原定2026-10-28 14:00（UTC+8）停服，但当前概览仍标即将下线，实际停服情况待确认，请以账号可用状态为准。"
-        },
-        {
           "slug": "volcengine-coding-lite--kimi-k2-8-preview",
           "modelSlug": "kimi-k2-8-preview",
           "timeTier": null,
@@ -3718,13 +3640,13 @@
           "serviceTier": null,
           "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 4.0,
-            "weeklyTokenInM": 30.0,
-            "monthlyTokenInM": 60.0,
-            "unitPriceCnyPerM": 0.6667
+            "fiveHourTokenInM": 2.0,
+            "weeklyTokenInM": 15.0,
+            "monthlyTokenInM": 30.0,
+            "unitPriceCnyPerM": 1.3333
           },
           "pricing": null,
-          "note": "参照 Agent Plan 当前系数 5 与 2026-08-29 DeepSeek V4 Flash 实测基准推测；工作负载 120K/请求，部分请求约 1.5 倍入账的触发条件仍未知。2026-10-12 00:00:00 至 2026-10-25 23:59:59（UTC+8）系数 5，常规 10；活动公告截至 2026-10-25，但当前页面仍标进行中，是否已恢复常规抵扣待确认；参考量暂按活动系数估算。"
+          "note": "自2026年11月11日10:00起，未使用过该模型的订户不可使用；此前使用过的订户可用至11月25日14:00（北京时间）。五折活动已结束；Token 参考量按 Agent Plan 常规系数 10 和历史实测基准估算。"
         },
         {
           "slug": "volcengine-coding-lite--glm-5-3",
@@ -3814,13 +3736,13 @@
           "serviceTier": null,
           "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 5.7142857143,
-            "weeklyTokenInM": 42.8571428571,
-            "monthlyTokenInM": 85.7,
-            "unitPriceCnyPerM": 0.4667
+            "fiveHourTokenInM": 2.8571428571,
+            "weeklyTokenInM": 21.4285714286,
+            "monthlyTokenInM": 42.9,
+            "unitPriceCnyPerM": 0.9333
           },
           "pricing": null,
-          "note": "Coding Plan 的 K3.1 Pro 用量按 Agent Plan 系数与历史实测基准推算，非官方固定 Token 配额；120K/请求负载可能受额外入账因素影响。2026-10-24 00:00:00 至 2026-11-09 23:59:59（UTC+8）抵扣系数 3.5，常规 7。"
+          "note": "K3.1 Pro 五折已结束。可用量按常规 Agent Plan 系数7与历史实测基准推算，非官方固定 Token 配额。"
         }
       ]
     },
@@ -3920,38 +3842,6 @@
           "note": "参照 Agent Plan 当前系数 2.5 与 2026-08-29 DeepSeek V4 Flash 实测基准推测；工作负载 120K/请求，部分请求约 1.5 倍入账的触发条件仍未知。"
         },
         {
-          "slug": "volcengine-coding-pro--minimax-m3",
-          "modelSlug": "minimax-m3",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "multiplied",
-          "usage": {
-            "fiveHourTokenInM": 40.0,
-            "weeklyTokenInM": 300.0,
-            "monthlyTokenInM": 600.0,
-            "unitPriceCnyPerM": 0.3333
-          },
-          "pricing": null,
-          "note": "参照 Agent Plan 当前系数 2.5 与 2026-08-29 DeepSeek V4 Flash 实测基准推测；工作负载 120K/请求，部分请求约 1.5 倍入账的触发条件仍未知。 自2026-10-19 10:00（UTC+8）起，未使用过M3的本产品订户不可调用；已使用过的存量用户暂可调用，计划于2026-11-02 14:00（UTC+8）停服。"
-        },
-        {
-          "slug": "volcengine-coding-pro--kimi-k2-7-code",
-          "modelSlug": "kimi-k2-7-code",
-          "timeTier": null,
-          "contextTier": "256K",
-          "serviceTier": null,
-          "method": "multiplied",
-          "usage": {
-            "fiveHourTokenInM": 22.2222222222,
-            "weeklyTokenInM": 166.6666666667,
-            "monthlyTokenInM": 333.3,
-            "unitPriceCnyPerM": 0.6
-          },
-          "pricing": null,
-          "note": "参照 Agent Plan 当前系数 4.5 与 2026-08-29 DeepSeek V4 Flash 实测基准推测；工作负载 120K/请求，部分请求约 1.5 倍入账的触发条件仍未知。 自2026-10-13 10:00（UTC+8）起，未使用过该型号的本产品订户不可调用；原定2026-10-28 14:00（UTC+8）停服，但当前概览仍标即将下线，实际停服情况待确认，请以账号可用状态为准。"
-        },
-        {
           "slug": "volcengine-coding-pro--kimi-k2-8-preview",
           "modelSlug": "kimi-k2-8-preview",
           "timeTier": null,
@@ -3975,13 +3865,13 @@
           "serviceTier": null,
           "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 20.0,
-            "weeklyTokenInM": 150.0,
-            "monthlyTokenInM": 300.0,
-            "unitPriceCnyPerM": 0.6667
+            "fiveHourTokenInM": 10.0,
+            "weeklyTokenInM": 75.0,
+            "monthlyTokenInM": 150.0,
+            "unitPriceCnyPerM": 1.3333
           },
           "pricing": null,
-          "note": "按同套餐规则估算。；活动公告截至 2026-10-25，但当前页面仍标进行中，是否已恢复常规抵扣待确认；参考量暂按活动系数估算。"
+          "note": "自2026年11月11日10:00起，未使用过该模型的订户不可使用；此前使用过的订户可用至11月25日14:00（北京时间）。五折活动已结束；Token 参考量按 Agent Plan 常规系数 10 和历史实测基准估算。"
         },
         {
           "slug": "volcengine-coding-pro--glm-5-3",
@@ -4071,13 +3961,13 @@
           "serviceTier": null,
           "method": "multiplied",
           "usage": {
-            "fiveHourTokenInM": 28.5714285714,
-            "weeklyTokenInM": 214.2857142857,
-            "monthlyTokenInM": 428.6,
-            "unitPriceCnyPerM": 0.4667
+            "fiveHourTokenInM": 14.2857142857,
+            "weeklyTokenInM": 107.1428571429,
+            "monthlyTokenInM": 214.3,
+            "unitPriceCnyPerM": 0.9333
           },
           "pricing": null,
-          "note": "Coding Plan 的 K3.1 Pro 用量按 Agent Plan 系数与历史实测基准推算，非官方固定 Token 配额；120K/请求负载可能受额外入账因素影响。2026-10-24 00:00:00 至 2026-11-09 23:59:59（UTC+8）抵扣系数 3.5，常规 7。"
+          "note": "K3.1 Pro 五折已结束。可用量按常规 Agent Plan 系数7与历史实测基准推算，非官方固定 Token 配额。"
         }
       ]
     },
@@ -4091,13 +3981,13 @@
       "firstMonthPrice": 9.9,
       "monthlyPrice": 40,
       "quarterlyPrice": 116.4,
-      "yearlyPrice": 240,
+      "yearlyPrice": 480,
       "benefits": [
         "豆包搜索每月500次免费额度",
         "Agent记忆及应用开发底座",
         "Agent进化前50个文件免费"
       ],
-      "note": "• 2026-06-08至2027-03-31，前两月¥9.9/月，第三月¥40；限量，新购、续费、升配共享两月资格。\n• 按AFP积分扣减，缓存与普通输入同价，受5小时、周、月额度共同限制。\n• 可自行开启部分模型超额付费，触顶后另收按量费用；M3、GLM5.3、K3、K2.8不支持。\n• 2026-11-09 00:00至11-12 24:00连续包年首年五折，名额有限；活动后恢复标准价格，时区未公布。合资格受邀新用户首单再享95折。",
+      "note": "• 2026-06-08至2027-03-31，前两月¥9.9/月，第三月¥40；限量，新购、续费、升配共享两月资格。\n• 按AFP积分扣减，缓存与普通输入同价，受5小时、周、月额度共同限制。\n• 可自行开启部分模型超额付费，触顶后另收按量费用；GLM5.3、K2.8不支持。",
       "planStatus": "open",
       "planModels": [
         {
@@ -4187,50 +4077,6 @@
             "unit": "AFP"
           },
           "note": "抵扣单价：输入 0.25 AFP/K Token、缓存读取 0.25 AFP/K Token、输出 0.25 AFP/K Token；套餐共享额度：5小时 2K AFP、每周 7K AFP、每月 20K AFP；文本输入/输出同系数；缓存按普通输入扣减；未启用音频；按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。"
-        },
-        {
-          "slug": "volcengine-agent-small--minimax-m3",
-          "modelSlug": "minimax-m3",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "fiveHourTokenInM": 8.0,
-            "weeklyTokenInM": 28.0,
-            "monthlyTokenInM": 80.0,
-            "unitPriceCnyPerM": 0.5
-          },
-          "pricing": {
-            "currency": null,
-            "inputPerM": 250.0,
-            "cachePerM": 250.0,
-            "outputPerM": 250.0,
-            "unit": "AFP"
-          },
-          "note": "抵扣单价：输入 0.25 AFP/K Token、缓存读取 0.25 AFP/K Token、输出 0.25 AFP/K Token；套餐共享额度：5小时 2K AFP、每周 7K AFP、每月 20K AFP；文本输入/输出同系数；缓存按普通输入扣减；未启用音频；按AFP系数计算，缓存与普通输入同价。2026-10-19 10:00（UTC+8）起未使用过该模型的新用户不可用；存量服务将于2026-11-02 14:00（UTC+8）下线，建议切换Seed Evolving或Kimi K3。"
-        },
-        {
-          "slug": "volcengine-agent-small--kimi-k2-7-code",
-          "modelSlug": "kimi-k2-7-code",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "fiveHourTokenInM": 4.4444444444,
-            "weeklyTokenInM": 15.5555555556,
-            "monthlyTokenInM": 44.4,
-            "unitPriceCnyPerM": 0.9
-          },
-          "pricing": {
-            "currency": null,
-            "inputPerM": 450.0,
-            "cachePerM": 450.0,
-            "outputPerM": 450.0,
-            "unit": "AFP"
-          },
-          "note": "抵扣单价：输入 0.45 AFP/K Token、缓存读取 0.45 AFP/K Token、输出 0.45 AFP/K Token；套餐共享额度：5小时 2K AFP、每周 7K AFP、每月 20K AFP；文本输入/输出同系数；缓存按普通输入扣减；未启用音频；按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。 自2026-10-13 10:00（UTC+8）起，未使用过该型号的本产品订户不可调用；原定2026-10-28 14:00（UTC+8）停服，但当前概览仍标即将下线，实际停服情况待确认，请以账号可用状态为准。"
         },
         {
           "slug": "volcengine-agent-small--kimi-k2-8-preview",
@@ -4394,19 +4240,19 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 5.7142857143,
-            "weeklyTokenInM": 20.0,
-            "monthlyTokenInM": 57.1,
-            "unitPriceCnyPerM": 0.7
+            "fiveHourTokenInM": 2.8571428571,
+            "weeklyTokenInM": 10.0,
+            "monthlyTokenInM": 28.6,
+            "unitPriceCnyPerM": 1.4
           },
           "pricing": {
             "currency": null,
-            "inputPerM": 350.0,
-            "cachePerM": 350.0,
-            "outputPerM": 350.0,
+            "inputPerM": 700.0,
+            "cachePerM": 700.0,
+            "outputPerM": 700.0,
             "unit": "AFP"
           },
-          "note": "抵扣单价：输入 0.35 AFP/K Token、缓存读取 0.35 AFP/K Token、输出 0.35 AFP/K Token；套餐共享额度：5小时 2K AFP、每周 7K AFP、每月 20K AFP；2026-10-24 00:00:00 至 2026-11-09 23:59:59（UTC+8）抵扣系数 3.5，常规 7。；2026-10-24 00:00:00 至 2026-11-09 23:59:59（UTC+8）抵扣系数 3.5，常规 7。"
+          "note": "抵扣单价：输入 0.70 AFP/K Token、缓存读取 0.70 AFP/K Token、输出 0.70 AFP/K Token；套餐共享额度：5小时 2K AFP、每周 7K AFP、每月 20K AFP；每万 Token 7 AFP，缓存按普通输入扣减。；K3.1 Pro 五折已结束；输入及输出各按每万 Token 7 AFP 抵扣，缓存按普通输入扣减。"
         }
       ]
     },
@@ -4420,14 +4266,14 @@
       "firstMonthPrice": 49.9,
       "monthlyPrice": 200,
       "quarterlyPrice": 582,
-      "yearlyPrice": 1200,
+      "yearlyPrice": 2400,
       "benefits": [
         "豆包搜索每月500次免费额度",
         "Agent记忆及应用开发底座",
         "Agent进化前50个文件免费",
         "Computer Use Agent"
       ],
-      "note": "• 2026-06-08至2027-03-31，前两月¥49.9/月，第三月¥200；限量，新购、续费、升配共享两月资格。\n• 按AFP积分扣减，缓存与普通输入同价，受5小时、周、月额度共同限制。\n• 可自行开启部分模型超额付费，触顶后另收按量费用；M3、GLM5.3、K3、K2.8不支持。\n• 2026-11-09 00:00至11-12 24:00连续包年首年五折，名额有限；活动后恢复标准价格，时区未公布。合资格受邀新用户首单再享95折。",
+      "note": "• 2026-06-08至2027-03-31，前两月¥49.9/月，第三月¥200；限量，新购、续费、升配共享两月资格。\n• 按AFP积分扣减，缓存与普通输入同价，受5小时、周、月额度共同限制。\n• 可自行开启部分模型超额付费，触顶后另收按量费用；GLM5.3、K3、K2.8不支持。",
       "planStatus": "open",
       "planModels": [
         {
@@ -4519,50 +4365,6 @@
           "note": "抵扣单价：输入 0.25 AFP/K Token、缓存读取 0.25 AFP/K Token、输出 0.25 AFP/K Token；套餐共享额度：5小时 10K AFP、每周 35K AFP、每月 100K AFP；文本输入/输出同系数；缓存按普通输入扣减；未启用音频；按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。"
         },
         {
-          "slug": "volcengine-agent-medium--minimax-m3",
-          "modelSlug": "minimax-m3",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "fiveHourTokenInM": 40.0,
-            "weeklyTokenInM": 140.0,
-            "monthlyTokenInM": 400.0,
-            "unitPriceCnyPerM": 0.5
-          },
-          "pricing": {
-            "currency": null,
-            "inputPerM": 250.0,
-            "cachePerM": 250.0,
-            "outputPerM": 250.0,
-            "unit": "AFP"
-          },
-          "note": "抵扣单价：输入 0.25 AFP/K Token、缓存读取 0.25 AFP/K Token、输出 0.25 AFP/K Token；套餐共享额度：5小时 10K AFP、每周 35K AFP、每月 100K AFP；文本输入/输出同系数；缓存按普通输入扣减；未启用音频；按AFP系数计算，缓存与普通输入同价。2026-10-19 10:00（UTC+8）起未使用过该模型的新用户不可用；存量服务将于2026-11-02 14:00（UTC+8）下线，建议切换Seed Evolving或Kimi K3。"
-        },
-        {
-          "slug": "volcengine-agent-medium--kimi-k2-7-code",
-          "modelSlug": "kimi-k2-7-code",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "fiveHourTokenInM": 22.2222222222,
-            "weeklyTokenInM": 77.7777777778,
-            "monthlyTokenInM": 222.2,
-            "unitPriceCnyPerM": 0.9
-          },
-          "pricing": {
-            "currency": null,
-            "inputPerM": 450.0,
-            "cachePerM": 450.0,
-            "outputPerM": 450.0,
-            "unit": "AFP"
-          },
-          "note": "抵扣单价：输入 0.45 AFP/K Token、缓存读取 0.45 AFP/K Token、输出 0.45 AFP/K Token；套餐共享额度：5小时 10K AFP、每周 35K AFP、每月 100K AFP；文本输入/输出同系数；缓存按普通输入扣减；未启用音频；按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。 自2026-10-13 10:00（UTC+8）起，未使用过该型号的本产品订户不可调用；原定2026-10-28 14:00（UTC+8）停服，但当前概览仍标即将下线，实际停服情况待确认，请以账号可用状态为准。"
-        },
-        {
           "slug": "volcengine-agent-medium--kimi-k2-8-preview",
           "modelSlug": "kimi-k2-8-preview",
           "timeTier": null,
@@ -4592,19 +4394,19 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 20.0,
-            "weeklyTokenInM": 70.0,
-            "monthlyTokenInM": 200.0,
-            "unitPriceCnyPerM": 1.0
+            "fiveHourTokenInM": 10.0,
+            "weeklyTokenInM": 35.0,
+            "monthlyTokenInM": 100.0,
+            "unitPriceCnyPerM": 2.0
           },
           "pricing": {
             "currency": null,
-            "inputPerM": 500.0,
-            "cachePerM": 500.0,
-            "outputPerM": 500.0,
+            "inputPerM": 1000.0,
+            "cachePerM": 1000.0,
+            "outputPerM": 1000.0,
             "unit": "AFP"
           },
-          "note": "抵扣单价：输入 0.50 AFP/K Token、缓存读取 0.50 AFP/K Token、输出 0.50 AFP/K Token；套餐共享额度：5小时 10K AFP、每周 35K AFP、每月 100K AFP；2026-10-12 00:00:00 至 2026-10-25 23:59:59（UTC+8）系数 5，常规 10；按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。2026-10-12 00:00:00 至 2026-10-25 23:59:59（UTC+8）系数 5，常规 10；活动公告截至 2026-10-25，但当前页面仍标进行中，是否已恢复常规抵扣待确认；参考量暂按活动系数估算。"
+          "note": "抵扣单价：输入 1 AFP/K Token、缓存读取 1 AFP/K Token、输出 1 AFP/K Token；套餐共享额度：5小时 10K AFP、每周 35K AFP、每月 100K AFP；五折活动已结束；输入及输出各按每万 Token 10 AFP 抵扣，缓存按普通输入扣减。；自2026年11月11日10:00起，未使用过该模型的订户不可使用；此前使用过的订户可用至11月25日14:00（北京时间）。五折活动已结束；输入及输出各按每万 Token 10 AFP 抵扣，缓存按普通输入扣减。"
         },
         {
           "slug": "volcengine-agent-medium--glm-5-3",
@@ -4746,19 +4548,19 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 28.5714285714,
-            "weeklyTokenInM": 100.0,
-            "monthlyTokenInM": 285.7,
-            "unitPriceCnyPerM": 0.7
+            "fiveHourTokenInM": 14.2857142857,
+            "weeklyTokenInM": 50.0,
+            "monthlyTokenInM": 142.9,
+            "unitPriceCnyPerM": 1.4
           },
           "pricing": {
             "currency": null,
-            "inputPerM": 350.0,
-            "cachePerM": 350.0,
-            "outputPerM": 350.0,
+            "inputPerM": 700.0,
+            "cachePerM": 700.0,
+            "outputPerM": 700.0,
             "unit": "AFP"
           },
-          "note": "抵扣单价：输入 0.35 AFP/K Token、缓存读取 0.35 AFP/K Token、输出 0.35 AFP/K Token；套餐共享额度：5小时 10K AFP、每周 35K AFP、每月 100K AFP；2026-10-24 00:00:00 至 2026-11-09 23:59:59（UTC+8）抵扣系数 3.5，常规 7。；2026-10-24 00:00:00 至 2026-11-09 23:59:59（UTC+8）抵扣系数 3.5，常规 7。"
+          "note": "抵扣单价：输入 0.70 AFP/K Token、缓存读取 0.70 AFP/K Token、输出 0.70 AFP/K Token；套餐共享额度：5小时 10K AFP、每周 35K AFP、每月 100K AFP；每万 Token 7 AFP，缓存按普通输入扣减。；K3.1 Pro 五折已结束；输入及输出各按每万 Token 7 AFP 抵扣，缓存按普通输入扣减。"
         }
       ]
     },
@@ -4779,7 +4581,7 @@
         "Agent进化前50个文件免费",
         "Computer Use Agent"
       ],
-      "note": "• 按AFP积分扣减，缓存与普通输入同价，受5小时、周、月额度共同限制。\n• 2026-05-19 00:00至2028-05-19 23:59，连续季付97折、年付95折仅限首周期；时区未公布，续费按当日价。\n• 可自行开启部分模型超额付费，触顶后另收按量费用；M3、GLM5.3、K3、K2.8不支持。",
+      "note": "• 按AFP积分扣减，缓存与普通输入同价，受5小时、周、月额度共同限制。\n• 2026-05-19 00:00至2028-05-19 23:59，连续季付97折、年付95折仅限首周期；时区未公布，续费按当日价。\n• 可自行开启部分模型超额付费，触顶后另收按量费用；GLM5.3、K3、K2.8不支持。",
       "planStatus": "open",
       "planModels": [
         {
@@ -4871,50 +4673,6 @@
           "note": "抵扣单价：输入 0.25 AFP/K Token、缓存读取 0.25 AFP/K Token、输出 0.25 AFP/K Token；套餐共享额度：5小时 25K AFP、每周 87.50K AFP、每月 250K AFP；文本输入/输出同系数；缓存按普通输入扣减；未启用音频；按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。"
         },
         {
-          "slug": "volcengine-agent-large--minimax-m3",
-          "modelSlug": "minimax-m3",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "fiveHourTokenInM": 100.0,
-            "weeklyTokenInM": 350.0,
-            "monthlyTokenInM": 1000.0,
-            "unitPriceCnyPerM": 0.5
-          },
-          "pricing": {
-            "currency": null,
-            "inputPerM": 250.0,
-            "cachePerM": 250.0,
-            "outputPerM": 250.0,
-            "unit": "AFP"
-          },
-          "note": "抵扣单价：输入 0.25 AFP/K Token、缓存读取 0.25 AFP/K Token、输出 0.25 AFP/K Token；套餐共享额度：5小时 25K AFP、每周 87.50K AFP、每月 250K AFP；文本输入/输出同系数；缓存按普通输入扣减；未启用音频；按AFP系数计算，缓存与普通输入同价。2026-10-19 10:00（UTC+8）起未使用过该模型的新用户不可用；存量服务将于2026-11-02 14:00（UTC+8）下线，建议切换Seed Evolving或Kimi K3。"
-        },
-        {
-          "slug": "volcengine-agent-large--kimi-k2-7-code",
-          "modelSlug": "kimi-k2-7-code",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "fiveHourTokenInM": 55.5555555556,
-            "weeklyTokenInM": 194.4444444444,
-            "monthlyTokenInM": 555.6,
-            "unitPriceCnyPerM": 0.9
-          },
-          "pricing": {
-            "currency": null,
-            "inputPerM": 450.0,
-            "cachePerM": 450.0,
-            "outputPerM": 450.0,
-            "unit": "AFP"
-          },
-          "note": "抵扣单价：输入 0.45 AFP/K Token、缓存读取 0.45 AFP/K Token、输出 0.45 AFP/K Token；套餐共享额度：5小时 25K AFP、每周 87.50K AFP、每月 250K AFP；文本输入/输出同系数；缓存按普通输入扣减；未启用音频；按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。 自2026-10-13 10:00（UTC+8）起，未使用过该型号的本产品订户不可调用；原定2026-10-28 14:00（UTC+8）停服，但当前概览仍标即将下线，实际停服情况待确认，请以账号可用状态为准。"
-        },
-        {
           "slug": "volcengine-agent-large--kimi-k2-8-preview",
           "modelSlug": "kimi-k2-8-preview",
           "timeTier": null,
@@ -4944,19 +4702,19 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 50.0,
-            "weeklyTokenInM": 175.0,
-            "monthlyTokenInM": 500.0,
-            "unitPriceCnyPerM": 1.0
+            "fiveHourTokenInM": 25.0,
+            "weeklyTokenInM": 87.5,
+            "monthlyTokenInM": 250.0,
+            "unitPriceCnyPerM": 2.0
           },
           "pricing": {
             "currency": null,
-            "inputPerM": 500.0,
-            "cachePerM": 500.0,
-            "outputPerM": 500.0,
+            "inputPerM": 1000.0,
+            "cachePerM": 1000.0,
+            "outputPerM": 1000.0,
             "unit": "AFP"
           },
-          "note": "抵扣单价：输入 0.50 AFP/K Token、缓存读取 0.50 AFP/K Token、输出 0.50 AFP/K Token；套餐共享额度：5小时 25K AFP、每周 87.50K AFP、每月 250K AFP；2026-10-12 00:00:00 至 2026-10-25 23:59:59（UTC+8）系数 5，常规 10；按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。2026-10-12 00:00:00 至 2026-10-25 23:59:59（UTC+8）系数 5，常规 10；活动公告截至 2026-10-25，但当前页面仍标进行中，是否已恢复常规抵扣待确认；参考量暂按活动系数估算。"
+          "note": "抵扣单价：输入 1 AFP/K Token、缓存读取 1 AFP/K Token、输出 1 AFP/K Token；套餐共享额度：5小时 25K AFP、每周 87.50K AFP、每月 250K AFP；五折活动已结束；输入及输出各按每万 Token 10 AFP 抵扣，缓存按普通输入扣减。；自2026年11月11日10:00起，未使用过该模型的订户不可使用；此前使用过的订户可用至11月25日14:00（北京时间）。五折活动已结束；输入及输出各按每万 Token 10 AFP 抵扣，缓存按普通输入扣减。"
         },
         {
           "slug": "volcengine-agent-large--glm-5-3",
@@ -5098,19 +4856,19 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 71.4285714286,
-            "weeklyTokenInM": 250.0,
-            "monthlyTokenInM": 714.3,
-            "unitPriceCnyPerM": 0.7
+            "fiveHourTokenInM": 35.7142857143,
+            "weeklyTokenInM": 125.0,
+            "monthlyTokenInM": 357.1,
+            "unitPriceCnyPerM": 1.4
           },
           "pricing": {
             "currency": null,
-            "inputPerM": 350.0,
-            "cachePerM": 350.0,
-            "outputPerM": 350.0,
+            "inputPerM": 700.0,
+            "cachePerM": 700.0,
+            "outputPerM": 700.0,
             "unit": "AFP"
           },
-          "note": "抵扣单价：输入 0.35 AFP/K Token、缓存读取 0.35 AFP/K Token、输出 0.35 AFP/K Token；套餐共享额度：5小时 25K AFP、每周 87.50K AFP、每月 250K AFP；2026-10-24 00:00:00 至 2026-11-09 23:59:59（UTC+8）抵扣系数 3.5，常规 7。；2026-10-24 00:00:00 至 2026-11-09 23:59:59（UTC+8）抵扣系数 3.5，常规 7。"
+          "note": "抵扣单价：输入 0.70 AFP/K Token、缓存读取 0.70 AFP/K Token、输出 0.70 AFP/K Token；套餐共享额度：5小时 25K AFP、每周 87.50K AFP、每月 250K AFP；每万 Token 7 AFP，缓存按普通输入扣减。；K3.1 Pro 五折已结束；输入及输出各按每万 Token 7 AFP 抵扣，缓存按普通输入扣减。"
         }
       ]
     },
@@ -5131,7 +4889,7 @@
         "Agent进化前50个文件免费",
         "Computer Use Agent"
       ],
-      "note": "• 按AFP积分扣减，缓存与普通输入同价，受5小时、周、月额度共同限制。\n• 2026-05-19 00:00至2028-05-19 23:59，连续季付97折、年付95折仅限首周期；时区未公布，续费按当日价。\n• 可自行开启部分模型超额付费，触顶后另收按量费用；M3、GLM5.3、K3、K2.8不支持。",
+      "note": "• 按AFP积分扣减，缓存与普通输入同价，受5小时、周、月额度共同限制。\n• 2026-05-19 00:00至2028-05-19 23:59，连续季付97折、年付95折仅限首周期；时区未公布，续费按当日价。\n• 可自行开启部分模型超额付费，触顶后另收按量费用；GLM5.3、K3、K2.8不支持。",
       "planStatus": "open",
       "planModels": [
         {
@@ -5223,50 +4981,6 @@
           "note": "抵扣单价：输入 0.25 AFP/K Token、缓存读取 0.25 AFP/K Token、输出 0.25 AFP/K Token；套餐共享额度：5小时 50K AFP、每周 175K AFP、每月 500K AFP；文本输入/输出同系数；缓存按普通输入扣减；未启用音频；按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。"
         },
         {
-          "slug": "volcengine-agent-max--minimax-m3",
-          "modelSlug": "minimax-m3",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "fiveHourTokenInM": 200.0,
-            "weeklyTokenInM": 700.0,
-            "monthlyTokenInM": 2000.0,
-            "unitPriceCnyPerM": 0.5
-          },
-          "pricing": {
-            "currency": null,
-            "inputPerM": 250.0,
-            "cachePerM": 250.0,
-            "outputPerM": 250.0,
-            "unit": "AFP"
-          },
-          "note": "抵扣单价：输入 0.25 AFP/K Token、缓存读取 0.25 AFP/K Token、输出 0.25 AFP/K Token；套餐共享额度：5小时 50K AFP、每周 175K AFP、每月 500K AFP；文本输入/输出同系数；缓存按普通输入扣减；未启用音频；按AFP系数计算，缓存与普通输入同价。2026-10-19 10:00（UTC+8）起未使用过该模型的新用户不可用；存量服务将于2026-11-02 14:00（UTC+8）下线，建议切换Seed Evolving或Kimi K3。"
-        },
-        {
-          "slug": "volcengine-agent-max--kimi-k2-7-code",
-          "modelSlug": "kimi-k2-7-code",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "fiveHourTokenInM": 111.1111111111,
-            "weeklyTokenInM": 388.8888888889,
-            "monthlyTokenInM": 1111.1,
-            "unitPriceCnyPerM": 0.9
-          },
-          "pricing": {
-            "currency": null,
-            "inputPerM": 450.0,
-            "cachePerM": 450.0,
-            "outputPerM": 450.0,
-            "unit": "AFP"
-          },
-          "note": "抵扣单价：输入 0.45 AFP/K Token、缓存读取 0.45 AFP/K Token、输出 0.45 AFP/K Token；套餐共享额度：5小时 50K AFP、每周 175K AFP、每月 500K AFP；文本输入/输出同系数；缓存按普通输入扣减；未启用音频；按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。 自2026-10-13 10:00（UTC+8）起，未使用过该型号的本产品订户不可调用；原定2026-10-28 14:00（UTC+8）停服，但当前概览仍标即将下线，实际停服情况待确认，请以账号可用状态为准。"
-        },
-        {
           "slug": "volcengine-agent-max--kimi-k2-8-preview",
           "modelSlug": "kimi-k2-8-preview",
           "timeTier": null,
@@ -5296,19 +5010,19 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 100.0,
-            "weeklyTokenInM": 350.0,
-            "monthlyTokenInM": 1000.0,
-            "unitPriceCnyPerM": 1.0
+            "fiveHourTokenInM": 50.0,
+            "weeklyTokenInM": 175.0,
+            "monthlyTokenInM": 500.0,
+            "unitPriceCnyPerM": 2.0
           },
           "pricing": {
             "currency": null,
-            "inputPerM": 500.0,
-            "cachePerM": 500.0,
-            "outputPerM": 500.0,
+            "inputPerM": 1000.0,
+            "cachePerM": 1000.0,
+            "outputPerM": 1000.0,
             "unit": "AFP"
           },
-          "note": "抵扣单价：输入 0.50 AFP/K Token、缓存读取 0.50 AFP/K Token、输出 0.50 AFP/K Token；套餐共享额度：5小时 50K AFP、每周 175K AFP、每月 500K AFP；2026-10-12 00:00:00 至 2026-10-25 23:59:59（UTC+8）系数 5，常规 10；按当前 AFP 统一系数计算（输入与输出各除以 10000）；缓存按普通输入扣减。2026-10-12 00:00:00 至 2026-10-25 23:59:59（UTC+8）系数 5，常规 10；活动公告截至 2026-10-25，但当前页面仍标进行中，是否已恢复常规抵扣待确认；参考量暂按活动系数估算。"
+          "note": "抵扣单价：输入 1 AFP/K Token、缓存读取 1 AFP/K Token、输出 1 AFP/K Token；套餐共享额度：5小时 50K AFP、每周 175K AFP、每月 500K AFP；五折活动已结束；输入及输出各按每万 Token 10 AFP 抵扣，缓存按普通输入扣减。；自2026年11月11日10:00起，未使用过该模型的订户不可使用；此前使用过的订户可用至11月25日14:00（北京时间）。五折活动已结束；输入及输出各按每万 Token 10 AFP 抵扣，缓存按普通输入扣减。"
         },
         {
           "slug": "volcengine-agent-max--glm-5-3",
@@ -5450,19 +5164,19 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 142.8571428571,
-            "weeklyTokenInM": 500.0,
-            "monthlyTokenInM": 1428.6,
-            "unitPriceCnyPerM": 0.7
+            "fiveHourTokenInM": 71.4285714286,
+            "weeklyTokenInM": 250.0,
+            "monthlyTokenInM": 714.3,
+            "unitPriceCnyPerM": 1.4
           },
           "pricing": {
             "currency": null,
-            "inputPerM": 350.0,
-            "cachePerM": 350.0,
-            "outputPerM": 350.0,
+            "inputPerM": 700.0,
+            "cachePerM": 700.0,
+            "outputPerM": 700.0,
             "unit": "AFP"
           },
-          "note": "抵扣单价：输入 0.35 AFP/K Token、缓存读取 0.35 AFP/K Token、输出 0.35 AFP/K Token；套餐共享额度：5小时 50K AFP、每周 175K AFP、每月 500K AFP；2026-10-24 00:00:00 至 2026-11-09 23:59:59（UTC+8）抵扣系数 3.5，常规 7。；2026-10-24 00:00:00 至 2026-11-09 23:59:59（UTC+8）抵扣系数 3.5，常规 7。"
+          "note": "抵扣单价：输入 0.70 AFP/K Token、缓存读取 0.70 AFP/K Token、输出 0.70 AFP/K Token；套餐共享额度：5小时 50K AFP、每周 175K AFP、每月 500K AFP；每万 Token 7 AFP，缓存按普通输入扣减。；K3.1 Pro 五折已结束；输入及输出各按每万 Token 7 AFP 抵扣，缓存按普通输入扣减。"
         }
       ]
     },
@@ -8158,6 +7872,27 @@
           "note": "调用名称为 baidu/qwen3.7-plus；本价格仅适用于该渠道。；已含8折优惠"
         },
         {
+          "slug": "gongji-api--qwen-3-8-flash--guangzhui",
+          "modelSlug": "qwen-3-8-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "guangzhui",
+          "method": "calculated",
+          "usage": {
+            "unitPriceCnyPerM": 0.0887
+          },
+          "pricing": {
+            "currency": "¥",
+            "inputPerM": 0.48,
+            "cachePerM": 0.06,
+            "outputPerM": 1.62,
+            "inputCnyPerM": 0.48,
+            "cacheCnyPerM": 0.06,
+            "outputCnyPerM": 1.62
+          },
+          "note": "调用名称为 guangzhui/qwen3.8-flash，价格适用于该渠道；已含8折优惠"
+        },
+        {
           "slug": "gongji-api--deepseek-v4-1-flash--gaoxinwang",
           "modelSlug": "deepseek-v4-1-flash",
           "timeTier": null,
@@ -8297,7 +8032,7 @@
       "quarterlyPrice": 147,
       "yearlyPrice": 588,
       "benefits": [],
-      "note": "• 2026-10-12 控制台扣减：GLM-5.1/5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4-Flash-0731/V4.1-Flash/Flash-Vision-Exp扣3次，MiniMax-M2.7和GLM-5.3-Flash扣2次，Qwen3.8-27B扣0.5次\n• 限流：3 并发\n• Token量按请求负载估算，非官方Token配额；团队分配购买从Basic起",
+      "note": "• GLM-5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4.1-Flash、1017及V4-Flash-0731各扣3次，MiniMax-M2.7、M3.1-Flash和GLM-5.3-Flash各扣2次，Qwen3.8-27B扣0.5次。\n• 限流：3 并发。\n• Token 量按请求负载估算，非官方 Token 配额；团队分配购买从Basic起。",
       "planStatus": "open",
       "requestQuota": {
         "fiveHours": 300,
@@ -8305,22 +8040,6 @@
         "monthly": 1900
       },
       "planModels": [
-        {
-          "slug": "youyun-mini--glm-5-1",
-          "modelSlug": "glm-5-1",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculatedRequests",
-          "usage": {
-            "fiveHourTokenInM": 6.0,
-            "weeklyTokenInM": 15.0,
-            "monthlyTokenInM": 38.0,
-            "unitPriceCnyPerM": 1.2895
-          },
-          "pricing": null,
-          "note": "按套餐请求额度和模型单次 6 次扣减计算"
-        },
         {
           "slug": "youyun-mini--glm-5-2",
           "modelSlug": "glm-5-2",
@@ -8402,22 +8121,6 @@
           "note": "调用名称为 deepseek-v4.1-flash-1017；每次调用扣减 3 次请求额度。"
         },
         {
-          "slug": "youyun-mini--deepseek-v4-flash-vision-exp",
-          "modelSlug": "deepseek-v4-flash-vision-exp",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculatedRequests",
-          "usage": {
-            "fiveHourTokenInM": 12.0,
-            "weeklyTokenInM": 30.0,
-            "monthlyTokenInM": 76.0,
-            "unitPriceCnyPerM": 0.6447
-          },
-          "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算"
-        },
-        {
           "slug": "youyun-mini--minimax-m2-7",
           "modelSlug": "minimax-m2-7",
           "timeTier": null,
@@ -8432,6 +8135,22 @@
           },
           "pricing": null,
           "note": "按套餐请求额度和模型单次 2 次扣减计算"
+        },
+        {
+          "slug": "youyun-mini--minimax-m3-1-flash",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculatedRequests",
+          "usage": {
+            "fiveHourTokenInM": 18.0,
+            "weeklyTokenInM": 45.0,
+            "monthlyTokenInM": 114.0,
+            "unitPriceCnyPerM": 0.4298
+          },
+          "pricing": null,
+          "note": null
         },
         {
           "slug": "youyun-mini--glm-5-3-flash",
@@ -8479,7 +8198,7 @@
       "quarterlyPrice": 297,
       "yearlyPrice": 1188,
       "benefits": [],
-      "note": "• 2026-10-12 控制台扣减：GLM-5.1/5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4-Flash-0731/V4.1-Flash/Flash-Vision-Exp扣3次，MiniMax-M2.7和GLM-5.3-Flash扣2次，Qwen3.8-27B扣0.5次\n• 限流：5 并发\n• Token量按请求负载估算，非官方Token配额；团队分配购买从Basic起",
+      "note": "• GLM-5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4.1-Flash、1017及V4-Flash-0731各扣3次，MiniMax-M2.7、M3.1-Flash和GLM-5.3-Flash各扣2次，Qwen3.8-27B扣0.5次。\n• 限流：5 并发。\n• Token 量按请求负载估算，非官方 Token 配额；团队分配购买从Basic起。",
       "planStatus": "open",
       "requestQuota": {
         "fiveHours": 600,
@@ -8487,22 +8206,6 @@
         "monthly": 3800
       },
       "planModels": [
-        {
-          "slug": "youyun-lite--glm-5-1",
-          "modelSlug": "glm-5-1",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculatedRequests",
-          "usage": {
-            "fiveHourTokenInM": 12.0,
-            "weeklyTokenInM": 30.0,
-            "monthlyTokenInM": 76.0,
-            "unitPriceCnyPerM": 1.3026
-          },
-          "pricing": null,
-          "note": "按套餐请求额度和模型单次 6 次扣减计算"
-        },
         {
           "slug": "youyun-lite--glm-5-2",
           "modelSlug": "glm-5-2",
@@ -8584,22 +8287,6 @@
           "note": "调用名称为 deepseek-v4.1-flash-1017；每次调用扣减 3 次请求额度。"
         },
         {
-          "slug": "youyun-lite--deepseek-v4-flash-vision-exp",
-          "modelSlug": "deepseek-v4-flash-vision-exp",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculatedRequests",
-          "usage": {
-            "fiveHourTokenInM": 24.0,
-            "weeklyTokenInM": 60.0,
-            "monthlyTokenInM": 152.0,
-            "unitPriceCnyPerM": 0.6513
-          },
-          "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算"
-        },
-        {
           "slug": "youyun-lite--minimax-m2-7",
           "modelSlug": "minimax-m2-7",
           "timeTier": null,
@@ -8614,6 +8301,22 @@
           },
           "pricing": null,
           "note": "按套餐请求额度和模型单次 2 次扣减计算"
+        },
+        {
+          "slug": "youyun-lite--minimax-m3-1-flash",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculatedRequests",
+          "usage": {
+            "fiveHourTokenInM": 36.0,
+            "weeklyTokenInM": 90.0,
+            "monthlyTokenInM": 228.0,
+            "unitPriceCnyPerM": 0.4342
+          },
+          "pricing": null,
+          "note": null
         },
         {
           "slug": "youyun-lite--glm-5-3-flash",
@@ -8661,7 +8364,7 @@
       "quarterlyPrice": 597,
       "yearlyPrice": 2388,
       "benefits": [],
-      "note": "• 2026-10-12 控制台扣减：GLM-5.1/5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4-Flash-0731/V4.1-Flash/Flash-Vision-Exp扣3次，MiniMax-M2.7和GLM-5.3-Flash扣2次，Qwen3.8-27B扣0.5次\n• 限流：10 并发\n• Token量按请求负载估算，非官方Token配额；Basic及以上支持团队多套餐分配",
+      "note": "• GLM-5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4.1-Flash、1017及V4-Flash-0731各扣3次，MiniMax-M2.7、M3.1-Flash和GLM-5.3-Flash各扣2次，Qwen3.8-27B扣0.5次。\n• 限流：10 并发。\n• Token 量按请求负载估算，非官方 Token 配额；Basic及以上支持团队多套餐分配。",
       "planStatus": "open",
       "requestQuota": {
         "fiveHours": 1200,
@@ -8669,22 +8372,6 @@
         "monthly": 7600
       },
       "planModels": [
-        {
-          "slug": "youyun-basic--glm-5-1",
-          "modelSlug": "glm-5-1",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculatedRequests",
-          "usage": {
-            "fiveHourTokenInM": 24.0,
-            "weeklyTokenInM": 60.0,
-            "monthlyTokenInM": 152.0,
-            "unitPriceCnyPerM": 1.3092
-          },
-          "pricing": null,
-          "note": "按套餐请求额度和模型单次 6 次扣减计算"
-        },
         {
           "slug": "youyun-basic--glm-5-2",
           "modelSlug": "glm-5-2",
@@ -8766,22 +8453,6 @@
           "note": "调用名称为 deepseek-v4.1-flash-1017；每次调用扣减 3 次请求额度。"
         },
         {
-          "slug": "youyun-basic--deepseek-v4-flash-vision-exp",
-          "modelSlug": "deepseek-v4-flash-vision-exp",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculatedRequests",
-          "usage": {
-            "fiveHourTokenInM": 48.0,
-            "weeklyTokenInM": 120.0,
-            "monthlyTokenInM": 304.0,
-            "unitPriceCnyPerM": 0.6546
-          },
-          "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算"
-        },
-        {
           "slug": "youyun-basic--minimax-m2-7",
           "modelSlug": "minimax-m2-7",
           "timeTier": null,
@@ -8796,6 +8467,22 @@
           },
           "pricing": null,
           "note": "按套餐请求额度和模型单次 2 次扣减计算"
+        },
+        {
+          "slug": "youyun-basic--minimax-m3-1-flash",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculatedRequests",
+          "usage": {
+            "fiveHourTokenInM": 72.0,
+            "weeklyTokenInM": 180.0,
+            "monthlyTokenInM": 456.0,
+            "unitPriceCnyPerM": 0.4364
+          },
+          "pricing": null,
+          "note": null
         },
         {
           "slug": "youyun-basic--glm-5-3-flash",
@@ -8843,7 +8530,7 @@
       "quarterlyPrice": 1497,
       "yearlyPrice": 5988,
       "benefits": [],
-      "note": "• 2026-10-12 控制台扣减：GLM-5.1/5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4-Flash-0731/V4.1-Flash/Flash-Vision-Exp扣3次，MiniMax-M2.7和GLM-5.3-Flash扣2次，Qwen3.8-27B扣0.5次\n• 限流：20 并发\n• Token量按请求负载估算，非官方Token配额；Basic及以上支持团队多套餐分配",
+      "note": "• GLM-5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4.1-Flash、1017及V4-Flash-0731各扣3次，MiniMax-M2.7、M3.1-Flash和GLM-5.3-Flash各扣2次，Qwen3.8-27B扣0.5次。\n• 限流：20 并发。\n• Token 量按请求负载估算，非官方 Token 配额；Basic及以上支持团队多套餐分配。",
       "planStatus": "open",
       "requestQuota": {
         "fiveHours": 3000,
@@ -8851,22 +8538,6 @@
         "monthly": 19000
       },
       "planModels": [
-        {
-          "slug": "youyun-pro--glm-5-1",
-          "modelSlug": "glm-5-1",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculatedRequests",
-          "usage": {
-            "fiveHourTokenInM": 60.0,
-            "weeklyTokenInM": 150.0,
-            "monthlyTokenInM": 380.0,
-            "unitPriceCnyPerM": 1.3132
-          },
-          "pricing": null,
-          "note": "按套餐请求额度和模型单次 6 次扣减计算"
-        },
         {
           "slug": "youyun-pro--glm-5-2",
           "modelSlug": "glm-5-2",
@@ -8948,22 +8619,6 @@
           "note": "调用名称为 deepseek-v4.1-flash-1017；每次调用扣减 3 次请求额度。"
         },
         {
-          "slug": "youyun-pro--deepseek-v4-flash-vision-exp",
-          "modelSlug": "deepseek-v4-flash-vision-exp",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculatedRequests",
-          "usage": {
-            "fiveHourTokenInM": 120.0,
-            "weeklyTokenInM": 300.0,
-            "monthlyTokenInM": 760.0,
-            "unitPriceCnyPerM": 0.6566
-          },
-          "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算"
-        },
-        {
           "slug": "youyun-pro--minimax-m2-7",
           "modelSlug": "minimax-m2-7",
           "timeTier": null,
@@ -8978,6 +8633,22 @@
           },
           "pricing": null,
           "note": "按套餐请求额度和模型单次 2 次扣减计算"
+        },
+        {
+          "slug": "youyun-pro--minimax-m3-1-flash",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculatedRequests",
+          "usage": {
+            "fiveHourTokenInM": 180.0,
+            "weeklyTokenInM": 450.0,
+            "monthlyTokenInM": 1140.0,
+            "unitPriceCnyPerM": 0.4377
+          },
+          "pricing": null,
+          "note": null
         },
         {
           "slug": "youyun-pro--glm-5-3-flash",
@@ -9025,7 +8696,7 @@
       "quarterlyPrice": 2397,
       "yearlyPrice": 9588,
       "benefits": [],
-      "note": "• 2026-10-12 控制台扣减：GLM-5.1/5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4-Flash-0731/V4.1-Flash/Flash-Vision-Exp扣3次，MiniMax-M2.7和GLM-5.3-Flash扣2次，Qwen3.8-27B扣0.5次\n• 限流：20 并发\n• Token量按请求负载估算，非官方Token配额；Basic及以上支持团队多套餐分配",
+      "note": "• GLM-5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4.1-Flash、1017及V4-Flash-0731各扣3次，MiniMax-M2.7、M3.1-Flash和GLM-5.3-Flash各扣2次，Qwen3.8-27B扣0.5次。\n• 限流：20 并发。\n• Token 量按请求负载估算，非官方 Token 配额；Basic及以上支持团队多套餐分配。",
       "planStatus": "open",
       "requestQuota": {
         "fiveHours": 4800,
@@ -9033,22 +8704,6 @@
         "monthly": 31000
       },
       "planModels": [
-        {
-          "slug": "youyun-max--glm-5-1",
-          "modelSlug": "glm-5-1",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculatedRequests",
-          "usage": {
-            "fiveHourTokenInM": 96.0,
-            "weeklyTokenInM": 240.0,
-            "monthlyTokenInM": 620.0,
-            "unitPriceCnyPerM": 1.2887
-          },
-          "pricing": null,
-          "note": "按套餐请求额度和模型单次 6 次扣减计算"
-        },
         {
           "slug": "youyun-max--glm-5-2",
           "modelSlug": "glm-5-2",
@@ -9130,22 +8785,6 @@
           "note": "调用名称为 deepseek-v4.1-flash-1017；每次调用扣减 3 次请求额度。"
         },
         {
-          "slug": "youyun-max--deepseek-v4-flash-vision-exp",
-          "modelSlug": "deepseek-v4-flash-vision-exp",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculatedRequests",
-          "usage": {
-            "fiveHourTokenInM": 192.0,
-            "weeklyTokenInM": 480.0,
-            "monthlyTokenInM": 1240.0,
-            "unitPriceCnyPerM": 0.6444
-          },
-          "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算"
-        },
-        {
           "slug": "youyun-max--minimax-m2-7",
           "modelSlug": "minimax-m2-7",
           "timeTier": null,
@@ -9160,6 +8799,22 @@
           },
           "pricing": null,
           "note": "按套餐请求额度和模型单次 2 次扣减计算"
+        },
+        {
+          "slug": "youyun-max--minimax-m3-1-flash",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculatedRequests",
+          "usage": {
+            "fiveHourTokenInM": 288.0,
+            "weeklyTokenInM": 720.0,
+            "monthlyTokenInM": 1860.0,
+            "unitPriceCnyPerM": 0.4296
+          },
+          "pricing": null,
+          "note": null
         },
         {
           "slug": "youyun-max--glm-5-3-flash",
@@ -9207,7 +8862,7 @@
       "quarterlyPrice": 2997,
       "yearlyPrice": 11988,
       "benefits": [],
-      "note": "• 2026-10-12 控制台扣减：GLM-5.1/5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4-Flash-0731/V4.1-Flash/Flash-Vision-Exp扣3次，MiniMax-M2.7和GLM-5.3-Flash扣2次，Qwen3.8-27B扣0.5次\n• 限流：20 并发\n• Token量按请求负载估算，非官方Token配额；Basic及以上支持团队多套餐分配",
+      "note": "• GLM-5.2 每次扣6次，Kimi-K2.6扣5次，DeepSeek-V4.1-Flash、1017及V4-Flash-0731各扣3次，MiniMax-M2.7、M3.1-Flash和GLM-5.3-Flash各扣2次，Qwen3.8-27B扣0.5次。\n• 限流：20 并发。\n• Token 量按请求负载估算，非官方 Token 配额；Basic及以上支持团队多套餐分配。",
       "planStatus": "open",
       "requestQuota": {
         "fiveHours": 6000,
@@ -9215,22 +8870,6 @@
         "monthly": 39000
       },
       "planModels": [
-        {
-          "slug": "youyun-ultra--glm-5-1",
-          "modelSlug": "glm-5-1",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculatedRequests",
-          "usage": {
-            "fiveHourTokenInM": 120.0,
-            "weeklyTokenInM": 300.0,
-            "monthlyTokenInM": 780.0,
-            "unitPriceCnyPerM": 1.2808
-          },
-          "pricing": null,
-          "note": "按套餐请求额度和模型单次 6 次扣减计算"
-        },
         {
           "slug": "youyun-ultra--glm-5-2",
           "modelSlug": "glm-5-2",
@@ -9312,22 +8951,6 @@
           "note": "调用名称为 deepseek-v4.1-flash-1017；每次调用扣减 3 次请求额度。"
         },
         {
-          "slug": "youyun-ultra--deepseek-v4-flash-vision-exp",
-          "modelSlug": "deepseek-v4-flash-vision-exp",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculatedRequests",
-          "usage": {
-            "fiveHourTokenInM": 240.0,
-            "weeklyTokenInM": 600.0,
-            "monthlyTokenInM": 1560.0,
-            "unitPriceCnyPerM": 0.6404
-          },
-          "pricing": null,
-          "note": "按套餐请求额度和模型单次 3 次扣减计算"
-        },
-        {
           "slug": "youyun-ultra--minimax-m2-7",
           "modelSlug": "minimax-m2-7",
           "timeTier": null,
@@ -9342,6 +8965,22 @@
           },
           "pricing": null,
           "note": "按套餐请求额度和模型单次 2 次扣减计算"
+        },
+        {
+          "slug": "youyun-ultra--minimax-m3-1-flash",
+          "modelSlug": "minimax-m3-1-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculatedRequests",
+          "usage": {
+            "fiveHourTokenInM": 360.0,
+            "weeklyTokenInM": 900.0,
+            "monthlyTokenInM": 2340.0,
+            "unitPriceCnyPerM": 0.4269
+          },
+          "pricing": null,
+          "note": null
         },
         {
           "slug": "youyun-ultra--glm-5-3-flash",
@@ -10714,7 +10353,7 @@
       "benefits": [
         "原生 Claude 体验"
       ],
-      "note": "• 部分用户订阅时可能被要求实名认证。\n• 订阅认证的 Claude Agent SDK / claude -p 可消耗订阅额度；API key 使用对应 Console 组织的 API 余额。",
+      "note": "• 部分用户订阅时可能被要求实名认证。\n• 订阅认证的 Claude Agent SDK / claude -p 可消耗订阅额度；API key 使用对应 Console 组织的 API 余额。\n• Fable 系列限时纳入共享周额度，合计最多50%，至11月17日15:59（北京时间）；之后需 Usage Credits。",
       "planStatus": "open",
       "planModels": [
         {
@@ -10783,7 +10422,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "不包含订阅内用量，从首次调用起按 Usage Credits 额外付费；不计入套餐 Token 容量。"
+          "note": "Fable 系列限时可用至 11月17日15:59（北京时间），合计最多占共享周额度50%；达到上限或活动结束后使用另购 Usage Credits。固定 Token 用量未知。"
         },
         {
           "slug": "claude-pro--claude-fable-5",
@@ -10796,7 +10435,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "不包含订阅内用量，从首次调用起按 Usage Credits 额外付费；不计入套餐 Token 容量。"
+          "note": "Fable 系列限时可用至 11月17日15:59（北京时间），合计最多占共享周额度50%；达到上限或活动结束后使用另购 Usage Credits。固定 Token 用量未知。"
         },
         {
           "slug": "claude-pro--claude-opus-5",
@@ -10923,6 +10562,19 @@
           },
           "pricing": null,
           "note": "Claude Code 官方支持的型号；本套餐精确 Token 用量未知，不沿用其他型号的历史测量。"
+        },
+        {
+          "slug": "claude-pro--claude-fable-5-2",
+          "modelSlug": "claude-fable-5-2",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "Fable 系列限时可用至 11月17日15:59（北京时间），合计最多占共享周额度50%；达到上限或活动结束后使用另购 Usage Credits。固定 Token 用量未知。"
         }
       ]
     },
@@ -11030,7 +10682,7 @@
             "unitPriceCnyPerM": 0.66708
           },
           "pricing": null,
-          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按与 Fable 5.1 相同容量估算，非本版本独立测量；两版本合计最多消耗共享周额度的 50%。"
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按与 Fable 5.1 相同容量估算，非本版本独立测量；Fable 系列合计最多消耗共享周额度的 50%。"
         },
         {
           "slug": "claude-max5--claude-opus-5",
@@ -11157,6 +10809,19 @@
           },
           "pricing": null,
           "note": "Claude Code 官方支持的型号；本套餐精确 Token 用量未知，不沿用其他型号的历史测量。"
+        },
+        {
+          "slug": "claude-max5--claude-fable-5-2",
+          "modelSlug": "claude-fable-5-2",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "Fable 系列合计最多消耗共享周额度的 50%；Fable 5.2 的固定 Token 用量未知。"
         }
       ]
     },
@@ -11264,7 +10929,7 @@
             "unitPriceCnyPerM": 0.66708
           },
           "pricing": null,
-          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按与 Fable 5.1 相同容量估算，非本版本独立测量；两版本合计最多消耗共享周额度的 50%。 已验证 Ultra 账号无独立五小时限制；未验证账号仍有临时限制。"
+          "note": "按交互 CLI 历史实验参数及统一负载估算；包含缓存读取，月参考按周×4，不是独立月余额。；未命中输入中的缓存写入比例 100%；按与 Fable 5.1 相同容量估算，非本版本独立测量；Fable 系列合计最多消耗共享周额度的 50%。 已验证 Ultra 账号无独立五小时限制；未验证账号仍有临时限制。"
         },
         {
           "slug": "claude-max20--claude-opus-5",
@@ -11391,6 +11056,19 @@
           },
           "pricing": null,
           "note": "Claude Code 官方支持的型号；本套餐精确 Token 用量未知，不沿用其他型号的历史测量。 已验证 Ultra 账号无独立五小时限制；未验证账号仍有临时限制。"
+        },
+        {
+          "slug": "claude-max20--claude-fable-5-2",
+          "modelSlug": "claude-fable-5-2",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "Fable 系列合计最多消耗共享周额度的 50%；Fable 5.2 的固定 Token 用量未知。已验证 Ultra 账号无独立五小时限制；未验证账号仍有临时限制。"
         }
       ]
     },
@@ -12725,8 +12403,10 @@
       "monthlyPrice": 39,
       "quarterlyPrice": 117,
       "yearlyPrice": 468,
-      "benefits": [],
-      "note": "• 每订阅月 11,500 Credits；自 2026-09-22 取消周限额。\n• 当前 ¥39/月限时优惠，常规 ¥60/月，官方未公布活动起止日期。\n• Token 用量按 API 价格 ×100 Credits 估算，实际消耗可能不同。\n• 有效订阅可另购100元/个/月的用量包，每个20000 Credits，最多同时5个；先用套餐月额度，再用用量包。\n• 套餐月额度不结转。\n• 新用户限时 ¥19.5/月至 2026-11-30 23:59:59（UTC+8），限从未购买个人版账号；起始日期及优惠持续月数未公布，具体以结算为准。",
+      "benefits": [
+        "并发 Agent 1–2 个"
+      ],
+      "note": "• 每订阅月 20,000 Credits，无周限额。\n• 当前 ¥39/月限时优惠，常规 ¥60/月，官方未公布活动起止日期。\n• Token 用量按 API 价格 ×100 Credits 估算，实际消耗可能不同。\n• 有效订阅可另购100元/个/月的用量包，每个20000 Credits，最多同时5个；先用套餐月额度，再用用量包。\n• 套餐月额度不结转。\n• 新用户限时 ¥19.5/月至 2026-11-30 23:59:59（UTC+8），限从未购买个人版账号；起始日期及优惠持续月数未公布，具体以结算为准。",
       "planStatus": "open",
       "planModels": [
         {
@@ -12739,8 +12419,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 52.4,
-            "unitPriceCnyPerM": 0.7443
+            "monthlyTokenInM": 91.1,
+            "unitPriceCnyPerM": 0.428
           },
           "pricing": {
             "currency": null,
@@ -12749,7 +12429,7 @@
             "outputPerM": 3600.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 1,200 Credits/M Token、缓存读取 150 Credits/M Token、输出 3,600 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 1,200 Credits/M Token、缓存读取 150 Credits/M Token、输出 3,600 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 20,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-lite--qwen-3-8-max--offpeak",
@@ -12761,8 +12441,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 131.0,
-            "unitPriceCnyPerM": 0.2977
+            "monthlyTokenInM": 227.8,
+            "unitPriceCnyPerM": 0.1712
           },
           "pricing": {
             "currency": null,
@@ -12771,11 +12451,11 @@
             "outputPerM": 1440.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 480 Credits/M Token、缓存读取 60 Credits/M Token、输出 1,440 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 480 Credits/M Token、缓存读取 60 Credits/M Token、输出 1,440 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 20,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-lite--qwen-3-8-flash-next",
-          "modelSlug": "qwen-3-8-flash-next",
+          "modelSlug": "qwen-3-8-flash",
           "timeTier": "峰",
           "contextTier": null,
           "serviceTier": null,
@@ -12783,8 +12463,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 777.9,
-            "unitPriceCnyPerM": 0.0501
+            "monthlyTokenInM": 1353.0,
+            "unitPriceCnyPerM": 0.0288
           },
           "pricing": {
             "currency": null,
@@ -12793,11 +12473,11 @@
             "outputPerM": 270.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 80 Credits/M Token、缓存读取 10 Credits/M Token、输出 270 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 80 Credits/M Token、缓存读取 10 Credits/M Token、输出 270 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 20,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-lite--qwen-3-8-flash-next--offpeak",
-          "modelSlug": "qwen-3-8-flash-next",
+          "modelSlug": "qwen-3-8-flash",
           "timeTier": "谷",
           "contextTier": null,
           "serviceTier": null,
@@ -12805,8 +12485,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 1944.9,
-            "unitPriceCnyPerM": 0.0201
+            "monthlyTokenInM": 3382.4,
+            "unitPriceCnyPerM": 0.0115
           },
           "pricing": {
             "currency": null,
@@ -12815,7 +12495,7 @@
             "outputPerM": 108.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 32 Credits/M Token、缓存读取 4 Credits/M Token、输出 108 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 32 Credits/M Token、缓存读取 4 Credits/M Token、输出 108 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 20,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-lite--qwen-3-7-max",
@@ -12827,8 +12507,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 37.8,
-            "unitPriceCnyPerM": 1.0329
+            "monthlyTokenInM": 65.7,
+            "unitPriceCnyPerM": 0.5939
           },
           "pricing": {
             "currency": null,
@@ -12837,7 +12517,7 @@
             "outputPerM": 3600.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 1,200 Credits/M Token、缓存读取 240 Credits/M Token、输出 3,600 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。"
+          "note": "抵扣单价：输入 1,200 Credits/M Token、缓存读取 240 Credits/M Token、输出 3,600 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 20,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。"
         },
         {
           "slug": "aliyun-token-personal-lite--qwen-3-7-plus",
@@ -12849,8 +12529,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 222.2,
-            "unitPriceCnyPerM": 0.1755
+            "monthlyTokenInM": 386.4,
+            "unitPriceCnyPerM": 0.1009
           },
           "pricing": {
             "currency": null,
@@ -12859,7 +12539,7 @@
             "outputPerM": 800.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 200 Credits/M Token、缓存读取 40 Credits/M Token、输出 800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入≤256K。"
+          "note": "抵扣单价：输入 200 Credits/M Token、缓存读取 40 Credits/M Token、输出 800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 20,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入≤256K。"
         },
         {
           "slug": "aliyun-token-personal-lite--qwen-3-7-plus--1m",
@@ -12871,8 +12551,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 74.1,
-            "unitPriceCnyPerM": 0.5266
+            "monthlyTokenInM": 128.8,
+            "unitPriceCnyPerM": 0.3028
           },
           "pricing": {
             "currency": null,
@@ -12881,7 +12561,7 @@
             "outputPerM": 2400.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 600 Credits/M Token、缓存读取 120 Credits/M Token、输出 2,400 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入大于256K且≤1M。"
+          "note": "抵扣单价：输入 600 Credits/M Token、缓存读取 120 Credits/M Token、输出 2,400 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 20,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入大于256K且≤1M。"
         },
         {
           "slug": "aliyun-token-personal-lite--qwen-3-6-flash",
@@ -12893,8 +12573,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 356.5,
-            "unitPriceCnyPerM": 0.1094
+            "monthlyTokenInM": 620.0,
+            "unitPriceCnyPerM": 0.0629
           },
           "pricing": {
             "currency": null,
@@ -12903,7 +12583,7 @@
             "outputPerM": 720.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 120 Credits/M Token、缓存读取 24 Credits/M Token、输出 720 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入≤256K。"
+          "note": "抵扣单价：输入 120 Credits/M Token、缓存读取 24 Credits/M Token、输出 720 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 20,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入≤256K。"
         },
         {
           "slug": "aliyun-token-personal-lite--qwen-3-6-flash--1m",
@@ -12915,8 +12595,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 89.1,
-            "unitPriceCnyPerM": 0.4376
+            "monthlyTokenInM": 155.0,
+            "unitPriceCnyPerM": 0.2516
           },
           "pricing": {
             "currency": null,
@@ -12925,7 +12605,7 @@
             "outputPerM": 2880.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 480 Credits/M Token、缓存读取 96 Credits/M Token、输出 2,880 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入大于256K且≤1M。"
+          "note": "抵扣单价：输入 480 Credits/M Token、缓存读取 96 Credits/M Token、输出 2,880 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 20,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入大于256K且≤1M。"
         },
         {
           "slug": "aliyun-token-personal-lite--deepseek-v4-1-flash",
@@ -12937,8 +12617,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 350.0,
-            "unitPriceCnyPerM": 0.1114
+            "monthlyTokenInM": 608.7,
+            "unitPriceCnyPerM": 0.0641
           },
           "pricing": {
             "currency": null,
@@ -12947,7 +12627,7 @@
             "outputPerM": 800.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 200 Credits/M Token、缓存读取 20 Credits/M Token、输出 800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 200 Credits/M Token、缓存读取 20 Credits/M Token、输出 800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 20,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-lite--deepseek-v4-1-flash--offpeak",
@@ -12959,8 +12639,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 700.0,
-            "unitPriceCnyPerM": 0.0557
+            "monthlyTokenInM": 1217.5,
+            "unitPriceCnyPerM": 0.032
           },
           "pricing": {
             "currency": null,
@@ -12969,7 +12649,7 @@
             "outputPerM": 400.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 100 Credits/M Token、缓存读取 10 Credits/M Token、输出 400 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 100 Credits/M Token、缓存读取 10 Credits/M Token、输出 400 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 20,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-lite--deepseek-v4-pro-0813",
@@ -12981,8 +12661,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 80.2,
-            "unitPriceCnyPerM": 0.4861
+            "monthlyTokenInM": 139.5,
+            "unitPriceCnyPerM": 0.2795
           },
           "pricing": {
             "currency": null,
@@ -12991,7 +12671,7 @@
             "outputPerM": 2700.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 900 Credits/M Token、缓存读取 90 Credits/M Token、输出 2,700 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 900 Credits/M Token、缓存读取 90 Credits/M Token、输出 2,700 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 20,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-lite--deepseek-v4-pro-0813--offpeak",
@@ -13003,8 +12683,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 160.4,
-            "unitPriceCnyPerM": 0.2431
+            "monthlyTokenInM": 279.0,
+            "unitPriceCnyPerM": 0.1398
           },
           "pricing": {
             "currency": null,
@@ -13013,7 +12693,7 @@
             "outputPerM": 1350.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 450 Credits/M Token、缓存读取 45 Credits/M Token、输出 1,350 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 450 Credits/M Token、缓存读取 45 Credits/M Token、输出 1,350 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 20,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-lite--deepseek-v4-flash-0731",
@@ -13025,8 +12705,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 240.7,
-            "unitPriceCnyPerM": 0.162
+            "monthlyTokenInM": 418.6,
+            "unitPriceCnyPerM": 0.0932
           },
           "pricing": {
             "currency": null,
@@ -13035,7 +12715,7 @@
             "outputPerM": 900.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 300 Credits/M Token、缓存读取 30 Credits/M Token、输出 900 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 300 Credits/M Token、缓存读取 30 Credits/M Token、输出 900 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 20,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-lite--deepseek-v4-flash-0731--offpeak",
@@ -13047,8 +12727,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 481.3,
-            "unitPriceCnyPerM": 0.081
+            "monthlyTokenInM": 837.1,
+            "unitPriceCnyPerM": 0.0466
           },
           "pricing": {
             "currency": null,
@@ -13057,7 +12737,7 @@
             "outputPerM": 450.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 150 Credits/M Token、缓存读取 15 Credits/M Token、输出 450 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 150 Credits/M Token、缓存读取 15 Credits/M Token、输出 450 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 20,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-lite--glm-5-3",
@@ -13069,8 +12749,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 47.4,
-            "unitPriceCnyPerM": 0.8236
+            "monthlyTokenInM": 82.4,
+            "unitPriceCnyPerM": 0.4736
           },
           "pricing": {
             "currency": null,
@@ -13079,7 +12759,7 @@
             "outputPerM": 2800.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 800 Credits/M Token、缓存读取 200 Credits/M Token、输出 2,800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。"
+          "note": "抵扣单价：输入 800 Credits/M Token、缓存读取 200 Credits/M Token、输出 2,800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 20,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。"
         },
         {
           "slug": "aliyun-token-personal-lite--glm-5-2",
@@ -13091,8 +12771,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 47.4,
-            "unitPriceCnyPerM": 0.8236
+            "monthlyTokenInM": 82.4,
+            "unitPriceCnyPerM": 0.4736
           },
           "pricing": {
             "currency": null,
@@ -13101,7 +12781,7 @@
             "outputPerM": 2800.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 800 Credits/M Token、缓存读取 200 Credits/M Token、输出 2,800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。"
+          "note": "抵扣单价：输入 800 Credits/M Token、缓存读取 200 Credits/M Token、输出 2,800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 20,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。"
         },
         {
           "slug": "aliyun-token-personal-lite--deepseek-v4-1-flash-1017",
@@ -13113,8 +12793,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 350.0,
-            "unitPriceCnyPerM": 0.1114
+            "monthlyTokenInM": 608.7,
+            "unitPriceCnyPerM": 0.0641
           },
           "pricing": {
             "currency": null,
@@ -13123,7 +12803,7 @@
             "outputPerM": 800.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 200 Credits/M Token、缓存读取 20 Credits/M Token、输出 800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 200 Credits/M Token、缓存读取 20 Credits/M Token、输出 800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 20,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-lite--deepseek-v4-1-flash-1017--offpeak",
@@ -13135,8 +12815,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 700.0,
-            "unitPriceCnyPerM": 0.0557
+            "monthlyTokenInM": 1217.5,
+            "unitPriceCnyPerM": 0.032
           },
           "pricing": {
             "currency": null,
@@ -13145,7 +12825,20 @@
             "outputPerM": 400.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 100 Credits/M Token、缓存读取 10 Credits/M Token、输出 400 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 100 Credits/M Token、缓存读取 10 Credits/M Token、输出 400 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 20,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+        },
+        {
+          "slug": "aliyun-token-personal-lite--qwen-4-max-preview",
+          "modelSlug": "qwen-4-max-preview",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "仅百炼 Token Plan 限时预览，至 11月25日24:00（北京时间）后下线。Credits 消耗低至标准的2折；22:00–次日08:00低至0.8折。绝对扣减及 Token 容量未公布。"
         }
       ]
     },
@@ -13160,8 +12853,10 @@
       "monthlyPrice": 79,
       "quarterlyPrice": 237,
       "yearlyPrice": 948,
-      "benefits": [],
-      "note": "• 每订阅月 25,500 Credits；自 2026-09-22 取消周限额。\n• 当前 ¥79/月限时优惠，常规 ¥120/月，官方未公布活动起止日期。\n• Token 用量按 API 价格 ×100 Credits 估算，实际消耗可能不同。\n• 有效订阅可另购100元/个/月的用量包，每个20000 Credits，最多同时5个；先用套餐月额度，再用用量包。\n• 套餐月额度不结转。\n• 新用户限时 ¥39.5/月至 2026-11-30 23:59:59（UTC+8），限从未购买个人版账号；起始日期及优惠持续月数未公布，具体以结算为准。",
+      "benefits": [
+        "并发 Agent 2–3 个"
+      ],
+      "note": "• 每订阅月 45,000 Credits，无周限额。\n• 当前 ¥79/月限时优惠，常规 ¥120/月，官方未公布活动起止日期。\n• Token 用量按 API 价格 ×100 Credits 估算，实际消耗可能不同。\n• 有效订阅可另购100元/个/月的用量包，每个20000 Credits，最多同时5个；先用套餐月额度，再用用量包。\n• 套餐月额度不结转。\n• 新用户限时 ¥39.5/月至 2026-11-30 23:59:59（UTC+8），限从未购买个人版账号；起始日期及优惠持续月数未公布，具体以结算为准。",
       "planStatus": "open",
       "planModels": [
         {
@@ -13174,8 +12869,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 116.2,
-            "unitPriceCnyPerM": 0.68
+            "monthlyTokenInM": 205.0,
+            "unitPriceCnyPerM": 0.3853
           },
           "pricing": {
             "currency": null,
@@ -13184,7 +12879,7 @@
             "outputPerM": 3600.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 1,200 Credits/M Token、缓存读取 150 Credits/M Token、输出 3,600 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 25,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 1,200 Credits/M Token、缓存读取 150 Credits/M Token、输出 3,600 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-essential--qwen-3-8-max--offpeak",
@@ -13196,8 +12891,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 290.4,
-            "unitPriceCnyPerM": 0.272
+            "monthlyTokenInM": 512.6,
+            "unitPriceCnyPerM": 0.1541
           },
           "pricing": {
             "currency": null,
@@ -13206,11 +12901,11 @@
             "outputPerM": 1440.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 480 Credits/M Token、缓存读取 60 Credits/M Token、输出 1,440 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 25,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 480 Credits/M Token、缓存读取 60 Credits/M Token、输出 1,440 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-essential--qwen-3-8-flash-next",
-          "modelSlug": "qwen-3-8-flash-next",
+          "modelSlug": "qwen-3-8-flash",
           "timeTier": "峰",
           "contextTier": null,
           "serviceTier": null,
@@ -13218,8 +12913,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 1725.0,
-            "unitPriceCnyPerM": 0.0458
+            "monthlyTokenInM": 3044.1,
+            "unitPriceCnyPerM": 0.026
           },
           "pricing": {
             "currency": null,
@@ -13228,11 +12923,11 @@
             "outputPerM": 270.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 80 Credits/M Token、缓存读取 10 Credits/M Token、输出 270 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 25,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 80 Credits/M Token、缓存读取 10 Credits/M Token、输出 270 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-essential--qwen-3-8-flash-next--offpeak",
-          "modelSlug": "qwen-3-8-flash-next",
+          "modelSlug": "qwen-3-8-flash",
           "timeTier": "谷",
           "contextTier": null,
           "serviceTier": null,
@@ -13240,8 +12935,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 4312.5,
-            "unitPriceCnyPerM": 0.0183
+            "monthlyTokenInM": 7610.4,
+            "unitPriceCnyPerM": 0.0104
           },
           "pricing": {
             "currency": null,
@@ -13250,7 +12945,7 @@
             "outputPerM": 108.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 32 Credits/M Token、缓存读取 4 Credits/M Token、输出 108 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 25,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 32 Credits/M Token、缓存读取 4 Credits/M Token、输出 108 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-essential--qwen-3-7-max",
@@ -13262,8 +12957,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 83.7,
-            "unitPriceCnyPerM": 0.9435
+            "monthlyTokenInM": 147.8,
+            "unitPriceCnyPerM": 0.5347
           },
           "pricing": {
             "currency": null,
@@ -13272,7 +12967,7 @@
             "outputPerM": 3600.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 1,200 Credits/M Token、缓存读取 240 Credits/M Token、输出 3,600 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 25,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。"
+          "note": "抵扣单价：输入 1,200 Credits/M Token、缓存读取 240 Credits/M Token、输出 3,600 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。"
         },
         {
           "slug": "aliyun-token-personal-essential--qwen-3-7-plus",
@@ -13284,8 +12979,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 492.7,
-            "unitPriceCnyPerM": 0.1604
+            "monthlyTokenInM": 869.4,
+            "unitPriceCnyPerM": 0.0909
           },
           "pricing": {
             "currency": null,
@@ -13294,7 +12989,7 @@
             "outputPerM": 800.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 200 Credits/M Token、缓存读取 40 Credits/M Token、输出 800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 25,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入≤256K。"
+          "note": "抵扣单价：输入 200 Credits/M Token、缓存读取 40 Credits/M Token、输出 800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入≤256K。"
         },
         {
           "slug": "aliyun-token-personal-essential--qwen-3-7-plus--1m",
@@ -13306,8 +13001,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 164.2,
-            "unitPriceCnyPerM": 0.4811
+            "monthlyTokenInM": 289.8,
+            "unitPriceCnyPerM": 0.2726
           },
           "pricing": {
             "currency": null,
@@ -13316,7 +13011,7 @@
             "outputPerM": 2400.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 600 Credits/M Token、缓存读取 120 Credits/M Token、输出 2,400 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 25,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入大于256K且≤1M。"
+          "note": "抵扣单价：输入 600 Credits/M Token、缓存读取 120 Credits/M Token、输出 2,400 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入大于256K且≤1M。"
         },
         {
           "slug": "aliyun-token-personal-essential--qwen-3-6-flash",
@@ -13328,8 +13023,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 790.6,
-            "unitPriceCnyPerM": 0.0999
+            "monthlyTokenInM": 1395.1,
+            "unitPriceCnyPerM": 0.0566
           },
           "pricing": {
             "currency": null,
@@ -13338,7 +13033,7 @@
             "outputPerM": 720.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 120 Credits/M Token、缓存读取 24 Credits/M Token、输出 720 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 25,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入≤256K。"
+          "note": "抵扣单价：输入 120 Credits/M Token、缓存读取 24 Credits/M Token、输出 720 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入≤256K。"
         },
         {
           "slug": "aliyun-token-personal-essential--qwen-3-6-flash--1m",
@@ -13350,8 +13045,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 197.6,
-            "unitPriceCnyPerM": 0.3997
+            "monthlyTokenInM": 348.8,
+            "unitPriceCnyPerM": 0.2265
           },
           "pricing": {
             "currency": null,
@@ -13360,7 +13055,7 @@
             "outputPerM": 2880.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 480 Credits/M Token、缓存读取 96 Credits/M Token、输出 2,880 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 25,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入大于256K且≤1M。"
+          "note": "抵扣单价：输入 480 Credits/M Token、缓存读取 96 Credits/M Token、输出 2,880 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入大于256K且≤1M。"
         },
         {
           "slug": "aliyun-token-personal-essential--deepseek-v4-1-flash",
@@ -13372,8 +13067,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 776.1,
-            "unitPriceCnyPerM": 0.1018
+            "monthlyTokenInM": 1369.7,
+            "unitPriceCnyPerM": 0.0577
           },
           "pricing": {
             "currency": null,
@@ -13382,7 +13077,7 @@
             "outputPerM": 800.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 200 Credits/M Token、缓存读取 20 Credits/M Token、输出 800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 25,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 200 Credits/M Token、缓存读取 20 Credits/M Token、输出 800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-essential--deepseek-v4-1-flash--offpeak",
@@ -13394,8 +13089,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 1552.3,
-            "unitPriceCnyPerM": 0.0509
+            "monthlyTokenInM": 2739.3,
+            "unitPriceCnyPerM": 0.0288
           },
           "pricing": {
             "currency": null,
@@ -13404,7 +13099,7 @@
             "outputPerM": 400.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 100 Credits/M Token、缓存读取 10 Credits/M Token、输出 400 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 25,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 100 Credits/M Token、缓存读取 10 Credits/M Token、输出 400 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-essential--deepseek-v4-pro-0813",
@@ -13416,8 +13111,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 177.9,
-            "unitPriceCnyPerM": 0.4441
+            "monthlyTokenInM": 313.9,
+            "unitPriceCnyPerM": 0.2517
           },
           "pricing": {
             "currency": null,
@@ -13426,7 +13121,7 @@
             "outputPerM": 2700.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 900 Credits/M Token、缓存读取 90 Credits/M Token、输出 2,700 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 25,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 900 Credits/M Token、缓存读取 90 Credits/M Token、输出 2,700 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-essential--deepseek-v4-pro-0813--offpeak",
@@ -13438,8 +13133,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 355.8,
-            "unitPriceCnyPerM": 0.222
+            "monthlyTokenInM": 627.8,
+            "unitPriceCnyPerM": 0.1258
           },
           "pricing": {
             "currency": null,
@@ -13448,7 +13143,7 @@
             "outputPerM": 1350.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 450 Credits/M Token、缓存读取 45 Credits/M Token、输出 1,350 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 25,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 450 Credits/M Token、缓存读取 45 Credits/M Token、输出 1,350 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-essential--deepseek-v4-flash-0731",
@@ -13460,8 +13155,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 533.7,
-            "unitPriceCnyPerM": 0.148
+            "monthlyTokenInM": 941.8,
+            "unitPriceCnyPerM": 0.0839
           },
           "pricing": {
             "currency": null,
@@ -13470,7 +13165,7 @@
             "outputPerM": 900.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 300 Credits/M Token、缓存读取 30 Credits/M Token、输出 900 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 25,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 300 Credits/M Token、缓存读取 30 Credits/M Token、输出 900 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-essential--deepseek-v4-flash-0731--offpeak",
@@ -13482,8 +13177,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 1067.3,
-            "unitPriceCnyPerM": 0.074
+            "monthlyTokenInM": 1883.5,
+            "unitPriceCnyPerM": 0.0419
           },
           "pricing": {
             "currency": null,
@@ -13492,7 +13187,7 @@
             "outputPerM": 450.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 150 Credits/M Token、缓存读取 15 Credits/M Token、输出 450 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 25,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 150 Credits/M Token、缓存读取 15 Credits/M Token、输出 450 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-essential--glm-5-3",
@@ -13504,8 +13199,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 105.0,
-            "unitPriceCnyPerM": 0.7524
+            "monthlyTokenInM": 185.3,
+            "unitPriceCnyPerM": 0.4263
           },
           "pricing": {
             "currency": null,
@@ -13514,7 +13209,7 @@
             "outputPerM": 2800.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 800 Credits/M Token、缓存读取 200 Credits/M Token、输出 2,800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 25,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。"
+          "note": "抵扣单价：输入 800 Credits/M Token、缓存读取 200 Credits/M Token、输出 2,800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。"
         },
         {
           "slug": "aliyun-token-personal-essential--glm-5-2",
@@ -13526,8 +13221,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 105.0,
-            "unitPriceCnyPerM": 0.7524
+            "monthlyTokenInM": 185.3,
+            "unitPriceCnyPerM": 0.4263
           },
           "pricing": {
             "currency": null,
@@ -13536,7 +13231,7 @@
             "outputPerM": 2800.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 800 Credits/M Token、缓存读取 200 Credits/M Token、输出 2,800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 25,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。"
+          "note": "抵扣单价：输入 800 Credits/M Token、缓存读取 200 Credits/M Token、输出 2,800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。"
         },
         {
           "slug": "aliyun-token-personal-essential--deepseek-v4-1-flash-1017",
@@ -13548,8 +13243,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 776.1,
-            "unitPriceCnyPerM": 0.1018
+            "monthlyTokenInM": 1369.7,
+            "unitPriceCnyPerM": 0.0577
           },
           "pricing": {
             "currency": null,
@@ -13558,7 +13253,7 @@
             "outputPerM": 800.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 200 Credits/M Token、缓存读取 20 Credits/M Token、输出 800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 25,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 200 Credits/M Token、缓存读取 20 Credits/M Token、输出 800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-essential--deepseek-v4-1-flash-1017--offpeak",
@@ -13570,8 +13265,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 1552.3,
-            "unitPriceCnyPerM": 0.0509
+            "monthlyTokenInM": 2739.3,
+            "unitPriceCnyPerM": 0.0288
           },
           "pricing": {
             "currency": null,
@@ -13580,7 +13275,20 @@
             "outputPerM": 400.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 100 Credits/M Token、缓存读取 10 Credits/M Token、输出 400 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 25,500 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 100 Credits/M Token、缓存读取 10 Credits/M Token、输出 400 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+        },
+        {
+          "slug": "aliyun-token-personal-essential--qwen-4-max-preview",
+          "modelSlug": "qwen-4-max-preview",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "仅百炼 Token Plan 限时预览，至 11月25日24:00（北京时间）后下线。Credits 消耗低至标准的2折；22:00–次日08:00低至0.8折。绝对扣减及 Token 容量未公布。"
         }
       ]
     },
@@ -13598,9 +13306,10 @@
       "benefits": [
         "AgentStudio Harness 权益独立于 Credits",
         "独立Harness月赠搜索100次、网页解析1000次、代码解释器100次",
-        "Harness免费额用尽后88折后付费"
+        "Harness免费额用尽后88折后付费",
+        "并发 Agent 3–4 个"
       ],
-      "note": "• 每月45,000 Credits，无周限额且不结转；当前¥139/月、常规¥180，优惠期限未公布。\n• Token按API价格×100 Credits估算，实际消耗可能不同；有效订阅可另购用量包。\n• Harness工具使用普通百炼Key独立计费，不抵扣套餐或用量包，免费额度用尽后额外收费。",
+      "note": "• 每月80,000 Credits，无周限额且不结转；当前¥139/月、常规¥180，优惠期限未公布。\n• Token按API价格×100 Credits估算，实际消耗可能不同；有效订阅可另购用量包。\n• Harness工具使用普通百炼Key独立计费，不抵扣套餐或用量包，免费额度用尽后额外收费。",
       "planStatus": "open",
       "planModels": [
         {
@@ -13613,8 +13322,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 205.0,
-            "unitPriceCnyPerM": 0.678
+            "monthlyTokenInM": 364.5,
+            "unitPriceCnyPerM": 0.3814
           },
           "pricing": {
             "currency": null,
@@ -13623,7 +13332,7 @@
             "outputPerM": 3600.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 1,200 Credits/M Token、缓存读取 150 Credits/M Token、输出 3,600 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 1,200 Credits/M Token、缓存读取 150 Credits/M Token、输出 3,600 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 80,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-standard--qwen-3-8-max--offpeak",
@@ -13635,8 +13344,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 512.6,
-            "unitPriceCnyPerM": 0.2712
+            "monthlyTokenInM": 911.2,
+            "unitPriceCnyPerM": 0.1525
           },
           "pricing": {
             "currency": null,
@@ -13645,11 +13354,11 @@
             "outputPerM": 1440.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 480 Credits/M Token、缓存读取 60 Credits/M Token、输出 1,440 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 480 Credits/M Token、缓存读取 60 Credits/M Token、输出 1,440 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 80,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-standard--qwen-3-8-flash-next",
-          "modelSlug": "qwen-3-8-flash-next",
+          "modelSlug": "qwen-3-8-flash",
           "timeTier": "峰",
           "contextTier": null,
           "serviceTier": null,
@@ -13657,8 +13366,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 3044.1,
-            "unitPriceCnyPerM": 0.0457
+            "monthlyTokenInM": 5411.8,
+            "unitPriceCnyPerM": 0.0257
           },
           "pricing": {
             "currency": null,
@@ -13667,11 +13376,11 @@
             "outputPerM": 270.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 80 Credits/M Token、缓存读取 10 Credits/M Token、输出 270 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 80 Credits/M Token、缓存读取 10 Credits/M Token、输出 270 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 80,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-standard--qwen-3-8-flash-next--offpeak",
-          "modelSlug": "qwen-3-8-flash-next",
+          "modelSlug": "qwen-3-8-flash",
           "timeTier": "谷",
           "contextTier": null,
           "serviceTier": null,
@@ -13679,8 +13388,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 7610.4,
-            "unitPriceCnyPerM": 0.0183
+            "monthlyTokenInM": 13529.5,
+            "unitPriceCnyPerM": 0.0103
           },
           "pricing": {
             "currency": null,
@@ -13689,7 +13398,7 @@
             "outputPerM": 108.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 32 Credits/M Token、缓存读取 4 Credits/M Token、输出 108 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 32 Credits/M Token、缓存读取 4 Credits/M Token、输出 108 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 80,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-standard--qwen-3-7-max",
@@ -13701,8 +13410,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 147.8,
-            "unitPriceCnyPerM": 0.9408
+            "monthlyTokenInM": 262.7,
+            "unitPriceCnyPerM": 0.5292
           },
           "pricing": {
             "currency": null,
@@ -13711,7 +13420,7 @@
             "outputPerM": 3600.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 1,200 Credits/M Token、缓存读取 240 Credits/M Token、输出 3,600 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。"
+          "note": "抵扣单价：输入 1,200 Credits/M Token、缓存读取 240 Credits/M Token、输出 3,600 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 80,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。"
         },
         {
           "slug": "aliyun-token-personal-standard--qwen-3-7-plus",
@@ -13723,8 +13432,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 869.4,
-            "unitPriceCnyPerM": 0.1599
+            "monthlyTokenInM": 1545.6,
+            "unitPriceCnyPerM": 0.0899
           },
           "pricing": {
             "currency": null,
@@ -13733,7 +13442,7 @@
             "outputPerM": 800.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 200 Credits/M Token、缓存读取 40 Credits/M Token、输出 800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入≤256K。"
+          "note": "抵扣单价：输入 200 Credits/M Token、缓存读取 40 Credits/M Token、输出 800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 80,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入≤256K。"
         },
         {
           "slug": "aliyun-token-personal-standard--qwen-3-7-plus--1m",
@@ -13745,8 +13454,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 289.8,
-            "unitPriceCnyPerM": 0.4796
+            "monthlyTokenInM": 515.2,
+            "unitPriceCnyPerM": 0.2698
           },
           "pricing": {
             "currency": null,
@@ -13755,7 +13464,7 @@
             "outputPerM": 2400.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 600 Credits/M Token、缓存读取 120 Credits/M Token、输出 2,400 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入大于256K且≤1M。"
+          "note": "抵扣单价：输入 600 Credits/M Token、缓存读取 120 Credits/M Token、输出 2,400 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 80,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入大于256K且≤1M。"
         },
         {
           "slug": "aliyun-token-personal-standard--qwen-3-6-flash",
@@ -13767,8 +13476,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 1395.1,
-            "unitPriceCnyPerM": 0.0996
+            "monthlyTokenInM": 2480.2,
+            "unitPriceCnyPerM": 0.056
           },
           "pricing": {
             "currency": null,
@@ -13777,7 +13486,7 @@
             "outputPerM": 720.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 120 Credits/M Token、缓存读取 24 Credits/M Token、输出 720 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入≤256K。"
+          "note": "抵扣单价：输入 120 Credits/M Token、缓存读取 24 Credits/M Token、输出 720 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 80,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入≤256K。"
         },
         {
           "slug": "aliyun-token-personal-standard--qwen-3-6-flash--1m",
@@ -13789,8 +13498,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 348.8,
-            "unitPriceCnyPerM": 0.3985
+            "monthlyTokenInM": 620.0,
+            "unitPriceCnyPerM": 0.2242
           },
           "pricing": {
             "currency": null,
@@ -13799,7 +13508,7 @@
             "outputPerM": 2880.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 480 Credits/M Token、缓存读取 96 Credits/M Token、输出 2,880 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入大于256K且≤1M。"
+          "note": "抵扣单价：输入 480 Credits/M Token、缓存读取 96 Credits/M Token、输出 2,880 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 80,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入大于256K且≤1M。"
         },
         {
           "slug": "aliyun-token-personal-standard--deepseek-v4-1-flash",
@@ -13811,8 +13520,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 1369.7,
-            "unitPriceCnyPerM": 0.1015
+            "monthlyTokenInM": 2434.9,
+            "unitPriceCnyPerM": 0.0571
           },
           "pricing": {
             "currency": null,
@@ -13821,7 +13530,7 @@
             "outputPerM": 800.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 200 Credits/M Token、缓存读取 20 Credits/M Token、输出 800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 200 Credits/M Token、缓存读取 20 Credits/M Token、输出 800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 80,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-standard--deepseek-v4-1-flash--offpeak",
@@ -13833,8 +13542,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 2739.3,
-            "unitPriceCnyPerM": 0.0507
+            "monthlyTokenInM": 4869.9,
+            "unitPriceCnyPerM": 0.0285
           },
           "pricing": {
             "currency": null,
@@ -13843,7 +13552,7 @@
             "outputPerM": 400.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 100 Credits/M Token、缓存读取 10 Credits/M Token、输出 400 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 100 Credits/M Token、缓存读取 10 Credits/M Token、输出 400 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 80,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-standard--deepseek-v4-pro-0813",
@@ -13855,8 +13564,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 313.9,
-            "unitPriceCnyPerM": 0.4428
+            "monthlyTokenInM": 558.1,
+            "unitPriceCnyPerM": 0.2491
           },
           "pricing": {
             "currency": null,
@@ -13865,7 +13574,7 @@
             "outputPerM": 2700.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 900 Credits/M Token、缓存读取 90 Credits/M Token、输出 2,700 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 900 Credits/M Token、缓存读取 90 Credits/M Token、输出 2,700 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 80,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-standard--deepseek-v4-pro-0813--offpeak",
@@ -13877,8 +13586,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 627.8,
-            "unitPriceCnyPerM": 0.2214
+            "monthlyTokenInM": 1116.2,
+            "unitPriceCnyPerM": 0.1245
           },
           "pricing": {
             "currency": null,
@@ -13887,7 +13596,7 @@
             "outputPerM": 1350.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 450 Credits/M Token、缓存读取 45 Credits/M Token、输出 1,350 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 450 Credits/M Token、缓存读取 45 Credits/M Token、输出 1,350 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 80,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-standard--deepseek-v4-flash-0731",
@@ -13899,8 +13608,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 941.8,
-            "unitPriceCnyPerM": 0.1476
+            "monthlyTokenInM": 1674.3,
+            "unitPriceCnyPerM": 0.083
           },
           "pricing": {
             "currency": null,
@@ -13909,7 +13618,7 @@
             "outputPerM": 900.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 300 Credits/M Token、缓存读取 30 Credits/M Token、输出 900 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 300 Credits/M Token、缓存读取 30 Credits/M Token、输出 900 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 80,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-standard--deepseek-v4-flash-0731--offpeak",
@@ -13921,8 +13630,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 1883.5,
-            "unitPriceCnyPerM": 0.0738
+            "monthlyTokenInM": 3348.5,
+            "unitPriceCnyPerM": 0.0415
           },
           "pricing": {
             "currency": null,
@@ -13931,7 +13640,7 @@
             "outputPerM": 450.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 150 Credits/M Token、缓存读取 15 Credits/M Token、输出 450 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 150 Credits/M Token、缓存读取 15 Credits/M Token、输出 450 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 80,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-standard--glm-5-3",
@@ -13943,8 +13652,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 185.3,
-            "unitPriceCnyPerM": 0.7501
+            "monthlyTokenInM": 329.4,
+            "unitPriceCnyPerM": 0.422
           },
           "pricing": {
             "currency": null,
@@ -13953,7 +13662,7 @@
             "outputPerM": 2800.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 800 Credits/M Token、缓存读取 200 Credits/M Token、输出 2,800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。"
+          "note": "抵扣单价：输入 800 Credits/M Token、缓存读取 200 Credits/M Token、输出 2,800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 80,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。"
         },
         {
           "slug": "aliyun-token-personal-standard--glm-5-2",
@@ -13965,8 +13674,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 185.3,
-            "unitPriceCnyPerM": 0.7501
+            "monthlyTokenInM": 329.4,
+            "unitPriceCnyPerM": 0.422
           },
           "pricing": {
             "currency": null,
@@ -13975,7 +13684,7 @@
             "outputPerM": 2800.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 800 Credits/M Token、缓存读取 200 Credits/M Token、输出 2,800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。"
+          "note": "抵扣单价：输入 800 Credits/M Token、缓存读取 200 Credits/M Token、输出 2,800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 80,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。"
         },
         {
           "slug": "aliyun-token-personal-standard--deepseek-v4-1-flash-1017",
@@ -13987,8 +13696,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 1369.7,
-            "unitPriceCnyPerM": 0.1015
+            "monthlyTokenInM": 2434.9,
+            "unitPriceCnyPerM": 0.0571
           },
           "pricing": {
             "currency": null,
@@ -13997,7 +13706,7 @@
             "outputPerM": 800.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 200 Credits/M Token、缓存读取 20 Credits/M Token、输出 800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 200 Credits/M Token、缓存读取 20 Credits/M Token、输出 800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 80,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-standard--deepseek-v4-1-flash-1017--offpeak",
@@ -14009,8 +13718,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 2739.3,
-            "unitPriceCnyPerM": 0.0507
+            "monthlyTokenInM": 4869.9,
+            "unitPriceCnyPerM": 0.0285
           },
           "pricing": {
             "currency": null,
@@ -14019,7 +13728,20 @@
             "outputPerM": 400.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 100 Credits/M Token、缓存读取 10 Credits/M Token、输出 400 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 45,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 100 Credits/M Token、缓存读取 10 Credits/M Token、输出 400 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 80,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+        },
+        {
+          "slug": "aliyun-token-personal-standard--qwen-4-max-preview",
+          "modelSlug": "qwen-4-max-preview",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "仅百炼 Token Plan 限时预览，至 11月25日24:00（北京时间）后下线。Credits 消耗低至标准的2折；22:00–次日08:00低至0.8折。绝对扣减及 Token 容量未公布。"
         }
       ]
     },
@@ -14030,16 +13752,17 @@
       "billingMode": "subscription",
       "action": "https://api.dreamfree.space/c/s/cpyqbailiant",
       "rating": 3,
-      "firstMonthPrice": 499,
-      "monthlyPrice": 499,
-      "quarterlyPrice": 1497,
-      "yearlyPrice": 5988,
+      "firstMonthPrice": 312,
+      "monthlyPrice": 312,
+      "quarterlyPrice": 936,
+      "yearlyPrice": 3744,
       "benefits": [
         "AgentStudio Harness 权益独立于 Credits",
         "独立Harness月赠搜索500次、网页解析5000次、代码解释器500次",
-        "Harness免费额用尽后88折后付费"
+        "Harness免费额用尽后88折后付费",
+        "并发 Agent 6–8 个"
       ],
-      "note": "• 每月180,000 Credits，无周限额且不结转；当前¥499/月、常规¥600，优惠期限未公布。\n• Token按API价格×100 Credits估算，实际消耗可能不同；有效订阅可另购用量包。\n• Harness工具使用普通百炼Key独立计费，不抵扣套餐或用量包，免费额度用尽后额外收费。",
+      "note": "• 每月200,000 Credits，无周限额且不结转；官网价¥312/月，存量当前周期价格不变，下一订阅周期起按新价。\n• Token按API价格×100 Credits估算，实际消耗可能不同；有效订阅可另购用量包。\n• Harness工具使用普通百炼Key独立计费，不抵扣套餐或用量包，免费额度用尽后额外收费。",
       "planStatus": "open",
       "planModels": [
         {
@@ -14052,8 +13775,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 820.1,
-            "unitPriceCnyPerM": 0.6085
+            "monthlyTokenInM": 911.2,
+            "unitPriceCnyPerM": 0.3424
           },
           "pricing": {
             "currency": null,
@@ -14062,7 +13785,7 @@
             "outputPerM": 3600.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 1,200 Credits/M Token、缓存读取 150 Credits/M Token、输出 3,600 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 180,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 1,200 Credits/M Token、缓存读取 150 Credits/M Token、输出 3,600 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 200,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-pro--qwen-3-8-max--offpeak",
@@ -14074,8 +13797,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 2050.2,
-            "unitPriceCnyPerM": 0.2434
+            "monthlyTokenInM": 2278.0,
+            "unitPriceCnyPerM": 0.137
           },
           "pricing": {
             "currency": null,
@@ -14084,11 +13807,11 @@
             "outputPerM": 1440.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 480 Credits/M Token、缓存读取 60 Credits/M Token、输出 1,440 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 180,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 480 Credits/M Token、缓存读取 60 Credits/M Token、输出 1,440 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 200,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-pro--qwen-3-8-flash-next",
-          "modelSlug": "qwen-3-8-flash-next",
+          "modelSlug": "qwen-3-8-flash",
           "timeTier": "峰",
           "contextTier": null,
           "serviceTier": null,
@@ -14096,8 +13819,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 12176.6,
-            "unitPriceCnyPerM": 0.041
+            "monthlyTokenInM": 13529.5,
+            "unitPriceCnyPerM": 0.0231
           },
           "pricing": {
             "currency": null,
@@ -14106,11 +13829,11 @@
             "outputPerM": 270.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 80 Credits/M Token、缓存读取 10 Credits/M Token、输出 270 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 180,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 80 Credits/M Token、缓存读取 10 Credits/M Token、输出 270 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 200,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-pro--qwen-3-8-flash-next--offpeak",
-          "modelSlug": "qwen-3-8-flash-next",
+          "modelSlug": "qwen-3-8-flash",
           "timeTier": "谷",
           "contextTier": null,
           "serviceTier": null,
@@ -14118,8 +13841,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 30441.4,
-            "unitPriceCnyPerM": 0.0164
+            "monthlyTokenInM": 33823.8,
+            "unitPriceCnyPerM": 0.0092
           },
           "pricing": {
             "currency": null,
@@ -14128,7 +13851,7 @@
             "outputPerM": 108.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 32 Credits/M Token、缓存读取 4 Credits/M Token、输出 108 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 180,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 32 Credits/M Token、缓存读取 4 Credits/M Token、输出 108 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 200,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间四折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-pro--qwen-3-7-max",
@@ -14140,8 +13863,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 591.0,
-            "unitPriceCnyPerM": 0.8443
+            "monthlyTokenInM": 656.7,
+            "unitPriceCnyPerM": 0.4751
           },
           "pricing": {
             "currency": null,
@@ -14150,7 +13873,7 @@
             "outputPerM": 3600.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 1,200 Credits/M Token、缓存读取 240 Credits/M Token、输出 3,600 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 180,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。"
+          "note": "抵扣单价：输入 1,200 Credits/M Token、缓存读取 240 Credits/M Token、输出 3,600 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 200,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。"
         },
         {
           "slug": "aliyun-token-personal-pro--qwen-3-7-plus",
@@ -14162,8 +13885,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 3477.6,
-            "unitPriceCnyPerM": 0.1435
+            "monthlyTokenInM": 3864.0,
+            "unitPriceCnyPerM": 0.0807
           },
           "pricing": {
             "currency": null,
@@ -14172,7 +13895,7 @@
             "outputPerM": 800.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 200 Credits/M Token、缓存读取 40 Credits/M Token、输出 800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 180,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入≤256K。"
+          "note": "抵扣单价：输入 200 Credits/M Token、缓存读取 40 Credits/M Token、输出 800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 200,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入≤256K。"
         },
         {
           "slug": "aliyun-token-personal-pro--qwen-3-7-plus--1m",
@@ -14184,8 +13907,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 1159.2,
-            "unitPriceCnyPerM": 0.4305
+            "monthlyTokenInM": 1288.0,
+            "unitPriceCnyPerM": 0.2422
           },
           "pricing": {
             "currency": null,
@@ -14194,7 +13917,7 @@
             "outputPerM": 2400.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 600 Credits/M Token、缓存读取 120 Credits/M Token、输出 2,400 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 180,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入大于256K且≤1M。"
+          "note": "抵扣单价：输入 600 Credits/M Token、缓存读取 120 Credits/M Token、输出 2,400 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 200,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入大于256K且≤1M。"
         },
         {
           "slug": "aliyun-token-personal-pro--qwen-3-6-flash",
@@ -14206,8 +13929,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 5580.4,
-            "unitPriceCnyPerM": 0.0894
+            "monthlyTokenInM": 6200.4,
+            "unitPriceCnyPerM": 0.0503
           },
           "pricing": {
             "currency": null,
@@ -14216,7 +13939,7 @@
             "outputPerM": 720.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 120 Credits/M Token、缓存读取 24 Credits/M Token、输出 720 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 180,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入≤256K。"
+          "note": "抵扣单价：输入 120 Credits/M Token、缓存读取 24 Credits/M Token、输出 720 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 200,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入≤256K。"
         },
         {
           "slug": "aliyun-token-personal-pro--qwen-3-6-flash--1m",
@@ -14228,8 +13951,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 1395.1,
-            "unitPriceCnyPerM": 0.3577
+            "monthlyTokenInM": 1550.1,
+            "unitPriceCnyPerM": 0.2013
           },
           "pricing": {
             "currency": null,
@@ -14238,7 +13961,7 @@
             "outputPerM": 2880.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 480 Credits/M Token、缓存读取 96 Credits/M Token、输出 2,880 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 180,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入大于256K且≤1M。"
+          "note": "抵扣单价：输入 480 Credits/M Token、缓存读取 96 Credits/M Token、输出 2,880 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 200,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 单次输入大于256K且≤1M。"
         },
         {
           "slug": "aliyun-token-personal-pro--deepseek-v4-1-flash",
@@ -14250,8 +13973,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 5478.6,
-            "unitPriceCnyPerM": 0.0911
+            "monthlyTokenInM": 6087.4,
+            "unitPriceCnyPerM": 0.0513
           },
           "pricing": {
             "currency": null,
@@ -14260,7 +13983,7 @@
             "outputPerM": 800.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 200 Credits/M Token、缓存读取 20 Credits/M Token、输出 800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 180,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 200 Credits/M Token、缓存读取 20 Credits/M Token、输出 800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 200,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-pro--deepseek-v4-1-flash--offpeak",
@@ -14272,8 +13995,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 10957.2,
-            "unitPriceCnyPerM": 0.0455
+            "monthlyTokenInM": 12174.7,
+            "unitPriceCnyPerM": 0.0256
           },
           "pricing": {
             "currency": null,
@@ -14282,7 +14005,7 @@
             "outputPerM": 400.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 100 Credits/M Token、缓存读取 10 Credits/M Token、输出 400 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 180,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 100 Credits/M Token、缓存读取 10 Credits/M Token、输出 400 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 200,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-pro--deepseek-v4-pro-0813",
@@ -14294,8 +14017,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 1255.7,
-            "unitPriceCnyPerM": 0.3974
+            "monthlyTokenInM": 1395.2,
+            "unitPriceCnyPerM": 0.2236
           },
           "pricing": {
             "currency": null,
@@ -14304,7 +14027,7 @@
             "outputPerM": 2700.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 900 Credits/M Token、缓存读取 90 Credits/M Token、输出 2,700 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 180,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 900 Credits/M Token、缓存读取 90 Credits/M Token、输出 2,700 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 200,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-pro--deepseek-v4-pro-0813--offpeak",
@@ -14316,8 +14039,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 2511.4,
-            "unitPriceCnyPerM": 0.1987
+            "monthlyTokenInM": 2790.4,
+            "unitPriceCnyPerM": 0.1118
           },
           "pricing": {
             "currency": null,
@@ -14326,7 +14049,7 @@
             "outputPerM": 1350.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 450 Credits/M Token、缓存读取 45 Credits/M Token、输出 1,350 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 180,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 450 Credits/M Token、缓存读取 45 Credits/M Token、输出 1,350 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 200,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-pro--deepseek-v4-flash-0731",
@@ -14338,8 +14061,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 3767.1,
-            "unitPriceCnyPerM": 0.1325
+            "monthlyTokenInM": 4185.6,
+            "unitPriceCnyPerM": 0.0745
           },
           "pricing": {
             "currency": null,
@@ -14348,7 +14071,7 @@
             "outputPerM": 900.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 300 Credits/M Token、缓存读取 30 Credits/M Token、输出 900 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 180,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 300 Credits/M Token、缓存读取 30 Credits/M Token、输出 900 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 200,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-pro--deepseek-v4-flash-0731--offpeak",
@@ -14360,8 +14083,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 7534.1,
-            "unitPriceCnyPerM": 0.0662
+            "monthlyTokenInM": 8371.3,
+            "unitPriceCnyPerM": 0.0373
           },
           "pricing": {
             "currency": null,
@@ -14370,7 +14093,7 @@
             "outputPerM": 450.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 150 Credits/M Token、缓存读取 15 Credits/M Token、输出 450 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 180,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 150 Credits/M Token、缓存读取 15 Credits/M Token、输出 450 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 200,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-pro--glm-5-3",
@@ -14382,8 +14105,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 741.2,
-            "unitPriceCnyPerM": 0.6732
+            "monthlyTokenInM": 823.6,
+            "unitPriceCnyPerM": 0.3788
           },
           "pricing": {
             "currency": null,
@@ -14392,7 +14115,7 @@
             "outputPerM": 2800.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 800 Credits/M Token、缓存读取 200 Credits/M Token、输出 2,800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 180,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。"
+          "note": "抵扣单价：输入 800 Credits/M Token、缓存读取 200 Credits/M Token、输出 2,800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 200,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。"
         },
         {
           "slug": "aliyun-token-personal-pro--glm-5-2",
@@ -14404,8 +14127,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 741.2,
-            "unitPriceCnyPerM": 0.6732
+            "monthlyTokenInM": 823.6,
+            "unitPriceCnyPerM": 0.3788
           },
           "pricing": {
             "currency": null,
@@ -14414,7 +14137,7 @@
             "outputPerM": 2800.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 800 Credits/M Token、缓存读取 200 Credits/M Token、输出 2,800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 180,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。"
+          "note": "抵扣单价：输入 800 Credits/M Token、缓存读取 200 Credits/M Token、输出 2,800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 200,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。"
         },
         {
           "slug": "aliyun-token-personal-pro--deepseek-v4-1-flash-1017",
@@ -14426,8 +14149,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 5478.6,
-            "unitPriceCnyPerM": 0.0911
+            "monthlyTokenInM": 6087.4,
+            "unitPriceCnyPerM": 0.0513
           },
           "pricing": {
             "currency": null,
@@ -14436,7 +14159,7 @@
             "outputPerM": 800.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 200 Credits/M Token、缓存读取 20 Credits/M Token、输出 800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 180,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 200 Credits/M Token、缓存读取 20 Credits/M Token、输出 800 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 200,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
         },
         {
           "slug": "aliyun-token-personal-pro--deepseek-v4-1-flash-1017--offpeak",
@@ -14448,8 +14171,8 @@
           "usage": {
             "fiveHourTokenInM": "unlimited",
             "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": 10957.2,
-            "unitPriceCnyPerM": 0.0455
+            "monthlyTokenInM": 12174.7,
+            "unitPriceCnyPerM": 0.0256
           },
           "pricing": {
             "currency": null,
@@ -14458,7 +14181,20 @@
             "outputPerM": 400.0,
             "unit": "Credits"
           },
-          "note": "抵扣单价：输入 100 Credits/M Token、缓存读取 10 Credits/M Token、输出 400 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 180,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+          "note": "抵扣单价：输入 100 Credits/M Token、缓存读取 10 Credits/M Token、输出 400 Credits/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 200,000 Credits；按输出占比0.5%、输入缓存命中率95%估算；采用隐式缓存，未计显式缓存创建及额外工具费用。各模型、峰谷及上下文档共享套餐额度，不可相加。；Credits 按阿里云百炼北京地域 API 人民币价格 ×100 估算，非官方公布的统一抵扣系数。采用隐式缓存口径。 北京时间08:00–22:00为峰，22:00–次日08:00为谷；夜间五折，活动起止日期未公布，优惠结束后的夜间抵扣规则待官方明确。"
+        },
+        {
+          "slug": "aliyun-token-personal-pro--qwen-4-max-preview",
+          "modelSlug": "qwen-4-max-preview",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "仅百炼 Token Plan 限时预览，至 11月25日24:00（北京时间）后下线。Credits 消耗低至标准的2折；22:00–次日08:00低至0.8折。绝对扣减及 Token 容量未公布。"
         }
       ]
     },
@@ -32939,7 +32675,7 @@
       "platformSlug": "workbuddy",
       "name": "标准版老用户保价",
       "billingMode": "subscription",
-      "action": "https://www.workbuddy.cn/docs/workbuddy/Pricing",
+      "action": "https://api.dreamfree.space/c/s/cpyqworkbuddy",
       "rating": 3,
       "monthlyPrice": 58,
       "currency": "¥",
@@ -34351,7 +34087,7 @@
       "platformSlug": "trae-intl",
       "name": "Lite（老套餐）",
       "billingMode": "subscription",
-      "action": "https://www.trae.ai/pricing",
+      "action": "https://api.dreamfree.space/c/s/cpyqtraeintl",
       "rating": 3,
       "monthlyPrice": 3,
       "currency": "$",
@@ -34556,7 +34292,7 @@
       "platformSlug": "trae-intl",
       "name": "Pro（老套餐）",
       "billingMode": "subscription",
-      "action": "https://www.trae.ai/pricing",
+      "action": "https://api.dreamfree.space/c/s/cpyqtraeintl",
       "rating": 3,
       "monthlyPrice": 10,
       "currency": "$",
@@ -34761,7 +34497,7 @@
       "platformSlug": "trae-intl",
       "name": "Pro+（老套餐）",
       "billingMode": "subscription",
-      "action": "https://www.trae.ai/pricing",
+      "action": "https://api.dreamfree.space/c/s/cpyqtraeintl",
       "rating": 3,
       "monthlyPrice": 30,
       "currency": "$",
@@ -34966,7 +34702,7 @@
       "platformSlug": "trae-intl",
       "name": "Ultra（老套餐）",
       "billingMode": "subscription",
-      "action": "https://www.trae.ai/pricing",
+      "action": "https://api.dreamfree.space/c/s/cpyqtraeintl",
       "rating": 3,
       "monthlyPrice": 100,
       "currency": "$",
@@ -39543,6 +39279,30 @@
             "outputCnyPerM": 51.0
           },
           "note": "抵扣单价：输入 $2/M Token、缓存写入 $2.50/M Token、缓存读取 $0.10/M Token、输出 $7.50/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $15；每百万 Token 美元价计入 AI Credits；缓存写入另计，当前 Token 参考换算不含该项。；Pro / Pro+ / Max 支持；按本套餐现有共享 AI Credits 月池估算，短窗口额度未知；缓存写入另计，参考换算不含该项，各模型额度不能相加。"
+        },
+        {
+          "slug": "github-token-plan-pro--gemini-4-hydrogen",
+          "modelSlug": "gemini-4-hydrogen",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 82.0,
+            "unitPriceCnyPerM": 0.8296
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 1.5,
+            "cachePerM": 0.075,
+            "outputPerM": 7.5,
+            "inputCnyPerM": 10.2,
+            "cacheCnyPerM": 0.51,
+            "outputCnyPerM": 51.0
+          },
+          "note": "抵扣单价：输入 $1.50/M Token、缓存读取 $0.08/M Token、输出 $7.50/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $15；每百万 Token 美元标价计入 AI Credits；默认上下文档。；按 GitHub AI Credits 用量计费；官方分批开放，实际可用性以模型选择器为准。"
         }
       ]
     },
@@ -40529,6 +40289,78 @@
             "outputCnyPerM": 51.0
           },
           "note": "抵扣单价：输入 $2/M Token、缓存写入 $2.50/M Token、缓存读取 $0.10/M Token、输出 $7.50/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $70；每百万 Token 美元价计入 AI Credits；缓存写入另计，当前 Token 参考换算不含该项。；Pro / Pro+ / Max 支持；按本套餐现有共享 AI Credits 月池估算，短窗口额度未知；缓存写入另计，参考换算不含该项，各模型额度不能相加。"
+        },
+        {
+          "slug": "github-token-plan-pro-2--gemini-4-hydrogen",
+          "modelSlug": "gemini-4-hydrogen",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 382.5,
+            "unitPriceCnyPerM": 0.6936
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 1.5,
+            "cachePerM": 0.075,
+            "outputPerM": 7.5,
+            "inputCnyPerM": 10.2,
+            "cacheCnyPerM": 0.51,
+            "outputCnyPerM": 51.0
+          },
+          "note": "抵扣单价：输入 $1.50/M Token、缓存读取 $0.08/M Token、输出 $7.50/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $70；每百万 Token 美元标价计入 AI Credits；默认上下文档。；按 GitHub AI Credits 用量计费；官方分批开放，实际可用性以模型选择器为准。"
+        },
+        {
+          "slug": "github-token-plan-pro-2--gemini-4-carbon",
+          "modelSlug": "gemini-4-carbon",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 286.9,
+            "unitPriceCnyPerM": 0.9248
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cachePerM": 0.1,
+            "outputPerM": 10.0,
+            "inputCnyPerM": 13.6,
+            "cacheCnyPerM": 0.68,
+            "outputCnyPerM": 68.0
+          },
+          "note": "抵扣单价：输入 $2/M Token、缓存读取 $0.10/M Token、输出 $10/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $70；优惠价适用至 2026-12-01；自12月1日起，输入/缓存读取/输出为 $4/$0.20/$20 每百万 Token。；信用点按限时优惠费率消耗；自 2026-12-01 起费率恢复，Token 参考用量将下降。"
+        },
+        {
+          "slug": "github-token-plan-pro-2--claude-fable-5-2",
+          "modelSlug": "claude-fable-5-2",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 88.9,
+            "unitPriceCnyPerM": 2.9818
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 8.0,
+            "cachePerM": 0.2,
+            "outputPerM": 40.0,
+            "inputCnyPerM": 54.4,
+            "cacheCnyPerM": 1.36,
+            "outputCnyPerM": 272.0
+          },
+          "note": "抵扣单价：输入 $8/M Token、缓存读取 $0.20/M Token、输出 $40/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $70；每百万 Token 美元标价计入 AI Credits；缓存写入另计，换算不含该项。；部分组织须开启数据保留政策才能使用；符合条件的企业账号例外。缓存写入另计，换算不含该项。"
         }
       ]
     },
@@ -41491,6 +41323,78 @@
             "outputCnyPerM": 51.0
           },
           "note": "抵扣单价：输入 $2/M Token、缓存写入 $2.50/M Token、缓存读取 $0.10/M Token、输出 $7.50/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $200；每百万 Token 美元价计入 AI Credits；缓存写入另计，当前 Token 参考换算不含该项。；Pro / Pro+ / Max 支持；按本套餐现有共享 AI Credits 月池估算，短窗口额度未知；缓存写入另计，参考换算不含该项，各模型额度不能相加。"
+        },
+        {
+          "slug": "github-token-plan-max--gemini-4-hydrogen",
+          "modelSlug": "gemini-4-hydrogen",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 1092.8,
+            "unitPriceCnyPerM": 0.6222
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 1.5,
+            "cachePerM": 0.075,
+            "outputPerM": 7.5,
+            "inputCnyPerM": 10.2,
+            "cacheCnyPerM": 0.51,
+            "outputCnyPerM": 51.0
+          },
+          "note": "抵扣单价：输入 $1.50/M Token、缓存读取 $0.08/M Token、输出 $7.50/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $200；每百万 Token 美元标价计入 AI Credits；默认上下文档。；按 GitHub AI Credits 用量计费；官方分批开放，实际可用性以模型选择器为准。"
+        },
+        {
+          "slug": "github-token-plan-max--gemini-4-carbon",
+          "modelSlug": "gemini-4-carbon",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 819.6,
+            "unitPriceCnyPerM": 0.8296
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cachePerM": 0.1,
+            "outputPerM": 10.0,
+            "inputCnyPerM": 13.6,
+            "cacheCnyPerM": 0.68,
+            "outputCnyPerM": 68.0
+          },
+          "note": "抵扣单价：输入 $2/M Token、缓存读取 $0.10/M Token、输出 $10/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $200；优惠价适用至 2026-12-01；自12月1日起，输入/缓存读取/输出为 $4/$0.20/$20 每百万 Token。；信用点按限时优惠费率消耗；自 2026-12-01 起费率恢复，Token 参考用量将下降。"
+        },
+        {
+          "slug": "github-token-plan-max--claude-fable-5-2",
+          "modelSlug": "claude-fable-5-2",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 254.1,
+            "unitPriceCnyPerM": 2.6758
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 8.0,
+            "cachePerM": 0.2,
+            "outputPerM": 40.0,
+            "inputCnyPerM": 54.4,
+            "cacheCnyPerM": 1.36,
+            "outputCnyPerM": 272.0
+          },
+          "note": "抵扣单价：输入 $8/M Token、缓存读取 $0.20/M Token、输出 $40/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $200；每百万 Token 美元标价计入 AI Credits；缓存写入另计，换算不含该项。；部分组织须开启数据保留政策才能使用；符合条件的企业账号例外。缓存写入另计，换算不含该项。"
         }
       ]
     },
@@ -41828,8 +41732,8 @@
           "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $18。缓存写入未单独报价。官方默认/最大上下文：256K。；Grok 模型从新 X Subscription 共享周池扣减；固定额度未公开，不能按月费或档位倍率推算 Token。"
         },
         {
-          "slug": "cursor-x-premium--claude-fable-5-1",
-          "modelSlug": "claude-fable-5-1",
+          "slug": "cursor-x-premium--claude-fable-5-2",
+          "modelSlug": "claude-fable-5-2",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
@@ -41839,14 +41743,14 @@
           },
           "pricing": {
             "currency": "$",
-            "inputPerM": 10.0,
-            "cachePerM": 0.25,
-            "outputPerM": 50.0,
-            "inputCnyPerM": 68.0,
-            "cacheCnyPerM": 1.7,
-            "outputCnyPerM": 340.0
+            "inputPerM": 8.0,
+            "cachePerM": 0.2,
+            "outputPerM": 40.0,
+            "inputCnyPerM": 54.4,
+            "cacheCnyPerM": 1.36,
+            "outputCnyPerM": 272.0
           },
-          "note": "每百万 Token 输入 $10、缓存读取 $0.25、输出 $50。缓存写入 $12.5/M Token，另计。官方默认/最大上下文：300K / 1M。开启隐私模式时须先同意该模型的数据保留政策；部分请求可能自动回退 Claude Opus。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+          "note": "每百万 Token 美元报价；缓存写入 $10/M Token，另计。默认/最大上下文 300K / 1M。启用隐私模式时须先同意其数据保留政策。；从首次调用起使用另购预付 Credits，不占 Grok 共享周池。启用隐私模式时需先同意其数据保留政策。"
         },
         {
           "slug": "cursor-x-premium--claude-haiku-5-5--ctx-up-to-100k",
@@ -42351,6 +42255,48 @@
             "outputCnyPerM": 136.0
           },
           "note": "每百万 Token 美元报价；新订阅从首次请求起使用另购预付 Credits，旧合资格套餐使用 Other Models 月池。；第三方模型，从首次请求起另购预付 Credits，月费不包含其用量。"
+        },
+        {
+          "slug": "cursor-x-premium--gemini-4-carbon",
+          "modelSlug": "gemini-4-carbon",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cachePerM": 0.1,
+            "outputPerM": 10.0,
+            "inputCnyPerM": 13.6,
+            "cacheCnyPerM": 0.68,
+            "outputCnyPerM": 68.0
+          },
+          "note": "每百万 Token 美元报价；新订阅从首次请求起使用另购预付 Credits，旧合资格套餐使用 Other Models 月池。；从首次调用起使用另购预付 Credits，不占 Grok 共享周池。"
+        },
+        {
+          "slug": "cursor-x-premium--gemini-4-hydrogen",
+          "modelSlug": "gemini-4-hydrogen",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 1.5,
+            "cachePerM": 0.075,
+            "outputPerM": 7.5,
+            "inputCnyPerM": 10.2,
+            "cacheCnyPerM": 0.51,
+            "outputCnyPerM": 51.0
+          },
+          "note": "每百万 Token 美元报价；新订阅从首次请求起使用另购预付 Credits，旧合资格套餐使用 Other Models 月池。；从首次调用起使用另购预付 Credits，不占 Grok 共享周池。"
         }
       ]
     },
@@ -42544,8 +42490,8 @@
           "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $18。缓存写入未单独报价。官方默认/最大上下文：256K。；Grok 模型从新 X Subscription 共享周池扣减；固定额度未公开，不能按月费或档位倍率推算 Token。"
         },
         {
-          "slug": "cursor-x-super--claude-fable-5-1",
-          "modelSlug": "claude-fable-5-1",
+          "slug": "cursor-x-super--claude-fable-5-2",
+          "modelSlug": "claude-fable-5-2",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
@@ -42555,14 +42501,14 @@
           },
           "pricing": {
             "currency": "$",
-            "inputPerM": 10.0,
-            "cachePerM": 0.25,
-            "outputPerM": 50.0,
-            "inputCnyPerM": 68.0,
-            "cacheCnyPerM": 1.7,
-            "outputCnyPerM": 340.0
+            "inputPerM": 8.0,
+            "cachePerM": 0.2,
+            "outputPerM": 40.0,
+            "inputCnyPerM": 54.4,
+            "cacheCnyPerM": 1.36,
+            "outputCnyPerM": 272.0
           },
-          "note": "每百万 Token 输入 $10、缓存读取 $0.25、输出 $50。缓存写入 $12.5/M Token，另计。官方默认/最大上下文：300K / 1M。开启隐私模式时须先同意该模型的数据保留政策；部分请求可能自动回退 Claude Opus。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+          "note": "每百万 Token 美元报价；缓存写入 $10/M Token，另计。默认/最大上下文 300K / 1M。启用隐私模式时须先同意其数据保留政策。；从首次调用起使用另购预付 Credits，不占 Grok 共享周池。启用隐私模式时需先同意其数据保留政策。"
         },
         {
           "slug": "cursor-x-super--claude-haiku-5-5--ctx-up-to-100k",
@@ -43067,6 +43013,48 @@
             "outputCnyPerM": 136.0
           },
           "note": "每百万 Token 美元报价；新订阅从首次请求起使用另购预付 Credits，旧合资格套餐使用 Other Models 月池。；第三方模型，从首次请求起另购预付 Credits，月费不包含其用量。"
+        },
+        {
+          "slug": "cursor-x-super--gemini-4-carbon",
+          "modelSlug": "gemini-4-carbon",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cachePerM": 0.1,
+            "outputPerM": 10.0,
+            "inputCnyPerM": 13.6,
+            "cacheCnyPerM": 0.68,
+            "outputCnyPerM": 68.0
+          },
+          "note": "每百万 Token 美元报价；新订阅从首次请求起使用另购预付 Credits，旧合资格套餐使用 Other Models 月池。；从首次调用起使用另购预付 Credits，不占 Grok 共享周池。"
+        },
+        {
+          "slug": "cursor-x-super--gemini-4-hydrogen",
+          "modelSlug": "gemini-4-hydrogen",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 1.5,
+            "cachePerM": 0.075,
+            "outputPerM": 7.5,
+            "inputCnyPerM": 10.2,
+            "cacheCnyPerM": 0.51,
+            "outputCnyPerM": 51.0
+          },
+          "note": "每百万 Token 美元报价；新订阅从首次请求起使用另购预付 Credits，旧合资格套餐使用 Other Models 月池。；从首次调用起使用另购预付 Credits，不占 Grok 共享周池。"
         }
       ]
     },
@@ -43260,8 +43248,8 @@
           "note": "每百万 Token 输入 $4、缓存读取 $1、输出 $18。缓存写入未单独报价。官方默认/最大上下文：256K。；Grok 模型从新 X Subscription 共享周池扣减；固定额度未公开，不能按月费或档位倍率推算 Token。"
         },
         {
-          "slug": "cursor-x-ultra--claude-fable-5-1",
-          "modelSlug": "claude-fable-5-1",
+          "slug": "cursor-x-ultra--claude-fable-5-2",
+          "modelSlug": "claude-fable-5-2",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
@@ -43271,14 +43259,14 @@
           },
           "pricing": {
             "currency": "$",
-            "inputPerM": 10.0,
-            "cachePerM": 0.25,
-            "outputPerM": 50.0,
-            "inputCnyPerM": 68.0,
-            "cacheCnyPerM": 1.7,
-            "outputCnyPerM": 340.0
+            "inputPerM": 8.0,
+            "cachePerM": 0.2,
+            "outputPerM": 40.0,
+            "inputCnyPerM": 54.4,
+            "cacheCnyPerM": 1.36,
+            "outputCnyPerM": 272.0
           },
-          "note": "每百万 Token 输入 $10、缓存读取 $0.25、输出 $50。缓存写入 $12.5/M Token，另计。官方默认/最大上下文：300K / 1M。开启隐私模式时须先同意该模型的数据保留政策；部分请求可能自动回退 Claude Opus。；新 X Subscription 可选第三方模型；从首个请求起按 API 标价另付费，不包含于订阅的 Grok 共享池。这里的支持关系不代表月费提供该模型额度。"
+          "note": "每百万 Token 美元报价；缓存写入 $10/M Token，另计。默认/最大上下文 300K / 1M。启用隐私模式时须先同意其数据保留政策。；从首次调用起使用另购预付 Credits，不占 Grok 共享周池。启用隐私模式时需先同意其数据保留政策。"
         },
         {
           "slug": "cursor-x-ultra--claude-haiku-5-5--ctx-up-to-100k",
@@ -43783,6 +43771,48 @@
             "outputCnyPerM": 136.0
           },
           "note": "每百万 Token 美元报价；新订阅从首次请求起使用另购预付 Credits，旧合资格套餐使用 Other Models 月池。；第三方模型，从首次请求起另购预付 Credits，月费不包含其用量。"
+        },
+        {
+          "slug": "cursor-x-ultra--gemini-4-carbon",
+          "modelSlug": "gemini-4-carbon",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cachePerM": 0.1,
+            "outputPerM": 10.0,
+            "inputCnyPerM": 13.6,
+            "cacheCnyPerM": 0.68,
+            "outputCnyPerM": 68.0
+          },
+          "note": "每百万 Token 美元报价；新订阅从首次请求起使用另购预付 Credits，旧合资格套餐使用 Other Models 月池。；从首次调用起使用另购预付 Credits，不占 Grok 共享周池。"
+        },
+        {
+          "slug": "cursor-x-ultra--gemini-4-hydrogen",
+          "modelSlug": "gemini-4-hydrogen",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 1.5,
+            "cachePerM": 0.075,
+            "outputPerM": 7.5,
+            "inputCnyPerM": 10.2,
+            "cacheCnyPerM": 0.51,
+            "outputCnyPerM": 51.0
+          },
+          "note": "每百万 Token 美元报价；新订阅从首次请求起使用另购预付 Credits，旧合资格套餐使用 Other Models 月池。；从首次调用起使用另购预付 Credits，不占 Grok 共享周池。"
         }
       ]
     },
@@ -44016,8 +44046,8 @@
           "note": "每百万 Token 输入 $3、缓存读取 $0.5、输出 $15。缓存写入未单独报价。官方默认/最大上下文：200K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
         },
         {
-          "slug": "cursor-pro-legacy--claude-fable-5-1",
-          "modelSlug": "claude-fable-5-1",
+          "slug": "cursor-pro-legacy--claude-fable-5-2",
+          "modelSlug": "claude-fable-5-2",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
@@ -44027,14 +44057,14 @@
           },
           "pricing": {
             "currency": "$",
-            "inputPerM": 10.0,
-            "cachePerM": 0.25,
-            "outputPerM": 50.0,
-            "inputCnyPerM": 68.0,
-            "cacheCnyPerM": 1.7,
-            "outputCnyPerM": 340.0
+            "inputPerM": 8.0,
+            "cachePerM": 0.2,
+            "outputPerM": 40.0,
+            "inputCnyPerM": 54.4,
+            "cacheCnyPerM": 1.36,
+            "outputCnyPerM": 272.0
           },
-          "note": "每百万 Token 输入 $10、缓存读取 $0.25、输出 $50。缓存写入 $12.5/M Token，另计。官方默认/最大上下文：300K / 1M。开启隐私模式时须先同意该模型的数据保留政策；部分请求可能自动回退 Claude Opus。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+          "note": "每百万 Token 美元报价；缓存写入 $10/M Token，另计。默认/最大上下文 300K / 1M。启用隐私模式时须先同意其数据保留政策。；使用存量套餐的 Other Models 月池，具体固定额度以账户为准。启用隐私模式时需先同意其数据保留政策。"
         },
         {
           "slug": "cursor-pro-legacy--claude-haiku-5-5--ctx-up-to-100k",
@@ -44497,6 +44527,48 @@
             "outputCnyPerM": 136.0
           },
           "note": "每百万 Token 美元报价；新订阅从首次请求起使用另购预付 Credits，旧合资格套餐使用 Other Models 月池。；仅存量订阅适用，从 Other Models 月池扣减；当前固定 Token 总量未知。"
+        },
+        {
+          "slug": "cursor-pro-legacy--gemini-4-carbon",
+          "modelSlug": "gemini-4-carbon",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cachePerM": 0.1,
+            "outputPerM": 10.0,
+            "inputCnyPerM": 13.6,
+            "cacheCnyPerM": 0.68,
+            "outputCnyPerM": 68.0
+          },
+          "note": "每百万 Token 美元报价；新订阅从首次请求起使用另购预付 Credits，旧合资格套餐使用 Other Models 月池。；使用存量套餐的 Other Models 月池，具体固定额度以账户为准。"
+        },
+        {
+          "slug": "cursor-pro-legacy--gemini-4-hydrogen",
+          "modelSlug": "gemini-4-hydrogen",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 1.5,
+            "cachePerM": 0.075,
+            "outputPerM": 7.5,
+            "inputCnyPerM": 10.2,
+            "cacheCnyPerM": 0.51,
+            "outputCnyPerM": 51.0
+          },
+          "note": "每百万 Token 美元报价；新订阅从首次请求起使用另购预付 Credits，旧合资格套餐使用 Other Models 月池。；使用存量套餐的 Other Models 月池，具体固定额度以账户为准。"
         }
       ]
     },
@@ -44730,8 +44802,8 @@
           "note": "每百万 Token 输入 $3、缓存读取 $0.5、输出 $15。缓存写入未单独报价。官方默认/最大上下文：200K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
         },
         {
-          "slug": "cursor-pro-plus-legacy--claude-fable-5-1",
-          "modelSlug": "claude-fable-5-1",
+          "slug": "cursor-pro-plus-legacy--claude-fable-5-2",
+          "modelSlug": "claude-fable-5-2",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
@@ -44741,14 +44813,14 @@
           },
           "pricing": {
             "currency": "$",
-            "inputPerM": 10.0,
-            "cachePerM": 0.25,
-            "outputPerM": 50.0,
-            "inputCnyPerM": 68.0,
-            "cacheCnyPerM": 1.7,
-            "outputCnyPerM": 340.0
+            "inputPerM": 8.0,
+            "cachePerM": 0.2,
+            "outputPerM": 40.0,
+            "inputCnyPerM": 54.4,
+            "cacheCnyPerM": 1.36,
+            "outputCnyPerM": 272.0
           },
-          "note": "每百万 Token 输入 $10、缓存读取 $0.25、输出 $50。缓存写入 $12.5/M Token，另计。官方默认/最大上下文：300K / 1M。开启隐私模式时须先同意该模型的数据保留政策；部分请求可能自动回退 Claude Opus。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+          "note": "每百万 Token 美元报价；缓存写入 $10/M Token，另计。默认/最大上下文 300K / 1M。启用隐私模式时须先同意其数据保留政策。；使用存量套餐的 Other Models 月池，具体固定额度以账户为准。启用隐私模式时需先同意其数据保留政策。"
         },
         {
           "slug": "cursor-pro-plus-legacy--claude-haiku-5-5--ctx-up-to-100k",
@@ -45211,6 +45283,48 @@
             "outputCnyPerM": 136.0
           },
           "note": "每百万 Token 美元报价；新订阅从首次请求起使用另购预付 Credits，旧合资格套餐使用 Other Models 月池。；仅存量订阅适用，从 Other Models 月池扣减；当前固定 Token 总量未知。"
+        },
+        {
+          "slug": "cursor-pro-plus-legacy--gemini-4-carbon",
+          "modelSlug": "gemini-4-carbon",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cachePerM": 0.1,
+            "outputPerM": 10.0,
+            "inputCnyPerM": 13.6,
+            "cacheCnyPerM": 0.68,
+            "outputCnyPerM": 68.0
+          },
+          "note": "每百万 Token 美元报价；新订阅从首次请求起使用另购预付 Credits，旧合资格套餐使用 Other Models 月池。；使用存量套餐的 Other Models 月池，具体固定额度以账户为准。"
+        },
+        {
+          "slug": "cursor-pro-plus-legacy--gemini-4-hydrogen",
+          "modelSlug": "gemini-4-hydrogen",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 1.5,
+            "cachePerM": 0.075,
+            "outputPerM": 7.5,
+            "inputCnyPerM": 10.2,
+            "cacheCnyPerM": 0.51,
+            "outputCnyPerM": 51.0
+          },
+          "note": "每百万 Token 美元报价；新订阅从首次请求起使用另购预付 Credits，旧合资格套餐使用 Other Models 月池。；使用存量套餐的 Other Models 月池，具体固定额度以账户为准。"
         }
       ]
     },
@@ -45444,8 +45558,8 @@
           "note": "每百万 Token 输入 $3、缓存读取 $0.5、输出 $15。缓存写入未单独报价。官方默认/最大上下文：200K。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
         },
         {
-          "slug": "cursor-ultra-legacy--claude-fable-5-1",
-          "modelSlug": "claude-fable-5-1",
+          "slug": "cursor-ultra-legacy--claude-fable-5-2",
+          "modelSlug": "claude-fable-5-2",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
@@ -45455,14 +45569,14 @@
           },
           "pricing": {
             "currency": "$",
-            "inputPerM": 10.0,
-            "cachePerM": 0.25,
-            "outputPerM": 50.0,
-            "inputCnyPerM": 68.0,
-            "cacheCnyPerM": 1.7,
-            "outputCnyPerM": 340.0
+            "inputPerM": 8.0,
+            "cachePerM": 0.2,
+            "outputPerM": 40.0,
+            "inputCnyPerM": 54.4,
+            "cacheCnyPerM": 1.36,
+            "outputCnyPerM": 272.0
           },
-          "note": "每百万 Token 输入 $10、缓存读取 $0.25、输出 $50。缓存写入 $12.5/M Token，另计。官方默认/最大上下文：300K / 1M。开启隐私模式时须先同意该模型的数据保留政策；部分请求可能自动回退 Claude Opus。；仅存量旧订阅适用：Grok 与 Composer 从 Cursor Models 月池扣减，第三方模型从 Other Models 月池扣减；当前固定池金额及 Token 总量未确认，不沿用新订阅周池。"
+          "note": "每百万 Token 美元报价；缓存写入 $10/M Token，另计。默认/最大上下文 300K / 1M。启用隐私模式时须先同意其数据保留政策。；使用存量套餐的 Other Models 月池，具体固定额度以账户为准。启用隐私模式时需先同意其数据保留政策。"
         },
         {
           "slug": "cursor-ultra-legacy--claude-haiku-5-5--ctx-up-to-100k",
@@ -45925,6 +46039,48 @@
             "outputCnyPerM": 136.0
           },
           "note": "每百万 Token 美元报价；新订阅从首次请求起使用另购预付 Credits，旧合资格套餐使用 Other Models 月池。；仅存量订阅适用，从 Other Models 月池扣减；当前固定 Token 总量未知。"
+        },
+        {
+          "slug": "cursor-ultra-legacy--gemini-4-carbon",
+          "modelSlug": "gemini-4-carbon",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cachePerM": 0.1,
+            "outputPerM": 10.0,
+            "inputCnyPerM": 13.6,
+            "cacheCnyPerM": 0.68,
+            "outputCnyPerM": 68.0
+          },
+          "note": "每百万 Token 美元报价；新订阅从首次请求起使用另购预付 Credits，旧合资格套餐使用 Other Models 月池。；使用存量套餐的 Other Models 月池，具体固定额度以账户为准。"
+        },
+        {
+          "slug": "cursor-ultra-legacy--gemini-4-hydrogen",
+          "modelSlug": "gemini-4-hydrogen",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 1.5,
+            "cachePerM": 0.075,
+            "outputPerM": 7.5,
+            "inputCnyPerM": 10.2,
+            "cacheCnyPerM": 0.51,
+            "outputCnyPerM": 51.0
+          },
+          "note": "每百万 Token 美元报价；新订阅从首次请求起使用另购预付 Credits，旧合资格套餐使用 Other Models 月池。；使用存量套餐的 Other Models 月池，具体固定额度以账户为准。"
         }
       ]
     },
@@ -56321,5 +56477,5 @@
       ]
     }
   ],
-  "contentVersion": "2026-11-09T13:01:06.752Z"
+  "contentVersion": "2026-11-15T15:23:20.704Z"
 }
