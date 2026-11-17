@@ -1,0 +1,9 @@
+# JSON request hashes must match the committed/published bytes on Windows and Linux.
+/platforms.json text eol=lf
+/plans.json text eol=lf
+/models.json text eol=lf
+/config.json text eol=lf
+/featured-catalog.json text eol=lf
+/changes.json text eol=lf
+/announcements.json text eol=lf
+/articles/catalog.json text eol=lf

@@ -2,8 +2,17 @@
   'use strict';
   let pending;
   const requests = new Map();
+  function dataUrl(file) {
+    // 老页面/独立调试入口没有清单时保留兼容请求，避免缓存无版本的数据。
+    let urls;
+    try { urls = JSON.parse(root.document?.getElementById('site-data-requests')?.textContent || '{}'); }
+    catch { urls = {}; }
+    const url = urls[file];
+    return typeof url === 'string' && url.startsWith('/' + file + '?v=') && url.split('?v=')[1] ? url : null;
+  }
   function loadJson(file) {
-    if (!requests.has(file)) requests.set(file, fetch('/' + file, { cache: 'no-store' }).then(response => {
+    const url = dataUrl(file);
+    if (!requests.has(file)) requests.set(file, fetch(url || '/' + file, { cache: url ? 'default' : 'no-store' }).then(response => {
       if (!response.ok) throw new Error('目录加载失败，请重试');
       return response.json();
     }).then(document => {
