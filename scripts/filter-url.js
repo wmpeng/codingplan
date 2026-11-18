@@ -105,5 +105,5 @@
       root.location.reload();
     });
   }
-  return {choice, flag, text, selection, range, read, update, replace, clear, flush, sharedSchema};
+  return {choice, flag, text, selection, range, read, update, replace, clear, sharedSchema};
 });

@@ -2851,21 +2851,22 @@
     },
     {
       "slug": "tencent-hy4-launch-discount-end-20261117",
-      "title": "腾讯 Hy4 正式版二五折结束",
+      "title": "腾讯 Hy4 正式版二五折延期至11月30日",
       "officialStatus": "announced",
       "effectiveTime": {
         "type": "date",
-        "date": "2026-11-17"
+        "date": "2026-11-30",
+        "description": "北京时间12:00；原11月17日截止已延后。"
       },
       "changes": [
         {
           "type": "price",
           "label": "腾讯 Hy4 正式版二五折结束",
           "before": "Hy4正式版输入/缓存/输出30/1.5/90积分每百万Token，限通用与Hy Token Plan个人版。",
-          "after": "Hy4正式版二五折截至2026年11月17日12:00（北京时间）；结束后核实实际常规抵扣价，Hy4 Preview不适用此项。"
+          "after": "Hy4正式版二五折延至2026年11月30日12:00（北京时间），输入/缓存/输出30/1.5/90积分每百万Token；到期后按届时规则核对。"
         }
       ],
-      "summary": "Hy4正式版二五折截至2026年11月17日12:00（北京时间）；结束后核实实际常规抵扣价，Hy4 Preview不适用此项。",
+      "summary": "Hy4正式版二五折延至2026年11月30日12:00（北京时间），输入/缓存/输出30/1.5/90积分每百万Token；到期后按届时规则核对。",
       "archiveOn": null,
       "targets": [
         {
@@ -2926,6 +2927,9 @@
         }
       ],
       "sources": [
+        {
+          "url": "https://cloud.tencent.com/document/product/1823/140042"
+        },
         {
           "url": "https://cloud.tencent.com/document/product/1823/140042"
         }
@@ -3470,7 +3474,7 @@
     {
       "slug": "claude-pro-fable-launch-offer-end-20261117",
       "title": "Claude Pro 的 Fable 首发周权益到期",
-      "officialStatus": "announced",
+      "officialStatus": "effective",
       "effectiveTime": {
         "type": "date",
         "date": "2026-11-17",
@@ -3513,6 +3517,9 @@
       "sources": [
         {
           "url": "https://support.claude.com/en/articles/17506494-claude-fable-5-2-launch-offers"
+        },
+        {
+          "url": "https://support.claude.com/en/articles/15424964-claude-fable-models-on-your-plan"
         }
       ],
       "relatedChanges": []
@@ -3856,7 +3863,255 @@
       "relatedChanges": [
         "ark-kimi-k3-new-user-restriction-20261111"
       ]
+    },
+    {
+      "slug": "tencent-hy4-flash-discount-end-20261130",
+      "title": "腾讯Hy4 Flash五折结束待复核",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-11-30",
+        "description": "北京时间12:00。"
+      },
+      "changes": [
+        {
+          "type": "price",
+          "label": "腾讯Hy4 Flash五折结束待复核",
+          "before": "活动输入/缓存/输出5/0.2/20积分每百万Token。",
+          "after": "Hy4 Flash五折至2026年11月30日12:00（北京时间）；常规输入/缓存/输出10/0.4/40积分每百万Token，届时复核是否延期。"
+        }
+      ],
+      "summary": "Hy4 Flash五折至2026年11月30日12:00（北京时间）；常规输入/缓存/输出10/0.4/40积分每百万Token，届时复核是否延期。",
+      "archiveOn": null,
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-lite",
+          "planModelSlug": "tencent-cloud-token-plan-lite--hy4-flash",
+          "label": "腾讯云 · Lite · Hy4-Flash"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-standard",
+          "planModelSlug": "tencent-cloud-token-plan-standard--hy4-flash",
+          "label": "腾讯云 · Standard · Hy4-Flash"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-pro",
+          "planModelSlug": "tencent-cloud-token-plan-pro--hy4-flash",
+          "label": "腾讯云 · Pro · Hy4-Flash"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-max",
+          "planModelSlug": "tencent-cloud-token-plan-max--hy4-flash",
+          "label": "腾讯云 · Max · Hy4-Flash"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud-hy",
+          "planSlug": "tencent-cloud-hy-lite",
+          "planModelSlug": "tencent-cloud-hy-lite--hy4-flash",
+          "label": "腾讯云 · Hy · Lite · Hy4-Flash"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud-hy",
+          "planSlug": "tencent-cloud-hy-standard",
+          "planModelSlug": "tencent-cloud-hy-standard--hy4-flash",
+          "label": "腾讯云 · Hy · Standard · Hy4-Flash"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud-hy",
+          "planSlug": "tencent-cloud-hy-pro",
+          "planModelSlug": "tencent-cloud-hy-pro--hy4-flash",
+          "label": "腾讯云 · Hy · Pro · Hy4-Flash"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud-hy",
+          "planSlug": "tencent-cloud-hy-max",
+          "planModelSlug": "tencent-cloud-hy-max--hy4-flash",
+          "label": "腾讯云 · Hy · Max · Hy4-Flash"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://cloud.tencent.com/document/product/1823/140042"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "tencent-hy4-preview-retirement-20261207",
+      "title": "腾讯Hy4 Preview预告12月7日下线",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-12-07"
+      },
+      "changes": [
+        {
+          "type": "model_support",
+          "label": "腾讯Hy4 Preview预告12月7日下线",
+          "before": "当前仍提供Hy4 Preview。",
+          "after": "腾讯通用与Hy Token Plan预告Hy4 Preview于2026年12月7日下线，具体时刻未公布；其他模型不受此预告自动影响。"
+        }
+      ],
+      "summary": "腾讯通用与Hy Token Plan预告Hy4 Preview于2026年12月7日下线，具体时刻未公布；其他模型不受此预告自动影响。",
+      "archiveOn": null,
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-lite",
+          "planModelSlug": "tencent-cloud-token-plan-lite--hy4-preview",
+          "label": "腾讯云 · Lite · Hy4-preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-standard",
+          "planModelSlug": "tencent-cloud-token-plan-standard--hy4-preview",
+          "label": "腾讯云 · Standard · Hy4-preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-pro",
+          "planModelSlug": "tencent-cloud-token-plan-pro--hy4-preview",
+          "label": "腾讯云 · Pro · Hy4-preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud",
+          "planSlug": "tencent-cloud-token-plan-max",
+          "planModelSlug": "tencent-cloud-token-plan-max--hy4-preview",
+          "label": "腾讯云 · Max · Hy4-preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud-hy",
+          "planSlug": "tencent-cloud-hy-lite",
+          "planModelSlug": "tencent-cloud-hy-lite--hy4-preview",
+          "label": "腾讯云 · Hy · Lite · Hy4-preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud-hy",
+          "planSlug": "tencent-cloud-hy-standard",
+          "planModelSlug": "tencent-cloud-hy-standard--hy4-preview",
+          "label": "腾讯云 · Hy · Standard · Hy4-preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud-hy",
+          "planSlug": "tencent-cloud-hy-pro",
+          "planModelSlug": "tencent-cloud-hy-pro--hy4-preview",
+          "label": "腾讯云 · Hy · Pro · Hy4-preview"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "tencent-cloud-hy",
+          "planSlug": "tencent-cloud-hy-max",
+          "planModelSlug": "tencent-cloud-hy-max--hy4-preview",
+          "label": "腾讯云 · Hy · Max · Hy4-preview"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://cloud.tencent.com/document/product/1823/130060"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "opencode-glm53-boost-end-20261122",
+      "title": "OpenCode GLM-5.3加量结束待复核",
+      "officialStatus": "announced",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-11-23",
+        "description": "官方只公布截止日，未给出时刻或时区。"
+      },
+      "changes": [
+        {
+          "type": "quota",
+          "label": "OpenCode GLM-5.3加量结束待复核",
+          "before": "GLM-5.3模型月额度Go/Go Plus/Go Teams为$500/$1000/$505。",
+          "after": "GLM-5.3限时加量截至2026年11月22日，活动后额度待确认；不将原活动额度视为永久配额。"
+        }
+      ],
+      "summary": "GLM-5.3限时加量截至2026年11月22日，活动后额度待确认；不将原活动额度视为永久配额。",
+      "archiveOn": null,
+      "targets": [
+        {
+          "type": "plan_model",
+          "platformSlug": "opencode",
+          "planSlug": "opencode-go",
+          "planModelSlug": "opencode-go--glm-5-3",
+          "label": "OpenCode · Go · GLM-5.3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "opencode",
+          "planSlug": "opencode-go-plus",
+          "planModelSlug": "opencode-go-plus--glm-5-3",
+          "label": "OpenCode · Go Plus · GLM-5.3"
+        },
+        {
+          "type": "plan_model",
+          "platformSlug": "opencode",
+          "planSlug": "opencode-go-teams",
+          "planModelSlug": "opencode-go-teams--glm-5-3",
+          "label": "OpenCode · Go Teams · GLM-5.3"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://opencode.ai/docs/console/go/"
+        }
+      ],
+      "relatedChanges": []
+    },
+    {
+      "slug": "tencent-deepseek-search-billing-20261118",
+      "title": "腾讯DeepSeek原厂搜索开始抵扣积分",
+      "officialStatus": "effective",
+      "effectiveTime": {
+        "type": "date",
+        "date": "2026-11-18",
+        "description": "北京时间00:00。"
+      },
+      "changes": [
+        {
+          "type": "price",
+          "label": "腾讯DeepSeek原厂搜索开始抵扣积分",
+          "before": "联网搜索与抓取未计入本次模型Token参考费用。",
+          "after": "自2026年11月18日00:00（北京时间），DeepSeek原厂直供Search与Fetch分别抵扣100积分/千次成功请求；搜索注入内容另计输入Token。"
+        }
+      ],
+      "summary": "自2026年11月18日00:00（北京时间），DeepSeek原厂直供Search与Fetch分别抵扣100积分/千次成功请求；搜索注入内容另计输入Token。",
+      "archiveOn": null,
+      "targets": [
+        {
+          "type": "platform",
+          "platformSlug": "tencent-cloud",
+          "label": "腾讯云"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://cloud.tencent.com/document/product/1823/133811"
+        }
+      ],
+      "relatedChanges": []
     }
-  ],
-  "contentVersion": "2026-11-15T15:23:22.397Z"
+  ]
 }

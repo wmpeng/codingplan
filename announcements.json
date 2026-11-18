@@ -14,12 +14,13 @@
     {
       "slug": "claude-fable-5-2-launch-offer-20261109",
       "title": "Claude Pro 首发周可用 Fable，最多占共享周额度的 50%",
-      "body": "Claude Pro 及 Team 标准席位至11月17日15:59（北京时间）可按共享周额度使用 Fable 系列，合计最多50%；用完或活动结束后需另购 Usage Credits。符合11月9日10:00 PT前付费资格的用户可获重置；Max、Ultra 等合资格用户的1至3次重置按订阅时长发放，至2027年3月8日23:59 PT有效。",
+      "body": "Claude Pro 及 Team 标准席位至11月17日15:59（北京时间）可按共享周额度使用 Fable 系列，合计最多50%；用完或活动结束后需另购 Usage Credits。符合11月9日10:00 PT前付费资格的用户可获重置；Max、Ultra 等合资格用户的1至3次重置按订阅时长发放，至2027年3月8日23:59 PT有效。\n\nPro 首发周权益已结束，Fable 系列恢复使用另购 Usage Credits。Max / Ultra 合资格重置仍按各自有效期使用。",
       "visible": true,
       "announcedOn": "2026-11-09",
       "startsOn": "2026-11-09",
       "endsOn": "2026-11-17",
       "url": "https://support.claude.com/en/articles/17506494-claude-fable-5-2-launch-offers",
+      "ended": true,
       "archiveOn": null
     },
     {
@@ -266,11 +267,11 @@
     },
     {
       "slug": "tencent-hy4-launch-discount-20261104",
-      "title": "腾讯 Hy4 正式版：积分价 2.5 折，至 11 月 17 日中午",
-      "body": "**通用 Token Plan 与 Hy Token Plan 个人版**调用 **Hy4 正式版（hy4）**，自 **2026 年 11 月 4 日至 11 月 17 日 12:00（北京时间）**享积分抵扣二五折。\n\n每百万 Token 输入 / 缓存命中 / 输出为 **30 / 1.5 / 90 积分**。Hy4 正式版与 Hy4 Preview 是不同模型，不互套活动或价格；本活动不改变订阅售价与套餐额度。",
+      "title": "腾讯 Hy4 正式版：积分价 2.5 折延至 11 月 30 日",
+      "body": "**通用 Token Plan 与 Hy Token Plan 个人版**调用 **Hy4 正式版（hy4）**，自 **2026 年 11 月 4 日至 11 月 30 日 12:00（北京时间）**享积分抵扣二五折。\n\n每百万 Token 输入 / 缓存命中 / 输出为 **30 / 1.5 / 90 积分**。Hy4 正式版与 Hy4 Preview 是不同模型，不互套活动或价格；本活动不改变订阅售价与套餐额度。",
       "visible": true,
       "startsOn": "2026-11-04",
-      "endsOn": "2026-11-17",
+      "endsOn": "2026-11-30",
       "url": "https://cloud.tencent.com/document/product/1823/140042",
       "archiveOn": null
     },
@@ -287,7 +288,7 @@
     {
       "slug": "qoder-global-qwen-ultimate-offpeak-20261107",
       "title": "Qoder 国际版：Qwen 夜间四折，Ultimate 夜间二折重启",
-      "body": "国际站 **qoder.com** 的 Pro Trial 与付费个人用户每日 **14:00—次日 00:00 UTC**（北京时间 22:00—次日 08:00）享参考消耗系数优惠：\n\n- **Qwen3.8-Max：0.5× → 0.2×**；Qwen3.8-Flash：**0.1× → 0.04×**，结束日期未公布。\n- **Ultimate 档：2× → 0.4×**，第二阶段截至 **2026 年 11 月 30 日 00:00 UTC**（北京时间 08:00）。\n\n适用范围以所购套餐的可选型号与档位为准。其他时段按常规系数；这些是 Credits 参考系数，固定 Token 用量未知。Service Account 的优惠时段另为 17:00—23:00 UTC。",
+      "body": "国际站 **qoder.com** 的 Pro Trial 与付费个人用户每日 **14:00—次日 00:00 UTC**（北京时间 22:00—次日 08:00）享参考消耗系数优惠：\n\n- **Qwen3.8-Max：0.5× → 0.2×**；Qwen3.8-Flash：**0.1× → 0.04×**，结束日期未公布。\n- **Ultimate 档：2× → 0.4×**，第二阶段截至 **2026 年 11 月 30 日 00:00 UTC**（北京时间 08:00）。\n\n适用范围以所购套餐的可选型号与档位为准。其他时段按常规系数；这些是 Credits 参考系数，固定 Token 用量未知。Service Account 也适用相同的每日 14:00—次日 00:00 UTC 时段。",
       "visible": true,
       "startsOn": "2026-11-07",
       "endsOn": "2026-11-30",
@@ -306,7 +307,7 @@
     {
       "slug": "aliyun-token-first-subscription-half-price-20261130",
       "title": "阿里 Token Plan 新用户：Lite／Essential 首购五折",
-      "body": "阿里百炼 **Token Plan 个人版**从未购买过的账号，Lite / Essential 新用户限时价分别 **19.5 / 39.5 元每月**，常规价为 39 / 79 元每月，活动截至 **2026 年 11 月 30 日 23:59:59（UTC+8）**。\n\n两档每订阅月分别为 11,500 / 25,500 Credits。Standard / Pro 不适用这两档新用户售价；模型抵扣、使用限制及额度刷新另按对应规则。",
+      "body": "阿里百炼 **Token Plan 个人版**从未购买过的账号，Lite / Essential 新用户限时价分别 **19.5 / 39.5 元每月**，常规价为 39 / 79 元每月，活动截至 **2026 年 11 月 30 日 23:59:59（UTC+8）**。\n\n两档每订阅月分别为 20,000 / 45,000 Credits。Standard / Pro 不适用这两档新用户售价；模型抵扣、使用限制及额度刷新另按对应规则。",
       "visible": true,
       "endsOn": "2026-11-30",
       "url": "https://help.aliyun.com/zh/model-studio/token-plan-personal-overview",
@@ -368,7 +369,25 @@
       "startsOn": "2026-11-07",
       "url": "https://docs.qoder.cn/events/flashoffer",
       "archiveOn": "2026-12-07"
+    },
+    {
+      "slug": "tencent-hy4-flash-half-price-20261116",
+      "title": "腾讯 Hy4 Flash：抵扣五折至 11 月 30 日",
+      "body": "通用与 Hy Token Plan 个人版，自2026年11月16日起至11月30日12:00（北京时间），Hy4 Flash输入/缓存/输出抵扣为每百万Token 5/0.2/20积分，常规为10/0.4/40积分。仅调整模型消耗，不改变订阅价格和额度。",
+      "visible": true,
+      "startsOn": "2026-11-16",
+      "endsOn": "2026-11-30",
+      "url": "https://cloud.tencent.com/document/product/1823/140042",
+      "archiveOn": null
+    },
+    {
+      "slug": "opencode-glm53-boost-20261122",
+      "title": "OpenCode Go：GLM-5.3 限时加量至 11 月 22 日",
+      "body": "GLM-5.3的模型月使用额度，Go / Go Plus / Go Teams分别提高至500 / 1000 / 505美元，活动截至2026年11月22日，官方未明确截止时刻与时区。五小时和每周上限分别为该模型月额度的20%和50%；所有付费模型按已用比例共享同一套餐额度，不能把逐模型额度相加。活动后的具体额度待公布。",
+      "visible": true,
+      "endsOn": "2026-11-22",
+      "url": "https://opencode.ai/docs/console/go/",
+      "archiveOn": null
     }
-  ],
-  "contentVersion": "2026-11-15T15:02:24.923Z"
+  ]
 }

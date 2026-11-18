@@ -1,6 +1,5 @@
 {
   "schemaVersion": 3,
-  "generatedAt": "2026-11-15T15:23:18Z",
   "workload": {
     "outputRatio": 0.005,
     "cacheHitRate": 0.95,
@@ -596,10 +595,10 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 8.891128136,
-            "weeklyTokenInM": 22.2278203399,
-            "monthlyTokenInM": 44.5,
-            "unitPriceCnyPerM": 1.52932
+            "fiveHourTokenInM": 296.3709378658,
+            "weeklyTokenInM": 740.9273446646,
+            "monthlyTokenInM": 1481.9,
+            "unitPriceCnyPerM": 0.04556
           },
           "pricing": {
             "currency": "$",
@@ -610,7 +609,7 @@
             "cacheCnyPerM": 1.768,
             "outputCnyPerM": 29.92
           },
-          "note": "抵扣单价：输入 $1.40/M Token、缓存读取 $0.26/M Token、输出 $4.40/M Token；该模型适用额度：5小时 $3、每周 $7.50、每月 $15；是否共享及能否叠加以套餐说明为准"
+          "note": "抵扣单价：输入 $1.40/M Token、缓存读取 $0.26/M Token、输出 $4.40/M Token；该模型适用额度：5小时 $100、每周 $250、每月 $500；是否共享及能否叠加以套餐说明为准；加量活动至2026-11-22，Go/Go Plus/Go Teams本模型月额度分别$500/$1000/$505；五小时20%、周50%，与其他模型共享使用比例，不能叠加各模型额度。"
         },
         {
           "slug": "opencode-go--glm-5-2",
@@ -784,54 +783,6 @@
         {
           "slug": "opencode-go--mimo-v2-6-pro",
           "modelSlug": "mimo-v2-6-pro",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "fiveHourTokenInM": 101.9791388924,
-            "weeklyTokenInM": 254.947847231,
-            "monthlyTokenInM": 509.9,
-            "unitPriceCnyPerM": 0.13328
-          },
-          "pricing": {
-            "currency": "$",
-            "inputPerM": 0.435,
-            "cachePerM": 0.003625,
-            "outputPerM": 0.87,
-            "inputCnyPerM": 2.958,
-            "cacheCnyPerM": 0.02465,
-            "outputCnyPerM": 5.916
-          },
-          "note": "抵扣单价：输入 $0.44/M Token、缓存读取 $0.003625/M Token、输出 $0.87/M Token；该模型适用额度：5小时 $3、每周 $7.50、每月 $15；是否共享及能否叠加以套餐说明为准"
-        },
-        {
-          "slug": "opencode-go--mimo-v2-5",
-          "modelSlug": "mimo-v2-5",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "fiveHourTokenInM": 1089.7499931891,
-            "weeklyTokenInM": 2724.3749829727,
-            "monthlyTokenInM": 5448.7,
-            "unitPriceCnyPerM": 0.01224
-          },
-          "pricing": {
-            "currency": "$",
-            "inputPerM": 0.14,
-            "cachePerM": 0.0028,
-            "outputPerM": 0.28,
-            "inputCnyPerM": 0.952,
-            "cacheCnyPerM": 0.01904,
-            "outputCnyPerM": 1.904
-          },
-          "note": "抵扣单价：输入 $0.14/M Token、缓存读取 $0.002800/M Token、输出 $0.28/M Token；该模型适用额度：5小时 $12、每周 $30、每月 $60；是否共享及能否叠加以套餐说明为准"
-        },
-        {
-          "slug": "opencode-go--mimo-v2-5-pro",
-          "modelSlug": "mimo-v2-5-pro",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
@@ -1447,7 +1398,7 @@
             "cacheCnyPerM": 0.68,
             "outputCnyPerM": 68.0
           },
-          "note": "抵扣单价：输入 $2/M Token、缓存读取 $0.10/M Token、输出 $10/M Token；该模型适用额度：5小时 $6、每周 $15、每月 $30；是否共享及能否叠加以套餐说明为准；标准档；五折活动至 2026-11-30，常规输入/缓存/输出分别为 $4/$0.2/$20 每百万 Token；官方称不用于训练，零天留存。；标准档，输入/缓存/输出五折至 2026-11-30；官方称不用于训练、零天留存。五小时及周额度分别为月额度的 20% 和 50%。"
+          "note": "抵扣单价：输入 $2/M Token、缓存读取 $0.10/M Token、输出 $10/M Token；该模型适用额度：5小时 $6、每周 $15、每月 $30；是否共享及能否叠加以套餐说明为准；标准档；五折活动至 2026-11-30，常规输入/缓存/输出分别为 $4/$0.2/$20 每百万 Token；官方称不用于训练，最多55天留存。；Token抵扣价五折至2026-11-30；不用于训练，数据最多保留55天。五小时/周分别为本模型月额度的20%/50%。"
         },
         {
           "slug": "opencode-go--minimax-m3-1-flash",
@@ -1518,6 +1469,55 @@
             "outputCnyPerM": 0.0
           },
           "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；限时免费，结束日期未公布；须允许输入输出用于改进模型，不支持零数据留存。；限时免费，结束日期未公布；须允许输入输出用于改进模型，不支持零数据留存。"
+        },
+        {
+          "slug": "opencode-go--qwen-4-max",
+          "modelSlug": "qwen-4-max",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 17.8551500949,
+            "weeklyTokenInM": 44.6378752371,
+            "monthlyTokenInM": 89.3,
+            "unitPriceCnyPerM": 0.7616
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 1.5,
+            "cacheWritePerM": 1.875,
+            "cachePerM": 0.075,
+            "outputPerM": 4.5,
+            "inputCnyPerM": 10.2,
+            "cacheWriteCnyPerM": 12.75,
+            "cacheCnyPerM": 0.51,
+            "outputCnyPerM": 30.6
+          },
+          "note": "抵扣单价：输入 $1.50/M Token、缓存写入 $1.88/M Token、缓存读取 $0.08/M Token、输出 $4.50/M Token；该模型适用额度：5小时 $3、每周 $7.50、每月 $15；是否共享及能否叠加以套餐说明为准；默认5分钟缓存写入价；1小时缓存写入另为3美元/M Token。；Qwen4 Max 正式版；与预览版独立。"
+        },
+        {
+          "slug": "opencode-go--hy4-flash--free",
+          "modelSlug": "hy4-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "Free",
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": "unlimited"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.0,
+            "cachePerM": 0.0,
+            "outputPerM": 0.0,
+            "inputCnyPerM": 0.0,
+            "cacheCnyPerM": 0.0,
+            "outputCnyPerM": 0.0
+          },
+          "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；限时免费，结束时间未公布；不用于训练，零天留存，仍受服务可用性与速率限制。"
         }
       ]
     },
@@ -1595,10 +1595,10 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 71.1290250878,
-            "weeklyTokenInM": 177.8225627195,
-            "monthlyTokenInM": 355.6,
-            "unitPriceCnyPerM": 0.765
+            "fiveHourTokenInM": 592.7418757317,
+            "weeklyTokenInM": 1481.8546893292,
+            "monthlyTokenInM": 2963.7,
+            "unitPriceCnyPerM": 0.0918
           },
           "pricing": {
             "currency": "$",
@@ -1609,7 +1609,7 @@
             "cacheCnyPerM": 1.768,
             "outputCnyPerM": 29.92
           },
-          "note": "抵扣单价：输入 $1.40/M Token、缓存读取 $0.26/M Token、输出 $4.40/M Token；该模型适用额度：5小时 $24、每周 $60、每月 $120；是否共享及能否叠加以套餐说明为准"
+          "note": "抵扣单价：输入 $1.40/M Token、缓存读取 $0.26/M Token、输出 $4.40/M Token；该模型适用额度：5小时 $200、每周 $500、每月 $1,000；是否共享及能否叠加以套餐说明为准；加量活动至2026-11-22，Go/Go Plus/Go Teams本模型月额度分别$500/$1000/$505；五小时20%、周50%，与其他模型共享使用比例，不能叠加各模型额度。"
         },
         {
           "slug": "opencode-go-plus--glm-5-2",
@@ -1783,54 +1783,6 @@
         {
           "slug": "opencode-go-plus--mimo-v2-6-pro",
           "modelSlug": "mimo-v2-6-pro",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "fiveHourTokenInM": 407.9165555696,
-            "weeklyTokenInM": 1019.791388924,
-            "monthlyTokenInM": 2039.6,
-            "unitPriceCnyPerM": 0.13328
-          },
-          "pricing": {
-            "currency": "$",
-            "inputPerM": 0.435,
-            "cachePerM": 0.003625,
-            "outputPerM": 0.87,
-            "inputCnyPerM": 2.958,
-            "cacheCnyPerM": 0.02465,
-            "outputCnyPerM": 5.916
-          },
-          "note": "抵扣单价：输入 $0.44/M Token、缓存读取 $0.003625/M Token、输出 $0.87/M Token；该模型适用额度：5小时 $12、每周 $30、每月 $60；是否共享及能否叠加以套餐说明为准"
-        },
-        {
-          "slug": "opencode-go-plus--mimo-v2-5",
-          "modelSlug": "mimo-v2-5",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "fiveHourTokenInM": 2179.4999863781,
-            "weeklyTokenInM": 5448.7499659453,
-            "monthlyTokenInM": 10897.5,
-            "unitPriceCnyPerM": 0.02516
-          },
-          "pricing": {
-            "currency": "$",
-            "inputPerM": 0.14,
-            "cachePerM": 0.0028,
-            "outputPerM": 0.28,
-            "inputCnyPerM": 0.952,
-            "cacheCnyPerM": 0.01904,
-            "outputCnyPerM": 1.904
-          },
-          "note": "抵扣单价：输入 $0.14/M Token、缓存读取 $0.002800/M Token、输出 $0.28/M Token；该模型适用额度：5小时 $24、每周 $60、每月 $120；是否共享及能否叠加以套餐说明为准"
-        },
-        {
-          "slug": "opencode-go-plus--mimo-v2-5-pro",
-          "modelSlug": "mimo-v2-5-pro",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
@@ -2446,7 +2398,7 @@
             "cacheCnyPerM": 0.68,
             "outputCnyPerM": 68.0
           },
-          "note": "抵扣单价：输入 $2/M Token、缓存读取 $0.10/M Token、输出 $10/M Token；该模型适用额度：5小时 $24、每周 $60、每月 $120；是否共享及能否叠加以套餐说明为准；标准档；五折活动至 2026-11-30，常规输入/缓存/输出分别为 $4/$0.2/$20 每百万 Token；官方称不用于训练，零天留存。；标准档，输入/缓存/输出五折至 2026-11-30；官方称不用于训练、零天留存。五小时及周额度分别为月额度的 20% 和 50%。"
+          "note": "抵扣单价：输入 $2/M Token、缓存读取 $0.10/M Token、输出 $10/M Token；该模型适用额度：5小时 $24、每周 $60、每月 $120；是否共享及能否叠加以套餐说明为准；标准档；五折活动至 2026-11-30，常规输入/缓存/输出分别为 $4/$0.2/$20 每百万 Token；官方称不用于训练，最多55天留存。；Token抵扣价五折至2026-11-30；不用于训练，数据最多保留55天。五小时/周分别为本模型月额度的20%/50%。"
         },
         {
           "slug": "opencode-go-plus--minimax-m3-1-flash",
@@ -2517,6 +2469,55 @@
             "outputCnyPerM": 0.0
           },
           "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；限时免费，结束日期未公布；须允许输入输出用于改进模型，不支持零数据留存。；限时免费，结束日期未公布；须允许输入输出用于改进模型，不支持零数据留存。"
+        },
+        {
+          "slug": "opencode-go-plus--qwen-4-max",
+          "modelSlug": "qwen-4-max",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 71.4206003794,
+            "weeklyTokenInM": 178.5515009486,
+            "monthlyTokenInM": 357.1,
+            "unitPriceCnyPerM": 0.7616
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 1.5,
+            "cacheWritePerM": 1.875,
+            "cachePerM": 0.075,
+            "outputPerM": 4.5,
+            "inputCnyPerM": 10.2,
+            "cacheWriteCnyPerM": 12.75,
+            "cacheCnyPerM": 0.51,
+            "outputCnyPerM": 30.6
+          },
+          "note": "抵扣单价：输入 $1.50/M Token、缓存写入 $1.88/M Token、缓存读取 $0.08/M Token、输出 $4.50/M Token；该模型适用额度：5小时 $12、每周 $30、每月 $60；是否共享及能否叠加以套餐说明为准；默认5分钟缓存写入价；1小时缓存写入另为3美元/M Token。；Qwen4 Max 正式版；与预览版独立。"
+        },
+        {
+          "slug": "opencode-go-plus--hy4-flash--free",
+          "modelSlug": "hy4-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "Free",
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": "unlimited"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.0,
+            "cachePerM": 0.0,
+            "outputPerM": 0.0,
+            "inputCnyPerM": 0.0,
+            "cacheCnyPerM": 0.0,
+            "outputCnyPerM": 0.0
+          },
+          "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；限时免费，结束时间未公布；不用于训练，零天留存，仍受服务可用性与速率限制。"
         }
       ]
     },
@@ -2596,10 +2597,10 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 11.8548375146,
-            "weeklyTokenInM": 29.6370937866,
-            "monthlyTokenInM": 59.3,
-            "unitPriceCnyPerM": 2.29432
+            "fiveHourTokenInM": 299.3346472445,
+            "weeklyTokenInM": 748.3366181112,
+            "monthlyTokenInM": 1496.7,
+            "unitPriceCnyPerM": 0.09112
           },
           "pricing": {
             "currency": "$",
@@ -2610,7 +2611,7 @@
             "cacheCnyPerM": 1.768,
             "outputCnyPerM": 29.92
           },
-          "note": "抵扣单价：输入 $1.40/M Token、缓存读取 $0.26/M Token、输出 $4.40/M Token；该模型适用额度：5小时 $4、每周 $10、每月 $20；是否共享及能否叠加以套餐说明为准"
+          "note": "抵扣单价：输入 $1.40/M Token、缓存读取 $0.26/M Token、输出 $4.40/M Token；该模型适用额度：5小时 $101、每周 $253、每月 $505；是否共享及能否叠加以套餐说明为准；加量活动至2026-11-22，Go/Go Plus/Go Teams本模型月额度分别$500/$1000/$505；五小时20%、周50%，与其他模型共享使用比例，不能叠加各模型额度。"
         },
         {
           "slug": "opencode-go-teams--glm-5-2",
@@ -2761,54 +2762,6 @@
         {
           "slug": "opencode-go-teams--mimo-v2-6-pro",
           "modelSlug": "mimo-v2-6-pro",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "fiveHourTokenInM": 135.9721851899,
-            "weeklyTokenInM": 339.9304629747,
-            "monthlyTokenInM": 679.9,
-            "unitPriceCnyPerM": 0.19992
-          },
-          "pricing": {
-            "currency": "$",
-            "inputPerM": 0.435,
-            "cachePerM": 0.003625,
-            "outputPerM": 0.87,
-            "inputCnyPerM": 2.958,
-            "cacheCnyPerM": 0.02465,
-            "outputCnyPerM": 5.916
-          },
-          "note": "抵扣单价：输入 $0.44/M Token、缓存读取 $0.003625/M Token、输出 $0.87/M Token；该模型适用额度：5小时 $4、每周 $10、每月 $20；是否共享及能否叠加以套餐说明为准"
-        },
-        {
-          "slug": "opencode-go-teams--mimo-v2-5",
-          "modelSlug": "mimo-v2-5",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "fiveHourTokenInM": 1180.5624926215,
-            "weeklyTokenInM": 2951.4062315537,
-            "monthlyTokenInM": 5902.8,
-            "unitPriceCnyPerM": 0.02312
-          },
-          "pricing": {
-            "currency": "$",
-            "inputPerM": 0.14,
-            "cachePerM": 0.0028,
-            "outputPerM": 0.28,
-            "inputCnyPerM": 0.952,
-            "cacheCnyPerM": 0.01904,
-            "outputCnyPerM": 1.904
-          },
-          "note": "抵扣单价：输入 $0.14/M Token、缓存读取 $0.002800/M Token、输出 $0.28/M Token；该模型适用额度：5小时 $13、每周 $32.50、每月 $65；是否共享及能否叠加以套餐说明为准"
-        },
-        {
-          "slug": "opencode-go-teams--mimo-v2-5-pro",
-          "modelSlug": "mimo-v2-5-pro",
           "timeTier": null,
           "contextTier": null,
           "serviceTier": null,
@@ -3424,7 +3377,7 @@
             "cacheCnyPerM": 0.68,
             "outputCnyPerM": 68.0
           },
-          "note": "抵扣单价：输入 $2/M Token、缓存读取 $0.10/M Token、输出 $10/M Token；该模型适用额度：5小时 $7、每周 $17.50、每月 $35；是否共享及能否叠加以套餐说明为准；标准档；五折活动至 2026-11-30，常规输入/缓存/输出分别为 $4/$0.2/$20 每百万 Token；官方称不用于训练，零天留存。；标准档，输入/缓存/输出五折至 2026-11-30；官方称不用于训练、零天留存。五小时及周额度分别为月额度的 20% 和 50%。"
+          "note": "抵扣单价：输入 $2/M Token、缓存读取 $0.10/M Token、输出 $10/M Token；该模型适用额度：5小时 $7、每周 $17.50、每月 $35；是否共享及能否叠加以套餐说明为准；标准档；五折活动至 2026-11-30，常规输入/缓存/输出分别为 $4/$0.2/$20 每百万 Token；官方称不用于训练，最多55天留存。；Token抵扣价五折至2026-11-30；不用于训练，数据最多保留55天。五小时/周分别为本模型月额度的20%/50%。"
         },
         {
           "slug": "opencode-go-teams--minimax-m3-1-flash",
@@ -3518,6 +3471,55 @@
             "outputCnyPerM": 0.0
           },
           "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；限时免费，官方未公布活动起止日期；活动结束后价格和额度未知。；限时免费，结束日期未知；在工作区隐私设置开启 Global 地区才可用，模型托管在中国。不用于训练，零天留存。"
+        },
+        {
+          "slug": "opencode-go-teams--qwen-4-max",
+          "modelSlug": "qwen-4-max",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 23.8068667931,
+            "weeklyTokenInM": 59.5171669829,
+            "monthlyTokenInM": 119.0,
+            "unitPriceCnyPerM": 1.1424
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 1.5,
+            "cacheWritePerM": 1.875,
+            "cachePerM": 0.075,
+            "outputPerM": 4.5,
+            "inputCnyPerM": 10.2,
+            "cacheWriteCnyPerM": 12.75,
+            "cacheCnyPerM": 0.51,
+            "outputCnyPerM": 30.6
+          },
+          "note": "抵扣单价：输入 $1.50/M Token、缓存写入 $1.88/M Token、缓存读取 $0.08/M Token、输出 $4.50/M Token；该模型适用额度：5小时 $4、每周 $10、每月 $20；是否共享及能否叠加以套餐说明为准；默认5分钟缓存写入价；1小时缓存写入另为3美元/M Token。；Qwen4 Max 正式版；与预览版独立。"
+        },
+        {
+          "slug": "opencode-go-teams--hy4-flash--free",
+          "modelSlug": "hy4-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "Free",
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": "unlimited"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.0,
+            "cachePerM": 0.0,
+            "outputPerM": 0.0,
+            "inputCnyPerM": 0.0,
+            "cacheCnyPerM": 0.0,
+            "outputCnyPerM": 0.0
+          },
+          "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；限时免费，结束时间未公布；不用于训练，零天留存，仍受服务可用性与速率限制。"
         }
       ]
     },
@@ -9353,6 +9355,58 @@
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Token 参考量为同套餐 Terra Standard 的 1/2.5，即 Sol Standard 的 0.8 倍；绝对数仍为估算。Fast 的订阅额度消耗为 Standard 的 2.5 倍，另购 Credits 为 2 倍；不包含 Ultrafast。"
+        },
+        {
+          "slug": "codex-plus--gpt-6-2-astra",
+          "modelSlug": "gpt-6-2-astra",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "Codex App 与 CLI 支持；Standard 精确 Token 配额未公开，不以 API 或 Credits 单价推算订阅额度。"
+        },
+        {
+          "slug": "codex-plus--gpt-6-2-astra--fast",
+          "modelSlug": "gpt-6-2-astra",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "Fast",
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "订阅内用量消耗为同模型 Standard 的2倍，购买 Credits 亦为2倍；Standard 基准 Token 额度未知。"
+        },
+        {
+          "slug": "codex-plus--gpt-6-2-sol",
+          "modelSlug": "gpt-6-2-sol",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "Codex App 与 CLI 支持；Standard 精确 Token 配额未公开，不以 API 或 Credits 单价推算订阅额度。"
+        },
+        {
+          "slug": "codex-plus--gpt-6-2-sol--fast",
+          "modelSlug": "gpt-6-2-sol",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "Fast",
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "订阅内用量消耗为同模型 Standard 的2倍，购买 Credits 亦为2倍；Standard 基准 Token 额度未知。"
         }
       ]
     },
@@ -9669,6 +9723,58 @@
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Token 参考量为同套餐 Terra Standard 的 1/2.5，即 Sol Standard 的 0.8 倍；绝对数仍为估算。Fast 的订阅额度消耗为 Standard 的 2.5 倍，另购 Credits 为 2 倍；不包含 Ultrafast。"
+        },
+        {
+          "slug": "codex-pro5--gpt-6-2-astra",
+          "modelSlug": "gpt-6-2-astra",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "Codex App 与 CLI 支持；Standard 精确 Token 配额未公开，不以 API 或 Credits 单价推算订阅额度。"
+        },
+        {
+          "slug": "codex-pro5--gpt-6-2-astra--fast",
+          "modelSlug": "gpt-6-2-astra",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "Fast",
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "订阅内用量消耗为同模型 Standard 的2倍，购买 Credits 亦为2倍；Standard 基准 Token 额度未知。"
+        },
+        {
+          "slug": "codex-pro5--gpt-6-2-sol",
+          "modelSlug": "gpt-6-2-sol",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "Codex App 与 CLI 支持；Standard 精确 Token 配额未公开，不以 API 或 Credits 单价推算订阅额度。"
+        },
+        {
+          "slug": "codex-pro5--gpt-6-2-sol--fast",
+          "modelSlug": "gpt-6-2-sol",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "Fast",
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "订阅内用量消耗为同模型 Standard 的2倍，购买 Credits 亦为2倍；Standard 基准 Token 额度未知。"
         }
       ]
     },
@@ -9985,6 +10091,71 @@
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Token 参考量为同套餐 Terra Standard 的 1/2.5，即 Sol Standard 的 0.8 倍；绝对数仍为估算。Fast 的订阅额度消耗为 Standard 的 2.5 倍，另购 Credits 为 2 倍；不包含 Ultrafast。"
+        },
+        {
+          "slug": "codex-pro20--gpt-6-2-astra",
+          "modelSlug": "gpt-6-2-astra",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "Codex App 与 CLI 支持；Standard 精确 Token 配额未公开，不以 API 或 Credits 单价推算订阅额度。"
+        },
+        {
+          "slug": "codex-pro20--gpt-6-2-astra--fast",
+          "modelSlug": "gpt-6-2-astra",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "Fast",
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "订阅内用量消耗为同模型 Standard 的2倍，购买 Credits 亦为2倍；Standard 基准 Token 额度未知。"
+        },
+        {
+          "slug": "codex-pro20--gpt-6-2-sol",
+          "modelSlug": "gpt-6-2-sol",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "Codex App 与 CLI 支持；Standard 精确 Token 配额未公开，不以 API 或 Credits 单价推算订阅额度。"
+        },
+        {
+          "slug": "codex-pro20--gpt-6-2-sol--fast",
+          "modelSlug": "gpt-6-2-sol",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "Fast",
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "订阅内用量消耗为同模型 Standard 的2倍，购买 Credits 亦为2倍；Standard 基准 Token 额度未知。"
+        },
+        {
+          "slug": "codex-pro20--gpt-6-2-sol--ultrafast",
+          "modelSlug": "gpt-6-2-sol",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "Ultrafast",
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "订阅内用量消耗为同模型 Standard 的6倍；购买 Credits 超额用量至2027-02-28为3倍，2027-03-01起为6倍（Pacific time）。Standard 基准 Token 额度未知。"
         }
       ]
     },
@@ -10335,6 +10506,84 @@
           },
           "pricing": null,
           "note": "按缓存命中率 95%、输出占总 Token 0.5% 的负载估算；参考单位与模型系数均为经验值，非官方固定配额或购买 Credits，各模型额度不能相加；月参考按周额度 ×4 换算。；Token 参考量为同套餐 Terra Standard 的 1/2.5，即 Sol Standard 的 0.8 倍；绝对数仍为估算。Fast 的订阅额度消耗为 Standard 的 2.5 倍，另购 Credits 为 2 倍；不包含 Ultrafast。"
+        },
+        {
+          "slug": "codex-pro500--gpt-6-2-astra",
+          "modelSlug": "gpt-6-2-astra",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "Codex App 与 CLI 支持；Standard 精确 Token 配额未公开，不以 API 或 Credits 单价推算订阅额度。"
+        },
+        {
+          "slug": "codex-pro500--gpt-6-2-astra--fast",
+          "modelSlug": "gpt-6-2-astra",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "Fast",
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "订阅内用量消耗为同模型 Standard 的2倍，购买 Credits 亦为2倍；Standard 基准 Token 额度未知。"
+        },
+        {
+          "slug": "codex-pro500--gpt-6-2-astra--ultrafast",
+          "modelSlug": "gpt-6-2-astra",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "Ultrafast",
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "订阅内用量消耗为同模型 Standard 的6倍；购买 Credits 超额用量至2027-02-28为3倍，2027-03-01起为6倍（Pacific time）。Standard 基准 Token 额度未知。"
+        },
+        {
+          "slug": "codex-pro500--gpt-6-2-sol",
+          "modelSlug": "gpt-6-2-sol",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "Codex App 与 CLI 支持；Standard 精确 Token 配额未公开，不以 API 或 Credits 单价推算订阅额度。"
+        },
+        {
+          "slug": "codex-pro500--gpt-6-2-sol--fast",
+          "modelSlug": "gpt-6-2-sol",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "Fast",
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "订阅内用量消耗为同模型 Standard 的2倍，购买 Credits 亦为2倍；Standard 基准 Token 额度未知。"
+        },
+        {
+          "slug": "codex-pro500--gpt-6-2-sol--ultrafast",
+          "modelSlug": "gpt-6-2-sol",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": "Ultrafast",
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "订阅内用量消耗为同模型 Standard 的6倍；购买 Credits 超额用量至2027-02-28为3倍，2027-03-01起为6倍（Pacific time）。Standard 基准 Token 额度未知。"
         }
       ]
     },
@@ -10353,7 +10602,7 @@
       "benefits": [
         "原生 Claude 体验"
       ],
-      "note": "• 部分用户订阅时可能被要求实名认证。\n• 订阅认证的 Claude Agent SDK / claude -p 可消耗订阅额度；API key 使用对应 Console 组织的 API 余额。\n• Fable 系列限时纳入共享周额度，合计最多50%，至11月17日15:59（北京时间）；之后需 Usage Credits。",
+      "note": "• 部分用户订阅时可能被要求实名认证。\n• 订阅认证的 Claude Agent SDK / claude -p 可消耗订阅额度；API key 使用对应 Console 组织的 API 余额。\n• Fable 首发周权益已结束；Fable 5 / 5.1 / 5.2 从首次调用起使用另购 Usage Credits，不计入订阅内用量。",
       "planStatus": "open",
       "planModels": [
         {
@@ -10422,7 +10671,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "Fable 系列限时可用至 11月17日15:59（北京时间），合计最多占共享周额度50%；达到上限或活动结束后使用另购 Usage Credits。固定 Token 用量未知。"
+          "note": "Fable首发周权益已结束；该模型从首次调用起使用另购Usage Credits，不包含订阅内Token额度。"
         },
         {
           "slug": "claude-pro--claude-fable-5",
@@ -10435,7 +10684,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "Fable 系列限时可用至 11月17日15:59（北京时间），合计最多占共享周额度50%；达到上限或活动结束后使用另购 Usage Credits。固定 Token 用量未知。"
+          "note": "Fable首发周权益已结束；该模型从首次调用起使用另购Usage Credits，不包含订阅内Token额度。"
         },
         {
           "slug": "claude-pro--claude-opus-5",
@@ -10574,7 +10823,7 @@
             "monthlyTokenInM": "unknown"
           },
           "pricing": null,
-          "note": "Fable 系列限时可用至 11月17日15:59（北京时间），合计最多占共享周额度50%；达到上限或活动结束后使用另购 Usage Credits。固定 Token 用量未知。"
+          "note": "Fable首发周权益已结束；该模型从首次调用起使用另购Usage Credits，不包含订阅内Token额度。"
         }
       ]
     },
@@ -11729,6 +11978,30 @@
             "outputCnyPerM": 5.916
           },
           "note": "抵扣单价：输入 $0.44/M Token、缓存读取 $0.003600/M Token、输出 $0.87/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 $60；云端调用；按输入、缓存读取与输出Token价格扣减月美元Credits。"
+        },
+        {
+          "slug": "ollama-coding-plan-pro--inkling-2-small",
+          "modelSlug": "inkling-2-small",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 1242.7,
+            "unitPriceCnyPerM": 0.10948
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.3,
+            "cachePerM": 0.03,
+            "outputPerM": 1.0,
+            "inputCnyPerM": 2.04,
+            "cacheCnyPerM": 0.204,
+            "outputCnyPerM": 6.8
+          },
+          "note": "抵扣单价：输入 $0.30/M Token、缓存读取 $0.03/M Token、输出 $1/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 $60；云端 inkling-2-small；按本平台输入/缓存/输出0.30/0.03/1.00美元每百万Token抵扣月度Credits，与本地运行分开。"
         }
       ]
     },
@@ -12389,6 +12662,30 @@
             "outputCnyPerM": 5.916
           },
           "note": "抵扣单价：输入 $0.44/M Token、缓存读取 $0.003600/M Token、输出 $0.87/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 $300；云端调用；按输入、缓存读取与输出Token价格扣减月美元Credits。"
+        },
+        {
+          "slug": "ollama-coding-plan-max--inkling-2-small",
+          "modelSlug": "inkling-2-small",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 6213.4,
+            "unitPriceCnyPerM": 0.10948
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.3,
+            "cachePerM": 0.03,
+            "outputPerM": 1.0,
+            "inputCnyPerM": 2.04,
+            "cacheCnyPerM": 0.204,
+            "outputCnyPerM": 6.8
+          },
+          "note": "抵扣单价：输入 $0.30/M Token、缓存读取 $0.03/M Token、输出 $1/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 $300；云端 inkling-2-small；按本平台输入/缓存/输出0.30/0.03/1.00美元每百万Token抵扣月度Credits，与本地运行分开。"
         }
       ]
     },
@@ -12839,6 +13136,19 @@
           },
           "pricing": null,
           "note": "仅百炼 Token Plan 限时预览，至 11月25日24:00（北京时间）后下线。Credits 消耗低至标准的2折；22:00–次日08:00低至0.8折。绝对扣减及 Token 容量未公布。"
+        },
+        {
+          "slug": "aliyun-token-personal-lite--qwen-4-max",
+          "modelSlug": "qwen-4-max",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "Qwen4-Max 正式版；与11月25日到期的Qwen4-Max-Preview分开，精确 Credits 抵扣及 Token 额度待确认。"
         }
       ]
     },
@@ -13289,6 +13599,19 @@
           },
           "pricing": null,
           "note": "仅百炼 Token Plan 限时预览，至 11月25日24:00（北京时间）后下线。Credits 消耗低至标准的2折；22:00–次日08:00低至0.8折。绝对扣减及 Token 容量未公布。"
+        },
+        {
+          "slug": "aliyun-token-personal-essential--qwen-4-max",
+          "modelSlug": "qwen-4-max",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "Qwen4-Max 正式版；与11月25日到期的Qwen4-Max-Preview分开，精确 Credits 抵扣及 Token 额度待确认。"
         }
       ]
     },
@@ -13742,6 +14065,19 @@
           },
           "pricing": null,
           "note": "仅百炼 Token Plan 限时预览，至 11月25日24:00（北京时间）后下线。Credits 消耗低至标准的2折；22:00–次日08:00低至0.8折。绝对扣减及 Token 容量未公布。"
+        },
+        {
+          "slug": "aliyun-token-personal-standard--qwen-4-max",
+          "modelSlug": "qwen-4-max",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "Qwen4-Max 正式版；与11月25日到期的Qwen4-Max-Preview分开，精确 Credits 抵扣及 Token 额度待确认。"
         }
       ]
     },
@@ -14195,6 +14531,19 @@
           },
           "pricing": null,
           "note": "仅百炼 Token Plan 限时预览，至 11月25日24:00（北京时间）后下线。Credits 消耗低至标准的2折；22:00–次日08:00低至0.8折。绝对扣减及 Token 容量未公布。"
+        },
+        {
+          "slug": "aliyun-token-personal-pro--qwen-4-max",
+          "modelSlug": "qwen-4-max",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "Qwen4-Max 正式版；与11月25日到期的Qwen4-Max-Preview分开，精确 Credits 抵扣及 Token 额度待确认。"
         }
       ]
     },
@@ -16385,52 +16734,6 @@
           "note": "抵扣单价：输入 $0.30/M Token、缓存读取 $0.06/M Token、输出 $0.90/M Token；该模型适用额度：5小时 未知、每周 未知、每月 $6；是否共享及能否叠加以套餐说明为准；平台上下文上限1M。；按模型当前美元价格扣减；GOAT/Pro 有额度加成，活动起止日期未公布。各模型从共享套餐池扣减，不能相加。Go的五小时及周窗口官方资料有冲突，短窗口用量未知。"
         },
         {
-          "slug": "commandcode-go--laguna-s-2-1",
-          "modelSlug": "laguna-s-2-1",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": "unlimited"
-          },
-          "pricing": {
-            "currency": "$",
-            "inputPerM": 0.0,
-            "cachePerM": 0.0,
-            "outputPerM": 0.0,
-            "inputCnyPerM": 0.0,
-            "cacheCnyPerM": 0.0,
-            "outputCnyPerM": 0.0
-          },
-          "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；平台上下文上限 256K；容量允许时免费，免费活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。 免费不保证无速率限制。 每账户每日最多 1000 次，UTC 零点重置。；容量允许时免费，免费活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。 免费不保证无速率限制。 每账户每日最多 1000 次，UTC 零点重置。"
-        },
-        {
-          "slug": "commandcode-go--beam-1-0",
-          "modelSlug": "beam-1-0",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": "unlimited"
-          },
-          "pricing": {
-            "currency": "$",
-            "inputPerM": 0.0,
-            "cachePerM": 0.0,
-            "outputPerM": 0.0,
-            "inputCnyPerM": 0.0,
-            "cacheCnyPerM": 0.0,
-            "outputCnyPerM": 0.0
-          },
-          "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；容量允许时免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。；容量允许时免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。"
-        },
-        {
           "slug": "commandcode-go--muse-spark-open",
           "modelSlug": "muse-spark-open",
           "timeTier": null,
@@ -16525,6 +16828,127 @@
             "outputCnyPerM": 4.352
           },
           "note": "抵扣单价：输入 $0.16/M Token、缓存读取 $0.02/M Token、输出 $0.64/M Token；该模型适用额度：5小时 未知、每周 未知、每月 $6；是否共享及能否叠加以套餐说明为准；最高262K上下文。；最高262K上下文；与其他模型共享套餐池，模型额度不可相加。"
+        },
+        {
+          "slug": "commandcode-go--qwen-4-max",
+          "modelSlug": "qwen-4-max",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 35.7,
+            "unitPriceCnyPerM": 0.1904
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 1.5,
+            "cacheWritePerM": 1.875,
+            "cachePerM": 0.075,
+            "outputPerM": 4.5,
+            "inputCnyPerM": 10.2,
+            "cacheWriteCnyPerM": 12.75,
+            "cacheCnyPerM": 0.51,
+            "outputCnyPerM": 30.6
+          },
+          "note": "抵扣单价：输入 $1.50/M Token、缓存写入 $1.88/M Token、缓存读取 $0.08/M Token、输出 $4.50/M Token；该模型适用额度：5小时 未知、每周 未知、每月 $6；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
+        },
+        {
+          "slug": "commandcode-go--hy4-flash",
+          "modelSlug": "hy4-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 776.9,
+            "unitPriceCnyPerM": 0.00884
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.07,
+            "cachePerM": 0.003,
+            "outputPerM": 0.281,
+            "inputCnyPerM": 0.476,
+            "cacheCnyPerM": 0.0204,
+            "outputCnyPerM": 1.9108
+          },
+          "note": "抵扣单价：输入 $0.07/M Token、缓存读取 $0.003000/M Token、输出 $0.28/M Token；该模型适用额度：5小时 未知、每周 未知、每月 $6；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
+        },
+        {
+          "slug": "commandcode-go--hy4",
+          "modelSlug": "hy4",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 64.0,
+            "unitPriceCnyPerM": 0.10608
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.834,
+            "cachePerM": 0.042,
+            "outputPerM": 2.501,
+            "inputCnyPerM": 5.6712,
+            "cacheCnyPerM": 0.2856,
+            "outputCnyPerM": 17.0068
+          },
+          "note": "抵扣单价：输入 $0.83/M Token、缓存读取 $0.04/M Token、输出 $2.50/M Token；该模型适用额度：5小时 未知、每周 未知、每月 $6；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
+        },
+        {
+          "slug": "commandcode-go--muse-ember",
+          "modelSlug": "muse-ember",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 533.0,
+            "unitPriceCnyPerM": 0.01292
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.1,
+            "cachePerM": 0.004,
+            "outputPerM": 0.5,
+            "inputCnyPerM": 0.68,
+            "cacheCnyPerM": 0.0272,
+            "outputCnyPerM": 3.4
+          },
+          "note": "抵扣单价：输入 $0.10/M Token、缓存读取 $0.004000/M Token、输出 $0.50/M Token；该模型适用额度：5小时 未知、每周 未知、每月 $6；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
+        },
+        {
+          "slug": "commandcode-go--inkling-2-small",
+          "modelSlug": "inkling-2-small",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": "unlimited"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.0,
+            "cachePerM": 0.0,
+            "outputPerM": 0.0,
+            "inputCnyPerM": 0.0,
+            "cacheCnyPerM": 0.0,
+            "outputCnyPerM": 0.0
+          },
+          "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；Inkling 2 Small限时免费，结束日期未公布；仍受速率及公平使用限制。"
         }
       ]
     },
@@ -17598,10 +18022,10 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 11.8548375146,
-            "weeklyTokenInM": 29.6370937866,
-            "monthlyTokenInM": 59.3,
-            "unitPriceCnyPerM": 1.14716
+            "fiveHourTokenInM": 41.4919313012,
+            "weeklyTokenInM": 103.729828253,
+            "monthlyTokenInM": 207.5,
+            "unitPriceCnyPerM": 0.32776
           },
           "pricing": {
             "currency": "$",
@@ -17612,7 +18036,7 @@
             "cacheCnyPerM": 1.768,
             "outputCnyPerM": 29.92
           },
-          "note": "抵扣单价：输入 $1.40/M Token、缓存读取 $0.26/M Token、输出 $4.40/M Token；该模型适用额度：5小时 $4、每周 $10、每月 $20；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
+          "note": "抵扣单价：输入 $1.40/M Token、缓存读取 $0.26/M Token、输出 $4.40/M Token；该模型适用额度：5小时 $14、每周 $35、每月 $70；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
         },
         {
           "slug": "commandcode-goat--muse-spark-1-3",
@@ -18430,52 +18854,6 @@
           "note": "抵扣单价：输入 $0.30/M Token、缓存读取 $0.06/M Token、输出 $0.90/M Token；该模型适用额度：5小时 $20、每周 $50、每月 $100；是否共享及能否叠加以套餐说明为准；平台上下文上限1M。；按模型当前美元价格扣减；GOAT/Pro 有额度加成，活动起止日期未公布。各模型从共享套餐池扣减，不能相加。短窗口按模型月额度与套餐窗口比例估算。"
         },
         {
-          "slug": "commandcode-goat--laguna-s-2-1",
-          "modelSlug": "laguna-s-2-1",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": "unlimited"
-          },
-          "pricing": {
-            "currency": "$",
-            "inputPerM": 0.0,
-            "cachePerM": 0.0,
-            "outputPerM": 0.0,
-            "inputCnyPerM": 0.0,
-            "cacheCnyPerM": 0.0,
-            "outputCnyPerM": 0.0
-          },
-          "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；平台上下文上限 256K；容量允许时免费，免费活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。 免费不保证无速率限制。 每账户每日最多 1000 次，UTC 零点重置。；容量允许时免费，免费活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。 免费不保证无速率限制。 每账户每日最多 1000 次，UTC 零点重置。"
-        },
-        {
-          "slug": "commandcode-goat--beam-1-0",
-          "modelSlug": "beam-1-0",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": "unlimited"
-          },
-          "pricing": {
-            "currency": "$",
-            "inputPerM": 0.0,
-            "cachePerM": 0.0,
-            "outputPerM": 0.0,
-            "inputCnyPerM": 0.0,
-            "cacheCnyPerM": 0.0,
-            "outputCnyPerM": 0.0
-          },
-          "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；容量允许时免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。；容量允许时免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。"
-        },
-        {
           "slug": "commandcode-goat--muse-spark-open",
           "modelSlug": "muse-spark-open",
           "timeTier": null,
@@ -18594,6 +18972,127 @@
             "outputCnyPerM": 4.352
           },
           "note": "抵扣单价：输入 $0.16/M Token、缓存读取 $0.02/M Token、输出 $0.64/M Token；该模型适用额度：5小时 $4、每周 $10、每月 $20；是否共享及能否叠加以套餐说明为准；最高262K上下文。；最高262K上下文；与其他模型共享套餐池，模型额度不可相加。"
+        },
+        {
+          "slug": "commandcode-goat--qwen-4-max",
+          "modelSlug": "qwen-4-max",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 17.8551500949,
+            "weeklyTokenInM": 44.6378752371,
+            "monthlyTokenInM": 89.3,
+            "unitPriceCnyPerM": 0.7616
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 1.5,
+            "cacheWritePerM": 1.875,
+            "cachePerM": 0.075,
+            "outputPerM": 4.5,
+            "inputCnyPerM": 10.2,
+            "cacheWriteCnyPerM": 12.75,
+            "cacheCnyPerM": 0.51,
+            "outputCnyPerM": 30.6
+          },
+          "note": "抵扣单价：输入 $1.50/M Token、缓存写入 $1.88/M Token、缓存读取 $0.08/M Token、输出 $4.50/M Token；该模型适用额度：5小时 $3、每周 $7.50、每月 $15；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
+        },
+        {
+          "slug": "commandcode-goat--hy4-flash",
+          "modelSlug": "hy4-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 388.4375101156,
+            "weeklyTokenInM": 971.0937752889,
+            "monthlyTokenInM": 1942.2,
+            "unitPriceCnyPerM": 0.03468
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.07,
+            "cachePerM": 0.003,
+            "outputPerM": 0.281,
+            "inputCnyPerM": 0.476,
+            "cacheCnyPerM": 0.0204,
+            "outputCnyPerM": 1.9108
+          },
+          "note": "抵扣单价：输入 $0.07/M Token、缓存读取 $0.003000/M Token、输出 $0.28/M Token；该模型适用额度：5小时 $3、每周 $7.50、每月 $15；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
+        },
+        {
+          "slug": "commandcode-goat--hy4",
+          "modelSlug": "hy4",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 42.6908011996,
+            "weeklyTokenInM": 106.727002999,
+            "monthlyTokenInM": 213.5,
+            "unitPriceCnyPerM": 0.31824
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.834,
+            "cachePerM": 0.042,
+            "outputPerM": 2.501,
+            "inputCnyPerM": 5.6712,
+            "cacheCnyPerM": 0.2856,
+            "outputCnyPerM": 17.0068
+          },
+          "note": "抵扣单价：输入 $0.83/M Token、缓存读取 $0.04/M Token、输出 $2.50/M Token；该模型适用额度：5小时 $4、每周 $10、每月 $20；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
+        },
+        {
+          "slug": "commandcode-goat--muse-ember",
+          "modelSlug": "muse-ember",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 355.3660270078,
+            "weeklyTokenInM": 888.4150675195,
+            "monthlyTokenInM": 1776.8,
+            "unitPriceCnyPerM": 0.03808
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.1,
+            "cachePerM": 0.004,
+            "outputPerM": 0.5,
+            "inputCnyPerM": 0.68,
+            "cacheCnyPerM": 0.0272,
+            "outputCnyPerM": 3.4
+          },
+          "note": "抵扣单价：输入 $0.10/M Token、缓存读取 $0.004000/M Token、输出 $0.50/M Token；该模型适用额度：5小时 $4、每周 $10、每月 $20；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
+        },
+        {
+          "slug": "commandcode-goat--inkling-2-small",
+          "modelSlug": "inkling-2-small",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": "unlimited"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.0,
+            "cachePerM": 0.0,
+            "outputPerM": 0.0,
+            "inputCnyPerM": 0.0,
+            "cacheCnyPerM": 0.0,
+            "outputCnyPerM": 0.0
+          },
+          "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；Inkling 2 Small限时免费，结束日期未公布；仍受速率及公平使用限制。"
         }
       ]
     },
@@ -20050,10 +20549,10 @@
           "serviceTier": null,
           "method": "calculated",
           "usage": {
-            "fiveHourTokenInM": 17.7822562719,
-            "weeklyTokenInM": 44.4556406799,
-            "monthlyTokenInM": 88.9,
-            "unitPriceCnyPerM": 1.52932
+            "fiveHourTokenInM": 47.4193500585,
+            "weeklyTokenInM": 118.5483751463,
+            "monthlyTokenInM": 237.1,
+            "unitPriceCnyPerM": 0.57392
           },
           "pricing": {
             "currency": "$",
@@ -20064,7 +20563,7 @@
             "cacheCnyPerM": 1.768,
             "outputCnyPerM": 29.92
           },
-          "note": "抵扣单价：输入 $1.40/M Token、缓存读取 $0.26/M Token、输出 $4.40/M Token；该模型适用额度：5小时 $6、每周 $15、每月 $30；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
+          "note": "抵扣单价：输入 $1.40/M Token、缓存读取 $0.26/M Token、输出 $4.40/M Token；该模型适用额度：5小时 $16、每周 $40、每月 $80；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
         },
         {
           "slug": "commandcode-pro--muse-spark-1-3",
@@ -20882,52 +21381,6 @@
           "note": "抵扣单价：输入 $0.30/M Token、缓存读取 $0.06/M Token、输出 $0.90/M Token；该模型适用额度：5小时 $22、每周 $55、每月 $110；是否共享及能否叠加以套餐说明为准；平台上下文上限1M。；按模型当前美元价格扣减；GOAT/Pro 有额度加成，活动起止日期未公布。各模型从共享套餐池扣减，不能相加。短窗口按模型月额度与套餐窗口比例估算。"
         },
         {
-          "slug": "commandcode-pro--laguna-s-2-1",
-          "modelSlug": "laguna-s-2-1",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": "unlimited"
-          },
-          "pricing": {
-            "currency": "$",
-            "inputPerM": 0.0,
-            "cachePerM": 0.0,
-            "outputPerM": 0.0,
-            "inputCnyPerM": 0.0,
-            "cacheCnyPerM": 0.0,
-            "outputCnyPerM": 0.0
-          },
-          "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；平台上下文上限 256K；容量允许时免费，免费活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。 免费不保证无速率限制。 每账户每日最多 1000 次，UTC 零点重置。；容量允许时免费，免费活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。 免费不保证无速率限制。 每账户每日最多 1000 次，UTC 零点重置。"
-        },
-        {
-          "slug": "commandcode-pro--beam-1-0",
-          "modelSlug": "beam-1-0",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": "unlimited"
-          },
-          "pricing": {
-            "currency": "$",
-            "inputPerM": 0.0,
-            "cachePerM": 0.0,
-            "outputPerM": 0.0,
-            "inputCnyPerM": 0.0,
-            "cacheCnyPerM": 0.0,
-            "outputCnyPerM": 0.0
-          },
-          "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；容量允许时免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。；容量允许时免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。"
-        },
-        {
           "slug": "commandcode-pro--muse-spark-open",
           "modelSlug": "muse-spark-open",
           "timeTier": null,
@@ -21122,6 +21575,177 @@
             "outputCnyPerM": 51.0
           },
           "note": "抵扣单价：输入 $2/M Token、缓存写入 $2.50/M Token、缓存读取 $0.10/M Token、输出 $7.50/M Token；该模型适用额度：5小时 $4、每周 $10、每月 $20；是否共享及能否叠加以套餐说明为准；平台支持最高 1.1M 上下文；缓存写入另计，当前 Token 参考换算不含该项；Token 参考量未计入额外缓存写入成本。；Pro 月模型额度 $20，Max 10× / 20× 分别 $100 / $200；来自共享套餐池、不能相加。Token 数按统一负载估算，不把宣传请求数当配额；缓存写入另计，换算不含该项。"
+        },
+        {
+          "slug": "commandcode-pro--qwen-4-max",
+          "modelSlug": "qwen-4-max",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 29.7585834914,
+            "weeklyTokenInM": 74.3964587286,
+            "monthlyTokenInM": 148.8,
+            "unitPriceCnyPerM": 0.91392
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 1.5,
+            "cacheWritePerM": 1.875,
+            "cachePerM": 0.075,
+            "outputPerM": 4.5,
+            "inputCnyPerM": 10.2,
+            "cacheWriteCnyPerM": 12.75,
+            "cacheCnyPerM": 0.51,
+            "outputCnyPerM": 30.6
+          },
+          "note": "抵扣单价：输入 $1.50/M Token、缓存写入 $1.88/M Token、缓存读取 $0.08/M Token、输出 $4.50/M Token；该模型适用额度：5小时 $5、每周 $12.50、每月 $25；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
+        },
+        {
+          "slug": "commandcode-pro--hy4-flash",
+          "modelSlug": "hy4-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 647.3958501926,
+            "weeklyTokenInM": 1618.4896254815,
+            "monthlyTokenInM": 3237.0,
+            "unitPriceCnyPerM": 0.04216
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.07,
+            "cachePerM": 0.003,
+            "outputPerM": 0.281,
+            "inputCnyPerM": 0.476,
+            "cacheCnyPerM": 0.0204,
+            "outputCnyPerM": 1.9108
+          },
+          "note": "抵扣单价：输入 $0.07/M Token、缓存读取 $0.003000/M Token、输出 $0.28/M Token；该模型适用额度：5小时 $5、每周 $12.50、每月 $25；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
+        },
+        {
+          "slug": "commandcode-pro--hy4",
+          "modelSlug": "hy4",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 64.0362017994,
+            "weeklyTokenInM": 160.0905044985,
+            "monthlyTokenInM": 320.2,
+            "unitPriceCnyPerM": 0.425
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.834,
+            "cachePerM": 0.042,
+            "outputPerM": 2.501,
+            "inputCnyPerM": 5.6712,
+            "cacheCnyPerM": 0.2856,
+            "outputCnyPerM": 17.0068
+          },
+          "note": "抵扣单价：输入 $0.83/M Token、缓存读取 $0.04/M Token、输出 $2.50/M Token；该模型适用额度：5小时 $6、每周 $15、每月 $30；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
+        },
+        {
+          "slug": "commandcode-pro--muse-ember",
+          "modelSlug": "muse-ember",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 533.0490405117,
+            "weeklyTokenInM": 1332.6226012793,
+            "monthlyTokenInM": 2665.2,
+            "unitPriceCnyPerM": 0.051
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.1,
+            "cachePerM": 0.004,
+            "outputPerM": 0.5,
+            "inputCnyPerM": 0.68,
+            "cacheCnyPerM": 0.0272,
+            "outputCnyPerM": 3.4
+          },
+          "note": "抵扣单价：输入 $0.10/M Token、缓存读取 $0.004000/M Token、输出 $0.50/M Token；该模型适用额度：5小时 $6、每周 $15、每月 $30；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
+        },
+        {
+          "slug": "commandcode-pro--gpt-6-2-sol",
+          "modelSlug": "gpt-6-2-sol",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 16.391763139,
+            "weeklyTokenInM": 40.9794078476,
+            "monthlyTokenInM": 82.0,
+            "unitPriceCnyPerM": 1.6592
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cacheWritePerM": 2.5,
+            "cachePerM": 0.1,
+            "outputPerM": 10.0,
+            "inputCnyPerM": 13.6,
+            "cacheWriteCnyPerM": 17.0,
+            "cacheCnyPerM": 0.68,
+            "outputCnyPerM": 68.0
+          },
+          "note": "抵扣单价：输入 $2/M Token、缓存写入 $2.50/M Token、缓存读取 $0.10/M Token、输出 $10/M Token；该模型适用额度：5小时 $4、每周 $10、每月 $20；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
+        },
+        {
+          "slug": "commandcode-pro--gemini-4-carbon",
+          "modelSlug": "gemini-4-carbon",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 24.5876447085,
+            "weeklyTokenInM": 61.4691117713,
+            "monthlyTokenInM": 122.9,
+            "unitPriceCnyPerM": 1.10636
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cachePerM": 0.1,
+            "outputPerM": 10.0,
+            "inputCnyPerM": 13.6,
+            "cacheCnyPerM": 0.68,
+            "outputCnyPerM": 68.0
+          },
+          "note": "抵扣单价：输入 $2/M Token、缓存读取 $0.10/M Token、输出 $10/M Token；该模型适用额度：5小时 $6、每周 $15、每月 $30；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
+        },
+        {
+          "slug": "commandcode-pro--inkling-2-small",
+          "modelSlug": "inkling-2-small",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": "unlimited"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.0,
+            "cachePerM": 0.0,
+            "outputPerM": 0.0,
+            "inputCnyPerM": 0.0,
+            "cacheCnyPerM": 0.0,
+            "outputCnyPerM": 0.0
+          },
+          "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；Inkling 2 Small限时免费，结束日期未公布；仍受速率及公平使用限制。"
         }
       ]
     },
@@ -21168,29 +21792,6 @@
             "outputCnyPerM": 68.0
           },
           "note": "抵扣单价：输入 $2/M Token、缓存读取 $0.20/M Token、输出 $10/M Token；该模型适用额度：5小时 $45、每周 $90、每月 $150；是否共享及能否叠加以套餐说明为准；Kimi K3.1 Pro，最高 1M 上下文。；Kimi K3.1 Pro，最高 1M 上下文；按实际 Token 价格扣减美元 Credits，与其他模型共享套餐池，模型额度不能相加。Token 参考用量为统一工作负载下的估算。"
-        },
-        {
-          "slug": "commandcode-max10--laguna-s-2-1",
-          "modelSlug": "laguna-s-2-1",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": "unlimited"
-          },
-          "pricing": {
-            "currency": "$",
-            "inputPerM": 0.0,
-            "cachePerM": 0.0,
-            "outputPerM": 0.0,
-            "inputCnyPerM": 0.0,
-            "cacheCnyPerM": 0.0,
-            "outputCnyPerM": 0.0
-          },
-          "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；平台上下文上限 256K；容量允许时免费，免费活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。 免费不保证无速率限制。 每账户每日最多 1000 次，UTC 零点重置。；容量允许时免费，免费活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。 免费不保证无速率限制。 每账户每日最多 1000 次，UTC 零点重置。"
         },
         {
           "slug": "commandcode-max10--ling-3-1-flash",
@@ -23674,29 +24275,6 @@
           "note": "抵扣单价：输入 $0.50/M Token、缓存读取 $0.10/M Token、输出 $1.20/M Token；该模型适用额度：5小时 $45、每周 $90、每月 $150；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
         },
         {
-          "slug": "commandcode-max10--beam-1-0",
-          "modelSlug": "beam-1-0",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": "unlimited"
-          },
-          "pricing": {
-            "currency": "$",
-            "inputPerM": 0.0,
-            "cachePerM": 0.0,
-            "outputPerM": 0.0,
-            "inputCnyPerM": 0.0,
-            "cacheCnyPerM": 0.0,
-            "outputCnyPerM": 0.0
-          },
-          "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；容量允许时免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。；容量允许时免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。"
-        },
-        {
           "slug": "commandcode-max10--muse-spark-open",
           "modelSlug": "muse-spark-open",
           "timeTier": null,
@@ -23959,6 +24537,203 @@
             "outputCnyPerM": 51.0
           },
           "note": "抵扣单价：输入 $2/M Token、缓存写入 $2.50/M Token、缓存读取 $0.10/M Token、输出 $7.50/M Token；该模型适用额度：5小时 $30、每周 $60、每月 $100；是否共享及能否叠加以套餐说明为准；平台支持最高 1.1M 上下文；缓存写入另计，当前 Token 参考换算不含该项；Token 参考量未计入额外缓存写入成本。；Pro 月模型额度 $20，Max 10× / 20× 分别 $100 / $200；来自共享套餐池、不能相加。Token 数按统一负载估算，不把宣传请求数当配额；缓存写入另计，换算不含该项。"
+        },
+        {
+          "slug": "commandcode-max10--qwen-4-max",
+          "modelSlug": "qwen-4-max",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 267.8272514228,
+            "weeklyTokenInM": 535.6545028457,
+            "monthlyTokenInM": 892.8,
+            "unitPriceCnyPerM": 0.7616
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 1.5,
+            "cacheWritePerM": 1.875,
+            "cachePerM": 0.075,
+            "outputPerM": 4.5,
+            "inputCnyPerM": 10.2,
+            "cacheWriteCnyPerM": 12.75,
+            "cacheCnyPerM": 0.51,
+            "outputCnyPerM": 30.6
+          },
+          "note": "抵扣单价：输入 $1.50/M Token、缓存写入 $1.88/M Token、缓存读取 $0.08/M Token、输出 $4.50/M Token；该模型适用额度：5小时 $45、每周 $90、每月 $150；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
+        },
+        {
+          "slug": "commandcode-max10--hy4-flash",
+          "modelSlug": "hy4-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 5826.5626517334,
+            "weeklyTokenInM": 11653.1253034668,
+            "monthlyTokenInM": 19421.9,
+            "unitPriceCnyPerM": 0.03468
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.07,
+            "cachePerM": 0.003,
+            "outputPerM": 0.281,
+            "inputCnyPerM": 0.476,
+            "cacheCnyPerM": 0.0204,
+            "outputCnyPerM": 1.9108
+          },
+          "note": "抵扣单价：输入 $0.07/M Token、缓存读取 $0.003000/M Token、输出 $0.28/M Token；该模型适用额度：5小时 $45、每周 $90、每月 $150；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
+        },
+        {
+          "slug": "commandcode-max10--hy4",
+          "modelSlug": "hy4",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 480.2715134956,
+            "weeklyTokenInM": 960.5430269913,
+            "monthlyTokenInM": 1600.9,
+            "unitPriceCnyPerM": 0.425
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.834,
+            "cachePerM": 0.042,
+            "outputPerM": 2.501,
+            "inputCnyPerM": 5.6712,
+            "cacheCnyPerM": 0.2856,
+            "outputCnyPerM": 17.0068
+          },
+          "note": "抵扣单价：输入 $0.83/M Token、缓存读取 $0.04/M Token、输出 $2.50/M Token；该模型适用额度：5小时 $45、每周 $90、每月 $150；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
+        },
+        {
+          "slug": "commandcode-max10--inkling-2-small",
+          "modelSlug": "inkling-2-small",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": "unlimited"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.0,
+            "cachePerM": 0.0,
+            "outputPerM": 0.0,
+            "inputCnyPerM": 0.0,
+            "cacheCnyPerM": 0.0,
+            "outputCnyPerM": 0.0
+          },
+          "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；Inkling 2 Small限时免费，结束日期未公布；仍受速率及公平使用限制。"
+        },
+        {
+          "slug": "commandcode-max10--muse-ember",
+          "modelSlug": "muse-ember",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 3997.867803838,
+            "weeklyTokenInM": 7995.7356076759,
+            "monthlyTokenInM": 13326.2,
+            "unitPriceCnyPerM": 0.051
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.1,
+            "cachePerM": 0.004,
+            "outputPerM": 0.5,
+            "inputCnyPerM": 0.68,
+            "cacheCnyPerM": 0.0272,
+            "outputCnyPerM": 3.4
+          },
+          "note": "抵扣单价：输入 $0.10/M Token、缓存读取 $0.004000/M Token、输出 $0.50/M Token；该模型适用额度：5小时 $45、每周 $90、每月 $150；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
+        },
+        {
+          "slug": "commandcode-max10--gpt-6-2-astra",
+          "modelSlug": "gpt-6-2-astra",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 30.7345558857,
+            "weeklyTokenInM": 61.4691117713,
+            "monthlyTokenInM": 102.4,
+            "unitPriceCnyPerM": 6.63748
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 8.0,
+            "cacheWritePerM": 10.0,
+            "cachePerM": 0.4,
+            "outputPerM": 40.0,
+            "inputCnyPerM": 54.4,
+            "cacheWriteCnyPerM": 68.0,
+            "cacheCnyPerM": 2.72,
+            "outputCnyPerM": 272.0
+          },
+          "note": "抵扣单价：输入 $8/M Token、缓存写入 $10/M Token、缓存读取 $0.40/M Token、输出 $40/M Token；该模型适用额度：5小时 $30、每周 $60、每月 $100；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
+        },
+        {
+          "slug": "commandcode-max10--gpt-6-2-sol",
+          "modelSlug": "gpt-6-2-sol",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 122.9382235427,
+            "weeklyTokenInM": 245.8764470853,
+            "monthlyTokenInM": 409.8,
+            "unitPriceCnyPerM": 1.6592
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cacheWritePerM": 2.5,
+            "cachePerM": 0.1,
+            "outputPerM": 10.0,
+            "inputCnyPerM": 13.6,
+            "cacheWriteCnyPerM": 17.0,
+            "cacheCnyPerM": 0.68,
+            "outputCnyPerM": 68.0
+          },
+          "note": "抵扣单价：输入 $2/M Token、缓存写入 $2.50/M Token、缓存读取 $0.10/M Token、输出 $10/M Token；该模型适用额度：5小时 $30、每周 $60、每月 $100；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
+        },
+        {
+          "slug": "commandcode-max10--gemini-4-carbon",
+          "modelSlug": "gemini-4-carbon",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 184.407335314,
+            "weeklyTokenInM": 368.814670628,
+            "monthlyTokenInM": 614.7,
+            "unitPriceCnyPerM": 1.10636
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cachePerM": 0.1,
+            "outputPerM": 10.0,
+            "inputCnyPerM": 13.6,
+            "cacheCnyPerM": 0.68,
+            "outputCnyPerM": 68.0
+          },
+          "note": "抵扣单价：输入 $2/M Token、缓存读取 $0.10/M Token、输出 $10/M Token；该模型适用额度：5小时 $45、每周 $90、每月 $150；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
         }
       ]
     },
@@ -24005,29 +24780,6 @@
             "outputCnyPerM": 68.0
           },
           "note": "抵扣单价：输入 $2/M Token、缓存读取 $0.20/M Token、输出 $10/M Token；该模型适用额度：5小时 $90、每周 $180、每月 $300；是否共享及能否叠加以套餐说明为准；Kimi K3.1 Pro，最高 1M 上下文。；Kimi K3.1 Pro，最高 1M 上下文；按实际 Token 价格扣减美元 Credits，与其他模型共享套餐池，模型额度不能相加。Token 参考用量为统一工作负载下的估算。"
-        },
-        {
-          "slug": "commandcode-max20--laguna-s-2-1",
-          "modelSlug": "laguna-s-2-1",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": "unlimited"
-          },
-          "pricing": {
-            "currency": "$",
-            "inputPerM": 0.0,
-            "cachePerM": 0.0,
-            "outputPerM": 0.0,
-            "inputCnyPerM": 0.0,
-            "cacheCnyPerM": 0.0,
-            "outputCnyPerM": 0.0
-          },
-          "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；平台上下文上限 256K；容量允许时免费，免费活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。 免费不保证无速率限制。 每账户每日最多 1000 次，UTC 零点重置。；容量允许时免费，免费活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。 免费不保证无速率限制。 每账户每日最多 1000 次，UTC 零点重置。"
         },
         {
           "slug": "commandcode-max20--ling-3-1-flash",
@@ -26511,29 +27263,6 @@
           "note": "抵扣单价：输入 $0.50/M Token、缓存读取 $0.10/M Token、输出 $1.20/M Token；该模型适用额度：5小时 $90、每周 $180、每月 $300；是否共享及能否叠加以套餐说明为准；平台上下文上限 1M；美元Credits计费；短窗口按对应模型月额度同比例估算，共享套餐池，并非各模型额度可相加"
         },
         {
-          "slug": "commandcode-max20--beam-1-0",
-          "modelSlug": "beam-1-0",
-          "timeTier": null,
-          "contextTier": null,
-          "serviceTier": null,
-          "method": "calculated",
-          "usage": {
-            "fiveHourTokenInM": "unlimited",
-            "weeklyTokenInM": "unlimited",
-            "monthlyTokenInM": "unlimited"
-          },
-          "pricing": {
-            "currency": "$",
-            "inputPerM": 0.0,
-            "cachePerM": 0.0,
-            "outputPerM": 0.0,
-            "inputCnyPerM": 0.0,
-            "cacheCnyPerM": 0.0,
-            "outputCnyPerM": 0.0
-          },
-          "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；容量允许时免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。；容量允许时免费，无每日请求次数上限，活动起止日期未公布。开始会话时账户需有 $1 Credits；免费请求不扣 Credits。上游可能保留请求并用于训练，不支持 CMD_ZDR=1 会话。"
-        },
-        {
           "slug": "commandcode-max20--muse-spark-open",
           "modelSlug": "muse-spark-open",
           "timeTier": null,
@@ -26796,6 +27525,203 @@
             "outputCnyPerM": 51.0
           },
           "note": "抵扣单价：输入 $2/M Token、缓存写入 $2.50/M Token、缓存读取 $0.10/M Token、输出 $7.50/M Token；该模型适用额度：5小时 $60、每周 $120、每月 $200；是否共享及能否叠加以套餐说明为准；平台支持最高 1.1M 上下文；缓存写入另计，当前 Token 参考换算不含该项；Token 参考量未计入额外缓存写入成本。；Pro 月模型额度 $20，Max 10× / 20× 分别 $100 / $200；来自共享套餐池、不能相加。Token 数按统一负载估算，不把宣传请求数当配额；缓存写入另计，换算不含该项。"
+        },
+        {
+          "slug": "commandcode-max20--qwen-4-max",
+          "modelSlug": "qwen-4-max",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 535.6545028457,
+            "weeklyTokenInM": 1071.3090056913,
+            "monthlyTokenInM": 1785.5,
+            "unitPriceCnyPerM": 0.7616
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 1.5,
+            "cacheWritePerM": 1.875,
+            "cachePerM": 0.075,
+            "outputPerM": 4.5,
+            "inputCnyPerM": 10.2,
+            "cacheWriteCnyPerM": 12.75,
+            "cacheCnyPerM": 0.51,
+            "outputCnyPerM": 30.6
+          },
+          "note": "抵扣单价：输入 $1.50/M Token、缓存写入 $1.88/M Token、缓存读取 $0.08/M Token、输出 $4.50/M Token；该模型适用额度：5小时 $90、每周 $180、每月 $300；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
+        },
+        {
+          "slug": "commandcode-max20--hy4-flash",
+          "modelSlug": "hy4-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 11653.1253034668,
+            "weeklyTokenInM": 23306.2506069336,
+            "monthlyTokenInM": 38843.8,
+            "unitPriceCnyPerM": 0.03468
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.07,
+            "cachePerM": 0.003,
+            "outputPerM": 0.281,
+            "inputCnyPerM": 0.476,
+            "cacheCnyPerM": 0.0204,
+            "outputCnyPerM": 1.9108
+          },
+          "note": "抵扣单价：输入 $0.07/M Token、缓存读取 $0.003000/M Token、输出 $0.28/M Token；该模型适用额度：5小时 $90、每周 $180、每月 $300；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
+        },
+        {
+          "slug": "commandcode-max20--hy4",
+          "modelSlug": "hy4",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 960.5430269913,
+            "weeklyTokenInM": 1921.0860539825,
+            "monthlyTokenInM": 3201.8,
+            "unitPriceCnyPerM": 0.425
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.834,
+            "cachePerM": 0.042,
+            "outputPerM": 2.501,
+            "inputCnyPerM": 5.6712,
+            "cacheCnyPerM": 0.2856,
+            "outputCnyPerM": 17.0068
+          },
+          "note": "抵扣单价：输入 $0.83/M Token、缓存读取 $0.04/M Token、输出 $2.50/M Token；该模型适用额度：5小时 $90、每周 $180、每月 $300；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
+        },
+        {
+          "slug": "commandcode-max20--inkling-2-small",
+          "modelSlug": "inkling-2-small",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": "unlimited"
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.0,
+            "cachePerM": 0.0,
+            "outputPerM": 0.0,
+            "inputCnyPerM": 0.0,
+            "cacheCnyPerM": 0.0,
+            "outputCnyPerM": 0.0
+          },
+          "note": "抵扣单价：输入 $0/M Token、缓存读取 $0/M Token、输出 $0/M Token；该模型适用额度：5小时 不限量、每周 不限量、每月 不限量；是否共享及能否叠加以套餐说明为准；Inkling 2 Small限时免费，结束日期未公布；仍受速率及公平使用限制。"
+        },
+        {
+          "slug": "commandcode-max20--muse-ember",
+          "modelSlug": "muse-ember",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 7995.7356076759,
+            "weeklyTokenInM": 15991.4712153518,
+            "monthlyTokenInM": 26652.5,
+            "unitPriceCnyPerM": 0.051
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 0.1,
+            "cachePerM": 0.004,
+            "outputPerM": 0.5,
+            "inputCnyPerM": 0.68,
+            "cacheCnyPerM": 0.0272,
+            "outputCnyPerM": 3.4
+          },
+          "note": "抵扣单价：输入 $0.10/M Token、缓存读取 $0.004000/M Token、输出 $0.50/M Token；该模型适用额度：5小时 $90、每周 $180、每月 $300；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
+        },
+        {
+          "slug": "commandcode-max20--gpt-6-2-astra",
+          "modelSlug": "gpt-6-2-astra",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 61.4691117713,
+            "weeklyTokenInM": 122.9382235427,
+            "monthlyTokenInM": 204.9,
+            "unitPriceCnyPerM": 6.63748
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 8.0,
+            "cacheWritePerM": 10.0,
+            "cachePerM": 0.4,
+            "outputPerM": 40.0,
+            "inputCnyPerM": 54.4,
+            "cacheWriteCnyPerM": 68.0,
+            "cacheCnyPerM": 2.72,
+            "outputCnyPerM": 272.0
+          },
+          "note": "抵扣单价：输入 $8/M Token、缓存写入 $10/M Token、缓存读取 $0.40/M Token、输出 $40/M Token；该模型适用额度：5小时 $60、每周 $120、每月 $200；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
+        },
+        {
+          "slug": "commandcode-max20--gpt-6-2-sol",
+          "modelSlug": "gpt-6-2-sol",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 245.8764470853,
+            "weeklyTokenInM": 491.7528941707,
+            "monthlyTokenInM": 819.6,
+            "unitPriceCnyPerM": 1.6592
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cacheWritePerM": 2.5,
+            "cachePerM": 0.1,
+            "outputPerM": 10.0,
+            "inputCnyPerM": 13.6,
+            "cacheWriteCnyPerM": 17.0,
+            "cacheCnyPerM": 0.68,
+            "outputCnyPerM": 68.0
+          },
+          "note": "抵扣单价：输入 $2/M Token、缓存写入 $2.50/M Token、缓存读取 $0.10/M Token、输出 $10/M Token；该模型适用额度：5小时 $60、每周 $120、每月 $200；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
+        },
+        {
+          "slug": "commandcode-max20--gemini-4-carbon",
+          "modelSlug": "gemini-4-carbon",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": 368.814670628,
+            "weeklyTokenInM": 737.629341256,
+            "monthlyTokenInM": 1229.4,
+            "unitPriceCnyPerM": 1.10636
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cachePerM": 0.1,
+            "outputPerM": 10.0,
+            "inputCnyPerM": 13.6,
+            "cacheCnyPerM": 0.68,
+            "outputCnyPerM": 68.0
+          },
+          "note": "抵扣单价：输入 $2/M Token、缓存读取 $0.10/M Token、输出 $10/M Token；该模型适用额度：5小时 $90、每周 $180、每月 $300；是否共享及能否叠加以套餐说明为准；按本套餐逐模型美元Credits表抵扣，与其他模型共享使用比例，不能相加；Token用量为统一负载估算。"
         }
       ]
     },
@@ -28508,7 +29434,7 @@
             "outputPerM": 90.0,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 30 积分/M Token、缓存读取 1.50 积分/M Token、输出 90 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 780 积分；截至2026-11-17 12:00（北京时间）活动价，输入/缓存/输出30/1.5/90积分每百万Token；常规120/6/360。"
+          "note": "抵扣单价：输入 30 积分/M Token、缓存读取 1.50 积分/M Token、输出 90 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 780 积分；截至2026-11-30 12:00（北京时间）活动价，输入/缓存/输出30/1.5/90积分每百万Token；常规120/6/360。"
         },
         {
           "slug": "tencent-cloud-token-plan-lite--deepseek-v4-1-flash",
@@ -28530,7 +29456,7 @@
             "outputPerM": 160.0,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 40 积分/M Token、缓存读取 0.80 积分/M Token、输出 160 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 780 积分；原厂直供 deepseek/deepseek-flash；高峰输入/缓存/输出40/0.8/160积分每百万Token。峰谷具体时段以平台为准。"
+          "note": "抵扣单价：输入 40 积分/M Token、缓存读取 0.80 积分/M Token、输出 160 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 780 积分；原厂直供 deepseek/deepseek-flash；高峰输入/缓存/输出40/0.8/160积分每百万Token。峰谷具体时段以平台为准。 自2026-11-18 00:00（北京时间），Search与Fetch分别按100积分/千次成功请求抵扣，搜索注入内容另按输入Token抵扣；工具费用未计入本站Token参考量。"
         },
         {
           "slug": "tencent-cloud-token-plan-lite--deepseek-v4-1-flash--direct-offpeak",
@@ -28552,7 +29478,7 @@
             "outputPerM": 80.0,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 20 积分/M Token、缓存读取 0.40 积分/M Token、输出 80 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 780 积分；原厂直供 deepseek/deepseek-flash；空闲输入/缓存/输出20/0.4/80积分每百万Token。峰谷具体时段以平台为准。"
+          "note": "抵扣单价：输入 20 积分/M Token、缓存读取 0.40 积分/M Token、输出 80 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 780 积分；原厂直供 deepseek/deepseek-flash；空闲输入/缓存/输出20/0.4/80积分每百万Token。峰谷具体时段以平台为准。 自2026-11-18 00:00（北京时间），Search与Fetch分别按100积分/千次成功请求抵扣，搜索注入内容另按输入Token抵扣；工具费用未计入本站Token参考量。"
         },
         {
           "slug": "tencent-cloud-token-plan-lite--deepseek-v4-1-flash--standard-offpeak",
@@ -28640,7 +29566,7 @@
             "outputPerM": 22.285,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 22.29 积分/M Token、缓存读取 22.29 积分/M Token、输出 22.29 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 780 积分；原厂直供 deepseek/deepseek-v4-pro-0813；输入、缓存和输出按套餐档位统一积分价抵扣。"
+          "note": "抵扣单价：输入 22.29 积分/M Token、缓存读取 22.29 积分/M Token、输出 22.29 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 780 积分；原厂直供 deepseek/deepseek-v4-pro-0813；输入、缓存和输出按套餐档位统一积分价抵扣。 自2026-11-18 00:00（北京时间），Search与Fetch分别按100积分/千次成功请求抵扣，搜索注入内容另按输入Token抵扣；工具费用未计入本站Token参考量。"
         },
         {
           "slug": "tencent-cloud-token-plan-lite--deepseek-v4-pro-0813--standard-offpeak",
@@ -28882,7 +29808,7 @@
             "outputPerM": 198.0,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 96 积分/M Token、缓存读取 3.90 积分/M Token、输出 198 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 780 积分；2026-11-04 00:30至11-30 12:00（北京时间）活动价，输入/缓存/输出96/3.9/198积分每百万Token；常规120/6/360。"
+          "note": "抵扣单价：输入 96 积分/M Token、缓存读取 3.90 积分/M Token、输出 198 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 780 积分；2026-11-04 00:30至11-30 12:00（北京时间）活动价，输入/缓存/输出96/3.9/198积分每百万Token；常规120/6/360。 官方预告2026-12-07下线，具体生效以届时规则为准。"
         },
         {
           "slug": "tencent-cloud-token-plan-lite--mimo-v2-6-flash",
@@ -28905,6 +29831,28 @@
             "unit": "积分"
           },
           "note": "抵扣单价：输入 20 积分/M Token、缓存读取 0.40 积分/M Token、输出 40 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 780 积分；官方积分制，只有订阅月总额度；输入/缓存/输出按对应积分单价扣减。"
+        },
+        {
+          "slug": "tencent-cloud-token-plan-lite--hy4-flash",
+          "modelSlug": "hy4-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 1450.4,
+            "unitPriceCnyPerM": 0.0269
+          },
+          "pricing": {
+            "currency": null,
+            "inputPerM": 5.0,
+            "cachePerM": 0.2,
+            "outputPerM": 20.0,
+            "unit": "积分"
+          },
+          "note": "抵扣单价：输入 5 积分/M Token、缓存读取 0.20 积分/M Token、输出 20 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 780 积分；2026-11-16起至11-30 12:00（北京时间）五折，输入/缓存/输出5/0.2/20积分每百万Token；常规10/0.4/40。"
         }
       ]
     },
@@ -28945,7 +29893,7 @@
             "outputPerM": 90.0,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 30 积分/M Token、缓存读取 1.50 积分/M Token、输出 90 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 1,980 积分；截至2026-11-17 12:00（北京时间）活动价，输入/缓存/输出30/1.5/90积分每百万Token；常规120/6/360。"
+          "note": "抵扣单价：输入 30 积分/M Token、缓存读取 1.50 积分/M Token、输出 90 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 1,980 积分；截至2026-11-30 12:00（北京时间）活动价，输入/缓存/输出30/1.5/90积分每百万Token；常规120/6/360。"
         },
         {
           "slug": "tencent-cloud-token-plan-standard--deepseek-v4-1-flash",
@@ -28967,7 +29915,7 @@
             "outputPerM": 160.0,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 40 积分/M Token、缓存读取 0.80 积分/M Token、输出 160 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 1,980 积分；原厂直供 deepseek/deepseek-flash；高峰输入/缓存/输出40/0.8/160积分每百万Token。峰谷具体时段以平台为准。"
+          "note": "抵扣单价：输入 40 积分/M Token、缓存读取 0.80 积分/M Token、输出 160 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 1,980 积分；原厂直供 deepseek/deepseek-flash；高峰输入/缓存/输出40/0.8/160积分每百万Token。峰谷具体时段以平台为准。 自2026-11-18 00:00（北京时间），Search与Fetch分别按100积分/千次成功请求抵扣，搜索注入内容另按输入Token抵扣；工具费用未计入本站Token参考量。"
         },
         {
           "slug": "tencent-cloud-token-plan-standard--deepseek-v4-1-flash--direct-offpeak",
@@ -28989,7 +29937,7 @@
             "outputPerM": 80.0,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 20 积分/M Token、缓存读取 0.40 积分/M Token、输出 80 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 1,980 积分；原厂直供 deepseek/deepseek-flash；空闲输入/缓存/输出20/0.4/80积分每百万Token。峰谷具体时段以平台为准。"
+          "note": "抵扣单价：输入 20 积分/M Token、缓存读取 0.40 积分/M Token、输出 80 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 1,980 积分；原厂直供 deepseek/deepseek-flash；空闲输入/缓存/输出20/0.4/80积分每百万Token。峰谷具体时段以平台为准。 自2026-11-18 00:00（北京时间），Search与Fetch分别按100积分/千次成功请求抵扣，搜索注入内容另按输入Token抵扣；工具费用未计入本站Token参考量。"
         },
         {
           "slug": "tencent-cloud-token-plan-standard--deepseek-v4-1-flash--standard-offpeak",
@@ -29077,7 +30025,7 @@
             "outputPerM": 19.8,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 19.80 积分/M Token、缓存读取 19.80 积分/M Token、输出 19.80 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 1,980 积分；原厂直供 deepseek/deepseek-v4-pro-0813；输入、缓存和输出按套餐档位统一积分价抵扣。"
+          "note": "抵扣单价：输入 19.80 积分/M Token、缓存读取 19.80 积分/M Token、输出 19.80 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 1,980 积分；原厂直供 deepseek/deepseek-v4-pro-0813；输入、缓存和输出按套餐档位统一积分价抵扣。 自2026-11-18 00:00（北京时间），Search与Fetch分别按100积分/千次成功请求抵扣，搜索注入内容另按输入Token抵扣；工具费用未计入本站Token参考量。"
         },
         {
           "slug": "tencent-cloud-token-plan-standard--deepseek-v4-pro-0813--standard-offpeak",
@@ -29319,7 +30267,7 @@
             "outputPerM": 198.0,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 96 积分/M Token、缓存读取 3.90 积分/M Token、输出 198 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 1,980 积分；2026-11-04 00:30至11-30 12:00（北京时间）活动价，输入/缓存/输出96/3.9/198积分每百万Token；常规120/6/360。"
+          "note": "抵扣单价：输入 96 积分/M Token、缓存读取 3.90 积分/M Token、输出 198 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 1,980 积分；2026-11-04 00:30至11-30 12:00（北京时间）活动价，输入/缓存/输出96/3.9/198积分每百万Token；常规120/6/360。 官方预告2026-12-07下线，具体生效以届时规则为准。"
         },
         {
           "slug": "tencent-cloud-token-plan-standard--mimo-v2-6-flash",
@@ -29342,6 +30290,28 @@
             "unit": "积分"
           },
           "note": "抵扣单价：输入 20 积分/M Token、缓存读取 0.40 积分/M Token、输出 40 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 1,980 积分；官方积分制，只有订阅月总额度；输入/缓存/输出按对应积分单价扣减。"
+        },
+        {
+          "slug": "tencent-cloud-token-plan-standard--hy4-flash",
+          "modelSlug": "hy4-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 3681.7,
+            "unitPriceCnyPerM": 0.0269
+          },
+          "pricing": {
+            "currency": null,
+            "inputPerM": 5.0,
+            "cachePerM": 0.2,
+            "outputPerM": 20.0,
+            "unit": "积分"
+          },
+          "note": "抵扣单价：输入 5 积分/M Token、缓存读取 0.20 积分/M Token、输出 20 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 1,980 积分；2026-11-16起至11-30 12:00（北京时间）五折，输入/缓存/输出5/0.2/20积分每百万Token；常规10/0.4/40。"
         }
       ]
     },
@@ -29382,7 +30352,7 @@
             "outputPerM": 90.0,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 30 积分/M Token、缓存读取 1.50 积分/M Token、输出 90 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 5,980 积分；截至2026-11-17 12:00（北京时间）活动价，输入/缓存/输出30/1.5/90积分每百万Token；常规120/6/360。"
+          "note": "抵扣单价：输入 30 积分/M Token、缓存读取 1.50 积分/M Token、输出 90 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 5,980 积分；截至2026-11-30 12:00（北京时间）活动价，输入/缓存/输出30/1.5/90积分每百万Token；常规120/6/360。"
         },
         {
           "slug": "tencent-cloud-token-plan-pro--deepseek-v4-1-flash",
@@ -29404,7 +30374,7 @@
             "outputPerM": 160.0,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 40 积分/M Token、缓存读取 0.80 积分/M Token、输出 160 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 5,980 积分；原厂直供 deepseek/deepseek-flash；高峰输入/缓存/输出40/0.8/160积分每百万Token。峰谷具体时段以平台为准。"
+          "note": "抵扣单价：输入 40 积分/M Token、缓存读取 0.80 积分/M Token、输出 160 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 5,980 积分；原厂直供 deepseek/deepseek-flash；高峰输入/缓存/输出40/0.8/160积分每百万Token。峰谷具体时段以平台为准。 自2026-11-18 00:00（北京时间），Search与Fetch分别按100积分/千次成功请求抵扣，搜索注入内容另按输入Token抵扣；工具费用未计入本站Token参考量。"
         },
         {
           "slug": "tencent-cloud-token-plan-pro--deepseek-v4-1-flash--direct-offpeak",
@@ -29426,7 +30396,7 @@
             "outputPerM": 80.0,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 20 积分/M Token、缓存读取 0.40 积分/M Token、输出 80 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 5,980 积分；原厂直供 deepseek/deepseek-flash；空闲输入/缓存/输出20/0.4/80积分每百万Token。峰谷具体时段以平台为准。"
+          "note": "抵扣单价：输入 20 积分/M Token、缓存读取 0.40 积分/M Token、输出 80 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 5,980 积分；原厂直供 deepseek/deepseek-flash；空闲输入/缓存/输出20/0.4/80积分每百万Token。峰谷具体时段以平台为准。 自2026-11-18 00:00（北京时间），Search与Fetch分别按100积分/千次成功请求抵扣，搜索注入内容另按输入Token抵扣；工具费用未计入本站Token参考量。"
         },
         {
           "slug": "tencent-cloud-token-plan-pro--deepseek-v4-1-flash--standard-offpeak",
@@ -29514,7 +30484,7 @@
             "outputPerM": 18.687,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 18.69 积分/M Token、缓存读取 18.69 积分/M Token、输出 18.69 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 5,980 积分；原厂直供 deepseek/deepseek-v4-pro-0813；输入、缓存和输出按套餐档位统一积分价抵扣。"
+          "note": "抵扣单价：输入 18.69 积分/M Token、缓存读取 18.69 积分/M Token、输出 18.69 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 5,980 积分；原厂直供 deepseek/deepseek-v4-pro-0813；输入、缓存和输出按套餐档位统一积分价抵扣。 自2026-11-18 00:00（北京时间），Search与Fetch分别按100积分/千次成功请求抵扣，搜索注入内容另按输入Token抵扣；工具费用未计入本站Token参考量。"
         },
         {
           "slug": "tencent-cloud-token-plan-pro--deepseek-v4-pro-0813--standard-offpeak",
@@ -29756,7 +30726,7 @@
             "outputPerM": 198.0,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 96 积分/M Token、缓存读取 3.90 积分/M Token、输出 198 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 5,980 积分；2026-11-04 00:30至11-30 12:00（北京时间）活动价，输入/缓存/输出96/3.9/198积分每百万Token；常规120/6/360。"
+          "note": "抵扣单价：输入 96 积分/M Token、缓存读取 3.90 积分/M Token、输出 198 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 5,980 积分；2026-11-04 00:30至11-30 12:00（北京时间）活动价，输入/缓存/输出96/3.9/198积分每百万Token；常规120/6/360。 官方预告2026-12-07下线，具体生效以届时规则为准。"
         },
         {
           "slug": "tencent-cloud-token-plan-pro--mimo-v2-6-flash",
@@ -29779,6 +30749,28 @@
             "unit": "积分"
           },
           "note": "抵扣单价：输入 20 积分/M Token、缓存读取 0.40 积分/M Token、输出 40 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 5,980 积分；官方积分制，只有订阅月总额度；输入/缓存/输出按对应积分单价扣减。"
+        },
+        {
+          "slug": "tencent-cloud-token-plan-pro--hy4-flash",
+          "modelSlug": "hy4-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 11119.4,
+            "unitPriceCnyPerM": 0.0269
+          },
+          "pricing": {
+            "currency": null,
+            "inputPerM": 5.0,
+            "cachePerM": 0.2,
+            "outputPerM": 20.0,
+            "unit": "积分"
+          },
+          "note": "抵扣单价：输入 5 积分/M Token、缓存读取 0.20 积分/M Token、输出 20 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 5,980 积分；2026-11-16起至11-30 12:00（北京时间）五折，输入/缓存/输出5/0.2/20积分每百万Token；常规10/0.4/40。"
         }
       ]
     },
@@ -29819,7 +30811,7 @@
             "outputPerM": 90.0,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 30 积分/M Token、缓存读取 1.50 积分/M Token、输出 90 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,980 积分；截至2026-11-17 12:00（北京时间）活动价，输入/缓存/输出30/1.5/90积分每百万Token；常规120/6/360。"
+          "note": "抵扣单价：输入 30 积分/M Token、缓存读取 1.50 积分/M Token、输出 90 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,980 积分；截至2026-11-30 12:00（北京时间）活动价，输入/缓存/输出30/1.5/90积分每百万Token；常规120/6/360。"
         },
         {
           "slug": "tencent-cloud-token-plan-max--deepseek-v4-1-flash",
@@ -29841,7 +30833,7 @@
             "outputPerM": 160.0,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 40 积分/M Token、缓存读取 0.80 积分/M Token、输出 160 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,980 积分；原厂直供 deepseek/deepseek-flash；高峰输入/缓存/输出40/0.8/160积分每百万Token。峰谷具体时段以平台为准。"
+          "note": "抵扣单价：输入 40 积分/M Token、缓存读取 0.80 积分/M Token、输出 160 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,980 积分；原厂直供 deepseek/deepseek-flash；高峰输入/缓存/输出40/0.8/160积分每百万Token。峰谷具体时段以平台为准。 自2026-11-18 00:00（北京时间），Search与Fetch分别按100积分/千次成功请求抵扣，搜索注入内容另按输入Token抵扣；工具费用未计入本站Token参考量。"
         },
         {
           "slug": "tencent-cloud-token-plan-max--deepseek-v4-1-flash--direct-offpeak",
@@ -29863,7 +30855,7 @@
             "outputPerM": 80.0,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 20 积分/M Token、缓存读取 0.40 积分/M Token、输出 80 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,980 积分；原厂直供 deepseek/deepseek-flash；空闲输入/缓存/输出20/0.4/80积分每百万Token。峰谷具体时段以平台为准。"
+          "note": "抵扣单价：输入 20 积分/M Token、缓存读取 0.40 积分/M Token、输出 80 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,980 积分；原厂直供 deepseek/deepseek-flash；空闲输入/缓存/输出20/0.4/80积分每百万Token。峰谷具体时段以平台为准。 自2026-11-18 00:00（北京时间），Search与Fetch分别按100积分/千次成功请求抵扣，搜索注入内容另按输入Token抵扣；工具费用未计入本站Token参考量。"
         },
         {
           "slug": "tencent-cloud-token-plan-max--deepseek-v4-1-flash--standard-offpeak",
@@ -29951,7 +30943,7 @@
             "outputPerM": 18.43,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 18.43 积分/M Token、缓存读取 18.43 积分/M Token、输出 18.43 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,980 积分；原厂直供 deepseek/deepseek-v4-pro-0813；输入、缓存和输出按套餐档位统一积分价抵扣。"
+          "note": "抵扣单价：输入 18.43 积分/M Token、缓存读取 18.43 积分/M Token、输出 18.43 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,980 积分；原厂直供 deepseek/deepseek-v4-pro-0813；输入、缓存和输出按套餐档位统一积分价抵扣。 自2026-11-18 00:00（北京时间），Search与Fetch分别按100积分/千次成功请求抵扣，搜索注入内容另按输入Token抵扣；工具费用未计入本站Token参考量。"
         },
         {
           "slug": "tencent-cloud-token-plan-max--deepseek-v4-pro-0813--standard-offpeak",
@@ -30193,7 +31185,7 @@
             "outputPerM": 198.0,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 96 积分/M Token、缓存读取 3.90 积分/M Token、输出 198 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,980 积分；2026-11-04 00:30至11-30 12:00（北京时间）活动价，输入/缓存/输出96/3.9/198积分每百万Token；常规120/6/360。"
+          "note": "抵扣单价：输入 96 积分/M Token、缓存读取 3.90 积分/M Token、输出 198 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,980 积分；2026-11-04 00:30至11-30 12:00（北京时间）活动价，输入/缓存/输出96/3.9/198积分每百万Token；常规120/6/360。 官方预告2026-12-07下线，具体生效以届时规则为准。"
         },
         {
           "slug": "tencent-cloud-token-plan-max--mimo-v2-6-flash",
@@ -30216,6 +31208,28 @@
             "unit": "积分"
           },
           "note": "抵扣单价：输入 20 积分/M Token、缓存读取 0.40 积分/M Token、输出 40 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,980 积分；官方积分制，只有订阅月总额度；输入/缓存/输出按对应积分单价扣减。"
+        },
+        {
+          "slug": "tencent-cloud-token-plan-max--hy4-flash",
+          "modelSlug": "hy4-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 22275.9,
+            "unitPriceCnyPerM": 0.0269
+          },
+          "pricing": {
+            "currency": null,
+            "inputPerM": 5.0,
+            "cachePerM": 0.2,
+            "outputPerM": 20.0,
+            "unit": "积分"
+          },
+          "note": "抵扣单价：输入 5 积分/M Token、缓存读取 0.20 积分/M Token、输出 20 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 11,980 积分；2026-11-16起至11-30 12:00（北京时间）五折，输入/缓存/输出5/0.2/20积分每百万Token；常规10/0.4/40。"
         }
       ]
     },
@@ -30609,6 +31623,19 @@
           },
           "pricing": null,
           "note": "主客户端内置可选，Credits用量参考系数1.0×；实际消耗随Token和参数变化，不代表固定Token额度。"
+        },
+        {
+          "slug": "qoder-cn-pro--qwen-4-max",
+          "modelSlug": "qwen-4-max",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "主客户端模型选择器内置可选，Credits用量参考系数0.4×；实际消耗随Token及参数变化，不是固定Token额度。不同客户端和账号以实际可选范围为准。"
         }
       ]
     },
@@ -30838,6 +31865,19 @@
           },
           "pricing": null,
           "note": "主客户端内置可选，Credits用量参考系数1.0×；实际消耗随Token和参数变化，不代表固定Token额度。"
+        },
+        {
+          "slug": "qoder-cn-pro-plus--qwen-4-max",
+          "modelSlug": "qwen-4-max",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "主客户端模型选择器内置可选，Credits用量参考系数0.4×；实际消耗随Token及参数变化，不是固定Token额度。不同客户端和账号以实际可选范围为准。"
         }
       ]
     },
@@ -31067,6 +32107,19 @@
           },
           "pricing": null,
           "note": "主客户端内置可选，Credits用量参考系数1.0×；实际消耗随Token和参数变化，不代表固定Token额度。"
+        },
+        {
+          "slug": "qoder-cn-ultra--qwen-4-max",
+          "modelSlug": "qwen-4-max",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "主客户端模型选择器内置可选，Credits用量参考系数0.4×；实际消耗随Token及参数变化，不是固定Token额度。不同客户端和账号以实际可选范围为准。"
         }
       ]
     },
@@ -31395,6 +32448,19 @@
           },
           "pricing": null,
           "note": "主客户端内置可选，Credits用量参考系数1.0×；实际消耗随Token和参数变化，不代表固定Token额度。"
+        },
+        {
+          "slug": "qoder-intl-pro--qwen-4-max",
+          "modelSlug": "qwen-4-max",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "主客户端模型选择器内置可选，Credits用量参考系数0.4×；实际消耗随Token及参数变化，不是固定Token额度。不同客户端和账号以实际可选范围为准。"
         }
       ]
     },
@@ -31585,6 +32651,19 @@
           },
           "pricing": null,
           "note": "主客户端内置可选，Credits用量参考系数1.0×；实际消耗随Token和参数变化，不代表固定Token额度。"
+        },
+        {
+          "slug": "qoder-intl-pro-plus--qwen-4-max",
+          "modelSlug": "qwen-4-max",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "主客户端模型选择器内置可选，Credits用量参考系数0.4×；实际消耗随Token及参数变化，不是固定Token额度。不同客户端和账号以实际可选范围为准。"
         }
       ]
     },
@@ -31775,6 +32854,19 @@
           },
           "pricing": null,
           "note": "主客户端内置可选，Credits用量参考系数1.0×；实际消耗随Token和参数变化，不代表固定Token额度。"
+        },
+        {
+          "slug": "qoder-intl-ultra--qwen-4-max",
+          "modelSlug": "qwen-4-max",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "unknown",
+          "usage": {
+            "monthlyTokenInM": "unknown"
+          },
+          "pricing": null,
+          "note": "主客户端模型选择器内置可选，Credits用量参考系数0.4×；实际消耗随Token及参数变化，不是固定Token额度。不同客户端和账号以实际可选范围为准。"
         }
       ]
     },
@@ -32882,7 +33974,7 @@
       "monthlyPrice": 45,
       "currency": "¥",
       "quarterlyPrice": 135,
-      "yearlyPrice": 540,
+      "yearlyPrice": 490,
       "firstMonthPrice": 39,
       "benefits": [
         "2000会员积分/31天",
@@ -33165,7 +34257,7 @@
       "monthlyPrice": 89,
       "currency": "¥",
       "quarterlyPrice": 267,
-      "yearlyPrice": 1068,
+      "yearlyPrice": 990,
       "firstMonthPrice": 69,
       "benefits": [
         "4000会员积分/31天",
@@ -33474,7 +34566,7 @@
       "monthlyPrice": 219,
       "currency": "¥",
       "quarterlyPrice": 657,
-      "yearlyPrice": 2628,
+      "yearlyPrice": 2390,
       "firstMonthPrice": 219,
       "benefits": [
         "12000会员积分/31天",
@@ -33783,7 +34875,7 @@
       "monthlyPrice": 629,
       "currency": "¥",
       "quarterlyPrice": 1887,
-      "yearlyPrice": 7548,
+      "yearlyPrice": 6990,
       "firstMonthPrice": 629,
       "benefits": [
         "40000会员积分/31天",
@@ -40361,6 +41453,110 @@
             "outputCnyPerM": 272.0
           },
           "note": "抵扣单价：输入 $8/M Token、缓存读取 $0.20/M Token、输出 $40/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $70；每百万 Token 美元标价计入 AI Credits；缓存写入另计，换算不含该项。；部分组织须开启数据保留政策才能使用；符合条件的企业账号例外。缓存写入另计，换算不含该项。"
+        },
+        {
+          "slug": "github-token-plan-pro-2--gpt-6-2-astra--context-le272k",
+          "modelSlug": "gpt-6-2-astra",
+          "timeTier": null,
+          "contextTier": "≤272K",
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 71.7,
+            "unitPriceCnyPerM": 3.69784
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 8.0,
+            "cacheWritePerM": 10.0,
+            "cachePerM": 0.4,
+            "outputPerM": 40.0,
+            "inputCnyPerM": 54.4,
+            "cacheWriteCnyPerM": 68.0,
+            "cacheCnyPerM": 2.72,
+            "outputCnyPerM": 272.0
+          },
+          "note": "抵扣单价：输入 $8/M Token、缓存写入 $10/M Token、缓存读取 $0.40/M Token、输出 $40/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $70；GitHub Copilot 官方报价；缓存写入另计。；仅 Pro+ / Max；缓存写入另计，当前统一负载换算未包含该项。"
+        },
+        {
+          "slug": "github-token-plan-pro-2--gpt-6-2-astra--context-gt272k",
+          "modelSlug": "gpt-6-2-astra",
+          "timeTier": null,
+          "contextTier": ">272K",
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 37.8,
+            "unitPriceCnyPerM": 7.01692
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 16.0,
+            "cacheWritePerM": 20.0,
+            "cachePerM": 0.8,
+            "outputPerM": 60.0,
+            "inputCnyPerM": 108.8,
+            "cacheWriteCnyPerM": 136.0,
+            "cacheCnyPerM": 5.44,
+            "outputCnyPerM": 408.0
+          },
+          "note": "抵扣单价：输入 $16/M Token、缓存写入 $20/M Token、缓存读取 $0.80/M Token、输出 $60/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $70；GitHub Copilot 官方报价；缓存写入另计。；仅 Pro+ / Max；缓存写入另计，当前统一负载换算未包含该项。"
+        },
+        {
+          "slug": "github-token-plan-pro-2--gpt-6-2-sol--context-le272k",
+          "modelSlug": "gpt-6-2-sol",
+          "timeTier": null,
+          "contextTier": "≤272K",
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 286.9,
+            "unitPriceCnyPerM": 0.9248
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cacheWritePerM": 2.5,
+            "cachePerM": 0.1,
+            "outputPerM": 10.0,
+            "inputCnyPerM": 13.6,
+            "cacheWriteCnyPerM": 17.0,
+            "cacheCnyPerM": 0.68,
+            "outputCnyPerM": 68.0
+          },
+          "note": "抵扣单价：输入 $2/M Token、缓存写入 $2.50/M Token、缓存读取 $0.10/M Token、输出 $10/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $70；GitHub Copilot 官方报价；缓存写入另计。；仅 Pro+ / Max；缓存写入另计，当前统一负载换算未包含该项。"
+        },
+        {
+          "slug": "github-token-plan-pro-2--gpt-6-2-sol--context-gt272k",
+          "modelSlug": "gpt-6-2-sol",
+          "timeTier": null,
+          "contextTier": ">272K",
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 151.2,
+            "unitPriceCnyPerM": 1.7544
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 4.0,
+            "cacheWritePerM": 5.0,
+            "cachePerM": 0.2,
+            "outputPerM": 15.0,
+            "inputCnyPerM": 27.2,
+            "cacheWriteCnyPerM": 34.0,
+            "cacheCnyPerM": 1.36,
+            "outputCnyPerM": 102.0
+          },
+          "note": "抵扣单价：输入 $4/M Token、缓存写入 $5/M Token、缓存读取 $0.20/M Token、输出 $15/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $70；GitHub Copilot 官方报价；缓存写入另计。；仅 Pro+ / Max；缓存写入另计，当前统一负载换算未包含该项。"
         }
       ]
     },
@@ -41395,6 +42591,110 @@
             "outputCnyPerM": 272.0
           },
           "note": "抵扣单价：输入 $8/M Token、缓存读取 $0.20/M Token、输出 $40/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $200；每百万 Token 美元标价计入 AI Credits；缓存写入另计，换算不含该项。；部分组织须开启数据保留政策才能使用；符合条件的企业账号例外。缓存写入另计，换算不含该项。"
+        },
+        {
+          "slug": "github-token-plan-max--gpt-6-2-astra--context-le272k",
+          "modelSlug": "gpt-6-2-astra",
+          "timeTier": null,
+          "contextTier": "≤272K",
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 204.9,
+            "unitPriceCnyPerM": 3.31908
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 8.0,
+            "cacheWritePerM": 10.0,
+            "cachePerM": 0.4,
+            "outputPerM": 40.0,
+            "inputCnyPerM": 54.4,
+            "cacheWriteCnyPerM": 68.0,
+            "cacheCnyPerM": 2.72,
+            "outputCnyPerM": 272.0
+          },
+          "note": "抵扣单价：输入 $8/M Token、缓存写入 $10/M Token、缓存读取 $0.40/M Token、输出 $40/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $200；GitHub Copilot 官方报价；缓存写入另计。；仅 Pro+ / Max；缓存写入另计，当前统一负载换算未包含该项。"
+        },
+        {
+          "slug": "github-token-plan-max--gpt-6-2-astra--context-gt272k",
+          "modelSlug": "gpt-6-2-astra",
+          "timeTier": null,
+          "contextTier": ">272K",
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 108.0,
+            "unitPriceCnyPerM": 6.29748
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 16.0,
+            "cacheWritePerM": 20.0,
+            "cachePerM": 0.8,
+            "outputPerM": 60.0,
+            "inputCnyPerM": 108.8,
+            "cacheWriteCnyPerM": 136.0,
+            "cacheCnyPerM": 5.44,
+            "outputCnyPerM": 408.0
+          },
+          "note": "抵扣单价：输入 $16/M Token、缓存写入 $20/M Token、缓存读取 $0.80/M Token、输出 $60/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $200；GitHub Copilot 官方报价；缓存写入另计。；仅 Pro+ / Max；缓存写入另计，当前统一负载换算未包含该项。"
+        },
+        {
+          "slug": "github-token-plan-max--gpt-6-2-sol--context-le272k",
+          "modelSlug": "gpt-6-2-sol",
+          "timeTier": null,
+          "contextTier": "≤272K",
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 819.6,
+            "unitPriceCnyPerM": 0.8296
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 2.0,
+            "cacheWritePerM": 2.5,
+            "cachePerM": 0.1,
+            "outputPerM": 10.0,
+            "inputCnyPerM": 13.6,
+            "cacheWriteCnyPerM": 17.0,
+            "cacheCnyPerM": 0.68,
+            "outputCnyPerM": 68.0
+          },
+          "note": "抵扣单价：输入 $2/M Token、缓存写入 $2.50/M Token、缓存读取 $0.10/M Token、输出 $10/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $200；GitHub Copilot 官方报价；缓存写入另计。；仅 Pro+ / Max；缓存写入另计，当前统一负载换算未包含该项。"
+        },
+        {
+          "slug": "github-token-plan-max--gpt-6-2-sol--context-gt272k",
+          "modelSlug": "gpt-6-2-sol",
+          "timeTier": null,
+          "contextTier": ">272K",
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unknown",
+            "weeklyTokenInM": "unknown",
+            "monthlyTokenInM": 431.9,
+            "unitPriceCnyPerM": 1.5742
+          },
+          "pricing": {
+            "currency": "$",
+            "inputPerM": 4.0,
+            "cacheWritePerM": 5.0,
+            "cachePerM": 0.2,
+            "outputPerM": 15.0,
+            "inputCnyPerM": 27.2,
+            "cacheWriteCnyPerM": 34.0,
+            "cacheCnyPerM": 1.36,
+            "outputCnyPerM": 102.0
+          },
+          "note": "抵扣单价：输入 $4/M Token、缓存写入 $5/M Token、缓存读取 $0.20/M Token、输出 $15/M Token；套餐共享额度：5小时 未知、每周 未知、每月 $200；GitHub Copilot 官方报价；缓存写入另计。；仅 Pro+ / Max；缓存写入另计，当前统一负载换算未包含该项。"
         }
       ]
     },
@@ -48678,7 +49978,7 @@
             "outputPerM": 90.0,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 30 积分/M Token、缓存读取 1.50 积分/M Token、输出 90 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 560 积分；截至2026-11-17 12:00（北京时间）活动价，输入/缓存/输出30/1.5/90积分每百万Token；常规120/6/360。"
+          "note": "抵扣单价：输入 30 积分/M Token、缓存读取 1.50 积分/M Token、输出 90 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 560 积分；截至2026-11-30 12:00（北京时间）活动价，输入/缓存/输出30/1.5/90积分每百万Token；常规120/6/360。"
         },
         {
           "slug": "tencent-cloud-hy-lite--hy4-preview",
@@ -48700,7 +50000,7 @@
             "outputPerM": 198.0,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 96 积分/M Token、缓存读取 3.90 积分/M Token、输出 198 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 560 积分；2026-11-04 00:30至11-30 12:00（北京时间）活动价，输入/缓存/输出96/3.9/198积分每百万Token；常规120/6/360。"
+          "note": "抵扣单价：输入 96 积分/M Token、缓存读取 3.90 积分/M Token、输出 198 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 560 积分；2026-11-04 00:30至11-30 12:00（北京时间）活动价，输入/缓存/输出96/3.9/198积分每百万Token；常规120/6/360。 官方预告2026-12-07下线，具体生效以届时规则为准。"
         },
         {
           "slug": "tencent-cloud-hy-lite--hy3--fixed",
@@ -48745,6 +50045,28 @@
             "unit": "积分"
           },
           "note": "抵扣单价：输入 16 积分/M Token、缓存读取 16 积分/M Token、输出 16 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 560 积分；默认hy3/hy3-preview路由按套餐档位固定积分/Token计费"
+        },
+        {
+          "slug": "tencent-cloud-hy-lite--hy4-flash",
+          "modelSlug": "hy4-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 1041.3,
+            "unitPriceCnyPerM": 0.0269
+          },
+          "pricing": {
+            "currency": null,
+            "inputPerM": 5.0,
+            "cachePerM": 0.2,
+            "outputPerM": 20.0,
+            "unit": "积分"
+          },
+          "note": "抵扣单价：输入 5 积分/M Token、缓存读取 0.20 积分/M Token、输出 20 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 560 积分；2026-11-16起至11-30 12:00（北京时间）五折，输入/缓存/输出5/0.2/20积分每百万Token；常规10/0.4/40。"
         }
       ]
     },
@@ -48785,7 +50107,7 @@
             "outputPerM": 90.0,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 30 积分/M Token、缓存读取 1.50 积分/M Token、输出 90 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 1,560 积分；截至2026-11-17 12:00（北京时间）活动价，输入/缓存/输出30/1.5/90积分每百万Token；常规120/6/360。"
+          "note": "抵扣单价：输入 30 积分/M Token、缓存读取 1.50 积分/M Token、输出 90 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 1,560 积分；截至2026-11-30 12:00（北京时间）活动价，输入/缓存/输出30/1.5/90积分每百万Token；常规120/6/360。"
         },
         {
           "slug": "tencent-cloud-hy-standard--hy4-preview",
@@ -48807,7 +50129,7 @@
             "outputPerM": 198.0,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 96 积分/M Token、缓存读取 3.90 积分/M Token、输出 198 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 1,560 积分；2026-11-04 00:30至11-30 12:00（北京时间）活动价，输入/缓存/输出96/3.9/198积分每百万Token；常规120/6/360。"
+          "note": "抵扣单价：输入 96 积分/M Token、缓存读取 3.90 积分/M Token、输出 198 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 1,560 积分；2026-11-04 00:30至11-30 12:00（北京时间）活动价，输入/缓存/输出96/3.9/198积分每百万Token；常规120/6/360。 官方预告2026-12-07下线，具体生效以届时规则为准。"
         },
         {
           "slug": "tencent-cloud-hy-standard--hy3--fixed",
@@ -48852,6 +50174,28 @@
             "unit": "积分"
           },
           "note": "抵扣单价：输入 15.60 积分/M Token、缓存读取 15.60 积分/M Token、输出 15.60 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 1,560 积分；默认hy3/hy3-preview路由按套餐档位固定积分/Token计费"
+        },
+        {
+          "slug": "tencent-cloud-hy-standard--hy4-flash",
+          "modelSlug": "hy4-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 2900.7,
+            "unitPriceCnyPerM": 0.0269
+          },
+          "pricing": {
+            "currency": null,
+            "inputPerM": 5.0,
+            "cachePerM": 0.2,
+            "outputPerM": 20.0,
+            "unit": "积分"
+          },
+          "note": "抵扣单价：输入 5 积分/M Token、缓存读取 0.20 积分/M Token、输出 20 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 1,560 积分；2026-11-16起至11-30 12:00（北京时间）五折，输入/缓存/输出5/0.2/20积分每百万Token；常规10/0.4/40。"
         }
       ]
     },
@@ -48892,7 +50236,7 @@
             "outputPerM": 90.0,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 30 积分/M Token、缓存读取 1.50 积分/M Token、输出 90 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 4,760 积分；截至2026-11-17 12:00（北京时间）活动价，输入/缓存/输出30/1.5/90积分每百万Token；常规120/6/360。"
+          "note": "抵扣单价：输入 30 积分/M Token、缓存读取 1.50 积分/M Token、输出 90 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 4,760 积分；截至2026-11-30 12:00（北京时间）活动价，输入/缓存/输出30/1.5/90积分每百万Token；常规120/6/360。"
         },
         {
           "slug": "tencent-cloud-hy-pro--hy4-preview",
@@ -48914,7 +50258,7 @@
             "outputPerM": 198.0,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 96 积分/M Token、缓存读取 3.90 积分/M Token、输出 198 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 4,760 积分；2026-11-04 00:30至11-30 12:00（北京时间）活动价，输入/缓存/输出96/3.9/198积分每百万Token；常规120/6/360。"
+          "note": "抵扣单价：输入 96 积分/M Token、缓存读取 3.90 积分/M Token、输出 198 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 4,760 积分；2026-11-04 00:30至11-30 12:00（北京时间）活动价，输入/缓存/输出96/3.9/198积分每百万Token；常规120/6/360。 官方预告2026-12-07下线，具体生效以届时规则为准。"
         },
         {
           "slug": "tencent-cloud-hy-pro--hy3--fixed",
@@ -48959,6 +50303,28 @@
             "unit": "积分"
           },
           "note": "抵扣单价：输入 14.88 积分/M Token、缓存读取 14.88 积分/M Token、输出 14.88 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 4,760 积分；默认hy3/hy3-preview路由按套餐档位固定积分/Token计费"
+        },
+        {
+          "slug": "tencent-cloud-hy-pro--hy4-flash",
+          "modelSlug": "hy4-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 8850.9,
+            "unitPriceCnyPerM": 0.0269
+          },
+          "pricing": {
+            "currency": null,
+            "inputPerM": 5.0,
+            "cachePerM": 0.2,
+            "outputPerM": 20.0,
+            "unit": "积分"
+          },
+          "note": "抵扣单价：输入 5 积分/M Token、缓存读取 0.20 积分/M Token、输出 20 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 4,760 积分；2026-11-16起至11-30 12:00（北京时间）五折，输入/缓存/输出5/0.2/20积分每百万Token；常规10/0.4/40。"
         }
       ]
     },
@@ -48999,7 +50365,7 @@
             "outputPerM": 90.0,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 30 积分/M Token、缓存读取 1.50 积分/M Token、输出 90 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 9,360 积分；截至2026-11-17 12:00（北京时间）活动价，输入/缓存/输出30/1.5/90积分每百万Token；常规120/6/360。"
+          "note": "抵扣单价：输入 30 积分/M Token、缓存读取 1.50 积分/M Token、输出 90 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 9,360 积分；截至2026-11-30 12:00（北京时间）活动价，输入/缓存/输出30/1.5/90积分每百万Token；常规120/6/360。"
         },
         {
           "slug": "tencent-cloud-hy-max--hy4-preview",
@@ -49021,7 +50387,7 @@
             "outputPerM": 198.0,
             "unit": "积分"
           },
-          "note": "抵扣单价：输入 96 积分/M Token、缓存读取 3.90 积分/M Token、输出 198 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 9,360 积分；2026-11-04 00:30至11-30 12:00（北京时间）活动价，输入/缓存/输出96/3.9/198积分每百万Token；常规120/6/360。"
+          "note": "抵扣单价：输入 96 积分/M Token、缓存读取 3.90 积分/M Token、输出 198 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 9,360 积分；2026-11-04 00:30至11-30 12:00（北京时间）活动价，输入/缓存/输出96/3.9/198积分每百万Token；常规120/6/360。 官方预告2026-12-07下线，具体生效以届时规则为准。"
         },
         {
           "slug": "tencent-cloud-hy-max--hy3--fixed",
@@ -49066,6 +50432,28 @@
             "unit": "积分"
           },
           "note": "抵扣单价：输入 14.40 积分/M Token、缓存读取 14.40 积分/M Token、输出 14.40 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 9,360 积分；默认hy3/hy3-preview路由按套餐档位固定积分/Token计费"
+        },
+        {
+          "slug": "tencent-cloud-hy-max--hy4-flash",
+          "modelSlug": "hy4-flash",
+          "timeTier": null,
+          "contextTier": null,
+          "serviceTier": null,
+          "method": "calculated",
+          "usage": {
+            "fiveHourTokenInM": "unlimited",
+            "weeklyTokenInM": "unlimited",
+            "monthlyTokenInM": 17404.2,
+            "unitPriceCnyPerM": 0.0269
+          },
+          "pricing": {
+            "currency": null,
+            "inputPerM": 5.0,
+            "cachePerM": 0.2,
+            "outputPerM": 20.0,
+            "unit": "积分"
+          },
+          "note": "抵扣单价：输入 5 积分/M Token、缓存读取 0.20 积分/M Token、输出 20 积分/M Token；套餐共享额度：5小时 不限量、每周 不限量、每月 9,360 积分；2026-11-16起至11-30 12:00（北京时间）五折，输入/缓存/输出5/0.2/20积分每百万Token；常规10/0.4/40。"
         }
       ]
     },
@@ -56476,6 +57864,5 @@
         }
       ]
     }
-  ],
-  "contentVersion": "2026-11-15T15:23:20.704Z"
+  ]
 }

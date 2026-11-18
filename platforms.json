@@ -105,7 +105,7 @@
       "slug": "opencode",
       "name": "OpenCode",
       "rating": 5,
-      "summary": "Go 与 Go Plus 多模型订阅，各型号额度不同；免费与 Contributor 型号有额外条件。",
+      "summary": "Go、Go Plus 与 Go Teams 多模型订阅，各型号额度不同；免费及 Contributor 型号有额外条件。",
       "detail": "各模型的Go Plus额度增幅不同，不能统一按四倍算。",
       "dimensions": {
         "value": {
@@ -154,8 +154,8 @@
       "slug": "codex",
       "name": "Codex",
       "rating": 5,
-      "summary": "Codex 官方订阅，Plus / Pro 支持 GPT-6.1 Sol / Terra；Pro $500 另支持 Ultrafast。",
-      "detail": "速度档影响额度消耗；新型号与新套餐的精确 Token 额度未知。",
+      "summary": "Codex 官方 Plus / Pro 支持 GPT-6.2 Astra / Sol；Pro $200 可用 Sol Ultrafast，$500 可用两款。",
+      "detail": "GPT-6.2 Fast / Ultrafast 的订阅用量消耗为 Standard 的2倍/6倍；新型号基准Token额度未知。",
       "dimensions": {
         "value": {
           "score": 5,
@@ -163,7 +163,7 @@
         },
         "models": {
           "score": 5,
-          "reason": "速度档影响额度消耗；新型号与新套餐的精确 Token 额度未知。"
+          "reason": "GPT-6.2 Fast / Ultrafast 的订阅用量消耗为 Standard 的2倍/6倍；新型号基准Token额度未知。"
         },
         "stability": {
           "score": 5,
@@ -532,7 +532,7 @@
         },
         "models": {
           "score": 2,
-          "reason": "支持DeepSeek-V4.1-Flash-1017及GLM、Kimi、MiniMax、Hy、MiMo等模型；MiniMax-M2.7将于2026-11-17下线。"
+          "reason": "支持DeepSeek、GLM、Kimi、MiniMax、Hy及MiMo；Hy4 Flash享限时五折，MiniMax-M2.7原下线日期已过，实际可用性待确认。"
         },
         "stability": {
           "score": 5,
@@ -559,7 +559,7 @@
       "slug": "qoder-cn",
       "name": "Qoder 国内版",
       "rating": 3,
-      "summary": "Qoder全家桶个人订阅，模型选择因客户端而异；Qwen3.8-Flash每日限量免Credits。",
+      "summary": "Qoder全家桶个人订阅，主客户端支持Qwen4-Max；Qwen3.8-Flash按时段抵扣Credits。",
       "detail": "订阅Credits跨全家桶共享；Qwen专属赠额另计，具体Token用量未知。",
       "platformStatus": "open",
       "dimensions": {
@@ -584,8 +584,8 @@
       "slug": "qoder-intl",
       "name": "Qoder 国际版",
       "rating": 3,
-      "summary": "Qoder国际套餐，当前支持K3、K2.8、GLM5.3及Qwen3.8等；具体Token额度未知。",
-      "detail": "月付首购及续费有Credits加赠；Qwen3.8-Flash每日限量免Credits，具体Token额度未知。",
+      "summary": "Qoder国际个人订阅，Pro起提供完整模型名单，Lite限精选型号；具体Token额度未知。",
+      "detail": "月付首购及续费有Credits加赠；Qwen3.8-Flash夜间参考系数0.04×、其他时段0.1×。",
       "platformStatus": "open",
       "dimensions": {
         "value": {
@@ -1042,7 +1042,7 @@
       "slug": "tencent-cloud-hy",
       "name": "腾讯云 · Hy",
       "rating": 0,
-      "summary": "Hy3、Hy4 preview专属订阅，与通用套餐可并存。",
+      "summary": "Hy3、Hy4、Hy4 preview及Hy4 Flash专属订阅，与通用套餐可并存。",
       "dimensions": {
         "value": {
           "score": null,
@@ -1206,6 +1206,5 @@
       "action": "https://api.dreamfree.space/c/s/cpyqxunfei",
       "supportsDomestic": true
     }
-  ],
-  "contentVersion": "2026-11-04T15:55:23.293Z"
+  ]
 }

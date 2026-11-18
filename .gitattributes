@@ -1,4 +1,4 @@
-# JSON request hashes must match the committed/published bytes on Windows and Linux.
+# Keep JSON request hashes and generated catalog bytes stable across platforms.
 /platforms.json text eol=lf
 /plans.json text eol=lf
 /models.json text eol=lf

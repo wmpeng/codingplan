@@ -67,7 +67,6 @@
   }
   function begin(){
     if(!controller){pending=true;return;}
-    root.CodingPlanUpdates?.check('purchase_guide');
     if(!active && !applied && !pending)root.CodingPlanEvents?.track('guide_start');
     pending=false;active=true;render();host.scrollIntoView({behavior:'smooth',block:'start'});
   }

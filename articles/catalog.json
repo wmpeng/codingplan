@@ -39,7 +39,7 @@
       "title": "2026年6月主流大模型对比：Claude Fable 5 三项领跑，GLM-5.2 Agentic 反超 GPT-5.5，Kimi K2.7 Code 上线",
       "publishedAt": "2026-06-17",
       "updatedAt": "2026-06-17",
-      "description": "基于 Artificial Analysis 2026年6月基准测试，围绕 Coding 指数与 Agentic 智能指数对 GPT-5.5、Claude Opus 4.8、Qwen3.7 Max、DeepSeek V4 Pro、Kimi K2.6 等 19 款主流大模型横向评测，附选型建议。",
+      "description": "在 2026 年 6 月 17 日对比的 19 款模型中，Claude Fable 5 在综合、编程和智能体三项评测中均排第一。GLM-5.2 的智能体得分以 75.9 超过 GPT-5.5 的 74.1，Kimi K2.7 Code 的编程得分则略低于上一代 K2.6。",
       "kicker": "模型评测 · Coding Plan",
       "url": "/articles/model_comparisons/20260617/",
       "archiveUrl": "/articles/model_comparisons/20260617/",
@@ -440,6 +440,5 @@
         "alt": "2026年10月AI编程套餐六项变化"
       }
     }
-  ],
-  "contentVersion": "2026-11-02T10:06:18.977Z"
+  ]
 }

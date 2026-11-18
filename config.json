@@ -1,8 +1,8 @@
 {
   "header": {
     "title": "AI Coding Plan 平台评测与对比",
-    "updateDate": "更新日期 2026.11.04 | 共绩算力模型与合作价格更新",
-    "subtitle": "智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Command Code、Codex、Claude Code、Cursor、Qoder、WorkBuddy、TRAE等平台，订阅套餐与按量API对比。<br>涵盖GPT-6.1-Sol / Terra、Claude 5.5系列、MiniMax-M3.1-Flash、Kimi-K3.1-Pro、Kimi-K2.8-Preview、Step-5-Preview、LongCat-2.5-Preview、DeepSeek-V4.1-Flash、GLM-5.3与Qwen-3.8等模型",
+    "updateDate": "更新日期 2026.11.18 | GPT-6.2 与全站数据更新",
+    "subtitle": "智谱AI、Kimi、MiniMax、阿里·百炼、字节·方舟、小米·MiMo、OpenCode、Command Code、Codex、Claude Code、Cursor、Qoder、WorkBuddy、TRAE等平台，订阅套餐与按量API对比。<br>涵盖GPT-6.2-Astra / Sol、GPT-6.1-Terra、Claude 5.5系列、MiniMax-M3.1-Flash、Kimi-K3.1-Pro、Kimi-K2.8-Preview、Step-5-Preview、LongCat-2.5-Preview、DeepSeek-V4.1-Flash、GLM-5.3、Qwen4-Max与Hy4-Flash等模型",
     "models": "快速选出当下最适合的平台和使用方式。[加群](https://api.dreamfree.space/c/s/cpfeishulink)参与讨论和获取最新消息",
     "watermarkUrl": "www.codingplan.fyi",
     "entry": {
@@ -124,6 +124,15 @@
     "apply": "确定"
   },
   "updates": [
+    {
+      "date": "2026.11.18",
+      "items": [
+        "新增 GPT-6.2 Astra / Sol、Qwen4 Max 正式版、Hy4 Flash、Inkling 2 Small 与 Muse Ember；按平台和套餐分别补充支持、报价与额度，新 Codex 模型基准 Token 额度保持待确认。",
+        "AA 沿用 v5.0.1，按完整配置更新评分和 Token 消耗率；同步 LiveBench 与 Arena Agent 数据，各榜单保持精确型号和配置。",
+        "OpenCode Go 更新 GLM-5.3 限时加量至11月22日，新增 Qwen4 Max 与 Hy4 Flash 免费入口；Command Code 更新新模型和 GLM-5.3 额度，Ollama新增Inkling 2 Small。",
+        "腾讯 Hy4 抵扣二五折延至11月30日，补充Hy4 Flash五折及DeepSeek原厂搜索计费；Claude Pro首发周Fable权益结束，TRAE国内版补充当前年付价格。"
+      ]
+    },
     {
       "date": "2026.11.15",
       "items": [
@@ -605,6 +614,5 @@
         "更新智谱AI GLM-5.1 模型信息"
       ]
     }
-  ],
-  "contentVersion": "2026-11-15T15:02:25.101Z"
+  ]
 }
